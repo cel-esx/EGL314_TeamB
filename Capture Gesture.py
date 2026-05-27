@@ -57,7 +57,7 @@ LANDMARK_NAMES = [
     "PINKY_MCP", "PINKY_PIP", "PINKY_DIP", "PINKY_TIP",
 ]
 
-CSV_FILE = "new_gesture_definitions.csv"            """ Please Change the CSV file if neccesary"""
+CSV_FILE = "new_gesture_definitions.csv"
 CSV_HEADERS = ["gesture_name", "hand", "capture_id", "timestamp",
                "landmark_id", "landmark_name", "x", "y", "z"]
 
@@ -72,7 +72,7 @@ def mouse_callback(event, x, y, flags, param):
 
 def init_csv():
     if not os.path.exists(CSV_FILE):
-        with open(CSV_FILE, "w", newline="") as f:
+        with open(CSV_FILE, "w", newline="", encoding="utf-8") as f:
             csv.writer(f).writerow(CSV_HEADERS)
         print(f"[+] Created new file: {CSV_FILE}")
     else:
@@ -83,7 +83,7 @@ def get_total_unique_captures():
     if not os.path.exists(CSV_FILE):
         return 0
     try:
-        with open(CSV_FILE, "r", newline="", encoding="utf-8-sig") as f:
+        with open(CSV_FILE, "r", newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
             max_id = 0
             for row in reader:
@@ -99,7 +99,7 @@ def get_total_unique_captures():
 
 def save_to_csv(gesture_name, hand_label, capture_id, landmarks):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open(CSV_FILE, "a", newline="") as f:
+    with open(CSV_FILE, "a", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         for i, lm in enumerate(landmarks):
             writer.writerow([
@@ -121,7 +121,7 @@ def remove_gesture_from_csv(target_gesture_name):
     removed_count = 0
 
     try:
-        with open(CSV_FILE, "r", newline="", encoding="utf-8-sig") as f:
+        with open(CSV_FILE, "r", newline="", encoding="utf-8") as f:
             reader = csv.reader(f)
             headers = next(reader, None)
             
@@ -133,7 +133,7 @@ def remove_gesture_from_csv(target_gesture_name):
                         rows_to_keep.append(row)
         
         if removed_count > 0:
-            with open(CSV_FILE, "w", newline="", encoding="utf-8-sig") as f:
+            with open(CSV_FILE, "w", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
                 if headers:
                     writer.writerow(headers)
@@ -187,9 +187,11 @@ def draw_flash(frame, message, color=(100, 255, 100)):
     cv2.putText(frame, message, (x, y), font, scale, color, thickness, cv2.LINE_AA)
 
 # ── Window Setup & Initialization ─────────────────────────────────────────────
-WINDOW_NAME = "Gesture Calibration"
-cv2.namedWindow(WINDOW_NAME)
-cv2.setMouseCallback(WINDOW_NAME, mouse_callback) # Connect mouse actions to our script
+WINDOW_NAME = "Hand Tracking Recording Frame"
+
+cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
+cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+cv2.setMouseCallback(WINDOW_NAME, mouse_callback)
 
 cap = cv2.VideoCapture(0)
 if not cap.isOpened():
