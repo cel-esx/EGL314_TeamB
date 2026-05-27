@@ -1,5 +1,8 @@
 """
-Here We being the coding of the game
+Here We begin the coding of the game
+
+How to play?
+Grab 2 player and stand infront of the webcam
 """
 
 import cv2
