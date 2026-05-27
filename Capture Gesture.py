@@ -16,6 +16,8 @@ Type the gesture you want to delete
 Press Enter to delete the gesture
 
 
+Press "Esc" key if in case you wanted to press "G" but instead you pressed "D".. Use "Esc" key to go out of it
+
 Repeat the above process to save other gestures also. There is no need for you to re-run the whole script to save other gestures
 
 Press Q to stop the script
