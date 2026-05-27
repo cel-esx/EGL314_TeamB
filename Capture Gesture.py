@@ -4,13 +4,21 @@ You can add gestures & delete gestures
 
 Instructions: 
 
+To Add Gestures:
 Press G to type the intended gesture name
 Press Enter to save the name
 Postition your hand according to your intended gesture
 Use your mouse and right click on the screen to save the gesture
 
+To Delete Gestures:
+Press D to bring the delete prompt
+Type the gesture you want to delete
+Press Enter to delete the gesture
+
 
 Repeat the above process to save other gestures also. There is no need for you to re-run the whole script to save other gestures
+
+Press Q to stop the script
 """
 import cv2
 import mediapipe as mp
