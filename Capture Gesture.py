@@ -21,6 +21,17 @@ Press "Esc" key if in case you wanted to press "G" but instead you pressed "D"..
 Repeat the above process to save other gestures also. There is no need for you to re-run the whole script to save other gestures
 
 Press Q to stop the script
+
+
+Quick Look through
+
+ Window controls:
+    G           = start typing gesture name to capture
+    D           = start typing gesture name to PURGE/DELETE completely
+   ENTER       = confirm action input text processing loop
+   ESC         = cancel operational modes safely
+   RIGHT CLICK = capture current landmarks
+   Q           = quit
 """
 import cv2
 import mediapipe as mp
