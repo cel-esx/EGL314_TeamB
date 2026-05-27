@@ -1,5 +1,16 @@
 """
 This code here helps to capture your desired gesture and save it to a CSV file
+You can add gestures & delete gestures
+
+Instructions: 
+
+Press G to type the intended gesture name
+Press Enter to save the name
+Postition your hand according to your intended gesture
+Use your mouse and right click on the screen to save the gesture
+
+
+Repeat the above process to save other gestures also. There is no need for you to re-run the whole script to save other gestures
 """
 import cv2
 import mediapipe as mp
