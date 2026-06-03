@@ -243,7 +243,7 @@ MATCH_MIN_THRESHOLD = 0.15
 MATCH_THRESHOLD     = 0.65   
 BASE_DURATION, MAX_LEVELS = 15.0, 6      
 
-current_level, current_cycle = 5, 0
+current_level, current_cycle = 1, 0
 player_lives = 3
 round_duration = BASE_DURATION
 matched_targets = [False] * 4 
