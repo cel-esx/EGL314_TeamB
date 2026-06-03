@@ -1,3 +1,15 @@
+"""
+Here We begin the coding of the game
+
+How to play?
+Grab 2 player and stand infront of the webcam
+Press 'S' to start the game
+The 2 players must match the gesture shown in the screen
+For each correct gesture, the light in GrandMa3 will light up
+There are a total of 6 level and for each level, you must match the 4 gestures 4 times
+You have 3 lives in the game
+"""
+
 import cv2
 import mediapipe as mp
 import csv
