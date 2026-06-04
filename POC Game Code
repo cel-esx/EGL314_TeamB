@@ -19,6 +19,17 @@ import time
 import os
 from collections import defaultdict
 from pythonosc import udp_client
+import threading
+
+# Thread-safe result holder
+_mp_result = None
+_mp_lock = threading.Lock()
+
+def _run_mediapipe(frame_rgb):
+    global _mp_result
+    result = hands.process(frame_rgb)
+    with _mp_lock:
+        _mp_result = result
 
 CSV_FILE = "new_gesture_definitions.csv"
 
@@ -86,7 +97,7 @@ LEVEL_MUSIC_MAP = {
 }
 
 mp_hands = mp.solutions.hands 
-hands = mp_hands.Hands(max_num_hands=4, model_complexity=1, min_detection_confidence=0.55, min_tracking_confidence=0.5) 
+hands = mp_hands.Hands(max_num_hands=4, model_complexity=1, min_detection_confidence=0.75, min_tracking_confidence=0.65) 
 
 def create_osc_client(ip, port, system_name): 
     try: 
@@ -139,16 +150,30 @@ def load_gesture_definitions(csv_file):
 
 PRELOADED_IMAGES = {} 
 def cache_target_images(templates_keys, box_size):
-    folder = "Hand_Images"
+    folder = "Hand_Images_clear"
     if not os.path.exists(folder): return
     for g_name in set([k[0] for k in templates_keys]):
         for ext in [".png", ".jpg", ".jpeg"]:
-            img_path = os.path.join(folder, f"{g_name}{ext}") 
+            img_path = os.path.join(folder, f"{g_name}{ext}")
             if os.path.exists(img_path):
                 img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)
-                if img is not None:
-                    PRELOADED_IMAGES[g_name] = cv2.resize(img, (box_size, box_size)) 
-                    break 
+                if img is None: continue
+                img = cv2.resize(img, (box_size, box_size), interpolation=cv2.INTER_AREA)
+                if img.ndim == 3 and img.shape[2] == 4:
+                    alpha_mask = (img[:, :, 3:4].astype(np.float32) / 255.0)
+                    rgb = img[:, :, :3].astype(np.float32)
+                    PRELOADED_IMAGES[g_name] = {
+                        "has_alpha": True,
+                        "rgb_f32": rgb,
+                        "alpha": alpha_mask,
+                        "inv_alpha": 1.0 - alpha_mask,
+                    }
+                else:
+                    PRELOADED_IMAGES[g_name] = {
+                        "has_alpha": False,
+                        "bgr": img[:, :, :3],
+                    }
+                break
  
 def match_gesture(landmarks_21_raw, hand_label, templates, threshold=0.65):
     live_feat = extract_feature_vector(landmarks_21_raw) 
@@ -187,17 +212,40 @@ def draw_cyber_hand(frame, landmarks, color):
         cv2.circle(frame, pt, 3, (255, 255, 255), -1, cv2.LINE_AA) 
     cv2.circle(frame, pts[0], 9, color, 1, cv2.LINE_AA) 
 
-def overlay_preloaded_picture(frame, img, x_min, y_min, box_size):
-    roi = frame[y_min:y_min+box_size, x_min:x_min+box_size] 
-    if img.shape[2] == 4:  
-        alpha = img[:, :, 3] / 255.0 
-        alpha = np.expand_dims(alpha, axis=2) 
-    
-        blended = (img[:, :, :3] * alpha + roi * (1 - alpha)).astype(np.uint8) 
-        frame[y_min:y_min+box_size, x_min:x_min+box_size] = blended 
+
+def draw_hearts(frame, lives, max_lives=3, x_start=35, y=35, size=40, gap=10):
+    for i in range(max_lives):
+        x = x_start + i * (size + gap)
+        if HEART_DATA is None:
+            # Fallback: draw a red filled circle if no image found
+            cv2.circle(frame, (x + size//2, y + size//2), size//2,
+                       (0, 0, 255) if i < lives else (60, 60, 60), -1, cv2.LINE_AA)
+        else:
+            roi = frame[y:y+size, x:x+size]
+            if roi.shape[:2] != (size, size): continue
+            if i < lives:  # active heart
+                if HEART_DATA["has_alpha"]:
+                    blended = HEART_DATA["rgb_f32"] * HEART_DATA["alpha"] + roi.astype(np.float32) * HEART_DATA["inv_alpha"]
+                    frame[y:y+size, x:x+size] = blended.astype(np.uint8)
+                else:
+                    frame[y:y+size, x:x+size] = HEART_DATA["bgr"]
+            else:           # lost heart — draw dark tinted version
+                if HEART_DATA["has_alpha"]:
+                    dark = HEART_DATA["rgb_f32"] * 0.2  # 20% brightness = dim
+                    blended = dark * HEART_DATA["alpha"] + roi.astype(np.float32) * HEART_DATA["inv_alpha"]
+                    frame[y:y+size, x:x+size] = blended.astype(np.uint8)
+                else:
+                    frame[y:y+size, x:x+size] = (HEART_DATA["bgr"] * 0.2).astype(np.uint8)
+
+
+def overlay_preloaded_picture(frame, img_data, x_min, y_min, box_size):
+    roi = frame[y_min:y_min + box_size, x_min:x_min + box_size]
+    if img_data["has_alpha"]:
+        blended = img_data["rgb_f32"] * img_data["alpha"] + roi.astype(np.float32) * img_data["inv_alpha"]
+        frame[y_min:y_min + box_size, x_min:x_min + box_size] = blended.astype(np.uint8)
     else:
-        frame[y_min:y_min+box_size, x_min:x_min+box_size] = img[:, :, :3] 
-    return True  
+        frame[y_min:y_min + box_size, x_min:x_min + box_size] = img_data["bgr"]
+    return True
 
 # ── INITIALIZATION ────────────────────────────────────────────────────────────
 box_size = 150 
@@ -208,6 +256,22 @@ cache_target_images(all_keys, box_size)
 
 gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
 multiplay_client = create_osc_client(MULTIPLAY_LAPTOP_IP, MULTIPLAY_PORT, "MultiPlay")
+
+# ── LOAD HEART IMAGE ──────────────────────────────────────────────────
+HEART_SIZE = 60 # pixel size of each heart icon
+heart_img = cv2.imread("Heart.png", cv2.IMREAD_UNCHANGED)
+if heart_img is not None:
+    heart_img = cv2.resize(heart_img, (HEART_SIZE, HEART_SIZE), interpolation=cv2.INTER_AREA)
+    if heart_img.ndim == 3 and heart_img.shape[2] == 4:
+        heart_alpha = heart_img[:, :, 3:4].astype(np.float32) / 255.0
+        heart_rgb   = heart_img[:, :, :3].astype(np.float32)
+        heart_inv   = 1.0 - heart_alpha
+        HEART_DATA  = {"has_alpha": True, "rgb_f32": heart_rgb, "alpha": heart_alpha, "inv_alpha": heart_inv}
+    else:
+        HEART_DATA  = {"has_alpha": False, "bgr": heart_img[:, :, :3]}
+else:
+    HEART_DATA = None
+# ─────────────────────────────────────────────────────────────────────
 
 # ── STARTUP TRIGGER CONFIGURATION ─────────────────────────────────────────────
 print("Script started! Initializing system and grandMA3 connection...")
@@ -370,24 +434,49 @@ while True:
                 trigger_multiplay_cue(multiplay_client, LEVEL_MUSIC_MAP[current_level])
 
     # ── RENDER OVERLAYS ───────────────────────────────────────────────────────
-    margin_x, margin_y, spacing = 80, 120, 290
-    colors = [(0, 255, 255), (255, 0, 255), (0, 255, 100), (255, 150, 0)]
+    margin_x, margin_y, spacing = 120, 190, 290
+    colors = [(0, 255, 255), (0, 0, 255), (0, 255, 0), (255, 0, 0)]
 
     if game_status in ["PLAYING", "BONUS_PLAYING"]:
         title = f"BONUS ROUND ({bonus_cycle + 1}/3)" if game_status == "BONUS_PLAYING" else f"LEVEL {current_level} STAGE {current_cycle + 1}/4"
-        draw_sleek_text(frame, title, (35, 45), font_scale=0.55, thickness=1, color=(255, 255, 255))
+        draw_sleek_text(frame, title, (42, 45), font_scale=0.55, thickness=1, color=(255, 255, 255))
         
-        timer_color = (0, 255, 0) if time_left > 10 else (0, 64, 255)
-        draw_sleek_text(frame, f"TIME REMAINING: {time_left:.1f}s", (35, 68), font_scale=0.5, thickness=1, color=timer_color)
+        # ── COUNTDOWN BAR ──────────────────────────────────────────────────────
+        bar_x, bar_y, bar_w, bar_h = 320, 67, 600, 40
+        time_ratio = max(0.0, time_left / round_duration)
+
+        # Background track
+        cv2.rectangle(frame, (bar_x, bar_y), (bar_x + bar_w, bar_y + bar_h), (40, 40, 40), -1, cv2.LINE_AA)
+
+        # Filled portion — colour shifts green → yellow → red as time runs out
+        if time_ratio > 0.7:
+            bar_color = (0, 255, 0)        # green
+        elif time_ratio > 0.25:
+            bar_color = (0, 165, 255)      # orange
+        else:
+            bar_color = (0, 0, 255)        # red
+
+        fill_w = int(bar_w * time_ratio)
+        if fill_w > 0:
+            cv2.rectangle(frame, (bar_x, bar_y), (bar_x + fill_w, bar_y + bar_h), bar_color, -1, cv2.LINE_AA)
+
+        # Border
+        cv2.rectangle(frame, (bar_x, bar_y), (bar_x + bar_w, bar_y + bar_h), (150, 150, 150), 1, cv2.LINE_AA)
+
+        # # Time label on the right of the bar
+        # draw_sleek_text(frame, f"{time_left:.1f}s", (bar_x + bar_w + 10, bar_y + 15), font_scale=0.5, thickness=1, color=bar_color)
+        # # ───────────────────────────────────────────────────────────────────────
+                
         lives_color = (0, 255, 0) if player_lives >= 2 else (0, 0, 255)
-        draw_sleek_text(frame, f"LIVES: {player_lives} / 3", (35, 91), font_scale=0.5, thickness=1, color=lives_color)
+        draw_hearts(frame, player_lives, max_lives=3, x_start=35, y=60, size=60, gap=8)
+
 
         # ── HOLD TIME PROGRESS BAR RENDERING ──────────────────────────────────
         if match_hold_start_time is not None:
             elapsed_hold = current_time - match_hold_start_time
             hold_ratio = min(1.0, elapsed_hold / HOLD_REQUIRED_DURATION)
             
-            bar_x, bar_y, bar_w, bar_h = 35, 105, 200, 12
+            bar_x, bar_y, bar_w, bar_h = 480, 500, 200, 30
             cv2.rectangle(frame, (bar_x, bar_y), (bar_x + bar_w, bar_y + bar_h), (40, 40, 40), -1, cv2.LINE_AA)
             if hold_ratio > 0:
                 cv2.rectangle(frame, (bar_x, bar_y), (bar_x + int(bar_w * hold_ratio), bar_y + bar_h), (0, 255, 100), -1, cv2.LINE_AA)
@@ -413,7 +502,7 @@ while True:
                 overlay_preloaded_picture(frame, PRELOADED_IMAGES[gesture_name], x_min, y_min, box_size) 
             elif np.any(target_landmarks): 
                 lm = target_landmarks.copy()
-                lm -= np.mean(lm[:, :2], axis=0)
+                lm[:, :2] -= np.mean(lm[:, :2], axis=0)         
                 max_val = np.max(np.abs(lm[:, :2]))
                 if max_val > 0: lm[:, :2] /= max_val
                 lm[:, :2] = lm[:, :2] * (box_size // 3) + [center_x, center_y]
@@ -439,6 +528,10 @@ while True:
                 draw_cyber_hand(frame, hand_landmarks, color)
             
                 lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
+                # Reject very small detections (hands should be reasonably sized)
+                hand_span = np.max(lm_array[:, :2], axis=0) - np.min(lm_array[:, :2], axis=0)
+                if hand_span[0] < 0.05 or hand_span[1] < 0.05:  # less than 5% of frame = skip
+                    continue
                 
                 for i, key in enumerate(target_keys):
                     if i in assigned_targets: continue
