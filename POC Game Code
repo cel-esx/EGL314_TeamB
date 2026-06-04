@@ -28,7 +28,7 @@ GMA3_PORT        = 8000
 GMA3_ADDRESS     = "/gma3/cmd"      
 
 MULTIPLAY_LAPTOP_IP = "192.168.254.238" 
-MULTIPLAY_PORT      = 8000         
+MULTIPLAY_PORT      = 80000      
 # ──────────────────────────────────────────────────────────────────────────────
 
 MA3_MATCH_COMMAND  = "Go+ Sequence 1"
@@ -245,7 +245,7 @@ BASE_DURATION, MAX_LEVELS = 15.0, 6
 
 current_level, current_cycle = 1, 0
 player_lives = 3
-round_duration = BASE_DURATION
+round_duration = BASE_DURATION - (current_level - 1)
 matched_targets = [False] * 4 
 HOLD_REQUIRED_DURATION = 2.0 
 match_hold_start_time = None  
@@ -506,14 +506,14 @@ while True:
 
     # Status Display Overlays
     if game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "BONUS_ALERT"]:
-        # FIXED: Only display text if you are genuinely inside the Level 6 Bonus round playing loop or just finished it
         if current_level == 6 and (failed_from_bonus or game_status == "BONUS_ALERT"):
             if game_status == "WIN": draw_sleek_text(frame, "THE LEGENDARY WEAPON AWAITS FOR ITS MASTER", (w // 2 - 380, h // 2), font_scale=1.0, thickness=2, color=(0, 255, 0))
             elif game_status == "GAMEOVER": draw_sleek_text(frame, "THE LEGENDARY WEAPON AWAITS FOR ITS MASTER", (w // 2 - 380, h // 2), font_scale=1.0, thickness=2, color=(0, 255, 0))
             elif game_status == "LOSE": draw_sleek_text(frame, "YOU HAVE FAILED TO CRAFT THE LEGENDARY WEAPON", (w // 2 - 350, h // 2 + 8), font_scale=0.72, thickness=2, color=(0, 0, 255))
         else:
             if game_status == "WIN": draw_sleek_text(frame, "LEVEL DISCHARGE COMPLETE", (w // 2 - 230, h // 2), font_scale=1.0, thickness=2, color=(0, 255, 0))
-            elif game_status == "LOSE": draw_sleek_text(frame, "ENCHANTMENT FAILED", (w // 2 - 240, h // 2), font_scale=1.0, thickness=2, color=(0, 0, 255))
+            elif game_status == "LOSE": draw_sleek_text(frame, "ENCHANTMENT FAILED", (w // 2 - 240, h // 2), font_scale=1.0, thickness=2, color=(0, 0, 255)),draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} / 3 LEFT", (w // 2 - 400, h // 2+30), font_scale=1.0, thickness=2, color=(0, 0, 255))
+            elif game_status == "GAMEOVER": draw_sleek_text(frame, "GAME OVER", (w // 2 - 130, h // 2), font_scale=1.2, thickness=2, color=(0, 0, 255)),draw_sleek_text(frame, "YOU HAVE FAILED TO CRAFT THE LEGENDARY WEAPON", (w // 2 - 500, h // 2+50), font_scale=1.2, thickness=2, color=(0, 0, 255))
             elif game_status == "GAME_CLEAR": draw_sleek_text(frame, "ENCHANTMENT UPGRADED!", (w // 2 - 250, h // 2), font_scale=1.0, thickness=2, color=(0, 255, 255))
         
         if game_status == "BONUS_ALERT": draw_sleek_text(frame, "BONUS ENCHANTMENT RUNNING", (w // 2 - 270, h // 2 - 15), font_scale=0.9, thickness=2, color=(255, 0, 150))
