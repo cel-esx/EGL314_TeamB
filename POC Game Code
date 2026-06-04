@@ -271,7 +271,7 @@ while True:
     hud_lines, current_time = [], time.time() 
     
     if game_status == "START_SCREEN":
-        player_lives = 3
+        player_lives = player_lives
         round_duration = BASE_DURATION
         time_left = round_duration
         draw_sleek_text(frame, "THE ENCHANTMENT ROOM", (w // 2 - 280, h // 2 - 40), font_scale=1.3, thickness=2, color=(0, 255, 255))
