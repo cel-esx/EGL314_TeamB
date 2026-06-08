@@ -613,7 +613,7 @@ while True:
     if game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "BONUS_ALERT"]:
         if current_level == 6 and game_status != "GAMEOVER" and (failed_from_bonus or game_status == "BONUS_ALERT"):
             if game_status == "WIN": draw_sleek_text(frame, "THE LEGENDARY WEAPON AWAITS FOR ITS MASTER", (w // 2 - 380, h // 2), font_scale=1.0, thickness=2, color=(0, 255, 0))
-            elif game_status == "LOSE": draw_sleek_text(frame, "YOU HAVE FAILED TO CRAFT THE LEGENDARY WEAPON", (w // 2 - 350, h // 2 + 8), font_scale=0.72, thickness=2, color=(0, 0, 255)),,draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} / 3 LEFT", (w // 2 - 400, h // 2+50), font_scale=1.0, thickness=2, color=(0, 0, 255))
+            elif game_status == "LOSE": draw_sleek_text(frame, "YOU HAVE FAILED TO CRAFT THE LEGENDARY WEAPON", (w // 2 - 350, h // 2 + 8), font_scale=0.72, thickness=2, color=(0, 0, 255)),draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} / 3 LEFT", (w // 2 - 400, h // 2+50), font_scale=1.0, thickness=2, color=(0, 0, 255))
         else:
             if game_status == "WIN": draw_sleek_text(frame, "LEVEL DISCHARGE COMPLETE", (w // 2 - 230, h // 2), font_scale=1.0, thickness=2, color=(0, 255, 0))
             elif game_status == "LOSE": draw_sleek_text(frame, "ENCHANTMENT FAILED", (w // 2 - 240, h // 2), font_scale=1.0, thickness=2, color=(0, 0, 255)),draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} / 3 LEFT", (w // 2 - 400, h // 2+30), font_scale=1.0, thickness=2, color=(0, 0, 255))
