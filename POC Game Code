@@ -35,7 +35,7 @@ def _run_mediapipe(frame_rgb):
 CSV_FILE = "new_gesture_definitions.csv"
 
 # ── OSC CONFIGURATION ─────────────────────────────────────────────────────────
-GMA3_LAPTOP_IP   = "127.0.0.1" # "192.168.254.18" 
+GMA3_LAPTOP_IP   = "192.168.254.18" # "192.168.254.18" 
 GMA3_PORT        = 8000             
 GMA3_ADDRESS     = "/gma3/cmd"      
 
@@ -263,6 +263,7 @@ send_osc_signal(gma3_client, GMA3_ADDRESS, "ClearAll")
 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1")
 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
+send_osc_signal(gma3_client, GMA3_ADDRESS, "On Sequence 1")
 # ──────────────────────────────────────────────────────────────────────────────
 
 left_gestures = [k for k in all_keys if k[1] == "left" and k[0].startswith("left_")] or [k for k in all_keys if k[1] == "left"]
@@ -291,7 +292,7 @@ MATCH_MIN_THRESHOLD = 0.15
 MATCH_THRESHOLD     = 0.65   
 BASE_DURATION, MAX_LEVELS = 15.0, 6      
 
-current_level, current_cycle = 1, 0
+current_level, current_cycle = 6, 0
 player_lives = 3
 round_duration = BASE_DURATION - (current_level - 1)
 matched_targets = [False] * 4 
@@ -554,25 +555,40 @@ while True:
                         send_osc_signal(multiplay_client, "/cue/13/go", 1)
                     
                     current_cycle += 1
+
                     if current_cycle >= 4:
+                        # 1. Stop current audio before changing level
+                        send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
+                        
                         if current_level == 5:
                             current_level = 6
                             current_cycle = 0
                             game_status, status_display_time = "WIN", current_time
-                            send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
-                        elif current_level == 6:
-                            game_status, status_display_time = "BONUS_ALERT", current_time
-                        else:
-                            send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
-                            current_level += 1
+                            # Fix: Start Level 6 audio
                             send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
+                            # Fix: Keep "Win" SFX consistent
+                            send_osc_signal(multiplay_client, "/cue/14/go", 1)
+
+                        elif current_level == 6:
+                            # We don't increment level here; we trigger the bonus
+                            current_cycle = 0 # Fix: Reset cycle so they can play Level 6 again later
+                            game_status, status_display_time = "BONUS_ALERT", current_time
+                            send_osc_signal(multiplay_client, "/cue/7/go", 1)
+                            
+                        else:
+                            # Handles Levels 1, 2, 3, 4
+                            current_level += 1
                             current_cycle = 0  
                             game_status, status_display_time = "WIN", current_time
+                            send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
                             send_osc_signal(multiplay_client, "/cue/14/go", 1)
+
                     else:
+                        # Just a normal successful round within the same level
                         target_keys = get_new_targets()
+                        matched_targets = [False] * len(target_keys) # Ensure match list is reset
                         round_start_time = current_time
-                        
+        
                 elif game_status == "BONUS_PLAYING":
                     if bonus_cycle < len(MA3_BONUS_COMMANDS):
                         send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_BONUS_COMMANDS[bonus_cycle])
