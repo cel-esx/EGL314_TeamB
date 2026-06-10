@@ -64,7 +64,7 @@ GAME_SHOW_MAP = {
         3: {"fixture": 7, "cue_cmd": "Go+ Sequence 3 Cue 7"},
         4: {"fixture": 8, "cue_cmd": "Go+ Sequence 3 Cue 8"},
     },
-    3: { # Level 3
+    3: { # Level 3``
         1: {"fixture": 9, "cue_cmd": "Go+ Sequence 3 Cue 9"},
         2: {"fixture": 10, "cue_cmd": "Go+ Sequence 3 Cue 10"},
         3: {"fixture": 11, "cue_cmd": "Go+ Sequence 3 Cue 11"},
@@ -91,7 +91,7 @@ GAME_SHOW_MAP = {
 }
 
 mp_hands = mp.solutions.hands 
-hands = mp_hands.Hands(max_num_hands=4, model_complexity=1, min_detection_confidence=0.75, min_tracking_confidence=0.65) 
+hands = mp_hands.Hands(max_num_hands=4, model_complexity=1, min_detection_confidence=0.65, min_tracking_confidence=0.55) 
 
 def create_osc_client(ip, port, system_name): 
     try: 
@@ -162,7 +162,7 @@ def cache_target_images(templates_keys, box_size):
                     }
                 break
  
-def match_gesture(landmarks_21_raw, hand_label, templates, threshold=0.65):
+def match_gesture(landmarks_21_raw, hand_label, templates, threshold=0.8):
     live_feat = extract_feature_vector(landmarks_21_raw) 
     best_gesture, best_distance, search_hand = None, float("inf"), hand_label.strip().lower()  
     for (gesture, hand), variants in templates.items():  
@@ -295,7 +295,6 @@ BASE_DURATION, MAX_LEVELS = 15.0, 6
 current_level, current_cycle = 1, 0
 player_lives = 3
 round_duration = BASE_DURATION - (current_level - 1)
-matched_targets = [False] * 4 
 HOLD_REQUIRED_DURATION = 2.0 
 match_hold_start_time = None  
 
