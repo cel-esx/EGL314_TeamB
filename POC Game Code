@@ -360,6 +360,7 @@ while True:
         if current_time - status_display_time > BONUS_ALERT_DURATION:
             send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
             send_osc_signal(multiplay_client, "/cue/7/go", 1)
+            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2"
             target_keys, matched_targets, bonus_cycle, round_duration = get_new_targets(), [False]*bonus_gesture_count, 0, 15.0
             round_start_time, game_status = time.time(), "BONUS_PLAYING"
            
@@ -545,7 +546,7 @@ while True:
                 if game_status == "PLAYING":
                     current_stage = current_cycle + 1
                     if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
-                        cfg = GAME_SHOW_MAP[current_level][current_stage]
+                        next_cfg = GAME_SHOW_MAP[current_level][current_stage][current_cycle + 1]
                         last_active_cue_cmd = cfg["cue_cmd"]
                         send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
                     
