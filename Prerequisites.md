@@ -1,26 +1,28 @@
 # Prerequisites
-### This page contains all the materials required in order to run this game in the POC stage
+### This page contains all the materials required & the instructions on how to download those materials in order to run this game in the POC stage
 
 
 ## Hardware 
- 1) Desktop / Laptop (Windows)
- 2) External USB Webcam - optional (if inbuilt webcam in laptop is spoilt or you want to use change for better resolution)
- 3) Lighting Equipment (if any or can just use the GrandMA3 3D for visuals)
- 4) Speakers (if any)
+ 1) **Desktop / Laptop** (Windows)
+ 2) **External USB Webcam** (Optional: Use if inbuilt webcam is spoilt or if you need better resolution)
+ 3) **Lighting Equipment** (Optional: You can also use the GrandMA3 3D viewer for visuals)
+ 4) **Speakers** (Optional)
 ## Software
-  1) Microsoft Visual Studio Code
-     * Click Here: [Visual Studio Code Setup](#-microsoft-visual-studio-code)
-  2) Anaconda
-     * Click Here: [Anaconda Set Up](#-anaconda-set-up)
-  3) GrandMA3
-  4) Multiplayer
+  1) **Microsoft Visual Studio Code**
+     * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
+  2) **Anaconda**
+     * Click Here: [Anaconda Setup](#anaconda-set-up)
+  3) **GrandMA3**
+     * Click Here: [GrandMa3 Setup](#grandma3)
+  4) **Multiplayer**
+     * Click Here: [Multiplayer Setup](#multiplayer)
 
   ## Dependencies
-  This code have been tested using <b> Python 3.10 or higher</b>
+  This code have been tested using **Python 3.10 or higher**
 
   ## Setting Up - How to install?
   ### Anaconda Set-Up
-1) Install <b>Anaconda</b> in your laptop: https://www.anaconda.com/docs/getting-started/anaconda/install/windows-gui-install
+1) Install **Anaconda** in your laptop: <br>https://www.anaconda.com/docs/getting-started/anaconda/install/windows-gui-install
 2) Type 
 ```bash
 conda create --name my_env python=3.10
@@ -58,11 +60,11 @@ pygame==2.6.1
 ```
 ### Microsoft Visual Studio Code
 1) Head over to Microsoft Visual Studios
-2) Create a folder named ``` name.py```
-3) On the screen, navigate toward the left side 5th icon titled ```Extensions```
-4) Search for ``` Python Enviroments``` and install it
-5) Add in the code from [PUT POC CODE LINK HERE]
-6) Press ```F5``` or click on ```Run``` and select the python interprater. It should show like e.g. ``` Python 3.13.2 (base) `\miniconda3/python.exe ``` or something like that
+2) Create a folder, then create a file named ``` name.py```
+3) Click on the **Extensions** Icon on the left sidebar (5th icon, looks like 4 blocks)
+4) Search for ``` Python Enviroments``` and click on **Install**
+5) Add in the code from [PUT POC CODE LINK HERE] to your ```name.py``` file
+6) Press ```F5``` or click on ```Run``` and select the python interprater. It should show like e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` or something like that
 7) If Step 6 fails to work as expected
 * Click on the top middle search bar
 * Type this ``` > ```
@@ -70,9 +72,11 @@ pygame==2.6.1
 * Select your python enviroment
 
 ### GrandMA3
+(Add how to install GrandMA3)
 
 
 
 ### Multiplayer
+(Add how to install Multiplayer)
   
 
