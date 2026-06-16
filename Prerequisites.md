@@ -10,7 +10,7 @@
 ## Software
   1) **Anaconda**
      * Click Here: [Anaconda Setup](#anaconda-set-up)
-  2) **Microsoft Visual Studio Code**
+   2) **Microsoft Visual Studio Code**
      * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
   3) **GrandMA3**
      * Click Here: [GrandMa3 Setup](#grandma3)
@@ -59,13 +59,15 @@ python-osc==1.8.1
 pygame==2.6.1
 ```
 ### Microsoft Visual Studio Code
-1) Head over to Microsoft Visual Studios
-2) Create a folder, then create a file named ``` name.py```
-3) Click on the **Extensions** Icon on the left sidebar (5th icon, looks like 4 blocks)
-4) Search for ``` Python Enviroments``` and click on **Install**
-5) Add in the code from [PUT POC CODE LINK HERE] to your ```name.py``` file
-6) Press ```F5``` or click on ```Run``` and select the python interprater. It should show like e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` or something like that
-7) If Step 6 fails to work as expected
+1) Install **Microsoft Visual Studio Code** in your laptop by choosing the **Windows** option: <br>
+https://code.visualstudio.com/download
+2) Once installed, open Microsoft Visual Studios
+3) Create a folder, then create a file named ``` name.py```
+4) Click on the **Extensions** Icon on the left sidebar (5th icon, looks like 4 blocks)
+5) Search for ``` Python Enviroments``` and click on **Install**
+6) Add in the code from [PUT POC CODE LINK HERE] to your ```name.py``` file
+7) Press ```F5``` or click on ```Run``` and select the python interprater. It should show like e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` or similar like that
+8) If Step 6 fails to work as expected
 * Click on the top middle search bar
 * Type this ``` > ```
 * Click on ``` Python: Select Interpreter ```
