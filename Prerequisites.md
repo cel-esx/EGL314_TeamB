@@ -27,7 +27,7 @@
 ```bash
 conda create --name my_env python=3.11
 ```
-![Conda create Enviroment](Create%20env.png) <br>
+![Conda create Enviroment](Images/Create%20env.png) <br>
 3) Confirm the installation <br>
 * The terminal will ask ``` Proceed ([y]/n)?```. <br>
 * Type ```y``` and press Enter
@@ -36,7 +36,7 @@ conda create --name my_env python=3.11
 conda activate my_env
 ```
 ![Conda create Enviroment](Images/activate%20env.png) <br>
-5) Install the following libraries
+5) Install the following libraries <br>
 ![Conda create Enviroment](Images/install%20library.png) <br>
 ```bash
 opencv-python==4.13.0.92
