@@ -10,7 +10,7 @@
 ## Software
   1) **Anaconda**
      * Click Here: [Anaconda Setup](#anaconda-set-up)
-  2)**Microsoft Visual Studio Code**
+  2) **Microsoft Visual Studio Code**
      * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
   3) **GrandMA3**
      * Click Here: [GrandMa3 Setup](#grandma3)
