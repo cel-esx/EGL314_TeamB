@@ -9,9 +9,9 @@
  4) Speakers (if any)
 ## Software
   1) Microsoft Visual Studio Code
-     * Click Here: [Visual Studio Code Setup](###-microsoft-visual-studio-code)
+     * Click Here: [Visual Studio Code Setup](#-microsoft-visual-studio-code)
   2) Anaconda
-     * Click Here: [Anaconda Set Up](###-anaconda-set-up)
+     * Click Here: [Anaconda Set Up](#-anaconda-set-up)
   3) GrandMA3
   4) Multiplayer
 
