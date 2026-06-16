@@ -26,7 +26,7 @@
 2) Type 
 ```bash
 conda create --name my_env python=3.11
-``` <br>
+```
 Accept all the conditions by pressing ``` a``` <br>
 ![Conda create Enviroment](Images/Create%20env.png) <br>
 3) Confirm the installation <br>
