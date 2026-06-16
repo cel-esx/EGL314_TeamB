@@ -25,16 +25,19 @@
 1) Install **Anaconda** in your laptop: <br>https://www.anaconda.com/docs/getting-started/anaconda/install/windows-gui-install
 2) Type 
 ```bash
-conda create --name my_env python=3.10
+conda create --name my_env python=3.11
 ```
+![Conda create Enviroment](Images/Create%20env.png) <br>
 3) Confirm the installation <br>
-* The terminal will ask ``` Proceed ([y]/n)?```
+* The terminal will ask ``` Proceed ([y]/n)?```. <br>
 * Type ```y``` and press Enter
 4) Activate the enviroment you just created. Type
 ```bash
 conda activate my_env
 ```
+![Conda create Enviroment](Images/activate%20env.png) <br>
 5) Install the following libraries
+![Conda create Enviroment](Images/install%20library.png) <br>
 ```bash
 opencv-python==4.13.0.92
 ```
