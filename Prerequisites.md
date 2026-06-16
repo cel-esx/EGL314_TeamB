@@ -64,14 +64,15 @@ python-osc==1.8.1
 pygame==2.6.1
 ```
 ### Microsoft Visual Studio Code
-1) Install **Microsoft Visual Studio Code** in your laptop by choosing the **Windows** option:https://code.visualstudio.com/download <br>[VS Code](Images/vscode.png)
-3) Once installed, open Microsoft Visual Studios
-4) Create a folder, then create a file named ``` name.py```
-5) Click on the **Extensions** Icon on the left sidebar (5th icon, looks like 4 blocks)
-6) Search for ``` Python Enviroments``` and click on **Install**
-7) Add in the code from [PUT POC CODE LINK HERE] to your ```name.py``` file
-8) Press ```F5``` or click on ```Run``` and select the python interprater. It should show like e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` or similar like that
-9) If Step 6 fails to work as expected
+1) Install **Microsoft Visual Studio Code** in your laptop by choosing the **Windows** option:
+https://code.visualstudio.com/download <br>[VS Code](Images/vscode%20.png)
+2) Once installed, open Microsoft Visual Studios
+3) Create a folder, then create a file named ``` name.py```
+4) Click on the **Extensions** Icon on the left sidebar (5th icon, looks like 4 blocks)
+5) Search for ``` Python Enviroments``` and click on **Install**
+6) Add in the code from [PUT POC CODE LINK HERE] to your ```name.py``` file
+7) Press ```F5``` or click on ```Run``` and select the python interprater. It should show like e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` or similar like that
+8) If Step 6 fails to work as expected
 * Click on the top middle search bar
 * Type this ``` > ```
 * Click on ``` Python: Select Interpreter ```
