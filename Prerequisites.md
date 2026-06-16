@@ -42,14 +42,16 @@
       * The terminal will ask ``` Proceed ([y]/n)?```. 
       * Type ```y``` and press Enter 
 
-   5. Activate the enviroment you just created. Type
+   5. To activate the enviroment you just created. Type
       ```bash
       conda activate my_env
       ```
       ![Conda Activate Enviroment](Images/activate%20env.png) <br>
 
-   6. Install the following libraries <br>
+   6. Install the following by typing ```conda install``` followed by the library.<br>
+     
       ![Conda Install Libraries](Images/install%20library.png) <br>
+
       ```bash
       opencv-python==4.13.0.92
       ```
