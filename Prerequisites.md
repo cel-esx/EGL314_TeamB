@@ -36,9 +36,9 @@ Accept all the conditions by pressing ``` a``` <br><br>
 ```bash
 conda activate my_env
 ```
-![Conda create Enviroment](Images/activate%20env.png) <br>
+![Conda Activate Enviroment](Images/activate%20env.png) <br>
 5) Install the following libraries <br>
-![Conda create Enviroment](Images/install%20library.png) <br>
+![Conda Install Libraries](Images/install%20library.png) <br>
 ```bash
 opencv-python==4.13.0.92
 ```
@@ -65,8 +65,7 @@ pygame==2.6.1
 ```
 ### Microsoft Visual Studio Code
 1) Install **Microsoft Visual Studio Code** in your laptop by choosing the **Windows** option: <br>
-https://code.visualstudio.com/download <br>
-![Conda create Enviroment](Images/vscode.png)
+https://code.visualstudio.com/download <br>[VS Code](Images/vscode%20.png)
 2) Once installed, open Microsoft Visual Studios
 3) Create a folder, then create a file named ``` name.py```
 4) Click on the **Extensions** Icon on the left sidebar (5th icon, looks like 4 blocks)
