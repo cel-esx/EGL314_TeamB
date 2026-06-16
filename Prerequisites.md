@@ -28,7 +28,7 @@
    1. Install **Anaconda** in your laptop:<br>
    https://www.anaconda.com/docs/getting-started/anaconda/install/windows-gui-install
 
-   2. Search for **Anaconda Prompt** on your laptop and click ```open```<br>
+   2. Once installed, open ```Anaconda Prompt```<br>
    ![Ananconda prompt](Images/conda.png)
 
    3. Type 
@@ -81,7 +81,7 @@
    1. Install **Microsoft Visual Studio Code** in your laptop by choosing the **Windows** option: <br>
    https://code.visualstudio.com/download
    ![VS Code](Images/vscode.png)
-   2. Once installed, open ```Visual Studio code```
+   2. Once installed, open ```Visual Studio code``` ![VScodesearch](Images/visual_search.png)
    3. Create a folder, then create a file named ```name.py```
    4. Click on the **Extensions** Icon on the left sidebar (**5th icon**, looks like **4 blocks**)
    5. Search for ``` Python Enviroments``` and click on **Install**
