@@ -1,4 +1,5 @@
-# EGL 314 - Proof Of Concept (POC) - OpenCV + Mediapipe "Match The Gesture" Game
+# EGL 314 - Proof Of Concept (POC) 
+## OpenCV + Mediapipe "Match The Gesture" Game
 This is the introduction section where we will discuss our project.
 
 
