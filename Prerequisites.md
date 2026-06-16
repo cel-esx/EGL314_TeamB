@@ -65,7 +65,8 @@ pygame==2.6.1
 ```
 ### Microsoft Visual Studio Code
 1) Install **Microsoft Visual Studio Code** in your laptop by choosing the **Windows** option: <br>
-https://code.visualstudio.com/download
+https://code.visualstudio.com/download <br>
+![Conda create Enviroment](Images/vscode.png)
 2) Once installed, open Microsoft Visual Studios
 3) Create a folder, then create a file named ``` name.py```
 4) Click on the **Extensions** Icon on the left sidebar (5th icon, looks like 4 blocks)
