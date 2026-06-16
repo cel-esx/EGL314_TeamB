@@ -28,7 +28,8 @@
 conda create --name my_env python=3.10
 ```
 3) Confirm the installation <br>
-The terminal will ask ``` Proceed ([y]/n)?```. Type ```y``` and press Enter
+* The terminal will ask ``` Proceed ([y]/n)?```
+* Type ```y``` and press Enter
 4) Activate the enviroment you just created. Type
 ```bash
 conda activate my_env
