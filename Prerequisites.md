@@ -27,7 +27,7 @@
 ```bash
 conda create --name my_env python=3.11
 ```
-![Conda create Enviroment](Images/Create%20env.png) <br>
+![Conda create Enviroment](Create%20env.png) <br>
 3) Confirm the installation <br>
 * The terminal will ask ``` Proceed ([y]/n)?```. <br>
 * Type ```y``` and press Enter
