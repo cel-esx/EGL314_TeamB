@@ -8,10 +8,10 @@
  3) **Lighting Equipment** (Optional: You can also use the GrandMA3 3D viewer for visuals)
  4) **Speakers** (Optional)
 ## Software
-  1) **Microsoft Visual Studio Code**
-     * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
-  2) **Anaconda**
+  1) **Anaconda**
      * Click Here: [Anaconda Setup](#anaconda-set-up)
+  2)**Microsoft Visual Studio Code**
+     * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
   3) **GrandMA3**
      * Click Here: [GrandMa3 Setup](#grandma3)
   4) **Multiplayer**
