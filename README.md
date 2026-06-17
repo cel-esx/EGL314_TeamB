@@ -27,34 +27,26 @@ What sets this project apart is its integration with live theater tech: the game
 ```mermaid
 graph TD
     %% Style Definitions
-    classDef mainLaptop fill:#cce5ff,stroke:#333,stroke-width:2px;
-    classDef network fill:#ffe5d9,stroke:#333,stroke-width:2px;
-    classDef external Laptop fill:#d4edda,stroke:#333,stroke-width:2px;
+    classDef inputs fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef master fill:#cce5ff,stroke:#333,stroke-width:2px;
+    classDef target fill:#d4edda,stroke:#333,stroke-width:2px;
+    classDef hardware fill:#fff3cd,stroke:#333,stroke-width:2px;
 
-    %% Laptop 1: The Master Controller
-    subgraph L1 [MAIN LAPTOP: Core Game & Vision Engine]
-        A[Webcam] --> B(OpenCV & MediaPipe)
-        C[Microphone] --> D(Pygame Loop)
-        B -->|Hand Coordinates| D
-    end
+    %% Main Input and Master Controller
+    A[Webcam] -->|Internal / External Webcam| B[Laptop 1:<br>Running Main Py]
 
-    %% Network Split (OSC Commands)
-    D -->|OSC Command 1| E[Network Protocol]
-    D -->|OSC Command 2 / Audio| F[Network Protocol]
+    %% Network Distribution via Wi-Fi
+    B -->|Send OSC Command via wifi<br>Using IP and Port Number| C[Laptop 2:<br>Running GrandMA]
+    B -->|Send OSC Command via wifi<br>Using IP and Port Number| D[Laptop 3:<br>Running Multiplayer]
 
-    %% Target Machine 2: Lighting
-    subgraph L2 [LAPTOP 2: GrandMA3 Console]
-        E -->|Port 8000| G(GrandMA3 Software)
-        G -->|DMX Control| H((Physical Light Fixtures))
-    end
+    %% Laptop 2 / Lighting Hardware Pipeline
+    C -->|LAN| E[Network Switch]
+    E -->|LAN| F[LAN - DMX Converter]
+    F -->|DMX Out| G[Lighting Fixtures]
 
-    %% Target Machine 3: Multiplayer Server/Client
-    subgraph L3 [LAPTOP 3: Multiplayer Machine]
-        F -->|Port 8000| I(Multiplayer Software)
-    end
-
-    %% Assign Styles
-    class L1 mainLaptop;
-    class E,F network;
-    class L2,L3 externalLaptop;
+    %% Assign Styles to Match Hardware Roles
+    class A inputs;
+    class B master;
+    class C,D target;
+    class E,F,G hardware;
 ```
