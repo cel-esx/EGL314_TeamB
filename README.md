@@ -15,7 +15,7 @@ This file contains our "Match The Gesture" game that uses **OpenCV + Mediapipe**
    * Data Flowchart
 3. **[Repository Structure](#repository-structure)**
     * Location Of Files
-4. **[Gameplay & Mechanics](#gameplay-&-mechanics)**
+4. **[Gameplay & Mechanics](#gameplay-mechanics)**
    * Game Rules & Objective
    * How To Play
 ---
