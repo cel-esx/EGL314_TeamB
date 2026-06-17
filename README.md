@@ -15,7 +15,7 @@ This file contains our "Match The Gesture" game that uses **OpenCV + Mediapipe**
    * Data Flowchart
 3. **[Repository Structure](#repository-structure)**
     * Location Of Files
-4. **[Gameplay & Mechanics](#gameplay-mechanics)**
+4. **[Gameplay Mechanics](#gameplay-mechanics)**
    * Game Rules & Objective
    * How To Play
 ---
@@ -87,7 +87,7 @@ graph TD
 
 
 
-# Gameplay & Mechanics
+# Gameplay Mechanics
 ### Game Rules & Objective
 
 The **main objective** of the game is to successfully complete all 6 levels and survive the final Bonus Round to forge the legendary weapon before running out of lives
