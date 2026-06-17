@@ -8,7 +8,6 @@ This file contains our "Match The Gesture" game that uses **OpenCV + Mediapipe**
 ## Table Of Contents
 1) Project Overview
     * Purpose of this project
-    * What are the software used
     * How to set it
 2) System Architecture
     * Data Flowchart
@@ -21,9 +20,10 @@ This project is a Proof Of Concept (POC) interactive, motion-controlled live pro
 
 What sets this project apart is its integration with live theater tech: the game script acts as a show controller, broadcasting real-time **OSC network signals** to instantly drive professional stage lighting (**grandMA3**) and dynamic sound effects (**Multiplayer**) based on the player's performance
 
+### How to Set up
+Please refer to [Setup Guide](./Prerequisits.md) to learn what are the **Software Used** and how to **run** the game
 
-|Note: This version is in the POC stage which means that the game is still in development. There will be more changes added to this game on a later date|
-|-|
+>Note: This version is in the POC stage which means that the game is still in development. There will be more changes added to this game on a later date
 ```mermaid
 graph TD
     %% Style Definitions
