@@ -24,26 +24,37 @@ What sets this project apart is its integration with live theater tech: the game
 
 |Note: This version is in the POC stage which means that the game is still in development. There will be more changes added to this game on a later date|
 |-|
+```mermaid
+graph TD
+    %% Style Definitions
+    classDef mainLaptop fill:#cce5ff,stroke:#333,stroke-width:2px;
+    classDef network fill:#ffe5d9,stroke:#333,stroke-width:2px;
+    classDef external Laptop fill:#d4edda,stroke:#333,stroke-width:2px;
 
-graph LR
+    %% Laptop 1: The Master Controller
+    subgraph L1 [MAIN LAPTOP: Core Game & Vision Engine]
+        A[Webcam] --> B(OpenCV & MediaPipe)
+        C[Microphone] --> D(Pygame Loop)
+        B -->|Hand Coordinates| D
+    end
 
-    %% Input Layer
-    A[Webcam Video] -->|Frames| C(OpenCV & MediaPipe)
-    B[Microphone / Audio Input] -->|Raw Audio| D(Pygame Engine)
+    %% Network Split (OSC Commands)
+    D -->|OSC Command 1| E[Network Protocol]
+    D -->|OSC Command 2 / Audio| F[Network Protocol]
 
-    %% Core Processing Layer
-    C -->|Hand Coordinates| D
-    
-    %% Output Pipelines
-    D -->|Gesture Cues| E[Python-OSC Protocol]
-    D -->|Voice & Game State| F[Network Sockets]
+    %% Target Machine 2: Lighting
+    subgraph L2 [LAPTOP 2: GrandMA3 Console]
+        E -->|Port 8000| G(GrandMA3 Software)
+        G -->|DMX Control| H((Physical Light Fixtures))
+    end
 
-    %% Final Targets
-    E -->|Port 8000| G((GrandMA3 Visualizer))
-    F -->|Port XXXX| H((Multiplayer Peers))
+    %% Target Machine 3: Multiplayer Server/Client
+    subgraph L3 [LAPTOP 3: Multiplayer Machine]
+        F -->|Port 8000| I(Multiplayer Software)
+    end
 
     %% Assign Styles
-    class A,B input;
-    class C,D core;
+    class L1 mainLaptop;
     class E,F network;
-    class G,H target;
+    class L2,L3 externalLaptop;
+```
