@@ -1,4 +1,4 @@
-# Prerequisites
+# Setup Guide
 ###  This page contains all the materials required & the instructions on how to download those materials in order to run this game in the POC stage
 
 
