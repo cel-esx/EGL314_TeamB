@@ -1,4 +1,4 @@
-# OSC MultiPlay3
+# OSC MultiPlay Guide
 
 ## Purpose
 This software allows the track to play one or more audio tracks at any time, enhancing players' experience with different sound effects.
