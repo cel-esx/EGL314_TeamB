@@ -107,6 +107,6 @@
 
 
    ### MultiPlay
-   (Add how to install MultiPlay)
+   Click here to go [Multiplay,md](Multiplay/MultiPlay3.md)
    
 
