@@ -23,9 +23,12 @@ This software allows the track to play one or more audio tracks at any time, enh
    <br> Once done, click **OK**.
    
 ### To find out your laptop's ip address
-1. Go to '''Command Prompt'''.
+1. Go to ```Command Prompt```.
+
    ![Alt Text](ipconfig.png)
-2. Type ```ipconfig```
+
+3. Type ```ipconfig```
+
    ![Alt text](cmd.png)
 
 
