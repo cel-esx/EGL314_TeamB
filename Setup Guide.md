@@ -100,7 +100,7 @@
       * Select your python enviroment
 
    ### GrandMA3
-   (Add how to install GrandMA3)
+   Please click on this [link](grandma3/setup.md) to learn how to setup GrandMA3 on your laptops
 
 
 
