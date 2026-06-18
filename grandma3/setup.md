@@ -49,4 +49,9 @@ It takes some time to install... Roughly 5 minutes! :sleeping:
 <img src="StartPage.png" width="400" height="300">
 
 4. Click on the show file "TEAMB_Proj.show", click "Check all" and "Load"
-<img src="Showfile.png" width="400" height="300">
+<img src="Showfile.png" width="400" height="300"> 
+
+5. In the end, you will see this interface.
+<img src="ShowfileOpen.png" width="400" height="300"> 
+
+Thank you for reading!
