@@ -10,26 +10,26 @@ This software allows the track to play one or more audio tracks at any time, enh
 
 3. In MultiPlay, under file, click ```Preferences```.
 
-   ![Alt text](Multiplay/Images/MultiPlayConfig.png)
+   ![Alt text](Images/MultiPlayConfig.png)
 
 4. Then, go to ```OSC Control``` tab.
 
-    ![Alt text](Multiplay/Images/Preferance.png)
+    ![Alt text](Images/Preferance.png)
 
 6. Under OSC Control, select your ```laptop's IP Address``` first before enabling ```Control (Incoming)``` and change the port number to```8000```.
     <br> *This is to allow MultiPlay to receive commands from the POC code*
    
-   ![Alt text](Multiplay/Images/OSCControl.png)
+   ![Alt text](Images/OSCControl.png)
    <br> Once done, click **OK**.
    
 #### To find out your laptop's ip address
 1. Go to ```Command Prompt```.
 
-   ![Alt Text](Multiplay/Images/ipconfig.png)
+   ![Alt Text](Images/ipconfig.png)
 
 2. Type ```ipconfig```. You will find your laptop's ip address immediately.
 
-   ![Alt text](Multiplay/Images/cmd.png)
+   ![Alt text](Images/cmd.png)
 
 
 ## Flow Chart
@@ -57,7 +57,7 @@ dummy_game.py
    import socket
    ```
 3. When the python is run, you will see a Window Pop-up as the image was shown below.
-   ![Alt Text](Multiplay/Images/tkinter.png)
+   ![Alt Text](Images/tkinter.png)
 
 4. When user pressed the "level 1" button, cue 1 in MultiPlay will start playing, frozing all the level buttons in the tkinter.
    <br> *This is for the game tester to jump into different level for checking purpose without having to declare the level itself*
