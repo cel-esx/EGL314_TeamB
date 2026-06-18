@@ -88,6 +88,8 @@
    5. Search for ``` Python``` and click on **Install**
    ![VS Code Python](Images/Download%20Python.png)
    6. Add in the code from [POC Game code](https://github.com/cel-esx/EGL314_TeamB/blob/main/POC/POC%20Game%20Code) to your ```name.py``` file
+      * Ensure that your **Visual Studio Code** folder has the ```.csv``` file
+      * Refer to [Capture Gesture Readme File](/POC/CAPTURE_GESTURE_README.md) to know how to add / delete gestures
    7. Ensure that the ```IP Addess``` & ```Port Number``` is to your own laptop
    ![POC IP Change](Images/IP%20Config.png)
    > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
