@@ -78,8 +78,6 @@ graph TD
 |POC/grandMA3|Images| Contains images for more visual understanding |
 |POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
 |POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
->>>>>>> 957b87587d400f5f161a9c87f11fdc49f55b52ad
-|POC| More data| More data |
 > Note: All files Related to POC is inside the folder named: **POC**
 ---
 
