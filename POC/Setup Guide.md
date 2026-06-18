@@ -16,8 +16,8 @@
      * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
   3. **GrandMA3**
      * Click Here: [GrandMa3 Setup](#grandma3)
-  4. **Multiplayer**
-     * Click Here: [Multiplayer Setup](#multiplayer)
+  4. **MultiPlay**
+     * Click Here: [MultiPlay Setup](#multiPlay)
 
   ## Dependencies
   #### This code have been tested using **Python 3.10 or higher**   
@@ -100,7 +100,7 @@
 
 
 
-   ### Multiplayer
-   (Add how to install Multiplayer)
+   ### MultiPlay
+   (Add how to install MultiPlay)
    
 
