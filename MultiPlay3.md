@@ -1,7 +1,7 @@
 # OSC MultiPlay3
 
 ## Purpose
-This software allows the track to play one or more audio tracks at any time, enhancing players' experience with the different sound effects.
+This software allows the track to play one or more audio tracks at any time, enhancing players' experience with different sound effects.
 
 ## Configuration and set up
 1. Download [MultiPlay3 Version 3.0.50.0](https://da-share.com/forum/index.php?topic=74.0)
