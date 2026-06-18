@@ -94,12 +94,12 @@ dummy_game.py
 1. When player pressed "S", POC Code will play cue 1.
 2. Every level has a audio track in the MultiPlay
     eg. Level 1 will play cue 1 play on MultiPlay, level 2 will play cue 2 on MultiPlay
-3. If players lose a life, cue 13 will be played, alerting user that they have lost a life.
-4. If players lose all 3 lives, cue 14 will be played to indicate that they have lost the game.
-5. If players managed to passed the stage(s), cue 12 will be played, alerting players that they have passed the stage.
+3. If players lose a life, cue 12 will be played, alerting user that they have lost a life.
+4. If players lose all 3 lives, cue 15 will be played to indicate that they have lost the game.
+5. If players managed to passed the stage(s), cue 13 will be played, alerting players that they have passed the stage.
 6. After passing 3 stages, cue 14 will be played for players to know that they have passed onto the next level.
 7. Once the next level is played, the POC Code will run the next "current level" audio track. 
     eg. current_level is 1, multiplay will play cue 1
         if the next current_level is 2, multiplay will play cue 1.
-8. Once game has ended, all cue(s) will stopped playing.
+8. Once game has ended, no cue(s) will be playing.
 
