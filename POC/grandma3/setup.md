@@ -9,7 +9,7 @@ This software allows user to do pre-programming and create lighting design for e
 5. Click on "grandMA3_onPC_win_v2.4.2.2" in file 
 6. Click "Yes"
 7. Click "Next" to continue.
-<img src="image.png" width="400" height="400">
+<img src="Images/image.png" width="400" height="400">
 8. Click "I Agree"
 <img src="image-1.png" width="400" height="400">
 9. Click "Install"
