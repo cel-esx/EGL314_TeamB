@@ -88,8 +88,12 @@
    5. Search for ``` Python``` and click on **Install**
    ![VS Code Python](Images/Download%20Python.png)
    6. Add in the code from [POC Game code](https://github.com/cel-esx/EGL314_TeamB/blob/main/POC/POC%20Game%20Code) to your ```name.py``` file
-   7. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
-   8. If Step 7 fails to work as expected
+   7. Ensure that the ```IP Addess``` & ```Port Number``` is to your own laptop
+   ![POC IP Change](/POC/Images/IP%20Config.png)
+   > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
+   ![Laptop IP Address](/POC/Images/Wifi.png)
+   8. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
+   9. If Step 7 fails to work as expected
       * Click on the top middle search bar
       * Type  ``` > ```
       * Click on ``` Python: Select Interpreter ```
