@@ -20,3 +20,14 @@ It takes some time to install... Roughly 5 minutes! :sleeping:
 <img src="Screenshot 2026-06-18 124051.png" width="400" height="400">
 11. Check box "Create GrandMA3 onPC Desktop Link" and click "Finish"
 <img src="image-4.png" width="400" height="400">
+
+## How to use software
+1. Locate GrandMA3 software on your laptop by searching "grandMA3 onPC 2.4.2.2" on Search Bar. It will lead you to this page: 
+<img src="image-5.png" width="400" height="400">
+<p>You can either click on "Preview" that would appear on the right of the software OR click the name of software to open the software.</P>
+2. Click "I agree"
+<p><img src="image-6.png" width="450" height="150"></p>
+
+
+
+[Showfile](TEAMB_Proj.show)
