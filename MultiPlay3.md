@@ -43,10 +43,10 @@ dummy_game.py
    
 2. As the level sound track is playing, user can pressed the second row buttons.
    <br>
-   a. staged cleared - *the button can be pressed multiple times as the level track is playing*
-   b. level cleared - *the code will send command to MultiPlay to play the next level sound track*
-   c. Enchantment failed - *the button can be pressed multiple times as the level track is playing (user is failling the stage)*
-   d. Gameover - *the code will send command to MultiPlay to stop all sound track*
+   a. staged cleared - *the button can be pressed multiple times as the level track is playing* <br>
+   b. level cleared - *the code will send command to MultiPlay to play the next level sound track* <br>
+   c. Enchantment failed - *the button can be pressed multiple times as the level track is playing (user is failling the stage)* <br>
+   d. Gameover - *the code will send command to MultiPlay to stop all sound track* <br>
 
 ## The Desired Results in the POC Code
 1. When player pressed "S", POC Code will play cue 1.
