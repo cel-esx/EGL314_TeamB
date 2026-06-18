@@ -22,7 +22,7 @@ This software allows the track to play one or more audio tracks at any time, enh
 graph LR
 A[POC Code] <--Wifi <br> (IP Address and PORT No.)--> B[Multiplay 3]
 ```
-**Disclaimer:
+> **DISCLAIMER:
 MAKE SURE THE POC CODE HAS THE SAME PORT AND IP ADDRESS IN THE MULTIPLAY3!**
 
 ## Dummy Game
@@ -39,7 +39,7 @@ dummy_game.py
     A[Level 1 Button Pressed] --> B[dummy_game.py sends <br> command]
     B --> C[MultiPlay Plays Cue 1]
    ```
-   *Note: Level number and cue track are the same number. Eg. Level 1 = cue 1, Level 2 = cue 2*
+   > *Note: Level number and cue track are the same number. Eg. Level 1 = cue 1, Level 2 = cue 2*
    
 2. As the level sound track is playing, user can pressed the second row buttons.
    <br>
