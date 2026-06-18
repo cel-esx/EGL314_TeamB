@@ -21,6 +21,21 @@ It takes some time to install... Roughly 5 minutes! :sleeping:
 11. Check box "Create GrandMA3 onPC Desktop Link" and click "Finish"
 <img src="image-4.png" width="400" height="400">
 
+### Before you continue, download the showfile below:
+[Showfile](TEAMB_Proj.show) 
+
+1. Once downloaded, click on your CDRIVE, "View", "Show", and lastly, "Hidden Items" (This will unhide the folder that needs to be used)
+<img src="TurnOffHidden.png" width="400" height="300">
+
+2. Locate "Program Data" and click on it
+3. Open "MALightingTechnology" 
+<img src="MATechnology.png" width="400" height="300">
+
+4. Click on "gma3_2.4.2", "shared", and lastly, "Shows"
+<img src="OpenShows-1.png" width="400" height="300">
+
+5. Lastly, copy & paste the downloaded file "TEAMB_Proj.show" into the "Shows" file
+
 ## How to use software
 1. Locate GrandMA3 software on your laptop by searching "grandMA3 onPC 2.4.2.2" on Search Bar. It will lead you to this page: 
 <img src="image-5.png" width="400" height="400">
@@ -33,8 +48,5 @@ It takes some time to install... Roughly 5 minutes! :sleeping:
 3. Click on the :gear: "Gear" icon. Subpage will open, click on "Backup"
 <img src="StartPage.png" width="400" height="300">
 
-### Before you continue, download the showfile below:
-[Showfile](TEAMB_Proj.show) 
-
-4. Once downloaded, 
-<img src="TurnOffHidden.png" width="400" height="300">
+4. Click on the show file "TEAMB_Proj.show", click "Check all" and "Load"
+<img src="Showfile.png" width="400" height="300">
