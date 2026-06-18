@@ -9,10 +9,12 @@ This software allows the track to play one or more audio tracks at any time, enh
 2. Once downloaded, allow/agree all preferences and options before launching the software.
 
 3. In MultiPlay, under file, click Preferences. Then, go to OSC Control tab.
+
    ![Alt text](MultiPlayConfig.png)
 
-4. Under OSC Control, enable "Control (Incoming)" and change the port number to 8000
-    This is to allow MultiPlay to receive commands from the POC code
+4. Under OSC Control, select your laptop's IP Address first before enabling "Control (Incoming)" and change the port number to 8000.
+    *This is to allow MultiPlay to receive commands from the POC code*
+   
    ![Alt text](OSCControl.png)
 
 ## Flow Chart
@@ -24,13 +26,29 @@ A[POC Code] <--Wifi <br> (IP Address and PORT No.)--> B[Multiplay 3]
 MAKE SURE THE POC CODE HAS THE SAME PORT AND IP ADDRESS IN THE MULTIPLAY3!**
 
 ## Dummy Game
-Before implementing the POC Code to control the cues in MultiPlay, ~/dummy_game was made to achieve the desired result for the game.
+Before implementing the POC Code to control the cues in MultiPlay, ~/dummy_game was another game simulation to make sure the code is working.
 
 ````
 dummy_game.py
 ````
+## Expectations
+1. When user pressed the "level 1" button, cue 1 in MultiPlay will start playing, frozing all the level buttons in the tkinter.
+   <br> *This is for the game tester to jump into different level for checking purpose without having to declare the level itself*
+   ```mermaid
+   graph LR
+    A[Level 1 Button Pressed] --> B[dummy_game.py sends <br> command]
+    B --> C[MultiPlay Plays Cue 1]
+   ```
+   *Note: Level number and cue track are the same number. Eg. Level 1 = cue 1, Level 2 = cue 2
+   
+2. As the level sound track is playing, user can pressed the second row buttons.
+   <br>
+   a. staged cleared - *the button can be pressed multiple times as the level track is playing*
+   b. level cleared - *the code will send command to MultiPlay to play the next level sound track*
+   c. Enchantment failed - *the button can be pressed multiple times as the level track is playing (user is failling the stage)*
+   d. Gameover - *the code will send command to MultiPlay to stop all sound track*
 
-## The Desired Results
+## The Desired Results in the POC Code
 1. When player pressed "S", POC Code will play cue 1.
 2. Every level has a audio track in the MultiPlay
     eg. Level 1 will play cue 1 play on MultiPlay, level 2 will play cue 2 on MultiPlay
