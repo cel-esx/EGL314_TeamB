@@ -24,10 +24,17 @@ It takes some time to install... Roughly 5 minutes! :sleeping:
 ## How to use software
 1. Locate GrandMA3 software on your laptop by searching "grandMA3 onPC 2.4.2.2" on Search Bar. It will lead you to this page: 
 <img src="image-5.png" width="400" height="400">
+
 <p>You can either click on "Preview" that would appear on the right of the software OR click the name of software to open the software.</P>
+
 2. Click "I agree"
-<p><img src="image-6.png" width="450" height="150"></p>
+<img src="image-6.png" width="450" height="150">
 
+3. Click on the :gear: "Gear" icon. Subpage will open, click on "Backup"
+<img src="StartPage.png" width="400" height="300">
 
+### Before you continue, download the showfile below:
+[Showfile](TEAMB_Proj.show) 
 
-[Showfile](TEAMB_Proj.show)
+4. Once downloaded, 
+<img src="TurnOffHidden.png" width="400" height="300">
