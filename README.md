@@ -63,9 +63,9 @@ graph TD
 | Folder Location | File Name | Technical Roles & Functions |
 | :--- | :---: | :---: |
 | POC |  Hand_Images| Contains all the hand images that are used in the game |
-|POC| More data| More data |
-|POC| More data| More data |
-|POC| More data| More data |
+|POC/Multiplay| Images&MultiPlay | Contains all the images on the GitHub and the MultiPlay file that was used for the POC Code|
+|POC/Multiplay| dummy_game.py| Game Simulation to test OSC commands |
+|POC/Multiplay| README.md| Contains all the set up and configuration in the Multiplay with POC and dummy_game codes explained |
 |POC| More data| More data |
 |POC| More data| More data |
 |POC| More data| More data |
@@ -123,7 +123,7 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 
 * **Progressive Stages:** The game consists of 6 levels, and each level requires you to pass 4 progressive stages by holding the correct matching gestures
 * GrandMA3: 
-* MultiPlay:
+* MultiPlay: Play level sound tracks. Every passed stages, there will be a ```stage_cleared``` audio track playing. If players completed the level, ```levelcleared``` audio track will be played.
 * **Winning:** If the above is done correctly by matching the gestures on time, you win
 ## Penalties
 * **Running Out of Time:** Each stage has a countdown timer. Failing to hold the required gestures before the timer hits zero results in a failed enchantment.
@@ -132,4 +132,5 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 
 * **Checkpoint Rollbacks:** If you lose a life, the game resets your stage progress and knocks you back to the beginning of your nearest major milestone checkpoint (Level 1, 3, or 5).
 
-* **Game Over:** [GrandMA & Multiplay]
+* **Game Over:** [GrandMA]
+  **MultiPlay:** For every incorrect gestures, an ```incorrect gestures``` audio track will be playing. If player lost 3 lives, ```gameover``` track will be played.
