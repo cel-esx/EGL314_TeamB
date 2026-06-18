@@ -22,12 +22,12 @@ This software allows the track to play one or more audio tracks at any time, enh
    ![Alt text](OSCControl.png)
    <br> Once done, click **OK**.
    
-### To find out your laptop's ip address
+#### To find out your laptop's ip address
 1. Go to ```Command Prompt```.
 
    ![Alt Text](ipconfig.png)
 
-3. Type ```ipconfig```
+2. Type ```ipconfig```. You will find your laptop's ip address immediately.
 
    ![Alt text](cmd.png)
 
@@ -46,8 +46,19 @@ Before implementing the POC Code to control the cues in MultiPlay, ~/dummy_game 
 ````
 dummy_game.py
 ````
-## Expectations
-1. When user pressed the "level 1" button, cue 1 in MultiPlay will start playing, frozing all the level buttons in the tkinter.
+
+#### dummy_game.py Explained
+1. Import ```tkinter``` for the game simulation
+    ```bash
+   import tkinter as tk
+   ```
+3. Import socket to send OSC commands to MultiPlay through UDP
+    ```bash
+   import socket
+   ```
+5. When the python is run, you will see a Window Pop-up as the image was shown below.
+   ![Alt Text](tkinter.png)
+6. 1. When user pressed the "level 1" button, cue 1 in MultiPlay will start playing, frozing all the level buttons in the tkinter.
    <br> *This is for the game tester to jump into different level for checking purpose without having to declare the level itself*
    ```mermaid
    graph LR
@@ -56,7 +67,7 @@ dummy_game.py
    ```
    > *Note: Level number and cue track are the same number. Eg. Level 1 = cue 1, Level 2 = cue 2*
    
-2. As the level sound track is playing, user can pressed the second row buttons.
+7. As the level sound track is playing, user can pressed the second row buttons.
    <br>
    a. staged cleared - *the button can be **pressed multiple times** as the level track is playing (when player passed the stage)* <br><br>
    b. level cleared - *the code will send command to MultiPlay to play the **next level sound track*** <br><br>
@@ -105,6 +116,7 @@ dummy_game.py
     style K fill:#FFEBEE,stroke:#F44336,stroke-width:2px
     style L fill:#FFEBEE,stroke:#F44336,stroke-width:1px
    ```
+
 ## The Desired Results in the POC Code
 1. When player pressed "S", POC Code will play cue 1.
 2. Every level has a audio track in the MultiPlay
