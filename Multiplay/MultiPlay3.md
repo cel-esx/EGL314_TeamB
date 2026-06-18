@@ -123,8 +123,8 @@ dummy_game.py
    if current_level > 7:
             set_all_buttons_state(tk.NORMAL)
    ```
-   <br>
-   c. Enchantment failed - *the button can be **pressed multiple times** as the level track is playing (user is failling the stage)* <br>
+   c. Enhancement failed - *the button can be **pressed multiple times** as the level track is playing (user is failing the stage)* <br>
+
    ```bash
    elif n == 12:                               # incorrect hand gesture
         send_message(IP, PORT, "/cue/12/go")  
