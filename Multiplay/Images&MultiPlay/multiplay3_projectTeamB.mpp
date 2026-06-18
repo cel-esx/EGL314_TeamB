@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Production>
+  <Version>3.0.242.0</Version>
+  <FileName>C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\multiplay3_projectTeamB.mpp</FileName>
+  <LastModified>2026-06-11 1:50:48 pm</LastModified>
+  <General>
+    <AutoStartCueList>0</AutoStartCueList>
+  </General>
+  <MidiControl Device="-1" Active="0"/>
+  <Appearance>
+    <CueList Name="Arial" Size="10" Colour="FFFFFF" BgColour="000000" CueSelectedBgColour="800080" CueSelectedFontColour="FFFFFF" CueSelectedBoldText="0" CueDisabledBgColour="808080" CueDisabledFontColour="FFFFFF" CueColourStyle="0" CueListScrollBars="-1">
+      <Audio BGColour="000000" FontColour="FFFFFF"/>
+      <Wait BGColour="000000" FontColour="FFFFFF"/>
+      <Serial BGColour="000000" FontColour="FFFFFF"/>
+      <Adlib BGColour="000000" FontColour="FFFFFF"/>
+      <PlayList BGColour="000000" FontColour="FFFFFF"/>
+      <Control BGColour="000000" FontColour="FFFFFF"/>
+      <MIDI BGColour="000000" FontColour="FFFFFF"/>
+      <END BGColour="000000" FontColour="FFFFFF"/>
+      <MIDISeq BGColour="000000" FontColour="FFFFFF"/>
+      <Image BGColour="000000" FontColour="FFFFFF"/>
+      <MIDIMute BGColour="000000" FontColour="FFFFFF"/>
+      <Video BGColour="000000" FontColour="FFFFFF"/>
+      <Memo BGColour="000000" FontColour="FFFFFF"/>
+      <Network BGColour="000000" FontColour="FFFFFF"/>
+      <Launch BGColour="000000" FontColour="FFFFFF"/>
+      <AudioInput BGColour="000000" FontColour="FFFFFF"/>
+      <Message BGColour="000000" FontColour="FFFFFF"/>
+      <HTTP BGColour="000000" FontColour="FFFFFF"/>
+    </CueList>
+    <HotButtons Name="Arial" Size="12" BgColour="000000"/>
+    <ProgressBar ColourPlaying="008000" ColourPaused="0000FF" ColourWarning="FF0000" ColourInterval="808080" ColourLooping="008000" MaxWhenLooping="-1" ProgressFullHeight="-1"/>
+    <NotesHeader Name="Arial" Size="12" BgColour="000000" Colour="FF0000"/>
+    <NotesBody Name="Arial" Size="10" Colour="000000" BgColour="FFFBF0"/>
+    <Common Name="Arial" Size="10" Colour="FFFFFF" BgColour="000000" SelectedFontColour="FFFFFF" SelectedBgColour="800080" EditFontColour="000000" EditBgColour="FFFFFF" ControlFocusColour="000000"/>
+    <SelectedCueWindow Colour="FFFFFF" BgColour="000000"/>
+    <Buttons StopwatchFontColour="FFFFFF" StopwatchBgColour="000000" ClockFontColour="FFFFFF" ClockBgColour="000000" StopAllFontColour="FFFF00" StopAllBgColour="000000" FadeAllFontColour="00FFFF" FadeAllBgColour="000000" AdvanceFontColour="FF8000" AdvanceBgColour="000000" CountDownTimerFontColourNormal="FFFFFF" CountDownTimerBgColourNormal="008000" CountDownTimerFontColourWarning="FF0000" CountDownTimerBgColourWarning="000000"/>
+    <HideFractionalSeconds>0</HideFractionalSeconds>
+  </Appearance>
+  <Audio PreviewDeviceName="Default" PreviewDeviceChans="1">
+    <Patch Name="Audio Output 1" DeviceName="Default" DeviceChans="1"/>
+    <Patch Name="Audio Output 2" DeviceName="Default" DeviceChans="1"/>
+  </Audio>
+  <MIDI>
+    <Muting Patch="-1" Command="0" Channel="0"/>
+  </MIDI>
+  <Network>
+    <Patch Name="TeamB" Destination="" Adapter="{653C2A2D-EF05-4D47-9E1A-02EE2E57EEC4}" Port="8000" Encoding="0" Enabled="-1"/>
+  </Network>
+  <Messages Adapter="{653C2A2D-EF05-4D47-9E1A-02EE2E57EEC4}">
+    <Timeout>0</Timeout>
+    <Font Enabled="0" Name="Arial" BGColour="000000" FontColour="FFFFFF" DisplayStyle="0"/>
+  </Messages>
+  <HotButtons ColumnCount="1" RowCount="1" PageCount="1" UseCueDescriptions="0">
+    <Button Caption="1" CaptionColour="000000" BtnColour="FFFFFF" UID="" List="0"/>
+  </HotButtons>
+  <Layouts DefaultLayout="0">
+    <Layout ColumnStates="15#50,40,39,42,87,98,77,76,93,40,46,53,62,79,63#0,1,2,3,4,5,6,7,8,9,10,11,12,13,14#1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" DirectEdit="0" LimitedUser="0" Name="Default Layout">
+      <Adlib ColumnStates="15#50,40,39,42,87,98,77,76,93,40,46,53,62,79,63#0,1,2,3,4,5,6,7,8,9,10,11,12,13,14#1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"/>
+      <Windows>
+        <fmMain Top="0" Left="0" Height="500" Width="500" Maximised="-1"/>
+      </Windows>
+      <Notes UpperPaneSize="108" LowerPaneSize="108"/>
+      <sitelist>
+				<site dpi="96" id="fmMain.DockSite">
+					<zone kind="HORZ">
+						<zone kind="VERT" size="228" dsize="0.180665610142631">
+							<zone kind="PANEL" id="fmMain.dkCueControls" visible="1" size="290" dsize="0.458135860979463"/>
+							<zone kind="PANEL" id="fmMain.dkAdvance" visible="0" size="48" dsize="0.0986843389895377"/>
+							<zone kind="PANEL" id="fmMain.dkGo" visible="1" size="110" dsize="0.174376960463113"/>
+							<zone kind="PANEL" id="fmMain.dkStopAll" visible="1" size="116" dsize="0.182878645001648"/>
+							<zone kind="PANEL" id="fmMain.dkFadeAll" visible="1" size="117" dsize="0.184608533555775"/>
+							<zone kind="PANEL" id="fmMain.dkStopwatch" visible="0" size="67" dsize="0.119221269072075"/>
+							<zone kind="PANEL" id="fmMain.dkClock" visible="0" size="33" dsize="0.0564344653568301"/>
+							<zone kind="PANEL" id="fmMain.dkElapsedTime" visible="0" size="32" dsize="0.0340059123933133"/>
+							<zone kind="PANEL" id="fmMain.dkCuePoints" visible="0" size="32" dsize="0.0337035030571866"/>
+							<zone kind="PANEL" id="fmMain.dkRemainingTime" visible="0" size="32" dsize="0.0376006177190997"/>
+							<zone kind="PANEL" id="fmMain.dkCountdownTimer" visible="0" size="67" dsize="0.103454867941743"/>
+							<zone kind="PANEL" id="fmMain.dkVideoPreview" visible="0" size="651" dsize="1"/>
+						</zone>
+						<zone kind="PANEL" id="fmMain.dkCueList" visible="1" size="1034" dsize="0.819334389857369" isspace="1"/>
+						<zone kind="VERT" size="153" dsize="0.121236133122029">
+							<zone kind="PANEL" id="fmMain.dkScheduler" visible="0" size="53" dsize="0.0946032823485809"/>
+							<zone kind="PANEL" id="fmMain.dkInfo" visible="0" size="32" dsize="0.0122418403294824"/>
+							<zone kind="PANEL" id="fmMain.dkNotes" visible="0" size="70" dsize="0.114696187042105"/>
+							<zone kind="PANEL" id="fmMain.dkHotButtons" visible="0" size="58" dsize="0.094578383056071"/>
+							<zone kind="PANEL" id="fmMain.dkAdlibList" visible="0" size="38" dsize="0.0607976444690869"/>
+							<zone kind="PANEL" id="fmMain.dkExtTools" visible="0" size="117" dsize="0.18666555740349"/>
+							<zone kind="PANEL" id="fmMain.dkCueLibrary" visible="0" size="127" dsize="0.200463510873548"/>
+							<zone kind="PANEL" id="fmMain.dkProductionNotes" visible="0" size="156" dsize="0.243447019417327"/>
+							<zone kind="PANEL" id="fmMain.dkAudioPreview" visible="0" size="220" dsize="0.341772151898733"/>
+							<zone kind="VERT" size="651" dsize="1">
+								<zone kind="PANEL" id="fmMain.dkAudioOutputs" visible="0" size="270" dsize="0.418367346938776"/>
+								<zone kind="PANEL" id="fmMain.dkSelectedCue" visible="0" size="651" dsize="1"/>
+							</zone>
+						</zone>
+					</zone>
+				</site>
+			</sitelist>
+    </Layout>
+  </Layouts>
+  <Schedule AutoStart="0" SortColumn="1" SortDirection="0"/>
+  <CountdownTimer Target="12:00:00 am" Warning="60"/>
+  <Video Visible="0">
+    <Screen Name="Window" Top="0" Left="0" Height="50" Width="50" Colour="000000" Monitor="1" Active="0" StayOnTop="0">
+      <Logo Top="0" Left="0" Height="50" Width="50" Colour="000000" FileName="" FullScreen="0"/>
+    </Screen>
+    <Screen Name="Window" Top="0" Left="0" Height="50" Width="50" Colour="000000" Monitor="1" Active="0" StayOnTop="0">
+      <Logo Top="0" Left="0" Height="50" Width="50" Colour="000000" FileName="" FullScreen="0"/>
+    </Screen>
+    <Screen Name="Window" Top="0" Left="0" Height="50" Width="50" Colour="000000" Monitor="1" Active="0" StayOnTop="0">
+      <Logo Top="0" Left="0" Height="50" Width="50" Colour="000000" FileName="" FullScreen="0"/>
+    </Screen>
+    <Screen Name="Window" Top="0" Left="0" Height="50" Width="50" Colour="000000" Monitor="1" Active="0" StayOnTop="0">
+      <Logo Top="0" Left="0" Height="50" Width="50" Colour="000000" FileName="" FullScreen="0"/>
+    </Screen>
+  </Video>
+  <CueList>
+    <Cue>
+      <UID>1</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>1</Q>
+      <Description>bgmusic</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="2"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\bgmusic.mp3" Duration="185521" StopPos="60000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="0" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>3</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>3</Q>
+      <Description>level3_bgmusic</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\level3_bgmusic.mp3" Duration="193057" StopPos="50000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="5000" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>4</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>4</Q>
+      <Description>level4_bgmusic</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\level4_bgmusic.mp3" Duration="186745" StopPos="44000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="5000" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>5</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>5</Q>
+      <Description>level5_bgmusic</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\level5_bgmusic.mp3" Duration="199705" StartPos="11000" StopPos="53000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="5000" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>6</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>14</Q>
+      <Description>levelcleared</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\levelcleared.mp3" Duration="4633" StartPos="2270" StopPos="2750"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>1</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="0" Out="0" AtEnd="-1"/>
+    </Cue>
+    <Cue>
+      <UID>7</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>13</Q>
+      <Description>stage_cleared</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\stage_cleared.mp3" Duration="5521" StartPos="500" StopPos="1000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>1</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="0" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>2</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>2</Q>
+      <Description>level2_bgmusic</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\level2_bgmusic.mp3" Duration="141841" StartPos="25000" StopPos="78000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="5000" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>11</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>6</Q>
+      <Description>level6_bgmusic</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\level6_bgmusic.mp3" Duration="187687" StopPos="40000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="5000" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>8</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>7</Q>
+      <Description>bonus_bg</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\bonus_bg.mp3" Duration="140161" StartPos="4000" StopPos="43000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="3500" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>9</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>15</Q>
+      <Description>gameover</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\gameover.mp3" Duration="4897" StartPos="970" StopPos="3000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>1</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="0" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>10</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>12</Q>
+      <Description>incorrect_gestures</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\incorrect_gestures.mp3" Duration="9649" StartPos="7000" StopPos="8000"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>1</Loops>
+      <Volume-dB>-9</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="0" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>12</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>10</Q>
+      <Description>countdown</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\countdown.mp3" Duration="34033" StopPos="34033"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>0</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="0" Out="0" AtEnd="0"/>
+    </Cue>
+    <Cue>
+      <UID>13</UID>
+      <Type>0</Type>
+      <Enabled>-1</Enabled>
+      <Q>11</Q>
+      <Description>failing_countdown timer</Description>
+      <Exclusive Mode="0" FadeTime="200"/>
+      <SecondTrigger Mode="0"/>
+      <Ignore FadeAll="0" StopAll="0" PauseAll="0" ResumeAll="0"/>
+      <Wait Pre="0" Post="0"/>
+      <CuePoints/>
+      <Appearance BGColour="000000" FontColour="FFFFFF"/>
+      <Advance Action="1" Target="0"/>
+      <File Name="C:\Users\celes\OneDrive\Desktop\EGL -Yr2\MTS\EGL313_markdown\failing_countdown timer.mp3" Duration="16345" StartPos="7000" StopPos="16345"/>
+      <AudioChannel>1</AudioChannel>
+      <Loops>1</Loops>
+      <Volume-dB>0</Volume-dB>
+      <Pan>0</Pan>
+      <SpeedStyle>0</SpeedStyle>
+      <Speed>100</Speed>
+      <Fade In="0" Out="0" AtEnd="0"/>
+    </Cue>
+  </CueList>
+  <AdlibList/>
+</Production>
