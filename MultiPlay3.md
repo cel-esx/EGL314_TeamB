@@ -8,15 +8,30 @@ This software allows the track to play one or more audio tracks at any time, enh
 
 2. Once downloaded, allow/agree all preferences and options before launching the software.
 
-3. In MultiPlay, under file, click Preferences. Then, go to ```OSC Control``` tab.
+3. In MultiPlay, under file, click ```Preferences```.
 
    ![Alt text](MultiPlayConfig.png)
 
-4. Under OSC Control, select your laptop's IP Address first before enabling ```Control (Incoming)``` and change the port number to```8000```.
+4. Then, go to ```OSC Control``` tab.
+
+    ![Alt text](Preferance.png)
+
+6. Under OSC Control, select your ```laptop's IP Address``` first before enabling ```Control (Incoming)``` and change the port number to```8000```.
     <br> *This is to allow MultiPlay to receive commands from the POC code*
    
    ![Alt text](OSCControl.png)
    <br> Once done, click **OK**.
+   
+### To find out your laptop's ip address
+1. Go to ```Command Prompt```.
+
+   ![Alt Text](ipconfig.png)
+
+3. Type ```ipconfig```
+
+   ![Alt text](cmd.png)
+
+
 ## Flow Chart
 ```mermaid
 graph LR
