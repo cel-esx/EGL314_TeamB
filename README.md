@@ -133,3 +133,4 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 * **Checkpoint Rollbacks:** If you lose a life, the game resets your stage progress and knocks you back to the beginning of your nearest major milestone checkpoint (Level 1, 3, or 5).
 
 * **Game Over:** [GrandMA & Multiplay]
+* MultiPlay: For every incorrect gestures, an ```incorrect gestures``` audio track will be playing. If player lost 3 lives, ```gameover``` track will be played.
