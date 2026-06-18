@@ -209,7 +209,6 @@ Each unique `capture_id` represents one complete snapshot of a gesture. A single
 | `No hands detected!` flash on right-click | MediaPipe lost tracking for that frame — hold still and try again |
 | Gesture name not saving | Make sure you pressed `Enter` after typing with `G`. The gesture name must be set before right-clicking |
 | Script crashes on start | Confirm `mediapipe` and `opencv-python` are installed in the correct Python environment |
-| CSV file is very large | This is expected — `Gesture_definitions_latest.csv` (~40MB) contains the full training dataset. Your captures go to `new_gesture_definitions.csv` |
 
 ---
 

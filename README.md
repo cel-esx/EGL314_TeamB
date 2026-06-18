@@ -2,7 +2,7 @@
 ##  EGL 314 - Proof Of Concept (POC)
 ---
 
-This file contains our "Match The Gesture" game that uses **OpenCV + Mediapipe**. Additionally, this comprises also the use of **GrandMA3** Software for lighting controls and **Multiplayer** Software for audio controls <br>
+This file contains our "Match The Gesture" game that uses **OpenCV + Mediapipe**. Additionally, this comprises also the use of **GrandMA3** Software for lighting controls and **MultiPlay** Software for audio controls <br>
 
 
 
@@ -22,7 +22,7 @@ This file contains our "Match The Gesture" game that uses **OpenCV + Mediapipe**
 # Project Overview
 This project is a Proof Of Concept (POC) interactive, motion-controlled live production game where players step into the role of a mystical blacksmith enchanting a legendary weapon. Using a camera to detect physical hand gestures, players must match sequences across 6 progressively faster levels to unlock a high-intensity Bonus Round.
 
-What sets this project apart is its integration with live theater tech: the game script acts as a show controller, broadcasting real-time **OSC network signals** to instantly drive professional stage lighting (**grandMA3**) and dynamic sound effects (**Multiplayer**) based on the player's performance
+What sets this project apart is its integration with live theater tech: the game script acts as a show controller, broadcasting real-time **OSC network signals** to instantly drive professional stage lighting (**grandMA3**) and dynamic sound effects (**MultiPlay**) based on the player's performance
 
 ---
 ## How to Set up
@@ -45,7 +45,7 @@ graph TD
 
     %% Network Distribution via Wi-Fi
     B -->|Send OSC Command via wifi<br>Using IP and Port Number| C[Laptop 2:<br>Running GrandMA]
-    B -->|Send OSC Command via wifi<br>Using IP and Port Number| D[Laptop 3:<br>Running Multiplayer]
+    B -->|Send OSC Command via wifi<br>Using IP and Port Number| D[Laptop 3:<br>Running MultiPlay]
 
     %% Laptop 2 / Lighting Hardware Pipeline
     C -->|LAN| E[Network Switch]
