@@ -64,7 +64,7 @@ graph TD
 | :--- | :---: | :---: |
 | POC |  Hand_Images| Contains all the hand images that are used in the game |
 |POC| More data| More data |
-|POC| More data| More data |
+|POC| CAPTURE_GESTURE_README.md | Contains the instructions to capture gesture for the game |
 |POC| More data| More data |
 |POC| More data| More data |
 |POC| More data| More data |
