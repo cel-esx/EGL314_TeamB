@@ -66,9 +66,9 @@ graph TD
 |POC/Multiplay| Images&MultiPlay | Contains all the images on the GitHub and the MultiPlay file that was used for the POC Code|
 |POC/Multiplay| dummy_game.py| Game Simulation to test OSC commands |
 |POC/Multiplay| README.md| Contains all the set up and configuration in the Multiplay with POC and dummy_game codes explained |
-|POC| More data| More data |
-|POC| More data| More data |
-|POC| More data| More data |
+|POC/grandMA3|Images| Contains images for more visual understanding |
+|POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
+|POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
 |POC| More data| More data |
 > Note: All files Related to POC is inside the folder named: **POC**
 ---
