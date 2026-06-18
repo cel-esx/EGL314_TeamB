@@ -84,19 +84,23 @@
    2. Once installed, open ```Visual Studio code``` ![VScodesearch](/Images/visual_search.png)
    3. Create a folder, then create a file named ```name.py```
    4. Click on the **Extensions** Icon on the left sidebar (**5th icon**, looks like **4 blocks**)
-   ![VS Code Extension](/Images/Extension.png)
+   ![VS Code Extension](Images/Extension.png)
    5. Search for ``` Python``` and click on **Install**
-   ![VS Code Python](/Images/Download%20Python.png)
+   ![VS Code Python](Images/Download%20Python.png)
    6. Add in the code from [POC Game code](https://github.com/cel-esx/EGL314_TeamB/blob/main/POC/POC%20Game%20Code) to your ```name.py``` file
-   7. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
-   8. If Step 7 fails to work as expected
+   7. Ensure that the ```IP Addess``` & ```Port Number``` is to your own laptop
+   ![POC IP Change](Images/IP%20Config.png)
+   > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
+   ![Laptop IP Address](Images/Wifi.png)
+   8. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
+   9. If Step 7 fails to work as expected
       * Click on the top middle search bar
       * Type  ``` > ```
       * Click on ``` Python: Select Interpreter ```
       * Select your python enviroment
 
    ### GrandMA3
-   (Add how to install GrandMA3)
+   Please click on this [link](grandma3/setup.md) to learn how to setup GrandMA3 on your laptops
 
 
 
