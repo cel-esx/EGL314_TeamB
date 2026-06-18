@@ -123,7 +123,7 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 
 * **Progressive Stages:** The game consists of 6 levels, and each level requires you to pass 4 progressive stages by holding the correct matching gestures
 * GrandMA3: 
-* MultiPlay:
+* MultiPlay: Play level sound tracks. Every passed stages, there will be a ```stage_cleared``` audio track playing. If players completed the level, ```levelcleared``` audio track will be played.
 * **Winning:** If the above is done correctly by matching the gestures on time, you win
 ## Penalties
 * **Running Out of Time:** Each stage has a countdown timer. Failing to hold the required gestures before the timer hits zero results in a failed enchantment.
