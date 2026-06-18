@@ -102,11 +102,11 @@
       * Select your python enviroment
 
    ### GrandMA3
-   Please click on this [link](grandma3/grandMA3setup.md) to learn how to setup GrandMA3 on your laptops
+   Please click on this [link](/POC/grandma3/grandMA3setup.md) to learn how to setup GrandMA3 on your laptops
 
 
 
    ### MultiPlay
-   Click here to go [Multiplay,md](Multiplay/MultiPlay3.md)
+   Click here to go [Multiplay](/POC/Multiplay/MultiPlay3.md) folder
    
 
