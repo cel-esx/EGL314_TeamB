@@ -19,4 +19,4 @@ This software allows user to do pre-programming and create lighting design for e
 <p>10. Once installation completed, click "Next" </p>
 <img src="Screenshot 2026-06-18 124051.png" width="400" height="400">
 <p>11. Check box "Create GrandMA3 onPC Desktop Link" and click "Finish"</p>
-<img src="Screenshot 2026-06-18 124253.png" width="400" height="400">
+<img src="image-4.png" width="400" height="400">
