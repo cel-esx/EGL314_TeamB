@@ -9,11 +9,14 @@ This software allows the game track to play one or more audio tracks at any give
 1. Download [MultiPlay3 Version 3.0.50.0](https://da-share.com/forum/index.php?topic=74.0).
 2. Once downloaded, accept all preferences and permission prompts before launching the software.
 3. In MultiPlay, navigate to **File** $\rightarrow$ **Preferences**.
+![Alt Text](Images&MultiPlay/MultiPlayConfig.png)
 4. Switch over to the **OSC Control** tab.
+![Alt Text](Images&MultiPlay/Preferance.png)
 5. Under the OSC Control configurations:
 * Select your **laptop's active IP Address** from the drop-down.
 * Check the box to enable **Control (Incoming)**.
 * Change the port number to `8000`.
+![Alt Text](Images&MultiPlay/OSCControl.png)
 
 
 > *Note: This port configuration allows MultiPlay to receive incoming UDP commands from the POC script.*
@@ -24,8 +27,9 @@ Once configured, click **OK**.
 ### Finding Your Laptop's IP Address
 
 1. Open the **Command Prompt** (cmd) on your Windows machine.
+![Alt Text](Images&MultiPlay/ipconfig.png)
 2. Type `ipconfig` and press **Enter**. Your IPv4 address will be listed under your active network adapter.
-
+![Alt Text](Images&MultiPlay/cmd.png)
 ---
 
 ## Architecture Flowchart
