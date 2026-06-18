@@ -22,8 +22,12 @@ This software allows the track to play one or more audio tracks at any time, enh
    ![Alt text](OSCControl.png)
    <br> Once done, click **OK**.
    
-###To find out your laptop's ip address
-1. 
+### To find out your laptop's ip address
+1. Go to '''Command Prompt'''.
+   ![Alt Text](ipconfig.png)
+2. Type ```ipconfig```
+   ![Alt text](cmd.png)
+
 
 ## Flow Chart
 ```mermaid
