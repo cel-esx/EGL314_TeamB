@@ -43,11 +43,53 @@ dummy_game.py
    
 2. As the level sound track is playing, user can pressed the second row buttons.
    <br>
-   a. staged cleared - *the button can be pressed multiple times as the level track is playing* <br>
-   b. level cleared - *the code will send command to MultiPlay to play the next level sound track* <br>
-   c. Enchantment failed - *the button can be pressed multiple times as the level track is playing (user is failling the stage)* <br>
-   d. Gameover - *the code will send command to MultiPlay to stop all sound track* <br>
+   a. staged cleared - *the button can be **pressed multiple times** as the level track is playing (when player passed the stage)* <br><br>
+   b. level cleared - *the code will send command to MultiPlay to play the **next level sound track*** <br><br>
+   c. Enchantment failed - *the button can be **pressed multiple times** as the level track is playing (user is failling the stage)* <br><br>
+   d. Gameover - *the code will send command to MultiPlay to **stop all** sound track* <br>
+   ```mermaid
+   graph TD
+    A[Level Track <br> Is Playing] --> B[Stage Cleared Button]
+    B --> C[MultiPlay plays cue 13]
+    C --> D[Level Track Continues <br> to Play]
 
+    A --> E[Level Cleared Button]
+    E --> F[MultiPlay stops current <br> level track, and <br> plays cue 14]
+    F -->|POC sends commands to <br> Multiplay| G[MultiPlay Proceeds To Play <br> The Next Level Track]
+
+    A --> H[Enhancement <br> Failed Button]
+    H --> I[MultiPlay plays cue 13]
+    I --> J[Level Track Continues <br> to Play]
+
+    A --> K[Gameover Button]
+    K --> L[MultiPlay stops current <br> level track, <br> and plays cue 15]
+
+   %% ==========================================
+    %% COLOR STYLING SCRIPT
+   %% ==========================================
+    
+   %% Main Start Box (Gray/Blue)
+    style A fill:#ECECFF,stroke:#9370DB,stroke-width:2px,color:#000
+   
+   %% Branch 1: Stage Cleared (Light Green)
+    style B fill:#E1F5FE,stroke:#03A9F4,stroke-width:2px
+    style C fill:#E1F5FE,stroke:#03A9F4,stroke-width:1px
+    style D fill:#E1F5FE,stroke:#03A9F4,stroke-width:1px
+
+    %% Branch 2: Level Cleared (Bright Green Success)
+    style E fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px
+    style F fill:#E8F5E9,stroke:#4CAF50,stroke-width:1px
+    style G fill:#E8F5E9,stroke:#4CAF50,stroke-width:1px
+
+    %% Branch 3: Enhancement Failed (Orange/Yellow Warning)
+    style H fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
+    style I fill:#FFF3E0,stroke:#FF9800,stroke-width:1px
+    style J fill:#FFF3E0,stroke:#FF9800,stroke-width:1px
+
+    %% Branch 4: Gameover (Red Danger)
+    style K fill:#FFEBEE,stroke:#F44336,stroke-width:2px
+    style L fill:#FFEBEE,stroke:#F44336,stroke-width:1px
+   ```
 ## The Desired Results in the POC Code
 1. When player pressed "S", POC Code will play cue 1.
 2. Every level has a audio track in the MultiPlay
