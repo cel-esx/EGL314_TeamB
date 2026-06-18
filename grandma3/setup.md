@@ -14,3 +14,5 @@ This software allows user to do pre-programming and create lighting design for e
 <img src="image-1.png" width="400" height="400">
 <p>9. Click "Install"</p>
 <img src="image-2.png" width="400" height="400">
+<p>It takes some time to install... Roughly 5 minutes! :sleeping: </p>
+<img src="image-3.png" width="400" height="400">
