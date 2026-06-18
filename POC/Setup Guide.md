@@ -29,7 +29,7 @@
    https://www.anaconda.com/docs/getting-started/anaconda/install/windows-gui-install
 
    2. Once installed, open ```Anaconda Prompt```<br>
-   ![Ananconda prompt](..Images/conda.png)
+   ![Ananconda prompt](/Images/conda.png)
 
    3. Type 
       ```bash
