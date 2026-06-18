@@ -5,11 +5,15 @@ This software allows the track to play one or more audio tracks at any time, enh
 
 ## Configuration and set up
 1. Download [MultiPlay3 Version 3.0.50.0](https://da-share.com/forum/index.php?topic=74.0)
+
 2. Once downloaded, allow/agree all preferences and options before launching the software.
+
 3. In MultiPlay, under file, click Preferences. Then, go to OSC Control tab.
-   ![Alt text](main/MultiPlayConfig.png)
+   ![Alt text](MultiPlayConfig.png)
+
 4. Under OSC Control, enable "Control (Incoming)" and change the port number to 8000
     This is to allow MultiPlay to receive commands from the POC code
+   ![Alt text](OSCControl.png)
 
 ## Flow Chart
 ```mermaid
