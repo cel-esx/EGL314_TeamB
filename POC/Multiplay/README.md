@@ -26,7 +26,7 @@ Once configured, click **OK**.
 
 ### Finding Your Laptop's IP Address
 
-1. Open the **Command Prompt** (cmd) on your Windows machine.
+1. Open the **Command Prompt** (cmd) on your Windows machine. <br>
 ![Alt Text](Images&MultiPlay/ipconfig.png)
 2. Type `ipconfig` and press **Enter**. Your IPv4 address will be listed under your active network adapter.
 ![Alt Text](Images&MultiPlay/cmd.png)
