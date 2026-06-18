@@ -11,3 +11,5 @@ This software allows user to do pre-programming and create lighting design for e
 ![alt text](image.png)
 7. ![alt text](image-1.png)
 8. ![alt text](image-2.png)
+
+<img src="image.png" width="50" height="50">
