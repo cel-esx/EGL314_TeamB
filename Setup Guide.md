@@ -80,16 +80,16 @@
    ### Microsoft Visual Studio Code
    1. Install **Microsoft Visual Studio Code** in your laptop by choosing the **Windows** option: <br>
    https://code.visualstudio.com/download
-   ![VS Code](/Images/vscode.png)
+   ![VS Code](/POC/Images/vscode.png)
    2. Once installed, open ```Visual Studio code``` ![VScodesearch](/POC/Images/visual_search.png)
    3. Create a folder, then create a file named ```name.py```
    4. Click on the **Extensions** Icon on the left sidebar (**5th icon**, looks like **4 blocks**)
-   ![VS Code Extension](/POCImages/Extension.png)
+   ![VS Code Extension](/POC/Images/Extension.png)
    5. Search for ``` Python``` and click on **Install**
    ![VS Code Python](/POC/Images/Download%20Python.png)
    6. Add in the code from [POC Game code](https://github.com/cel-esx/EGL314_TeamB/blob/main/POC/POC%20Game%20Code) to your ```name.py``` file
       * Ensure that your **Visual Studio Code** folder has the ```.csv``` file
-      * Refer to [Capture Gesture Readme File](/POC/CAPTURE_GESTURE_README.md) to know how to add / delete gestures
+      * Refer to [Capture Gesture](/POC/CAPTURE_GESTURE_README.md) ReadMe file to know how to add / delete gestures
    7. Ensure that the ```IP Addess``` & ```Port Number``` is to your own laptop
    ![POC IP Change](/POC/Images/IP%20Config.png)
    > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
