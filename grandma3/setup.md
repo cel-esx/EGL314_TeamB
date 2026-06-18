@@ -8,8 +8,6 @@ This software allows user to do pre-programming and create lighting design for e
 4. Click on 'ma' in file
 5. Click on 'grandMA3_onPC_win_v2.4.2.2' in file 
 6. Click 'Yes'
-![alt text](image.png)
-7. ![alt text](image-1.png)
-8. ![alt text](image-2.png)
-
-<img src="image.png" width="400" height="400">
+7. <img src="image.png" width="400" height="400">
+8. <img src="image-1.png" width="400" height="400">
+9. <img src="image-2.png" width="400" height="400">
