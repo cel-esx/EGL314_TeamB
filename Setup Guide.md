@@ -92,9 +92,7 @@
       * Ensure that your **Visual Studio Code** folder contains the following
          * [Gesture Definition](/POC/new_gesture_definitions.csv) file
          * [Hand Images](/POC/Hand_Images) file
-      >Add the ```POC Game Code, Gesture Definition, Hand_Images in the same folder```
-      <br>
-   ![Required Files](/POC/Images/Req%20Files.png)
+      >Add the ```POC Game Code```, ```Gesture Definition```, ```Hand_Images``` in the same folder. Refer to [Example](/POC/Images/Req%20Files.png)
       * Refer to [Capture Gesture](/POC/CAPTURE_GESTURE_README.md) ReadMe file to know how to add / delete gestures
    7. Ensure that the ```IP Addess``` & ```Port Number``` is to your own laptop
    ![POC IP Change](/POC/Images/IP%20Config.png)
