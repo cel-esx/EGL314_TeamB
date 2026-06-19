@@ -135,6 +135,6 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 
 * **Game Over:** 
     
-    **GrandMA3:** Incorrect gestures will trigger the red lights by ```MA3_GAMEOVER_CMD``` . If stage not cleared, will go back to the last level you were at. Eg. Incorrect gesture for level 4 stage 2, will go back to level 3. Shown in ```elif game_status == "LOSE":``` (Look for Line 390 in [POC Game Code](POC/POCGameCode.py) for full code) 
+    **GrandMA3:** Incorrect gestures will trigger the red lights by ```MA3_GAMEOVER_CMD``` . If stage not cleared, will go back to the last level you were at. Eg. Incorrect gesture for level 4 stage 2, will go back to level 3. Shown in ```elif game_status == "LOSE":``` (Look for Line 390 in [POC Game Code](POC/POC%20Game%20Code.py) for full code) 
 
     **MultiPlay:** For every incorrect gestures, an ```incorrect gestures``` audio track will be playing. If player lost 3 lives, ```gameover``` track will be played.
