@@ -62,7 +62,7 @@ This software allows user to do pre-programming and create lighting design for e
 6. Click on the :gear: "Gear" icon. Subpage will open, click on "Network"
 <img src="Images/Network.png" width="400" height="300">
 
-7. Remeber Ip Address to put into the code
+7. Remember Ip Address to put into the code
 <img src="Images/ipaddress.png" width="300" height="100">
 
 Congratulations! Once all steps are completed, your lighting is ready to be used with the game!
