@@ -95,8 +95,13 @@
    ![POC IP Change](/POC/Images/IP%20Config.png)
    > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
    ![Laptop IP Address](/POC/Images/Wifi.png)
-   8. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
-   9. If Step 7 fails to work as expected
+   8. Please ensure that the following files are in your folder in visual stdio code
+      * [POC Game Code](/POC/POC%20Game%20Code)
+      * [Gesture Defination](/POC/new_gesture_definitions.csv)
+      * [Hand Images](/POC/Hand_Images)
+   ![Required Files](/POC/Images/Req%20Files.png)
+   9. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
+   10. If Step 7 fails to work as expected
       * Click on the top middle search bar
       * Type  ``` > ```
       * Click on ``` Python: Select Interpreter ```
