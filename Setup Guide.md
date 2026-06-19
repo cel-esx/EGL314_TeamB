@@ -102,10 +102,10 @@
    ![Required Files](/POC/Images/Req%20Files.png)
    9. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
    10. If Step 7 fails to work as expected
-      * Click on the top middle search bar
-      * Type  ``` > ```
-      * Click on ``` Python: Select Interpreter ```
-      * Select your python enviroment
+   * Click on the top middle search bar
+   * Type  ``` > ```
+   * Click on ``` Python: Select Interpreter ```
+   * Select your python enviroment
 
    ### GrandMA3
    Please click on this [link](/POC/grandma3/grandMA3setup.md) to learn how to setup GrandMA3 on your laptops
