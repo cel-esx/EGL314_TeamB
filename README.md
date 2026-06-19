@@ -61,15 +61,31 @@ graph TD
 ---
 # Repository Structure
 | Folder Location | File Name | Technical Roles & Functions |
-| :--- | :---: | :---: |
-| POC |  Hand_Images| Contains all the hand images that are used in the game |
+| :---: | :---: | :---: |
+| Main (Outside POC folder) |  README.md| Main readme file talking about the purpose of the project and the game itself |
+| Main (Outside POC folder)|  Setup Guide.md| Contains the steps required in order the set up viewer's laptop to play the game |
+| Main (Outside POC folder) |  LICENSE| Contains the license for this repository |
+| POC |  Hand_Images| Contains all the hand images that are used in the game |
+| POC |  Capture Gesture.py| Contains python code for saving / deleting gesture|
+| POC | CAPTURE_GESTURE_README.md| Instructions on setup of capture gesture.py and how it works to add new gestures to new_gesture_definition.csv |
+| POC | new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
+| POC | POC GAME CODE | Contains entire game code |
+| POC |  grandma3| Folder containing all grandma3 setup and related pictures|
+| POC |  Multiplay| Folder containing all Multiplay setup and related pictures|
 |POC/Multiplay| Images&MultiPlay | Contains all the images on the GitHub and the MultiPlay file that was used for the POC Code|
 |POC/Multiplay| dummy_game.py| Game Simulation to test OSC commands |
-|POC/Multiplay| README.md| Contains all the set up and configuration in the Multiplay with POC and dummy_game codes explained |
+|POC/Multiplay| MultiPlay.md| Contains all the set up and configuration in the Multiplay with POC and dummy_game codes explained |
 |POC/grandMA3|Images| Contains images for more visual understanding |
 |POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
 |POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
-|POC| More data| More data |
+|POC| CAPTURE_GESTURE_README.md| Instructions on setup of capture gesture.py and how it works to add new gestures to new_gesture_definition.csv |
+|POC| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
+|POC| POC GAME CODE | Contains entire game code |
+
+=======
+
+
+
 > Note: All files Related to POC is inside the folder named: **POC**
 ---
 
