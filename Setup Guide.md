@@ -95,7 +95,7 @@
    ![POC IP Change](/POC/Images/IP%20Config.png)
    > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
    ![Laptop IP Address](/POC/Images/Wifi.png)
-   8. Please ensure that the following files are in your folder in visual stdio code
+   8. Please ensure that the following files are in your folder in visual studio code
       * [POC Game Code](/POC/POC%20Game%20Code)
       * [Gesture Defination](/POC/new_gesture_definitions.csv)
       * [Hand Images](/POC/Hand_Images) <br>
