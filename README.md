@@ -26,7 +26,7 @@ What sets this project apart is its integration with live theater tech: the game
 
 ---
 ## How to Set up
-Please refer to [Setup Guide](POC/Setup%20Guide.md) to see what do you need to have in order to run the game
+Please refer to [Setup Guide](/POC/Setup%20Guide.md) to see what do you need to have in order to run the game
 
 >Note: This version is in the POC stage which means that the game is still in development. There will be more changes added to this game on a later date
 ---
