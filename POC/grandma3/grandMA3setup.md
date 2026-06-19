@@ -12,7 +12,7 @@ This software allows user to do pre-programming and create lighting design for e
 <img src="Images/image.png" width="400" height="400">
 
    <div align="left">
-   It takes some time to install... Roughly 5 minutes! :sleeping:
+   <p> It takes some time to install... Roughly 5 minutes! :sleeping: </p>
      <img src="Images/image-3.png" alt="GrandMA3 Search" width="400">
    </div>
 
