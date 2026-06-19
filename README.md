@@ -78,9 +78,6 @@ graph TD
 |POC/grandMA3|Images| Contains images for more visual understanding |
 |POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
 |POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
-|POC| CAPTURE_GESTURE_README.md| Instructions on setup of capture gesture.py and how it works to add new gestures to new_gesture_definition.csv |
-|POC| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
-|POC| POC GAME CODE | Contains entire game code |
 
 =======
 
