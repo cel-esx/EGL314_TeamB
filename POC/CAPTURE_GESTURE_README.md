@@ -111,7 +111,7 @@ new_gesture_definitions.csv ← Auto-created on first run; stores all saved gest
 ## Requirements & Setup
 
 ### Prerequisites
-**Make sure to follow [SETUP](https://github.com/cel-esx/EGL314_TeamB/blob/main/POC/Setup%20Guide.md) before proceeding**
+**Make sure to follow [SETUP](https://github.com/cel-esx/EGL314_TeamB/blob/main/Setup%20Guide.md) before proceeding**
 
 ### Webcam
 
