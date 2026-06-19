@@ -26,7 +26,8 @@
    
    ### Anaconda Set-Up
    1. Install **Anaconda** in your laptop:<br>
-   https://www.anaconda.com/docs/getting-started/anaconda/install/windows-gui-install
+   https://www.anaconda.com/download
+   > If you need more help, Please click [here](https://www.anaconda.com/docs/getting-started/anaconda/install/windows-gui-install) for a video demonstation
 
    2. Once installed, open ```Anaconda Prompt```<br>
    ![Ananconda prompt](/POC/Images/conda.png)
