@@ -89,19 +89,19 @@
    5. Search for ``` Python``` and click on **Install**
    ![VS Code Python](/POC/Images/Download%20Python.png)
    6. Add in the code from [POC Game code](https://github.com/cel-esx/EGL314_TeamB/blob/main/POC/POC%20Game%20Code) to your ```name.py``` file
-      * Ensure that your **Visual Studio Code** folder has the ```.csv``` file
+      * Ensure that your **Visual Studio Code** folder contains the following
+         * [Gesture Definition](/POC/new_gesture_definitions.csv) file
+         * [Hand Images](/POC/Hand_Images) file
+      >Add the ```POC Game Code, Gesture Definition, Hand_Images in the same folder```
+      <br>
+   ![Required Files](/POC/Images/Req%20Files.png)
       * Refer to [Capture Gesture](/POC/CAPTURE_GESTURE_README.md) ReadMe file to know how to add / delete gestures
    7. Ensure that the ```IP Addess``` & ```Port Number``` is to your own laptop
    ![POC IP Change](/POC/Images/IP%20Config.png)
    > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
    ![Laptop IP Address](/POC/Images/Wifi.png)
-   8. Please ensure that the following files are in your folder in visual studio code
-      * [POC Game Code](/POC/POC%20Game%20Code)
-      * [Gesture Defination](/POC/new_gesture_definitions.csv)
-      * [Hand Images](/POC/Hand_Images) <br>
-   ![Required Files](/POC/Images/Req%20Files.png)
-   9. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
-   10. If Step 7 fails to work as expected
+   8. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
+   9. If Step 7 fails to work as expected
    * Click on the top middle search bar
    * Type  ``` > ```
    * Click on ``` Python: Select Interpreter ```
