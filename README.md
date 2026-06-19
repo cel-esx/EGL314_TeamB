@@ -70,14 +70,6 @@ graph TD
 |POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
 |POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
 |POC| More data| More data |
-|POC| More data| More data |
-=======
-|POC/Multiplay| Images&MultiPlay | Contains all the images on the GitHub and the MultiPlay file that was used for the POC Code|
-|POC/Multiplay| dummy_game.py| Game Simulation to test OSC commands |
-|POC/Multiplay| README.md| Contains all the set up and configuration in the Multiplay with POC and dummy_game codes explained |
-|POC/grandMA3|Images| Contains images for more visual understanding |
-|POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
-|POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
 > Note: All files Related to POC is inside the folder named: **POC**
 ---
 
@@ -130,7 +122,8 @@ The **main objective** of the game is to successfully complete all 6 levels and 
     * Player 2 (Right Side): Must strictly match the 2 gestures displayed on the right side of the screen
 
 * **Progressive Stages:** The game consists of 6 levels, and each level requires you to pass 4 progressive stages by holding the correct matching gestures
-* GrandMA3: 
+* GrandMA3: For each progressive stage passed, 1 lighting fixture will turn on to show the players' progress. This is triggered by ```GAME_SHOW_MAP``` . Green lights will also turn on to show level cleared, which happens with ```MA3_PASS_LEVEL_CMD``` .
+
 * MultiPlay: Play level sound tracks. Every passed stages, there will be a ```stage_cleared``` audio track playing. If players completed the level, ```levelcleared``` audio track will be played.
 * **Winning:** If the above is done correctly by matching the gestures on time, you win
 ## Penalties
@@ -140,5 +133,8 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 
 * **Checkpoint Rollbacks:** If you lose a life, the game resets your stage progress and knocks you back to the beginning of your nearest major milestone checkpoint (Level 1, 3, or 5).
 
-* **Game Over:** [GrandMA]
-  **MultiPlay:** For every incorrect gestures, an ```incorrect gestures``` audio track will be playing. If player lost 3 lives, ```gameover``` track will be played.
+* **Game Over:** 
+    
+    **GrandMA3:** Incorrect gestures will trigger the red lights by ```MA3_GAMEOVER_CMD```
+
+    **MultiPlay:** For every incorrect gestures, an ```incorrect gestures``` audio track will be playing. If player lost 3 lives, ```gameover``` track will be played.
