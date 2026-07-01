@@ -58,24 +58,6 @@ GAME_SHOW_MAP = {
         2: {"fixture": 10, "cue_cmd": "Go+ Sequence 3 Cue 10"},
         3: {"fixture": 11, "cue_cmd": "Go+ Sequence 3 Cue 11"},
         4: {"fixture": 12, "cue_cmd": "Go+ Sequence 3 Cue 12"},
-    },
-    4: { # Level 4
-        1: {"fixture": 13, "cue_cmd": "Go+ Sequence 3 Cue 13"},
-        2: {"fixture": 14, "cue_cmd": "Go+ Sequence 3 Cue 16"},
-        3: {"fixture": 15, "cue_cmd": "Go+ Sequence 3 Cue 16"},
-        4: {"fixture": 16, "cue_cmd": "Go+ Sequence 3 Cue 16"},
-    },
-    5: { # Level 5
-        1: {"fixture": 17, "cue_cmd": "Go+ Sequence 3 Cue 17"},
-        2: {"fixture": 18, "cue_cmd": "Go+ Sequence 3 Cue 18"},
-        3: {"fixture": 19, "cue_cmd": "Go+ Sequence 3 Cue 19"},
-        4: {"fixture": 20, "cue_cmd": "Go+ Sequence 3 Cue 20"},
-    },
-    6: { # Level 6
-        1: {"fixture": 21, "cue_cmd": "Go+ Sequence 3 Cue 21"},
-        2: {"fixture": 22, "cue_cmd": "Go+ Sequence 3 Cue 22"},
-        3: {"fixture": 23, "cue_cmd": "Go+ Sequence 3 Cue 23"},
-        4: {"fixture": 24, "cue_cmd": "Go+ Sequence 3 Cue 24"},
     }
 }
 
@@ -279,7 +261,7 @@ cv2.setWindowProperty("Gesture Recognition", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW
 
 MATCH_MIN_THRESHOLD = 0.15    
 MATCH_THRESHOLD     = 0.65   
-BASE_DURATION, MAX_LEVELS = 15.0, 6      
+BASE_DURATION, MAX_LEVELS = 15.0, 3      
 
 current_level, current_cycle = 1, 0
 player_lives = 3
@@ -288,6 +270,7 @@ matched_targets = [False] * 4
 HOLD_REQUIRED_DURATION = 2.0 
 match_hold_start_time = None  
 
+START_COUNTDOWN_DURATION = 5.0
 BONUS_ALERT_DURATION, bonus_cycle, bonus_gesture_count = 5.0, 0, 4
 round_start_time = time.time()
 game_status = "START_SCREEN"
@@ -295,6 +278,10 @@ status_display_time = 0.0
 failed_from_bonus = False
 
 last_active_cue_cmd = None
+
+# Dual player multi-hold setup variables
+START_HOLD_REQUIRED = 3.0
+start_hold_start_time = None
 
 while True:
     ret, frame = cap.read() 
@@ -304,7 +291,8 @@ while True:
     h, w, _ = frame.shape
     
     result = None
-    if game_status not in ["START_SCREEN", "GAME_CLEAR", "WIN", "LOSE", "BONUS_ALERT", "GAMEOVER", "LEVEL6_CLEAR"]: 
+    # Enable hand tracking collection on the START_SCREEN loop state
+    if game_status == "START_SCREEN" or game_status not in ["START_COUNTDOWN", "GAME_CLEAR", "WIN", "LOSE", "BONUS_ALERT", "GAMEOVER", "LEVEL6_CLEAR"]: 
         small_rgb = cv2.resize(frame, (640, 360)) 
         small_rgb = cv2.cvtColor(small_rgb, cv2.COLOR_BGR2RGB) 
         result = hands.process(small_rgb)  
@@ -316,8 +304,66 @@ while True:
         round_duration = BASE_DURATION
         time_left = round_duration
         draw_sleek_text(frame, "THE ENCHANTMENT ROOM", (w // 2 - 280, h // 2 - 40), font_scale=1.3, thickness=2, color=(0, 255, 255))
-        draw_sleek_text(frame, "Press [ S ] to start enchanting weapon", (w // 2 - 280, h // 2 + 30), font_scale=0.6, thickness=1, color=(180, 180, 180))
+        draw_sleek_text(frame, "2 Players Hold [ GESTURE NAME ] or press [ S ] to start", (w // 2 - 320, h // 2 + 30), font_scale=0.6, thickness=1, color=(180, 180, 180))
+        
+        fist_count = 0
+        if result and result.multi_hand_landmarks and result.multi_handedness:
+            for hand_landmarks, bandwidth in zip(result.multi_hand_landmarks, result.multi_handedness):
+                detected_label = bandwidth.classification[0].label
+                draw_cyber_hand(frame, hand_landmarks, (0, 255, 255))
+                lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
+                
+                matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
+                if matched_gest == "game_start":
+                    fist_count += 1
+
+        # Check if exactly 2 players (or more) are performing a fist gesture
+        if fist_count >= 2:
+            if start_hold_start_time is None:
+                start_hold_start_time = current_time
+            
+            elapsed_start_hold = current_time - start_hold_start_time
+            start_ratio = min(1.0, elapsed_start_hold / START_HOLD_REQUIRED)
+            
+            # Rendering circular completing bar
+            circle_center = (w // 2, h // 2 + 130)
+            circle_radius = 45
+            # Draw background track
+            cv2.circle(frame, circle_center, circle_radius, (40, 40, 40), 6, cv2.LINE_AA)
+            # Draw active progress arc
+            end_angle = int(start_ratio * 360) - 90
+            cv2.ellipse(frame, circle_center, (circle_radius, circle_radius), 0, -90, end_angle, (0, 255, 100), 6, cv2.LINE_AA)
+            # Context text above ring
+            draw_sleek_text(frame, f"PREPARING: {int(start_ratio * 100)}%", (circle_center[0] - 65, circle_center[y_min if 'y_min' in locals() else 0] - 70 if 'y_min' in locals() else circle_center[1] - 65), font_scale=0.45, thickness=1, color=(0, 255, 100))
+            
+            if elapsed_start_hold >= START_HOLD_REQUIRED:
+                start_hold_start_time = None
+                player_lives = 3
+                #current_level = 1
+                current_cycle, bonus_cycle = 0, 0
+                target_keys, matched_targets = get_new_targets(), [False] * 4
+                round_duration = BASE_DURATION
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
+                status_display_time = time.time()
+                game_status = "START_COUNTDOWN"
+                last_active_cue_cmd = None
+        else:
+            # Drop/disappear the bar instantly if at least one hand fails or leaves
+            start_hold_start_time = None
           
+    elif game_status == "START_COUNTDOWN":
+        time_left_countdown = max(0.0, START_COUNTDOWN_DURATION - (current_time - status_display_time))
+        countdown_number = int(np.ceil(time_left_countdown))
+        
+        if countdown_number > 0:
+            draw_sleek_text(frame, str(countdown_number), (w // 2 - 30, h // 2), font_scale=3.0, thickness=5, color=(0, 255, 255))
+            draw_sleek_text(frame, "GET READY...", (w // 2 - 100, h // 2 - 100), font_scale=1.0, thickness=2, color=(255, 255, 255))
+        
+        if time_left_countdown <= 0:
+            send_osc_signal(multiplay_client, "/cue/1/go", 1)
+            round_start_time = time.time()
+            game_status = "PLAYING"
+
     elif game_status == "PLAYING":
         time_left = max(0.0, round_duration - (current_time - round_start_time))
         if time_left <= 0:
@@ -360,7 +406,6 @@ while True:
         if current_time - status_display_time > BONUS_ALERT_DURATION:
             send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
             send_osc_signal(multiplay_client, "/cue/7/go", 1)
-            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
             target_keys, matched_targets, bonus_cycle, round_duration = get_new_targets(), [False]*bonus_gesture_count, 0, 15.0
             round_start_time, game_status = time.time(), "BONUS_PLAYING"
            
@@ -376,7 +421,7 @@ while True:
             elif game_status == "WIN":
                 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
 
-                if current_level == 6 and bonus_cycle >= 3:
+                if current_level == 3 and bonus_cycle >= 3:
                     current_level, current_cycle, bonus_cycle, game_status = 1, 0, 0, "START_SCREEN"
                     send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
                     send_osc_signal(multiplay_client, "/cue/7/stop", 1)
@@ -397,25 +442,7 @@ while True:
                     target_keys, matched_targets = get_new_targets(), [False] * bonus_gesture_count
                     round_start_time, game_status = time.time(), "BONUS_PLAYING"
                 else:
-
-                    if current_level in [1, 2]: 
-                        
-                        current_level = 1
-                        send_osc_signal(multiplay_client, "/cue/2/stop", 1)  
-                        send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
-                    
-                    elif current_level in [3, 4]: 
-                        
-                        current_level = 3
-                        send_osc_signal(multiplay_client, "/cue/4/stop", 1)  
-                        send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
-                    
-                    elif current_level in [5, 6]: 
-                        
-                        current_level = 5
-                        send_osc_signal(multiplay_client, "/cue/6/stop", 1)  
-                        send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
-
+                    # Keep current_level exactly as it is to restart the same level
                     current_cycle, bonus_cycle = 0, 0  
                     target_keys, matched_targets = get_new_targets(), [False] * 4 
                     round_duration = BASE_DURATION - (current_level - 1)
@@ -480,7 +507,7 @@ while True:
         draw_sleek_text(frame, f"CHARGING: {int(hold_ratio * 100)}%", (bar_x + bar_w + 10, bar_y + 10), font_scale=0.4, thickness=1, color=(0, 255, 100))
     # ──────────────────────────────────────────────────────────────────────
 
-    if game_status not in ["START_SCREEN", "GAME_CLEAR", "WIN", "LOSE", "BONUS_ALERT", "GAMEOVER", "LEVEL6_CLEAR"]:
+    if game_status not in ["START_SCREEN", "START_COUNTDOWN", "GAME_CLEAR", "WIN", "LOSE", "BONUS_ALERT", "GAMEOVER", "LEVEL6_CLEAR"]:
         for i, key in enumerate(target_keys):
             gesture_name, hand_label = key
             lookup_key = (gesture_name.lower().strip(), hand_label.lower().strip())
@@ -546,7 +573,7 @@ while True:
                 if game_status == "PLAYING":
                     current_stage = current_cycle + 1
                     if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
-                        next_cfg = GAME_SHOW_MAP[current_level][current_stage][current_cycle + 1]
+                        cfg = GAME_SHOW_MAP[current_level][current_stage]
                         last_active_cue_cmd = cfg["cue_cmd"]
                         send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
                     
@@ -559,15 +586,9 @@ while True:
                         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
                         send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_PASS_LEVEL_CMD)
                         
-                        if current_level == 5:
-                            current_level = 6
+                        if current_level == 3:
                             current_cycle = 0
-                            game_status, status_display_time = "WIN", current_time
-                            send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
-                            send_osc_signal(multiplay_client, "/cue/14/go", 1)
-                        elif current_level == 6:
-                            current_cycle = 0
-                            game_status, status_display_time = "LEVEL6_CLEAR", current_time
+                            game_status, status_display_time = "BONUS_ALERT", current_time
                             send_osc_signal(multiplay_client, "/cue/7/go", 1)
                         else:
                             current_level += 1
@@ -632,12 +653,29 @@ while True:
     elif key == ord('s') or key == ord('S'):
         if game_status == "START_SCREEN":
             player_lives = 3
-            current_level, current_cycle, bonus_cycle = 1, 0, 0
+            #current_level = 1
+            current_cycle, bonus_cycle = 0, 0
             target_keys, matched_targets = get_new_targets(), [False] * 4
             round_duration = BASE_DURATION
-            send_osc_signal(multiplay_client, "/cue/1/go", 1)
             send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
-            round_start_time, game_status = time.time(), "PLAYING"
+            status_display_time = time.time()
+            game_status = "START_COUNTDOWN"
+            last_active_cue_cmd = None
+
+    elif key == ord('b') or key == ord('B'):
+        if game_status == "START_SCREEN":
+            player_lives = 3
+            current_level = 3
+            current_cycle = 0
+            bonus_cycle = 0
+            # Set state to BONUS_ALERT to show the 5-second transition screen
+            game_status = "BONUS_ALERT"
+            status_display_time = time.time()
+            # Stop any regular level tracks and trigger the bonus music/fixtures
+            send_osc_signal(multiplay_client, "/cue/1/stop", 1)
+            send_osc_signal(multiplay_client, "/cue/2/stop", 1)
+            send_osc_signal(multiplay_client, "/cue/3/stop", 1)
+            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
             last_active_cue_cmd = None
 
 cap.release()
