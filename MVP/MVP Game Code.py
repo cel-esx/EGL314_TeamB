@@ -27,7 +27,7 @@ GMA3_LAPTOP_IP   = "192.168.254.252s" # "192.168.254.18"
 GMA3_PORT        = 8000           
 GMA3_ADDRESS     = "/gma3/cmd"      
 
-MULTIPLAY_LAPTOP_IP = "192.168.254.238" 
+MULTIPLAY_LAPTOP_IP = "192.168.254.238s" 
 MULTIPLAY_PORT      = 8000      
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -134,21 +134,19 @@ def cache_target_images(templates_keys, box_size):
                 break
  
 def match_gesture(landmarks_21_raw, hand_label, templates, threshold=0.65):
+    """
+    Since we are scanning silhouettes/shadows on the wall, hand label orientation can flip.
+    This runs the shadow vector through the library template list to confirm a match.
+    """
     live_feat = extract_feature_vector(landmarks_21_raw) 
-    best_gesture, best_distance, search_hand = None, float("inf"), hand_label.strip().lower()  
+    best_gesture, best_distance = None, float("inf")
+    
+    # Run through full gesture library to check matching features against shadow silhouette
     for (gesture, hand), variants in templates.items():  
-        if hand != search_hand: continue 
         for v in variants:
             dist = np.linalg.norm(live_feat - v["feature_vector"]) 
-            if dist < best_distance: best_distance, best_gesture = dist, gesture 
-
-    if best_distance > threshold:   
-        fallback_hand = "right" if search_hand == "left" else "left" 
-        for (gesture, hand), variants in templates.items():
-            if hand != fallback_hand: continue
-            for v in variants:
-                dist = np.linalg.norm(live_feat - v["feature_vector"])
-                if dist < best_distance: best_distance, best_gesture = dist, gesture
+            if dist < best_distance: 
+                best_distance, best_gesture = dist, gesture 
 
     return (best_gesture, best_distance) if best_distance <= threshold else (None, best_distance)
 
@@ -203,7 +201,7 @@ def overlay_preloaded_picture(frame, img_data, x_min, y_min, box_size):
     return True
 
 # ── INITIALIZATION ────────────────────────────────────────────────────────────
-box_size = 150 
+box_size = 360
      
 templates = load_gesture_definitions(CSV_FILE)
 all_keys = list(templates.keys()) 
@@ -241,37 +239,38 @@ left_gestures = [k for k in all_keys if k[1] == "left" and k[0].startswith("left
 right_gestures = [k for k in all_keys if k[1] == "right" and k[0].startswith("right_")] or [k for k in all_keys if k[1] == "right"]
 
 def get_new_targets():
+    # Level 1-3 assigns 1 unique objective pattern library for Player 1, and 1 for Player 2
     return [
-        (random.choice(left_gestures)[0], "Left"),
-        (random.choice(right_gestures)[0], "Right"),
-        (random.choice(left_gestures)[0], "Left"),
-        (random.choice(right_gestures)[0], "Right")
+        (random.choice(left_gestures)[0], "Player 1 (Both Hands)"),
+        (random.choice(right_gestures)[0], "Player 2 (Both Hands)")
     ]
 
 target_keys = get_new_targets()
-cap = cv2.VideoCapture(0)
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1) 
 
-if not cap.isOpened(): exit()  
+if not cap.isOpened(): 
+    print("[!] ERROR: Webcam index could not be opened. Try index 0, 2, or 3.")
+    exit()  
 
 cv2.namedWindow("Gesture Recognition", cv2.WINDOW_NORMAL)
 cv2.setWindowProperty("Gesture Recognition", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
 MATCH_MIN_THRESHOLD = 0.15    
 MATCH_THRESHOLD     = 0.65   
-BASE_DURATION, MAX_LEVELS = 15.0, 3      
+BASE_DURATION, MAX_LEVELS = 30.0, 3      
 
 current_level, current_cycle = 1, 0
 player_lives = 3
 round_duration = BASE_DURATION - (current_level - 1)
-matched_targets = [False] * 4 
+matched_targets = [False] * 2 
 HOLD_REQUIRED_DURATION = 2.0 
 match_hold_start_time = None  
 
 START_COUNTDOWN_DURATION = 5.0
-BONUS_ALERT_DURATION, bonus_cycle, bonus_gesture_count = 5.0, 0, 4
+BONUS_ALERT_DURATION, bonus_cycle, bonus_gesture_count = 5.0, 0, 2
 round_start_time = time.time()
 game_status = "START_SCREEN"
 status_display_time = 0.0
@@ -291,7 +290,6 @@ while True:
     h, w, _ = frame.shape
     
     result = None
-    # Enable hand tracking collection on the START_SCREEN loop state
     if game_status == "START_SCREEN" or game_status not in ["START_COUNTDOWN", "GAME_CLEAR", "WIN", "LOSE", "BONUS_ALERT", "GAMEOVER", "LEVEL6_CLEAR"]: 
         small_rgb = cv2.resize(frame, (640, 360)) 
         small_rgb = cv2.cvtColor(small_rgb, cv2.COLOR_BGR2RGB) 
@@ -317,7 +315,6 @@ while True:
                 if matched_gest == "game_start":
                     fist_count += 1
 
-        # Check if exactly 2 players (or more) are performing a fist gesture
         if fist_count >= 2:
             if start_hold_start_time is None:
                 start_hold_start_time = current_time
@@ -325,30 +322,24 @@ while True:
             elapsed_start_hold = current_time - start_hold_start_time
             start_ratio = min(1.0, elapsed_start_hold / START_HOLD_REQUIRED)
             
-            # Rendering circular completing bar
             circle_center = (w // 2, h // 2 + 130)
             circle_radius = 45
-            # Draw background track
             cv2.circle(frame, circle_center, circle_radius, (40, 40, 40), 6, cv2.LINE_AA)
-            # Draw active progress arc
             end_angle = int(start_ratio * 360) - 90
             cv2.ellipse(frame, circle_center, (circle_radius, circle_radius), 0, -90, end_angle, (0, 255, 100), 6, cv2.LINE_AA)
-            # Context text above ring
-            draw_sleek_text(frame, f"PREPARING: {int(start_ratio * 100)}%", (circle_center[0] - 65, circle_center[y_min if 'y_min' in locals() else 0] - 70 if 'y_min' in locals() else circle_center[1] - 65), font_scale=0.45, thickness=1, color=(0, 255, 100))
+            draw_sleek_text(frame, f"PREPARING: {int(start_ratio * 100)}%", (circle_center[0] - 65, circle_center[1] - 65), font_scale=0.45, thickness=1, color=(0, 255, 100))
             
             if elapsed_start_hold >= START_HOLD_REQUIRED:
                 start_hold_start_time = None
                 player_lives = 3
-                #current_level = 1
                 current_cycle, bonus_cycle = 0, 0
-                target_keys, matched_targets = get_new_targets(), [False] * 4
+                target_keys, matched_targets = get_new_targets(), [False] * 2
                 round_duration = BASE_DURATION
                 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
                 status_display_time = time.time()
                 game_status = "START_COUNTDOWN"
                 last_active_cue_cmd = None
         else:
-            # Drop/disappear the bar instantly if at least one hand fails or leaves
             start_hold_start_time = None
           
     elif game_status == "START_COUNTDOWN":
@@ -406,7 +397,7 @@ while True:
         if current_time - status_display_time > BONUS_ALERT_DURATION:
             send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
             send_osc_signal(multiplay_client, "/cue/7/go", 1)
-            target_keys, matched_targets, bonus_cycle, round_duration = get_new_targets(), [False]*bonus_gesture_count, 0, 15.0
+            target_keys, matched_targets, bonus_cycle, round_duration = get_new_targets(), [False] * 2, 0, 15.0
             round_start_time, game_status = time.time(), "BONUS_PLAYING"
            
     elif game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "LEVEL6_CLEAR"]:
@@ -428,7 +419,7 @@ while True:
                     send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
                     last_active_cue_cmd = None
                 else:
-                    target_keys, matched_targets, round_duration = get_new_targets(), [False]*4, BASE_DURATION - (current_level - 1)
+                    target_keys, matched_targets, round_duration = get_new_targets(), [False] * 2, BASE_DURATION - (current_level - 1)
                     round_start_time, game_status = time.time(), "PLAYING"  
                     last_active_cue_cmd = None
         
@@ -439,12 +430,11 @@ while True:
                     bonus_cycle = 0
                     send_osc_signal(multiplay_client, "/cue/7/go", 1)
                     round_duration = 15.0
-                    target_keys, matched_targets = get_new_targets(), [False] * bonus_gesture_count
+                    target_keys, matched_targets = get_new_targets(), [False] * 2
                     round_start_time, game_status = time.time(), "BONUS_PLAYING"
                 else:
-                    # Keep current_level exactly as it is to restart the same level
                     current_cycle, bonus_cycle = 0, 0  
-                    target_keys, matched_targets = get_new_targets(), [False] * 4 
+                    target_keys, matched_targets = get_new_targets(), [False] * 2 
                     round_duration = BASE_DURATION - (current_level - 1)
                     round_start_time, game_status = time.time(), "PLAYING"
                     last_active_cue_cmd = None
@@ -458,15 +448,15 @@ while True:
               
             elif game_status == "GAME_CLEAR":
                 current_level, current_cycle, bonus_cycle, game_status = 1, 0, 0, "START_SCREEN"
-                target_keys, matched_targets = get_new_targets(), [False] * 4
+                target_keys, matched_targets = get_new_targets(), [False] * 2
                 round_duration = BASE_DURATION
                 send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
                 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
                 last_active_cue_cmd = None
 
     # ── RENDER OVERLAYS ───────────────────────────────────────────────────────
-    margin_x, margin_y, spacing = 120, 190, 290
-    colors = [(0, 255, 255), (0, 0, 255), (0, 255, 0), (255, 0, 0)]
+    margin_x, margin_y, spacing = 650, 300, 600
+    colors = [(0, 255, 255), (0, 0, 255)]
 
     if game_status in ["PLAYING", "BONUS_PLAYING"]:
         title = f"BONUS ROUND ({bonus_cycle + 1}/3)" if game_status == "BONUS_PLAYING" else f"LEVEL {current_level} STAGE {current_cycle + 1}/4"
@@ -490,6 +480,9 @@ while True:
             cv2.rectangle(frame, (bar_x, bar_y), (bar_x + fill_w, bar_y + bar_h), bar_color, -1, cv2.LINE_AA)
 
         cv2.rectangle(frame, (bar_x, bar_y), (bar_x + bar_w, bar_y + bar_h), (150, 150, 150), 1, cv2.LINE_AA)
+
+        timer_text = f"{int(time_left)}s"
+        draw_sleek_text(frame, timer_text, (bar_x + bar_w + 15, bar_y + 28), font_scale=0.6, thickness=1, color=(255, 255, 255))
                 
         lives_color = (0, 255, 0) if player_lives >= 2 else (0, 0, 255)
         draw_hearts(frame, player_lives, max_lives=3, x_start=35, y=60, size=60, gap=8)
@@ -509,9 +502,7 @@ while True:
 
     if game_status not in ["START_SCREEN", "START_COUNTDOWN", "GAME_CLEAR", "WIN", "LOSE", "BONUS_ALERT", "GAMEOVER", "LEVEL6_CLEAR"]:
         for i, key in enumerate(target_keys):
-            gesture_name, hand_label = key
-            lookup_key = (gesture_name.lower().strip(), hand_label.lower().strip())
-            target_landmarks = templates[lookup_key][0]["raw_landmarks"] if lookup_key in templates else (templates.get((lookup_key[0], "right" if lookup_key[1] == "left" else "left"), [{"raw_landmarks": np.zeros((21,3))}])[0]["raw_landmarks"])
+            gesture_name, player_label = key
             
             center_x = margin_x + i * spacing + (box_size // 2)
             center_y = margin_y + (box_size // 2)
@@ -520,29 +511,23 @@ while True:
             color = colors[i]
             
             cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), color, 1, cv2.LINE_AA)
+            draw_sleek_text(frame, player_label, (x_min + 5, y_min - 10), font_scale=0.5, thickness=1, color=color)
             
             if gesture_name in PRELOADED_IMAGES:
                 overlay_preloaded_picture(frame, PRELOADED_IMAGES[gesture_name], x_min, y_min, box_size)
-            elif np.any(target_landmarks):
-                lm = target_landmarks.copy()
-                lm[:, :2] -= np.mean(lm[:, :2], axis=0)
-                max_val = np.max(np.abs(lm[:, :2]))
-                if max_val > 0: lm[:, :2] /= max_val
-                lm[:, :2] = lm[:, :2] * (box_size // 3) + [center_x, center_y]
-                
-                for start_idx, end_idx in mp_hands.HAND_CONNECTIONS:
-                    cv2.line(frame, (int(lm[start_idx, 0]), int(lm[start_idx, 1])), (int(lm[end_idx, 0]), int(lm[end_idx, 1])), color, 1, cv2.LINE_AA)
-                for point in lm:
-                    cv2.circle(frame, (int(point[0]), int(point[1])), 2, (255, 255, 255), -1, cv2.LINE_AA)
             
             if matched_targets[i]:
-                cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2, cv2.LINE_AA)
-                draw_sleek_text(frame, "MATCHED", (x_min + 5, y_min + 20), font_scale=0.45, thickness=1, color=(0, 255, 0))
+                cv2.rectangle(frame, (x_max - 5, y_min - 5), (x_max, y_max), (0, 255, 0), 2, cv2.LINE_AA)
+                draw_sleek_text(frame, "MATCHED (BOTH HANDS OK)", (x_min + 5, y_min + 20), font_scale=0.45, thickness=1, color=(0, 255, 0))
 
+        # ── CORE WALL SHADOW ALGORITHM ─────────────────────────────────────────
         matched_targets = [False] * len(target_keys)
+        
         if result and result.multi_hand_landmarks and result.multi_handedness:
             hand_colors = [(0, 165, 255), (255, 0, 150), (0, 255, 100), (255, 150, 0)]
-            assigned_targets = set()
+            
+            # Extract names of matched gesture labels for every active shadow found on wall
+            detected_shadow_gestures = []
             
             for idx, (hand_landmarks, bandwidth) in enumerate(zip(result.multi_hand_landmarks, result.multi_handedness)):
                 if idx >= 4: break
@@ -554,15 +539,21 @@ while True:
                 hand_span = np.max(lm_array[:, :2], axis=0) - np.min(lm_array[:, :2], axis=0)
                 if hand_span[0] < 0.05 or hand_span[1] < 0.05: continue
                 
-                for i, key in enumerate(target_keys):
-                    if i in assigned_targets: continue
-                    gesture_name, hand_label = key
-                    if hand_label.lower().strip() == detected_label.lower().strip():
-                        matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
-                        if matched_gest == gesture_name:
-                            matched_targets[i] = True
-                            assigned_targets.add(i)
-                            break
+                # Check shadow snapshot directly against library picture definitions
+                matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
+                if matched_gest is not None:
+                    detected_shadow_gestures.append(matched_gest)
+            
+            # Count how many times each gesture library picture is currently generated by shadows on the wall
+            gesture_counts = defaultdict(int)
+            for gest in detected_shadow_gestures:
+                gesture_counts[gest] += 1
+                
+            # Verify constraints: Target indices match only if a target gesture is cloned on 2 separate shadow hands
+            for i, key in enumerate(target_keys):
+                gesture_name, _ = key
+                if gesture_counts[gesture_name] >= 2:
+                    matched_targets[i] = True
 
         if all(matched_targets):
             if match_hold_start_time is None:
@@ -597,7 +588,7 @@ while True:
                             send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
                             send_osc_signal(multiplay_client, "/cue/14/go", 1)
                     else:
-                        target_keys, matched_targets = get_new_targets(), [False] * 4
+                        target_keys, matched_targets = get_new_targets(), [False] * 2
                         round_start_time = current_time
                 
                 elif game_status == "BONUS_PLAYING":
@@ -613,7 +604,7 @@ while True:
                         send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
                         send_osc_signal(multiplay_client, "/cue/7/stop", 1)
                     else: 
-                        target_keys, matched_targets = get_new_targets(), [False] * bonus_gesture_count
+                        target_keys, matched_targets = get_new_targets(), [False] * 2
                         round_start_time = current_time
         else:
             match_hold_start_time = None
@@ -653,9 +644,8 @@ while True:
     elif key == ord('s') or key == ord('S'):
         if game_status == "START_SCREEN":
             player_lives = 3
-            #current_level = 1
             current_cycle, bonus_cycle = 0, 0
-            target_keys, matched_targets = get_new_targets(), [False] * 4
+            target_keys, matched_targets = get_new_targets(), [False] * 2
             round_duration = BASE_DURATION
             send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
             status_display_time = time.time()
@@ -668,10 +658,8 @@ while True:
             current_level = 3
             current_cycle = 0
             bonus_cycle = 0
-            # Set state to BONUS_ALERT to show the 5-second transition screen
             game_status = "BONUS_ALERT"
             status_display_time = time.time()
-            # Stop any regular level tracks and trigger the bonus music/fixtures
             send_osc_signal(multiplay_client, "/cue/1/stop", 1)
             send_osc_signal(multiplay_client, "/cue/2/stop", 1)
             send_osc_signal(multiplay_client, "/cue/3/stop", 1)
