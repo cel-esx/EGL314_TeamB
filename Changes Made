@@ -1,0 +1,6 @@
+1) Instead of POC type game, camera point to the screen to caputre the shadow to detect..
+2) 3lvl (2stages) + 1 bonus lvl (3 stages)
+3) Timer to 30s
+4) Players need to work tgt to form the shadow
+5) cap = cv2.capture(0) change to 1 cuz using webcam
+6)Maybe using pylamp thing osc cmd
