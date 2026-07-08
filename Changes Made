@@ -4,3 +4,8 @@
 4) Players need to work tgt to form the shadow
 5) cap = cv2.capture(0) change to 1 cuz using webcam
 6)Maybe using pylamp thing osc cmd
+
+
+7) Using jupyter notebook in vscode for image detection
+8) Check config done by Mr Fu file in Rahul's laptop to see the things installed
+9) on the files AI jupyter notebook,Data preparation, load and classify have the import things to put in updated steps in anaconda
