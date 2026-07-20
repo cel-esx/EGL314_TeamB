@@ -16,10 +16,36 @@
 [Description of project phantom goes here]
  <br>
 
- Done by yours truly:
-<a href="https://github.com/Devesty8/EGL314_TeamB/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Devesty8/EGL314_TeamB" alt="Contributors" />
-</a>
+
+ ### Done by yours truly:
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Devesty8">
+        <img src="https://github.com/Devesty8.png" width="100px;" alt="Devesty8"/><br />
+        <sub><b>Devesty8</b></sub>
+      </a><br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/cel-esx">
+        <img src="https://github.com/cel-esx.png" width="100px;" alt="cel-esx"/><br />
+        <sub><b>cel-esx</b></sub>
+      </a><br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/ilyaaqilah">
+        <img src="https://github.com/ilyaaqilah.png" width="100px;" alt="ilyaaqilah"/><br />
+        <sub><b>ilyaaqilah</b></sub>
+      </a><br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/trippyfiq">
+        <img src="https://github.com/trippyfiq.png" width="100px;" alt="trippyfiq"/><br />
+        <sub><b>trippyfiq</b></sub>
+      </a><br />
+    </td>
+  </tr>
+</table>
 
 ---
 ## Station 2 - Gun Recharge
@@ -80,23 +106,10 @@ graph TD
 |POC/grandMA3|Images| Contains images for more visual understanding |
 |POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
 |POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
-> Note: All files Related to POC is inside the folder named: **POC**
+|MVP| MVP Game Code.py | Contains the entire game code |
+|MVP| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
+
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Gameplay Mechanics
 ### Game Rules & Objective
 

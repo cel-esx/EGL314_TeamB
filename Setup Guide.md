@@ -1,12 +1,14 @@
 # Setup Guide
-###  This page contains all the materials required & the instructions on how to download those materials in order to run this game in the POC stage
+###  This page contains all the materials required & the instructions on how to download those materials in order to run this game
 
 
 ## Hardware 
  1) **Desktop / Laptop** (Windows)
- 2) **External USB Webcam** (Optional: Use if inbuilt webcam is spoilt or if you need better resolution)
- 3) **Lighting Equipment** (Optional: You can also use the GrandMA3 3D viewer for visuals)
+ 2) **External USB Webcam**
+ 3) **Lighting Equipment** (You need a spotlight to do the shadow)
  4) **Speakers** (Optional)
+ 5) **Webcam Tripod Stand**
+ 6) **External Monitor**
 
 
 ## Software
@@ -14,10 +16,14 @@
      * Click Here: [Anaconda Setup](#anaconda-set-up)
   2. **Microsoft Visual Studio Code**
      * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
+     * You also need [Jupyter Notebook](#jupyter-notebook-installation-steps) within Visual Studio Code
+     > Note: Jupyter Notebook is **Not Required For POC Game**
   3. **GrandMA3**
      * Click Here: [GrandMa3 Setup](#grandma3)
   4. **MultiPlay**
      * Click Here: [MultiPlay Setup](#multiPlay)
+   5. **Reaper**
+   6. **L-ISA**
 
   ## Dependencies
   #### This code have been tested using **Python 3.10 or higher**   
@@ -49,33 +55,29 @@
       ```
       ![Conda Activate Enviroment](/POC/Images/activate%20env.png) <br>
 
-   6. Install the following by typing ```conda install``` followed by the library.<br>
+   6. Install the following by typing ```pip install``` followed by the library.<br>
      
       ![Conda Install Libraries](/POC/Images/install%20library.png) <br>
-
       ```bash
-      opencv-python==4.13.0.92
+      pip install mediapipe==0.10.9
       ```
       ```bash
-      mediapipe==0.10.9
+      pip install pyautogui==0.9.54
       ```
       ```bash
-      pyautogui==0.9.54
+      pip install pynput==1.8.1
       ```
       ```bash
-      pynput==1.8.1
+      pip install numpy==2.2.6
       ```
       ```bash
-      numpy==2.2.6
+      pip install pygrabber==0.2
       ```
       ```bash
-      pygrabber==0.2
+      pip install python-osc==1.8.1
       ```
       ```bash
-      python-osc==1.8.1
-      ```
-      ```bash
-      pygame==2.6.1
+      pip install pygame==2.6.1
       ```
 
    ### Microsoft Visual Studio Code
@@ -98,12 +100,16 @@
    ![POC IP Change](/POC/Images/IP%20Config.png)
    > Type **Command Prompt** in your search bar & Type **ipconfig** to see your IP Address
    ![Laptop IP Address](/POC/Images/Wifi.png)
+
+   > Note: If you are doing the **POC version** of the game, the script will have **Multiplay** <br>If you are doing the **MVP version** of the game, the script will have **Reaper** & **L-ISA**
    8. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
    9. If Step 7 fails to work as expected
    * Click on the top middle search bar
    * Type  ``` > ```
    * Click on ``` Python: Select Interpreter ```
    * Select your python enviroment
+
+   ### Jupyter Notebook Installation Steps
 
    ### GrandMA3
    Please click on this [link](/POC/grandma3/grandMA3setup.md) to learn how to setup GrandMA3 on your laptops
@@ -112,5 +118,13 @@
 
    ### MultiPlay
    Click here to go [Multiplay](/POC/Multiplay/MultiPlay.md) folder
+
+   ### Reaper
+   Click here to go [Reaper](/POC/Multiplay/MultiPlay.md) folder
+
+   ### L-ISA
+   Click here to go [L-ISA](/POC/Multiplay/MultiPlay.md) folder
+
+
    
 
