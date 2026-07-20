@@ -17,10 +17,9 @@
  <br>
 
  Done by yours truly:
- <a href="https://github.com/Devesty8/EGL314_TeamB/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Devesty8/EGL314_TeamB" alt="Contributoers" />
+<a href="https://github.com/Devesty8/EGL314_TeamB/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Devesty8/EGL314_TeamB" alt="Contributors" />
 </a>
-
 
 ---
 ## Station 2 - Gun Recharge
