@@ -1,6 +1,13 @@
-# EGL 314 Media Solutioning Project 1 - Team B 
-##  Project Phantom
+# Match The Gesture Game
+##  EGL 314 - Proof Of Concept (POC)
+---
+
+This file contains our "Match The Gesture" game that uses **OpenCV + Mediapipe**. Additionally, this comprises also the use of **GrandMA3** Software for lighting controls and **MultiPlay** Software for audio controls <br>
+
+
+
 ## Table of Contents
+---
 1. **[Project Overview](#project-overview)**
    * Purpose of this project
    * How to set up
@@ -12,27 +19,17 @@
    * Game Rules & Objective
    * How To Play
 ---
-### Quick Backstory of this project
-[Description of project phantom goes here]
- <br>
+# Project Overview
+This project is a Proof Of Concept (POC) interactive, motion-controlled live production game where players step into the role of a mystical blacksmith enchanting a legendary weapon. Using a camera to detect physical hand gestures, players must match sequences across 6 progressively faster levels to unlock a high-intensity Bonus Round.
 
- Done by yours truly:
- <a href="https://github.com/Devesty8/EGL314_TeamB/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Devesty8/EGL314_TeamB" alt="Contributoers" />
-</a>
-
-
----
-## Station 2 - Gun Recharge
-In this station, players are suppose to recharge the gun which they obtained from the previous station to maximise it's fullest potential
-
-Players are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. Especially in level 4, where the they would have to move locations and do a shadow gesture together with the other player in order to finish the game
+What sets this project apart is its integration with live theater tech: the game script acts as a show controller, broadcasting real-time **OSC network signals** to instantly drive professional stage lighting (**grandMA3**) and dynamic sound effects (**MultiPlay**) based on the player's performance
 
 ---
 ## How to Set up
-
 Please refer to [Setup Guide](/Setup%20Guide.md) to see what do you need to have in order to run the game
 
+>Note: This version is in the POC stage which means that the game is still in development. There will be more changes added to this game on a later date
+---
 
 ## System Architecture
 ```mermaid
