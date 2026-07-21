@@ -1,5 +1,6 @@
 # EGL 314 - Media Solutioning Project 1 - Team B 
-##  Project Phantom
+##  Project P.H.A.N.T.O.M
+ **P**aranormal **H**azard **A**ssessment & **N**eutralization **T**raining **O**perations **M**odule = Project Phantom
 ## Table of Contents
 1. **[Project Overview](#project-overview)**
    * Backstory of this project
