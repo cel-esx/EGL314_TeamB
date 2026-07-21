@@ -5,7 +5,7 @@
 ## Hardware 
  1) **Desktop / Laptop** (Windows)
  2) **External USB Webcam**
- 3) **Lighting Equipment** (You need a spotlight to do the shadow)
+ 3) **Lighting Equipment** (Minimally, you need a spotlight to do the shadow OR a stationary light source)
  4) **Speakers** (Optional)
  5) **Webcam Tripod Stand**
  6) **External Monitor**
@@ -25,6 +25,10 @@
    5. **Reaper**
    6. **L-ISA**
 
+
+   ## Hardware Placement
+   [Picture Of The Table Where Laptop setup]
+
   ## Dependencies
   #### This code have been tested using **Python 3.10 or higher**   
 
@@ -42,7 +46,7 @@
       ```bash
       conda create --name my_env python=3.11
       ```
-      Accept all the conditions by pressing ``` a``` <br><br>
+      Accept all the conditions by pressing ``` a``` or ```y``` <br><br>
       ![Conda create Enviroment](/POC/Images/Create%20env.png) <br>
 
    4. Confirm the installation <br>
@@ -103,13 +107,15 @@
 
    > Note: If you are doing the **POC version** of the game, the script will have **Multiplay** <br>If you are doing the **MVP version** of the game, the script will have **Reaper** & **L-ISA**
    8. Press ```F5``` or click  ```Run``` . It should show e.g. ``` Python 3.13.2 (base) \miniconda3/python.exe ``` 
-   9. If Step 7 fails to work as expected
+   9. If Step 8 fails to work as expected
    * Click on the top middle search bar
    * Type  ``` > ```
    * Click on ``` Python: Select Interpreter ```
    * Select your python enviroment
 
    ### Jupyter Notebook Installation Steps
+
+   [Aqliah Pls Update Here]
 
    ### GrandMA3
    Please click on this [link](/POC/grandma3/grandMA3setup.md) to learn how to setup GrandMA3 on your laptops
