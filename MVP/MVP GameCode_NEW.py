@@ -44,8 +44,8 @@ GMA3_LAPTOP_IP   = "192.168.254.252s"
 GMA3_PORT        = 8000           
 GMA3_ADDRESS     = "/gma3/cmd"      
 
-MULTIPLAY_LAPTOP_IP = "192.168.254.238" 
-MULTIPLAY_PORT      = 8000      
+REAPER_LAPTOP_IP = "192.168.254.12" 
+REAPER_PORT      = 8000      
 # ──────────────────────────────────────────────────────────────────────────────
 
 MA3_MATCH_COMMAND  = "Go+ Sequence 1"
@@ -72,6 +72,65 @@ GAME_SHOW_MAP = {
         2: {"fixture": 14, "cue_cmd": "Go+ Sequence 3 Cue 14"},
     }
 }
+
+LEVEL_MAP = {
+    1: "_b5b9b1aa3433a54f8efb7058fd9dc212",  # level 1 track unmuted only
+    2: "_8003a43cdba0624b948270f6b5224ee8",  # Level 2 track unmuted only
+    3: "_fed26a77af3cb841b8ae1156e64de1ec",  # level 3 track unmuted only
+    4: "_82a10b90ef7428438ddfd101c8195d19"   # bonus track unmuted only
+}
+
+MAX_STAGES_PER_LEVEL = {
+    1: 2,  # Level 1 has 2 stages
+    2: 2,  # Level 2 has 2 stages
+    3: 2,  # Level 3 has 2 stages
+    4: 3   # Bonus Level 4 has 3 stages
+}
+
+# REAPER Action IDs for stage markers
+STAGE_MARKER_MAP = {
+    1: "41263",  # Marker 23 (Stage 1)
+    2: "41264",  # Marker 24 (Stage 2)
+    3: "41265"   # Marker 25 (Stage 3 / Bonus)
+}
+
+def jump_to_stage(level, stage_number):
+    """Jumps to the specific stage marker for the given level and sets track mutes."""
+    marker_action = STAGE_MARKER_MAP.get(stage_number, "41263")
+    print(f"⌛ Buffer complete! Transitioning to Level {level}, Stage {stage_number} (Marker Action: {marker_action})...")
+    
+    # 1. Jump to stage marker in REAPER
+    send_osc_signal(reaper_client, f"/action/{marker_action}", 1)
+    
+    # 2. Apply level track state
+    if level in LEVEL_MAP:
+        action_id = LEVEL_MAP[level]
+        send_osc_signal(reaper_client, f"/action/{action_id}", 1)
+    else:
+        print(f"Warning: No REAPER action defined for level {level}")
+
+def retry_stage(level, stage_number):
+    """Retries the current stage by jumping to its specific stage marker 
+    and re-applying the track state for the level."""
+    marker_action = STAGE_MARKER_MAP.get(stage_number, "41263")
+    print(f"🔄 Retrying Level {level}, Stage {stage_number} (Marker Action: {marker_action})...")
+    
+    # 1. Jump to the marker for the current stage being retried
+    send_osc_signal(reaper_client, f"/action/{marker_action}", 1)
+    
+    # 2. Re-apply level track state
+    if level in LEVEL_MAP:
+        action_id = LEVEL_MAP[level]
+        send_osc_signal(reaper_client, f"/action/{action_id}", 1)
+    else:
+        print(f"Warning: No REAPER action defined for level {level}")
+
+def back_to_start():
+    print(f"⌛ Buffer complete! Back to start")
+    
+    # 1. Jump back to Marker 21
+    send_osc_signal(reaper_client, "/action/41261", 1)
+
 
 # ── LEVEL 4 PYTORCH MODEL INITIALIZATION ─────────────────────────────────────
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -262,7 +321,7 @@ all_keys = list(templates.keys())
 cache_target_images(all_keys, box_size) 
 
 gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
-multiplay_client = create_osc_client(MULTIPLAY_LAPTOP_IP, MULTIPLAY_PORT, "MultiPlay")
+reaper_client = create_osc_client(REAPER_LAPTOP_IP, REAPER_PORT, "REAPER")
 
 HEART_SIZE = 60 
 heart_img = cv2.imread("MVP Pictures/Heart.png", cv2.IMREAD_UNCHANGED)
@@ -382,6 +441,9 @@ last_loaded_video_path = default_bg_path
 cv2.namedWindow("Gesture Recognition", cv2.WINDOW_NORMAL)
 cv2.setWindowProperty("Gesture Recognition", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
+send_osc_signal(reaper_client, "/action/41261", 1)
+send_osc_signal(reaper_client, "/action/40044", 1)
+
 MATCH_MIN_THRESHOLD = 0.15    
 MATCH_THRESHOLD     = 0.48 
 BASE_DURATION, MAX_LEVELS = 30.0, 4  
@@ -412,7 +474,9 @@ def start_game_sequence():
     last_active_cue_cmd = None
     target_keys = get_new_targets(lvl=1)
     matched_targets = [False] * len(target_keys)
-    send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
+    send_osc_signal(reaper_client, "/action/41261", 1)
+    send_osc_signal(reaper_client, "/action/41262", 1)
+    send_osc_signal(reaper_client, "/action/_b5b9b1aa3433a54f8efb7058fd9dc212", 1)
     transition_start_time = time.time()
     game_status = "TRANSITION_SCENE"
 
@@ -534,12 +598,13 @@ while True:
                 
                 if player_lives <= 0:
                     game_status, status_display_time = "GAMEOVER", current_time 
-                    send_osc_signal(multiplay_client, "/cue/15/go", 1)
-                    send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
+                    send_osc_signal(reaper_client, "/action/41268", 1)
+                    send_osc_signal(reaper_client), "/action/_b4dd8381edb3cf4a82f2f1d2a56622e0", 1
                     send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_GAMEOVER_CMD)
                 else:
                     game_status, status_display_time = "LOSE", current_time
-                    send_osc_signal(multiplay_client, "/cue/12/go", 1)
+                    send_osc_signal(reaper_client, "/action/41269", 1)
+                    send_osc_signal(reaper_client, "/action/_b4dd8381edb3cf4a82f2f1d2a56622e0", 1)
                     send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_GAMEOVER_CMD)
 
     elif game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER"]:
@@ -572,7 +637,8 @@ while True:
 
                 current_level, current_cycle, game_status = 1, 0, "START_SCREEN"
                 level4_unlocked = False
-                send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
+                send_osc_signal(reaper_client, "/action/41268", 1)
+                send_osc_signal(reaper_client, "/action/_b4dd8381edb3cf4a82f2f1d2a56622e0", 1)
                 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
                 last_active_cue_cmd = None
               
@@ -587,7 +653,8 @@ while True:
                 level4_unlocked = False
                 target_keys, matched_targets = get_new_targets(lvl=1), [False] * 4
                 round_duration = BASE_DURATION
-                send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
+                send_osc_signal(reaper_client, "/action/_7f4e8ad275963d4c8547d96d2538d0be", 1) #unmute all tracks
+                send_osc_signal(reaper_client, "/action/41270", 1)
                 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
                 last_active_cue_cmd = None
 
@@ -782,12 +849,14 @@ while True:
                 
                 # Check gate fulfillment criteria
                 if predicted_name.lower().strip() == "palm" and confidence_score >= CONFIDENCE_THRESHOLD:
+                    TRANSIT_SEC = 30
                     if match_hold_start_time is None:
                         match_hold_start_time = current_time
                     elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                         match_hold_start_time = None
                         level4_unlocked = True  # Unlock completed, standard gameplay loop activates now
                         round_start_time = current_time  # Reset stage clock timestamp so player gets complete countdown bar time
+                        threading.Timer(TRANSIT_SEC, jump_to_stage, args=[current_level, 1]).start()
                 else:
                     if match_hold_start_time is not None:
                         match_hold_start_time = None
@@ -888,7 +957,7 @@ while True:
                 match_hold_start_time = current_time
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
-                
+                BUFFER_SECONDS = 3.5
                 current_stage = current_cycle + 1
                 if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
                     cfg = GAME_SHOW_MAP[current_level][current_stage]
@@ -897,18 +966,18 @@ while True:
                 
                 current_cycle += 1
                 if current_cycle <= 1: 
-                    send_osc_signal(multiplay_client, "/cue/13/go", 1)
+                    max_required_stages = MAX_STAGES_PER_LEVEL.get(current_level, 2)
 
                 # Dynamically set completion requirement limit depending on level limits
                 max_cycles_needed = 3 if current_level == 4 else 2
                 if current_cycle >= max_cycles_needed:
-                    send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
+                    threading.Timer(BUFFER_SECONDS, jump_to_stage, args=[current_level, current_cycle]).start()
                     send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
                     send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_PASS_LEVEL_CMD)
                     
                     if current_level == 4:
                         game_status, status_display_time = "GAME_CLEAR", current_time
-                        send_osc_signal(multiplay_client, "/cue/14/go", 1)
+                        threading.Timer(BUFFER_SECONDS, jump_to_stage, args=[current_level, current_cycle]).start()
                     else:
                         current_level += 1
                         current_cycle = 0
@@ -921,8 +990,7 @@ while True:
                             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
                         game_status, status_display_time = "WIN", current_time
-                        send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
-                        send_osc_signal(multiplay_client, "/cue/14/go", 1)
+                        
                 else:
                     target_keys = get_new_targets(lvl=current_level)
                     matched_targets = [False] * len(target_keys)
@@ -947,7 +1015,7 @@ while True:
     key = cv2.waitKey(1) & 0xFF
     
     if key == ord('q') or key == 27: 
-        send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
+        back_to_start()
         send_osc_signal(gma3_client, GMA3_ADDRESS, "ClearAll") 
         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
         break
@@ -963,7 +1031,7 @@ while True:
             target_keys = get_new_targets(lvl=2)
             matched_targets = [False] * len(target_keys)
             round_duration = BASE_DURATION
-            send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
+            send_osc_signal(reaper_client, "/action/41262", 1)
             send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
             round_start_time, game_status = time.time(), "PLAYING"
             last_active_cue_cmd = None
@@ -976,13 +1044,13 @@ while True:
             target_keys = get_new_targets(lvl=3)
             matched_targets = [False] * len(target_keys)
             round_duration = BASE_DURATION
-            send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
+            # send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
             send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
             round_start_time, game_status = time.time(), "PLAYING"
             last_active_cue_cmd = None
 
     elif key == ord('y') or key == ord('4'): 
-        send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
+        # send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
         
         if current_level != 4:
             cap.release()
@@ -998,7 +1066,7 @@ while True:
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
         
-        send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
+        # send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
         
         round_start_time, game_status = time.time(), "PLAYING"
