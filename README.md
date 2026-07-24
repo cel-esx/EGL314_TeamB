@@ -52,7 +52,7 @@ Especially in level 4, where the they would have to stand in front of the webcam
 
 Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
 
-[Pic of charged and uncharged]
+[Pic of charged and uncharged guns]
 
 ---
 # Game Rules & Objective
@@ -60,26 +60,41 @@ Once the game is finished, the player's guns will be fully recharged and they wi
 The **main objective** of the game is to successfully complete all 4 levels to upgrade the weapon before running out of lives and time
 * **Beat the Clock:** Every stage is bound by a strict countdown timer. If the timer hits zero before you match the required gestures / shadows, you fail the stage and will have to restart
 
+[Show timer]
+
 * **Progressive Co-Op:** As you advance through the game, you realise that eventually both players must follow the same target gestures shown on the screen
+
+[Show that the target from 4 becomes to 1 for all]
 
 * **The 3-Life Rule:** You begin your journey with 3 lives. If you fail a stage, you lose a life and are sent back to the start of the stage. Losing all lives results in a Game Over
 
-* **The Ultimate Test:** Completing Level 3 unlocks the shadow Upgrading Round. Both player have to use 1 of their hands to form a shadow and must survive 3 of such rounds in order to finish the game.
+[Show the hearts]
+
+* **The Ultimate Test:** Completing Level 3 unlocks the shadow charging round. Both player have to use 1 of their hands to form a shadow and must survive 3 of such rounds in order to finish the game
+
+[Put the video]
+
+
 ---
 # How To Play?
 * **Position:** Stand at the spotlight in front of the laptop's webcam, ensuring both player's left and right hands are fully visible in the frame
 [pic of spotlight infront of laptop]
 
-* **Start the Game:** Both players are requireed to show their palms to begin the upgrading sequence
+* **Start the Game:** Both players are required to show their palms to begin the upgrading sequence
+
+[Show homescreen]
 
 * **Replicate the Runes:** Look at the active gesture boxes displayed on the screen. Physically mirror the exact left and right hand shapes using your own hands for levels 1-3
 
 * **Charge the Bar:** Once you match the target gestures, hold the positions steady. A green "Charging" progress bar will appear—maintain the pose for 2 seconds to complete the stage
 
+[Show that the progress bar is climbing up]
+
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
+[Show lighting cues]
 
 * **Team Bonding Challenge:** Upon passing level 3, player need to repoisiton themselves to where the spotlight is showing. [pic of spotlight infront of webcam] Each players need to use only 1 hand and they have to work together in order to replicate the gesture shown on the screen
-[Pic ]
+[Pic of the video]
 
 ---
 ## How to Set up
@@ -127,25 +142,27 @@ graph TD
 # Repository Structure
 | Folder Location | File Name | Technical Roles & Functions |
 | :---: | :---: | :---: |
-| Main (Outside POC folder) |  README.md| Main readme file talking about the purpose of the project and the game itself |
-| Main (Outside POC folder)|  Setup Guide.md| Contains the steps required in order the set up viewer's laptop to play the game |
-| Main (Outside POC folder) |  LICENSE| Contains the license for this repository |
-| POC |  Hand_Images| Contains all the hand images that are used in the game |
-| POC |  Capture Gesture.py| Contains python code for saving / deleting gesture|
-| POC | CAPTURE_GESTURE_README.md| Instructions on setup of capture gesture.py and how it works to add new gestures to new_gesture_definition.csv |
-| POC | new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
-| POC | POC GAME CODE | Contains entire game code |
-| POC |  grandma3| Folder containing all grandma3 setup and related pictures|
-| POC |  Multiplay| Folder containing all Multiplay setup and related pictures|
-| POC |  POC README.py| File that contains all the instruction on how the POC game is suppose to be played|
-|POC/Multiplay| Images&MultiPlay | Contains all the images on the GitHub and the MultiPlay file that was used for the POC Code|
-|POC/Multiplay| dummy_game.py| Game Simulation to test OSC commands |
-|POC/Multiplay| MultiPlay.md| Contains all the set up and configuration in the Multiplay with POC and dummy_game codes explained |
-|POC/grandMA3|Images| Contains images for more visual understanding |
-|POC/grandMA3| grandMA3setup.md |Instructions on how to download and use GrandMA3|
-|POC/grandMA3| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
-|MVP| MVP Game Code.py | Contains the entire game code |
-|MVP| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
+| [Main (Outside POC folder)](/README.md) |  README.md| Main readme file talking about the purpose of the project and the game itself |
+| [Main (Outside POC folder)](/Setup%20Guide.md)|  Setup Guide.md| Contains the steps required in order the set up viewer's laptop to play the game |
+| [Main (Outside POC folder)](/LICENSE) |  LICENSE| Contains the license for this repository |
+| [POC](/POC/Hand_Images/) |  Hand_Images| Contains all the hand images that are used in the game |
+| [POC](/POC/Capture%20Gesture.py) |  Capture Gesture.py| Contains python code for saving / deleting gesture|
+| [POC](/POC/CAPTURE_GESTURE_README.md) | CAPTURE_GESTURE_README.md| Instructions on setup of capture gesture.py and how it works to add new gestures to new_gesture_definition.csv |
+| [POC](/POC/new_gesture_definitions.csv) | new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
+| [POC](/POC/POC%20Game%20Code.py) | POC GAME CODE | Contains entire game code |
+| [POC](/POC/grandma3/) |  grandma3| Folder containing all grandma3 setup and related pictures|
+| [POC](/POC/Multiplay/) |  Multiplay| Folder containing all Multiplay setup and related pictures|
+| [POC](/POC/POC%20README.md) |  POC README.py| File that contains all the instruction on how the POC game is suppose to be played|
+|[POC/Multiplay](/POC/Multiplay/Images&MultiPlay/)| Images&MultiPlay | Contains all the images on the GitHub and the MultiPlay file that was used for the POC Code|
+|[POC/Multiplay](/POC/Multiplay/dummy_game.py)| dummy_game.py| Game Simulation to test OSC commands |
+|[POC/Multiplay](/POC/Multiplay/MultiPlay.md)| MultiPlay.md| Contains all the set up and configuration in the Multiplay with POC and dummy_game codes explained |
+|[POC/grandMA3](/POC/grandma3/Images/)|Images| Contains images for more visual understanding |
+|[POC/grandMA3](/POC/grandma3/grandMA3setup.md)| grandMA3setup.md |Instructions on how to download and use GrandMA3|
+|[POC/grandMA3](/POC/grandma3/TEAMB_Proj.show)| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
+|[MVP](/MVP/MVP%20GameCode_NEW.py)| MVP Game Code.py | Contains the entire game code |
+|[MVP](/MVP/new_gesture_definitions.csv)| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
+|[MVP](/MVP/MVP%20Pictures/)| MVP Pictures| Stores all captured game's pictures and videos |
+|[MVP](/MVP/image-classifier/)| image-classifier| Stores all captured game's pictures and videos |
 
 ---
 # Versions
