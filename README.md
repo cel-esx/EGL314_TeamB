@@ -1,6 +1,6 @@
 # EGL 314 - Media Solutioning Project 1 - Team B 
 ##  Project P.H.A.N.T.O.M
- **P**aranormal **H**azard **A**ssessment & **N**eutralization **T**raining **O**perations **M**odule = Project Phantom
+ Project P.H.A.N.T.O.M stands for **P**aranormal **H**azard **A**ssessment & **N**eutralization **T**raining **O**perations **M**odule
 ## Table of Contents
 1. **[Project Overview](#project-overview)**
    * Backstory of this project
@@ -38,21 +38,22 @@ Below is a detailed breakdown of how **Station 2 | Pack Recharge** plays out dur
 
 [Pic of station]
 
-In this station, players are suppose to recharge the guns which would be found in player's backpack. They have to place them on the table to maximise it's fullest potential
+This is the Pack Recharge station
 
 [Pic of guns on the table]
 
-Players are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. 
+In this station, players are suppose to recharge the guns which would be found in player's backpack. They have to place them on the table to maximise it's fullest potential
 
 [Pic of Stage 1 - 3]
-
-Especially in level 4, where the they would have to stand in front of the webcam attached to a tripod and do a shadow gesture together with the other player in order to finish the game
+Players are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. 
 
 [Pic of stage 4 and location to stand]
 
-Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
+Especially in level 4, where the they would have to stand in front of the webcam attached to a tripod and do a shadow gesture together with the other player in order to finish the game
 
 [Pic of charged and uncharged guns]
+
+Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
 
 ---
 # Game Rules & Objective
@@ -162,7 +163,9 @@ graph TD
 |[MVP](/MVP/MVP%20GameCode_NEW.py)| MVP Game Code.py | Contains the entire game code |
 |[MVP](/MVP/new_gesture_definitions.csv)| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
 |[MVP](/MVP/MVP%20Pictures/)| MVP Pictures| Stores all captured game's pictures and videos |
-|[MVP](/MVP/image-classifier/)| image-classifier| Stores all captured game's pictures and videos |
+|[MVP](/MVP/image-classifier/)| image-classifier| AI Model training files for shadow detection game |
+
+> Note: To navigate to desired location, click on the links at **Folder Location** in the above table <br>
 
 ---
 # Versions
@@ -174,7 +177,7 @@ graph TD
 * [AI Machine Learning Link - Pls add this]()
 ***
 
-### Done by yours truly:
+### Done By Yours Truly:
 <table>
   <tr>
     <td align="center">
