@@ -28,7 +28,7 @@ CSV_FILE = "MVP_gesture_definitions.csv"
 
 # ── PICTURE SLIDESHOW CONFIGURATION ───────────────────────────────────────────
 TRANSITION_INTERVAL = 1.5  
-BLANK_SCREEN_DURATION = 27.0  # Duration (in seconds) for the blank screen after Level 3
+BLANK_SCREEN_DURATION = 28.0  # Duration (in seconds) for the blank screen after Level 3
 
 # Pre-load and scale slideshow images to full screen (1280x720) to avoid in-loop resizing
 PIC1 = cv2.resize(cv2.imread("MVP Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("MVP Pictures/Pack Recharge Start Page 2.jpg") else None
@@ -48,30 +48,30 @@ GMA3_LAPTOP_IP   = "192.168.254.252s"
 GMA3_PORT        = 8080           
 GMA3_ADDRESS     = "/gma3/cmd"      
 
-REAPER_LAPTOP_IP =  "192.168.254.12" #"192.168.254.238" 
+REAPER_LAPTOP_IP =  "192.168.254.12s" #"192.168.254.238" 
 REAPER_PORT      = 8000      
 # ──────────────────────────────────────────────────────────────────────────────
 
 MA3_MATCH_COMMAND  = "on Sequence 25 "
 MA3_PASS_LEVEL_CMD = "off sequence * ; on sequence 12 "
-MA3_GAMEOVER_CMD   = "off Sequence *"
-
+MA3_GAMEOVER_CMD   = "off Sequence * ; on sequence 10 "
+ 
 GAME_SHOW_MAP = {
     1: { 
-        1: {"fixture": 1, "cue_cmd": "off timecode 2 , on sequence 24, on sequence 23 cue 2, on sequence 22"}, 
-        2: {"fixture": 2, "cue_cmd": "off sequence * , on sequence 24, on sequence 23 cue 2, on sequence 22"}, 
+        1: {"fixture": 1, "cue_cmd": "off timecode 2 ; on sequence 80 cue 2 ; on sequence 79 cue 2 "}, 
+        2: {"fixture": 2, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2" },
     },
     2: { 
-        1: {"fixture": 5, "cue_cmd": "off sequence * , on sequence 24, on sequence 23 cue 2,on sequence 22"},
-        2: {"fixture": 6, "cue_cmd": "off sequence * , on sequence 24, on sequence 23 cue 2,on sequence 22"},
+        1: {"fixture": 3, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"},
+        2: {"fixture": 4, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ;  on sequence 79 cue 2"},
     },
     3: { 
-        1: {"fixture": 9, "cue_cmd": "off sequence * , on sequence 24, on sequence 23 cue 2,on sequence 22"},
-        2: {"fixture": 10, "cue_cmd": "off sequence * , on sequence 24, on sequence 23 cue 2,on sequence 22"},
+        1: {"fixture": 5, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"},
+        2: {"fixture": 6, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"},
     },
     4: { 
-        1: {"fixture": 13, "cue_cmd": "off sequence * , on sequence 26, on sequence 23 cue 2,on sequence 22"},
-        2: {"fixture": 14, "cue_cmd": "off sequence * , on sequence 26, on sequence 23 cue 2,on sequence 22"},
+        1: {"fixture": 7, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
+        2: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
     }
 }
 
@@ -151,8 +151,8 @@ MANUAL_LEVEL_4_TARGETS = {
 }
 
 MANUAL_LEVEL_1_GESTURES = {
-    0: ("left_3", "right_2", "left_oath", "right_oath"), 
-    1: ("left_oath", "right_2", "left_3", "right_3")  
+    1: ("left_3", "right_2", "left_oath", "right_oath"), 
+    0: ("left_oath", "right_2", "left_3", "right_3")  
 }
 
 mp_hands = mp.solutions.hands 
@@ -316,7 +316,7 @@ def draw_fullscreen_image(frame, image):
 box_size = 200
      
 templates = load_gesture_definitions(CSV_FILE)
-all_keys = list(templates.keys()) + ["palm_level3", "palm"] 
+all_keys = list(templates.keys()) + ["palm_level3", "palm", "left_3_lvl3", "right_3_lvl3"] 
 cache_target_images(all_keys, box_size) 
 
 gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
@@ -338,10 +338,11 @@ else:
 
 print("Script started! Initializing system, reaper, and grandMA3 connection...")
 send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence *") 
-send_osc_signal(gma3_client, GMA3_ADDRESS, "on timecode 2, on sequence 24")
+send_osc_signal(gma3_client, GMA3_ADDRESS, "on timecode 2 ; on sequence 80 cue 2 ; on sequence 78 cue 2")
+send_osc_signal(reaper_client, "/action/1068", 1)
 send_osc_signal(reaper_client, "/action/40339", 1)
 send_osc_signal(reaper_client, "/action/41261", 1)
-send_osc_signal(reaper_client, "/action/40044", 1)
+#send_osc_signal(reaper_client, "/action/40044", 1)
 
 EXCLUDED_GESTURES = ["game_start"]
 
@@ -354,8 +355,8 @@ MANUAL_LEVEL_2_GESTURES = {
     1: ("level2_stage2_1", "level2_stage2_1", "level2_stage2_2", "level2_stage2_2")  
 }
 MANUAL_LEVEL_3_GESTURES = {
-    1: ("game_start_right", "game_start_left", "game_start_right", "game_start_left"), 
-    0: ("palm_level3", "palm_level3", "palm_level3", "palm_level3")
+    0: ("left_3_lvl3", "right_3_lvl3", "left_3_lvl3", "right_3_lvl3"), 
+    1: ("palm_level3", "palm_level3", "palm_level3", "palm_level3")
 }
 
 def get_new_targets(lvl=1):
@@ -449,6 +450,7 @@ def start_game_sequence():
     matched_targets = [False] * len(target_keys)
     send_osc_signal(reaper_client, "/action/41262", 1)
     send_osc_signal(reaper_client, "/action/_b5b9b1aa3433a54f8efb7058fd9dc212", 1)
+    send_osc_signal(gma3_client,GMA3_ADDRESS,"off timecode *; off sequence * ; on sequence 17 ")
     transition_start_time = time.time()
     game_status = "TRANSITION_SCENE"
 
@@ -571,7 +573,7 @@ while True:
     elif game_status == "BLANK_SCREEN":
         frame[:] = 0  
         if current_time - status_display_time > BLANK_SCREEN_DURATION:
-            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
+            send_osc_signal(gma3_client, GMA3_ADDRESS, "On Sequence 26; On sequence 78 cue 3")
             target_keys = get_new_targets(lvl=current_level)
             # jump_to_stage(current_level, 1)
             send_osc_signal(reaper_client,"/action/_82a10b90ef7428438ddfd101c8195d19", 1)
@@ -588,7 +590,6 @@ while True:
             time_left = max(0.0, round_duration - (current_time - round_start_time))
             if time_left <= 0:
                 player_lives -= 1
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off")
                 
                 if player_lives <= 0:
                     game_status, status_display_time = "GAMEOVER", current_time 
@@ -642,7 +643,7 @@ while True:
                     last_active_cue_cmd = None
         
             elif game_status == "LOSE":
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence *; on sequence 10")
                 target_keys = get_new_targets(lvl=current_level)
                 matched_targets = [False] * len(target_keys)
                 round_duration = BASE_DURATION
@@ -660,7 +661,7 @@ while True:
                 current_level, current_cycle, game_status = 1, 0, "START_SCREEN"
                 level4_unlocked = False
                 threading.Timer(GAMEOVER_BUFFER_SECONDS, back_to_start, args=[]).start()
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "MA3_GAME")
                 last_active_cue_cmd = None
               
             elif game_status == "GAME_CLEAR":
@@ -777,7 +778,7 @@ while True:
             cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), color, 1, cv2.LINE_AA)
             
             if current_level == 4:
-                draw_sleek_text(frame, f"AI TARGET: {gesture_name.upper()}", (x_min - 20, y_min - 10), font_scale=0.5, thickness=1, color=color)
+                draw_sleek_text(frame, "AI TARGET: {gesture_name.upper()}", (x_min - 20, y_min - 10), font_scale=0.5, thickness=1, color=color)
             elif current_level == 3:
                 draw_sleek_text(frame, "ULTIMATE 4-HAND GESTURE", (x_min - 20, y_min - 10), font_scale=0.5, thickness=1, color=color)
             elif current_level == 2:
@@ -797,7 +798,9 @@ while True:
                 if gesture_name in PRELOADED_IMAGES:
                     overlay_preloaded_picture(frame, PRELOADED_IMAGES[gesture_name], x_min, y_min, active_box_size)
                 elif hand_label not in ["AICameraClass"] and hand_label in ["JointShape", "4HandsShape"]:
-                    lookup_key = [k for k in templates.keys() if k[0] == gesture_name.lower().strip()]
+                    # Clean the gesture alias to map to raw CSV gesture for fallback landmarks
+                    clean_gesture_name = "left_3" if gesture_name == "left_3_lvl3" else ("right_3" if gesture_name == "right_3_lvl3" else gesture_name)
+                    lookup_key = [k for k in templates.keys() if k[0] == clean_gesture_name.lower().strip()]
                     target_landmarks = templates[lookup_key[0]][0]["raw_landmarks"] if lookup_key else np.zeros((21,3))
                     if np.any(target_landmarks):
                         lm = target_landmarks.copy()
@@ -916,8 +919,15 @@ while True:
                     assigned_hands = set()
                     
                     for i, (req_gesture, _) in enumerate(target_keys):
-                        # Map picture alias back to the actual CSV gesture name
-                        csv_lookup_name = "palm" if req_gesture == "palm_level3" else req_gesture
+                        # Map picture aliases back to actual CSV gesture names for matching
+                        if req_gesture == "palm_level3":
+                            csv_lookup_name = "palm"
+                        elif req_gesture == "left_3_lvl3":
+                            csv_lookup_name = "left_3"
+                        elif req_gesture == "right_3_lvl3":
+                            csv_lookup_name = "right_3"
+                        else:
+                            csv_lookup_name = req_gesture
                         
                         for h_idx, (lm_arr, det_lbl) in enumerate(detected_hands[:4]):
                             if h_idx in assigned_hands: continue
@@ -970,7 +980,7 @@ while True:
                     matched_targets[2] = True
                     matched_targets[3] = True
 
-        # ── STATE STAGE PROGRESSION HANDLER ──────────────────────────────────
+        # ── STAGE PROGRESSION HANDLER ──────────────────────────────────
         if all(matched_targets) and not (current_level == 4 and not level4_unlocked):
 
             BUFFER_SECONDS = 1
@@ -984,7 +994,7 @@ while True:
                 if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
                     cfg = GAME_SHOW_MAP[current_level][current_stage]
                     last_active_cue_cmd = cfg["cue_cmd"]
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 80 cue 2")
                 
                 current_cycle += 1
 
@@ -996,7 +1006,7 @@ while True:
                     send_osc_signal(reaper_client, "/action/41267", 1)                            
 
                 else:
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "On sequence 80 cue 2")
                     send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_PASS_LEVEL_CMD)
                     
                     if current_level == 4:
@@ -1015,7 +1025,8 @@ while True:
                             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
                             send_osc_signal(reaper_client, "/action/_b4dd8381edb3cf4a82f2f1d2a56622e0", 1) 
-                            send_osc_signal(reaper_client, "/action/41266", 1)                            
+                            send_osc_signal(reaper_client, "/action/41266", 1) 
+                            send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 12 ; on sequence 26; on sequence 79 cue 2 ; on sequence 78 cue 3")                           
                         else:
                             send_osc_signal(reaper_client, "/action/_b4dd8381edb3cf4a82f2f1d2a56622e0", 1) 
                             send_osc_signal(reaper_client, "/action/41267", 1)                            
@@ -1044,39 +1055,38 @@ while True:
     
     if key == ord('q') or key == 27: 
         back_to_start()
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "ClearAll") 
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
+        send_osc_signal(gma3_client, GMA3_ADDRESS, "off Timecode *; off sequence * ") 
         send_osc_signal(reaper_client, "/action/1016", 1)
         break
         
-    elif key == ord('s') or key == ord('1'):
-        if game_status == "START_SCREEN": start_game_sequence()
+    # elif key == ord('s') or key == ord('1'):
+    #     if game_status == "START_SCREEN": start_game_sequence()
 
-    elif key == ord('r') or key == ord('2'):
-        if game_status == "START_SCREEN":
-            player_lives = 3
-            current_level, current_cycle = 2, 0
-            level4_unlocked = False
-            target_keys = get_new_targets(lvl=2)
-            matched_targets = [False] * len(target_keys)
-            round_duration = BASE_DURATION
-            jump_to_stage(2,1)
-            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
-            round_start_time, game_status = time.time(), "PLAYING"
-            last_active_cue_cmd = None
+    # elif key == ord('r') or key == ord('2'):
+    #     if game_status == "START_SCREEN":
+    #         player_lives = 3
+    #         current_level, current_cycle = 2, 0
+    #         level4_unlocked = False
+    #         target_keys = get_new_targets(lvl=2)
+    #         matched_targets = [False] * len(target_keys)
+    #         round_duration = BASE_DURATION
+    #         jump_to_stage(2,1)
+    #         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
+    #         round_start_time, game_status = time.time(), "PLAYING"
+    #         last_active_cue_cmd = None
 
-    elif key == ord('t') or key == ord('3'):
-        if game_status == "START_SCREEN":
-            player_lives = 3
-            current_level, current_cycle = 3, 0
-            level4_unlocked = False
-            target_keys = get_new_targets(lvl=3)
-            matched_targets = [False] * len(target_keys)
-            round_duration = BASE_DURATION
-            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
-            jump_to_stage(3,1)
-            round_start_time, game_status = time.time(), "PLAYING"
-            last_active_cue_cmd = None
+    # elif key == ord('t') or key == ord('3'):
+    #     if game_status == "START_SCREEN":
+    #         player_lives = 3
+    #         current_level, current_cycle = 3, 0
+    #         level4_unlocked = False
+    #         target_keys = get_new_targets(lvl=3)
+    #         matched_targets = [False] * len(target_keys)
+    #         round_duration = BASE_DURATION
+    #         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
+    #         jump_to_stage(3,1)
+    #         round_start_time, game_status = time.time(), "PLAYING"
+    #         last_active_cue_cmd = None
 
     elif key == ord('y') or key == ord('4'): 
         if current_level != 4:
@@ -1093,7 +1103,7 @@ while True:
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
         
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off timecode 2;")
+        send_osc_signal(gma3_client, GMA3_ADDRESS, "shnd")
         jump_to_stage(4,1)
         round_start_time, game_status = time.time(), "PLAYING"
         last_active_cue_cmd = None
