@@ -33,9 +33,9 @@ The **main objective** of the game is to successfully complete all 6 levels and 
     * Player 2 (Right Side): Must strictly match the 2 gestures displayed on the right side of the screen
 
 * **Progressive Stages:** The game consists of 6 levels, and each level requires you to pass 4 progressive stages by holding the correct matching gestures
-* GrandMA3: For each progressive stage passed, 1 lighting fixture will turn on to show the players' progress. This is triggered by ```GAME_SHOW_MAP``` . Green lights will also turn on to show level cleared, which happens with ```MA3_PASS_LEVEL_CMD``` .
+* **GrandMA3:** For each progressive stage passed, 1 lighting fixture will turn on to show the players' progress. This is triggered by ```GAME_SHOW_MAP``` . Green lights will also turn on to show level cleared, which happens with ```MA3_PASS_LEVEL_CMD``` .
 
-* MultiPlay: Play level sound tracks. Every passed stages, there will be a ```stage_cleared``` audio track playing. If players completed the level, ```levelcleared``` audio track will be played.
+* **MultiPlay:** Play level sound tracks. Every passed stages, there will be a ```stage_cleared``` audio track playing. If players completed the level, ```levelcleared``` audio track will be played.
 * **Winning:** If the above is done correctly by matching the gestures on time, you win
 ## Penalties
 * **Running Out of Time:** Each stage has a countdown timer. Failing to hold the required gestures before the timer hits zero results in a failed enchantment.

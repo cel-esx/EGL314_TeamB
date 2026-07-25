@@ -126,10 +126,10 @@
    Click here to go [Multiplay](/POC/Multiplay/MultiPlay.md) folder
 
    ### Reaper
-   Click here to go [Reaper](/POC/Multiplay/MultiPlay.md) folder
+   Click here to go [Reaper](/POC/Multiplay/MultiPlay.md) folder - Celeste pls update
 
    ### L-ISA
-   Click here to go [L-ISA](/POC/Multiplay/MultiPlay.md) folder
+   Click here to go [L-ISA](/POC/Multiplay/MultiPlay.md) folder - Celeste pls update
 
 
    
