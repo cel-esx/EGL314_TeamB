@@ -1,6 +1,7 @@
-# Jupyter Notebook
+# Image Classifier on Jupyter Notebook
 ## Purpose
-This software allow users to run and test AI code step-by-step. Easier for data preparation, checking of results, finding errors and experimenting with the model.
+This section uses Jupyter Notebook to build and train the image classifier step-by-step. Since image models take time to load and need visual checking, the notebook allows us to view sample images directly inline, keep heavy datasets loaded in memory while tweaking settings, and inspect training results after every step.
+
 ## Software Setup
 We will be adding the notebook as an extension into your Visual Studio Code for easy use! 
 
@@ -22,14 +23,21 @@ We will be adding the notebook as an extension into your Visual Studio Code for 
 6. A new Notebook would be created. 
 <img src="./JupyterSetUpImages/New Notebook Created.png" width="400" height="400">
 
-6. Select your Python Kernel. Look at top right corner of screen, click 'Select Kernel'. 
+7. Select your Python Kernel. Look at top right corner of screen, click 'Select Kernel'. 
 <img src="./JupyterSetUpImages/Select Kernel.png" width="400" height="400">
 
-7. Once clicked, choose 'Python Environments'. 
+8. Once clicked, choose 'Python Environments'. 
 <img src="./JupyterSetUpImages/Select Python Env.png" width="400" height="400">
 
-8. Select your virtual environment that is Recommended.
+9. Select your virtual environment that is Recommended.
 <img src="./JupyterSetUpImages/Select Recc.png" width="400" height="400">
 
-8. To see if Jupyter Notebook was installed properly, type 'print("Hello, world!")' in the code. Click the play icon. If successful, a tick would be shown! And your Jupyter Notebook is good to go!
+10. To see if Jupyter Notebook was installed properly, type `print("Hello, world!")`. Click the play icon. If successful, a tick would be shown!
 <img src="./JupyterSetUpImages/troubleshoot.png" width="400" height="400">
+
+Your Jupyter Notebook is good to go!
+
+## Download of Image Classifier Folder
+1. Click on ['Essential Folder'](./Essential%20Folder) and download all the files found. (Dont forget to come back to this page!)
+
+2. Downloaded, 
