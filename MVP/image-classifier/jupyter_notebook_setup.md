@@ -8,7 +8,7 @@ We will be adding the notebook as an extension into your Visual Studio Code for 
 1. Open Visual Studio Code or Download [Visual Studio Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) (This link automatically downloads VS Code)
 
 2. Once opened, look for extensions on the left of your screen and click on the icon. 
-<img src="JupyterSetuUpImages/Extensions.png" width="400" height="400">
+<img src="./JupyterSetUpImages/Extensions.png" width="400" height="400">
 
 3. On searcg bar on left, search for Python and click Install. 
 4. Search for Jupyter Notebook and click Install. 
