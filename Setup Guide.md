@@ -19,7 +19,7 @@
     * [Reaper Setup](#reaper)
     * [L-ISA Setup](#l-isa)
     
-6. **[Files To Have]()**
+6. **[Files To Have](#things-to-have-in-your-folder-to-run-the-game)**
    * These are the files you need to have to run the game
 
 
