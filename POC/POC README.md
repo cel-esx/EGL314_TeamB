@@ -1,5 +1,17 @@
 # POC Gameplay Mechanics
-### Game Rules & Objective
+## Table Of Content
+1. **[Game Rules & Objective](#game-rules-objective)**
+   * What are the rules players have to follow
+2. **[Gameplay Instructions](#how-to-play)**
+   * Instructions on how to play the game
+3. **[Game Setup](#game-setup-start)**
+   * How to start playing
+4. **[Gameplay Loop](#gameplay-loop)**
+   * Wining Condition
+   * How game functions
+5. **[ Penalties](#penalties)**
+    * Losing Condition
+## Game Rules & Objective
 
 The **main objective** of the game is to successfully complete all 6 levels and survive the final Bonus Round to forge the legendary weapon before running out of lives
 * **Beat the Clock:** Every stage is bound by a strict countdown timer. If the timer hits zero before you match the required gestures, you fail the enchantment
@@ -22,10 +34,10 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and MultiPlay audio)
 
 
-## Game Setup & Start
+# Game Setup & Start
 * **Co-Op Calibration:** This game requires 2 players standing side-by-side in front of the webcam. Ensure both players' hands are completely visible within the frame
 * **Ignite the Forge:** Press the S key on your keyboard from the main title screen to begin the game
-## Gameplay Loop
+# Gameplay Loop
 * **Replicate the Gestures:** Once started, 4 target gestures will appear on the screen. Players must physically mirror these shapes with their hands
 
 * **Divide and Conquer:**
@@ -37,15 +49,13 @@ The **main objective** of the game is to successfully complete all 6 levels and 
 
 * **MultiPlay:** Play level sound tracks. Every passed stages, there will be a ```stage_cleared``` audio track playing. If players completed the level, ```levelcleared``` audio track will be played.
 * **Winning:** If the above is done correctly by matching the gestures on time, you win
-## Penalties
+# Penalties
 * **Running Out of Time:** Each stage has a countdown timer. Failing to hold the required gestures before the timer hits zero results in a failed enchantment.
 
 * **Losing Lives:** You begin with 3 lives. A time-out costs you a life, triggers a failure lighting state and sound effect, and triggers a rollback penalty.
 
-* **Checkpoint Rollbacks:** If you lose a life, the game resets your stage progress and knocks you back to the beginning of your nearest major milestone checkpoint (Level 1, 3, or 5).
-
-## Game Over
+* **Checkpoint Rollbacks:** If you lose a life, the game resets your stage progress and knocks you back to the beginning of your nearest major milestone checkpoint (Level 1, 3, or 5)
     
-**GrandMA3:** Incorrect gestures will trigger the red lights by ```MA3_GAMEOVER_CMD``` . If stage not cleared, will go back to the last level you were at. Eg. Incorrect gesture for level 4 stage 2, will go back to level 3. Shown in ```elif game_status == "LOSE":``` (Look for **Line 390** in [POC Game Code](/POC/POC%20Game%20Code) for full code) 
+* **GrandMA3:** Incorrect gestures will trigger the red lights by ```MA3_GAMEOVER_CMD``` . If stage not cleared, will go back to the last level you were at. Eg. Incorrect gesture for level 4 stage 2, will go back to level 3. Shown in ```elif game_status == "LOSE":``` (Look for **Line 390** in [POC Game Code](/POC/POC%20Game%20Code) for full code) 
 
-**MultiPlay:** For every incorrect gestures, an ```incorrect gestures``` audio track will be playing. If player lost 3 lives, ```gameover``` track will be played.
+* **MultiPlay:** For every incorrect gestures, an ```incorrect gestures``` audio track will be playing. If player lost 3 lives, ```gameover``` track will be played.

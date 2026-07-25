@@ -1,6 +1,28 @@
 # Setup Guide
 ###  This page contains all the materials required & the instructions on how to download those materials in order to run this game
 
+## Table Of Contents
+1. **[Hardware](#hardware)**
+   * What are the hardware you need
+2. **[Software](#software)**
+   * What are the software you need
+3. **[Hardware Placement](#hardware-placement)**
+   * Recommended position to place set up your game
+4. **[Dependencies](#dependencies)**
+   * Version of python used in this game
+5. **[ Installation Setup Guide](#things-to-have-in-your-folder-to-run-the-game)**
+    * [Anaconda Setup](#anaconda-set-up)
+    * [Visual Studio Code Setup](#microsoft-visual-studio-code)
+    * [Jupyter Notebook](#jupyter-notebook-installation-steps)
+    * [GrandMa3 Setup](#grandma3)
+    * [MultiPlay Setup](#multiPlay)
+    * [Reaper Setup](#reaper)
+    * [L-ISA Setup](#l-isa)
+    
+6. **[Files To Have]()**
+   * These are the files you need to have to run the game
+
+
 
 ## Hardware 
  1) **Desktop / Laptop** (Windows)
@@ -23,7 +45,9 @@
   4. **MultiPlay**
      * Click Here: [MultiPlay Setup](#multiPlay)
    5. **Reaper**
+      * Click Here: [Reaper Setup](#reaper)
    6. **L-ISA**
+      * Click Here: [L-ISA Setup](#l-isa)
 
 
    ## Hardware Placement
@@ -123,6 +147,26 @@
    * Type  ``` > ```
    * Click on ``` Python: Select Interpreter ```
    * Select your python enviroment
+
+---
+# Things to have in your folder to run the game
+> Upon successfully installing the **Microsoft Visual Studio Code**, please make sure that the below items are in your folder. You need these files to run the game
+## POC Version:
+ 1. Hand_Images
+ 2. Capture Gesture.py
+ 3. new_gesture_definitions.csv
+ 4. POC Game Code.py
+
+## MVP Version:
+ 1. Capture Gesture.py
+ 2. MVP Pictures
+ 3. 01_data_preparation.ipynb
+ 4. 02_ai_model_training.ipynb
+ 5. best_model.pth (Once 3 & 4 scripts are run, this will be automatically added and updated)
+ 6. Dataset Folder
+ 7. Heart.png
+ 8. MVP GameCode.py
+ 9. MVP_gesture_definitions.csv
 
    ### Jupyter Notebook Installation Steps
 

@@ -117,12 +117,13 @@ graph TD
 |[POC/grandMA3](/POC/grandma3/Images/)|Images| Contains images for more visual understanding |
 |[POC/grandMA3](/POC/grandma3/grandMA3setup.md)| grandMA3setup.md |Instructions on how to download and use GrandMA3|
 |[POC/grandMA3](/POC/grandma3/TEAMB_Proj.show)| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
-|[MVP](/MVP/MVP%20GameCode_NEW.py)| MVP Game Code.py | Contains the entire game code |
+|[MVP](/MVP/MVP%20GameCode.py)| MVP Game Code.py | Contains the entire game code |
 |[MVP](/MVP/MVP_gesture_definitions.csv)| MVP_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
 |[MVP](/MVP/MVP%20Pictures/)| MVP Pictures| Stores all captured game's pictures and videos |
 |[MVP](/MVP/Station%20Pictures/)| Station Pictures| Pictures Of our Game Station |
 |[MVP](/MVP/image-classifier/)| image-classifier| AI Model training files for shadow detection game |
-|[MVP](/MVP/image-classifier/jupyter_notebook_setup.md)| Jupyter Notebook Setup.md|This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level
+|[MVP](/MVP/MVP%20README.md)| MVP README.md| File that contains all the instruction on how the MVP game is suppose to be played |
+|[MVP/image-classifier](/MVP/image-classifier/jupyter_notebook_setup.md)| Jupyter Notebook Setup.md|This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level
 
 > Note: To navigate to desired location, click on the links at **Folder Location** in the above table <br>
 
