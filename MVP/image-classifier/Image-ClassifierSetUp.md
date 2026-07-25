@@ -40,4 +40,16 @@ Your Jupyter Notebook is good to go!
 ## Download of Image Classifier Folder
 1. Click on ['Essential Folder'](./Essential%20Folder) and download all the files found. (Dont forget to come back to this page!)
 
-2. Downloaded, 
+2. Downloaded, collate the files into one Folder. Name it 'Essential Folder'. 
+
+3. Once done, open your VS Code, click top left, 'File' and select 'Open Folder' 
+
+4. Select the folder Essential Folder that you have created before. 
+
+5. Click 'Select Kernel'. 
+
+6. Once clicked, choose 'Python Environments'. 
+
+7. Select your virtual environment that is Recommended.
+
+8. Run all files. 
