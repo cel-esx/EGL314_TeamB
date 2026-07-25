@@ -5,8 +5,6 @@
 1. **[Project Overview](#project-overview)**
    * Backstory of this project
    * Purpose of this project
-   * Game Rules & Objective
-   * Game Tutorial
    * How to set up
 2. **[System Architecture](#system-architecture)**
    * Data Flowchart
@@ -36,66 +34,26 @@ Below is a detailed breakdown of how **Station 2 | Pack Recharge** plays out dur
  ****
  ## Station 2 - Pack Recharge
 
-[Pic of station]
+![Station Area](<MVP/Station Pictures/IMG_2927.JPG>)
 
-This is the Pack Recharge station
+This is the Pack Recharge Station where players will recharge their guns 
 
-[Pic of guns on the table]
+![Pic of guns on the table](<MVP/Station Pictures/IMG_2944.JPG>)
 
-In this station, players are suppose to recharge the guns which would be found in player's backpack. They have to place them on the table to maximise it's fullest potential
+In this station, players are suppose to recharge the guns which would be found in player's backpack. They have to place them on the table to charge it up!
 
-[Pic of Stage 1 - 3]
+![alt text](<MVP/Station Pictures/Flow Of Game.png>)
 Players are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. 
 
-[Pic of stage 4 and location to stand]
+![alt text](/MVP/Station%20Pictures/IMG_2964.JPG)
+In level 4, Players would have to stand in the checkpoint that is behind a webcam attached to a tripod
 
-Especially in level 4, where the they would have to stand in front of the webcam attached to a tripod and do a shadow gesture together with the other player in order to finish the game
+![alt text](<MVP/Station Pictures/IMG_2968.JPG>)
+Player's task do a shadow gesture together with the other player in order to finish the game
 
-[Pic of charged and uncharged guns]
 
+![alt text](<MVP/Station Pictures/IMG_2972-1.JPG>)
 Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
-
----
-# Game Rules & Objective
-
-The **main objective** of the game is to successfully complete all 4 levels to upgrade the weapon before running out of lives and time
-* **Beat the Clock:** Every stage is bound by a strict countdown timer. If the timer hits zero before you match the required gestures / shadows, you fail the stage and will have to restart
-
-[Show timer]
-
-* **Progressive Co-Op:** As you advance through the game, you realise that eventually both players must follow the same target gestures shown on the screen
-
-[Show that the target from 4 becomes to 1 for all]
-
-* **The 3-Life Rule:** You begin your journey with 3 lives. If you fail a stage, you lose a life and are sent back to the start of the stage. Losing all lives results in a Game Over
-
-[Show the hearts]
-
-* **The Ultimate Test:** Completing Level 3 unlocks the shadow charging round. Both player have to use 1 of their hands to form a shadow and must survive 3 of such rounds in order to finish the game
-
-[Put the video]
-
-
----
-# How To Play?
-* **Position:** Stand at the spotlight in front of the laptop's webcam, ensuring both player's left and right hands are fully visible in the frame
-[pic of spotlight infront of laptop]
-
-* **Start the Game:** Both players are required to show their palms to begin the upgrading sequence
-
-[Show homescreen]
-
-* **Replicate the Runes:** Look at the active gesture boxes displayed on the screen. Physically mirror the exact left and right hand shapes using your own hands for levels 1-3
-
-* **Charge the Bar:** Once you match the target gestures, hold the positions steady. A green "Charging" progress bar will appear—maintain the pose for 2 seconds to complete the stage
-
-[Show that the progress bar is climbing up]
-
-* **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
-[Show lighting cues]
-
-* **Team Bonding Challenge:** Upon passing level 3, player need to repoisiton themselves to where the spotlight is showing. [pic of spotlight infront of webcam] Each players need to use only 1 hand and they have to work together in order to replicate the gesture shown on the screen
-[Pic of the video]
 
 ---
 ## How to Set up
@@ -163,14 +121,16 @@ graph TD
 |[MVP](/MVP/MVP%20GameCode_NEW.py)| MVP Game Code.py | Contains the entire game code |
 |[MVP](/MVP/new_gesture_definitions.csv)| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
 |[MVP](/MVP/MVP%20Pictures/)| MVP Pictures| Stores all captured game's pictures and videos |
+|[MVP](/MVP/Station%20Pictures/)| Station Pictures| Pictures Of our Game Station |
 |[MVP](/MVP/image-classifier/)| image-classifier| AI Model training files for shadow detection game |
+|[MVP](/MVP/image-classifier/jupyter_notebook_setup.md)| Jupyter Notebook Setup.md|This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level
 
 > Note: To navigate to desired location, click on the links at **Folder Location** in the above table <br>
 
 ---
 # Versions
-* [Proof Of Concept (POC)](/POC/POC%20Game%20Code.py) - This file contains the inital version of the game
-* [Minimum Viable Product (MVP)](/MVP/MVP%20GameCode_NEW.py) - This file contains a enhanced version of the POC gameplay
+* [Proof Of Concept (POC)](/POC/) - This folder contains the inital version of the game
+* [Minimum Viable Product (MVP)](/MVP/) - This folder contains a enhanced version of the POC gameplay
 ***
 # References and Sources:
 * [Huats Club - OSC Starter Kit ](https://github.com/huats-club/oscstarterkit)
