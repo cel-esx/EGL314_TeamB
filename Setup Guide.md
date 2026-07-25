@@ -27,8 +27,19 @@
 
 
    ## Hardware Placement
-   [Picture Of The Table Where Laptop setup]
+   ![alt text](<MVP/Station Pictures/IMG_2927.JPG>)
 
+   This is the ideal setup to play this game. 
+   
+   
+  ![alt text](<MVP/Station Pictures/IMG_2934.JPG>) 
+   There should be a webcam facing a wall.There should be a stationary light source (spotlight) from a distance to the wall. There should be a monitor that is tiled so that players are able to see whether the game is detecting the shadow on the wall
+
+   ![alt text](<MVP/Station Pictures/IMG_2935.JPG>) 
+
+   There should be the laptop facing the player when they are doing the hand gesture game. The area should be lit up so that the cameras cna better capture the hand gestures
+
+   
   ## Dependencies
   #### This code have been tested using **Python 3.10 or higher**   
 
