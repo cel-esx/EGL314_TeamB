@@ -162,7 +162,7 @@
  5. [best_model.pth](/MVP/image-classifier/best_model.pth) (Once 3 & 4 scripts are run, this will be automatically added and updated)
  6. Dataset Folder
  7. [Heart.png](/MVP/Heart.png)
- 8. [MVP GameCode.py](/MVP/Heart.png)
+ 8. [MVP GameCode.py](/MVP/MVP%20GameCode.py)
  9. [MVP_gesture_definitions.csv](/MVP/MVP_gesture_definitions.csv)
 
    ### Jupyter Notebook Installation Steps
