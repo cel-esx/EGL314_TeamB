@@ -30,28 +30,22 @@ The **main objective** of the game is to successfully complete all 4 levels to u
 ![alt text](<Station Pictures/Flow Of Game.png>)
 * **Progressive Co-Op:** As you advance through the game, you realise that eventually both players must follow the same target gestures shown on the screen
 ![alt text](<Station Pictures/IMG_2967-1.JPG>)
-* **The 3-Life Rule:** You begin your journey with 3 lives. If you fail a stage, you lose a life and are sent back to the start of the stage. Losing all lives results in a Game Over
-
+* **The 3-Life Rule:** You begin your journey with 3 lives. If you fail a stage, you lose a life and are sent back to the start of the stage. Losing all lives results in Game Over
 
 https://github.com/user-attachments/assets/260da920-a780-43b9-9eba-ad06342f5895
-
-
-
-
 * **The Ultimate Test:** Completing Level 3 unlocks the shadow charging round. Both player have to use 1 of their hands to form a shadow and must survive 3 of such rounds in order to finish the game
 
 ---
 # How To Play?
+![alt text](<Station Pictures/IMG_2962.JPG>)
 * **Position:** Stand at the spotlight in front of the laptop's webcam, ensuring both player's left and right hands are fully visible in the frame
-[pic of spotlight infront of laptop]
 
+![alt text](<Station Pictures/Homepage.JPG>)
 * **Start the Game:** Both players are required to show their palms to begin the upgrading sequence
-
-[Show homescreen]
 
 * **Replicate the Runes:** Look at the active gesture boxes displayed on the screen. Physically mirror the exact left and right hand shapes using your own hands for levels 1-3
 
-* **Charge the Bar:** Once you match the target gestures, hold the positions steady. A green "Charging" progress bar will appear—maintain the pose for 2 seconds to complete the stage
+* **Charge the Bar:** Once you match the target gestures, hold the positions steady. A ```Charging progress bar``` will appear—maintain the pose for 2 seconds to complete the stage
 
 [Show that the progress bar is climbing up]
 
