@@ -4,8 +4,12 @@ This software allow users to run and test AI code step-by-step. Easier for data 
 ## Software Setup
 We will be adding the notebook as an extension into your Visual Studio Code for easy use! 
 
-1. Open Visual Studio Code on your laptop. 
-2. Look for extensions on the left of your screen and click on the icon. 
+
+1. Open Visual Studio Code or Download [Visual Studio Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) (This link automatically downloads VS Code)
+
+2. Once opened, look for extensions on the left of your screen and click on the icon. 
+<img src="JupyterSetuUpImages/Extensions.png" width="400" height="400">
+
 3. On searcg bar on left, search for Python and click Install. 
 4. Search for Jupyter Notebook and click Install. 
 5. Once installed, click the search bar on top middle and type '> Create: New Jupyter Notebook', and press Enter. 
