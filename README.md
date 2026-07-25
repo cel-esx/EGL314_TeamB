@@ -3,7 +3,6 @@
  Project P.H.A.N.T.O.M stands for **P**aranormal **H**azard **A**ssessment & **N**eutralization **T**raining **O**perations **M**odule
 ## Table of Contents
 1. **[Project Overview](#project-overview)**
-   * Backstory of this project
    * Purpose of this project
    * How to set up
 2. **[System Architecture](#system-architecture)**
