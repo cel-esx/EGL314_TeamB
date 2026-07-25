@@ -18,9 +18,6 @@
     * [MultiPlay Setup](#multiPlay)
     * [Reaper Setup](#reaper)
     * [L-ISA Setup](#l-isa)
-    
-6. **[Files To Have](#things-to-have-in-your-folder-to-run-the-game)**
-   * These are the files you need to have to run the game
 
 
 
@@ -152,21 +149,21 @@
 # Things to have in your folder to run the game
 > Upon successfully installing the **Microsoft Visual Studio Code**, please make sure that the below items are in your folder. You need these files to run the game
 ## POC Version:
- 1. Hand_Images
- 2. Capture Gesture.py
- 3. new_gesture_definitions.csv
- 4. POC Game Code.py
+ 1. [Hand_Images](/POC/Hand_Images/)
+ 2. [Capture Gesture.py](/POC/Capture%20Gesture.py)
+ 3. [new_gesture_definitions.csv](/POC/new_gesture_definitions.csv)
+ 4. [POC Game Code.py](/POC/POC%20Game%20Code.py)
 
 ## MVP Version:
- 1. Capture Gesture.py
- 2. MVP Pictures
- 3. 01_data_preparation.ipynb
- 4. 02_ai_model_training.ipynb
- 5. best_model.pth (Once 3 & 4 scripts are run, this will be automatically added and updated)
+ 1. [Capture Gesture.py](/MVP/Capture%20Gesture.py)
+ 2. [MVP Pictures](/MVP/MVP%20Pictures/)
+ 3. [01_data_preparation.ipynb](/MVP/image-classifier/01_data_preparation.ipynb)
+ 4. [02_ai_model_training.ipynb](/MVP/image-classifier/02_ai_model_training.ipynb)
+ 5. [best_model.pth](/MVP/image-classifier/best_model.pth) (Once 3 & 4 scripts are run, this will be automatically added and updated)
  6. Dataset Folder
- 7. Heart.png
- 8. MVP GameCode.py
- 9. MVP_gesture_definitions.csv
+ 7. [Heart.png](/MVP/Heart.png)
+ 8. [MVP GameCode.py](/MVP/Heart.png)
+ 9. [MVP_gesture_definitions.csv](/MVP/MVP_gesture_definitions.csv)
 
    ### Jupyter Notebook Installation Steps
 
