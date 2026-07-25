@@ -54,12 +54,11 @@ https://github.com/user-attachments/assets/41f4fff9-a1b6-485d-8980-b0af1e12570a
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
 [Show lighting cues]
 
-* **Team Bonding Challenge:** Upon passing level 3, player need to repoisiton themselves to where the spotlight is showing. [pic of spotlight infront of webcam] Each players need to use only 1 hand and they have to work together in order to replicate the gesture shown on the screen
-
+* **Team Bonding Challenge:** Upon passing level 3, player need to repoisiton themselves to where the spotlight is showing
+![alt text](<Station Pictures/IMG_2965.JPG>)
+Each players need to use only 1 hand and they have to work together in order to replicate the gesture shown on the screen
 
 https://github.com/user-attachments/assets/4a79077d-f749-4695-8b50-ca8f1a74ef74
-
-
 
 ## Penalties
 * **Running Out of Time:** Each stage has a countdown timer. Failing to hold the required gestures before the timer hits zero results in a failed charge
