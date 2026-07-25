@@ -32,9 +32,11 @@ The **main objective** of the game is to successfully complete all 4 levels to u
 ![alt text](<Station Pictures/IMG_2967-1.JPG>)
 * **The 3-Life Rule:** You begin your journey with 3 lives. If you fail a stage, you lose a life and are sent back to the start of the stage. Losing all lives results in a Game Over
 
-
-<video src="Station Pictures/IMG_2970.MOV" autoplay loop muted playsinline controls width="100%">
+<video autoplay loop muted playsinline controls width="100%">
+  <source src="Station%20Pictures/IMG_2970.mp4" type="video/mp4">
+  Your browser does not support the video tag.
 </video>
+
 
 * **The Ultimate Test:** Completing Level 3 unlocks the shadow charging round. Both player have to use 1 of their hands to form a shadow and must survive 3 of such rounds in order to finish the game
 
