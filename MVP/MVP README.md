@@ -45,9 +45,11 @@ https://github.com/user-attachments/assets/260da920-a780-43b9-9eba-ad06342f5895
 
 * **Replicate the Runes:** Look at the active gesture boxes displayed on the screen. Physically mirror the exact left and right hand shapes using your own hands for levels 1-3
 
-* **Charge the Bar:** Once you match the target gestures, hold the positions steady. A ```Charging progress bar``` will appear—maintain the pose for 2 seconds to complete the stage
 
-[Show that the progress bar is climbing up]
+https://github.com/user-attachments/assets/41f4fff9-a1b6-485d-8980-b0af1e12570a
+
+
+* **Charge the Bar:** Once you match the target gestures, hold the positions steady. A ```Charging progress bar``` will appear—maintain the pose for 2 seconds to complete the stage
 
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
 [Show lighting cues]
