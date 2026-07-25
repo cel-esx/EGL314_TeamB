@@ -27,14 +27,13 @@ The **main objective** of the game is to successfully complete all 4 levels to u
 ![alt text](<Station Pictures/IMG_2967.JPG>)
 * **Beat the Clock:** Every stage is bound by a strict countdown timer. If the timer hits zero before you match the required gestures / shadows, you fail the stage and will have to restart
 
-![alt text](<Flow Of Game.png>)
+![alt text](<Station Pictures/Flow Of Game.png>)
 * **Progressive Co-Op:** As you advance through the game, you realise that eventually both players must follow the same target gestures shown on the screen
 ![alt text](<Station Pictures/IMG_2967-1.JPG>)
 * **The 3-Life Rule:** You begin your journey with 3 lives. If you fail a stage, you lose a life and are sent back to the start of the stage. Losing all lives results in a Game Over
 
 <video autoplay loop muted playsinline controls width="100%">
   <source src="Station%20Pictures/IMG_2970.mp4" type="video/mp4">
-  Your browser does not support the video tag.
 </video>
 
 

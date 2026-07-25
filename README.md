@@ -119,7 +119,7 @@ graph TD
 |[POC/grandMA3](/POC/grandma3/grandMA3setup.md)| grandMA3setup.md |Instructions on how to download and use GrandMA3|
 |[POC/grandMA3](/POC/grandma3/TEAMB_Proj.show)| TEAMB_Proj.show | Pre-made Show File for reference and use. Feel free to make changes in this file |
 |[MVP](/MVP/MVP%20GameCode_NEW.py)| MVP Game Code.py | Contains the entire game code |
-|[MVP](/MVP/new_gesture_definitions.csv)| new_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
+|[MVP](/MVP/MVP_gesture_definitions.csv)| MVP_gesture_definitions.csv | Stores all captured gestures in a format that is understood by the game |
 |[MVP](/MVP/MVP%20Pictures/)| MVP Pictures| Stores all captured game's pictures and videos |
 |[MVP](/MVP/Station%20Pictures/)| Station Pictures| Pictures Of our Game Station |
 |[MVP](/MVP/image-classifier/)| image-classifier| AI Model training files for shadow detection game |
