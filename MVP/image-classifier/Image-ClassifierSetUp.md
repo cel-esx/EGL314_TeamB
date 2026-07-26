@@ -86,10 +86,12 @@ Your Jupyter Notebook is good to go!
     
     <img src="./JupyterSetUpImages/part2b.jpg" width="400" height="400">
 
-    e) After running the third code, there should be this input to show your code is working and the AI is learning 
+    e) After running the third code, there should be this input to show your code is working and the AI is learning
+
     <img src="./JupyterSetUpImages/part2c.jpg" width="400" height="400">
 
     This should be shown on your screen 
+    
     <img src="./JupyterSetUpImages/part2d.jpg" width="400" height="400">
     
     <img src="./JupyterSetUpImages/part2e.jpg" width="400" height="400">
