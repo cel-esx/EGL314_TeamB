@@ -124,7 +124,7 @@ graph TD
 |[MVP](/MVP/Station%20Pictures/)| Station Pictures| Pictures Of our Game Station |
 |[MVP](/MVP/MVP%20README.md)| MVP README.md| File that contains all the instruction on how the MVP game is suppose to be played |
 |[MVP](/MVP/image-classifier/)| image-classifier| AI Model training files for shadow detection game |
-|[MVP/image-classifier](/MVP/image-classifier/MVP/image-classifier/Image-ClassifierSetUp.md)| Jupyter Notebook Setup.md|This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level|
+|[MVP/image-classifier](/MVP/image-classifier/MVP/image-classifier/Image-ClassifierSetUp.md)| Image Classifier Set Up Setup.md|This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level|
 [MVP/L-ISA](MVP/L-ISA)| README.md | This is the L-ISA set up and configuration tutorial file.|
 [MVP/L-ISA](MVP/L-ISA)| Images | Images used in the README.md file.|
 [MVP/L-ISA](MVP/L-ISA)| Project_Phantom_Lisa.lisa | L-ISA file used for MVP project.|
