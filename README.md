@@ -85,16 +85,17 @@ graph TD
     F -->|DMX Out| G[Lighting Fixtures]
 
     %% Audio Pipeline (Laptop 3)
-    B -->|Send OSC Command<br>via Wi-Fi| D[Laptop 3:<br>Running REAPER + L-ISA via MIDI ]
+    B -->|Send OSC Command<br>via Wi-Fi| D[Laptop 3:<br>Running REAPER + L-ISA via MIDI]
     D -->|Dante Protocol| QL1[Yamaha QL1 Console]
-    QL1 -->|Audio Out| SPK[Speakers]
+    QL1 -->|Dante Protocol| AMP[Amplifiers]
+    AMP -->|Audio Out| SPK[Speakers]
 
     %% Assign Styles
     class CAM1,CAM2 inputs;
     class B master;
     class MON hardware;
     class C,E,F,G lighting;
-    class D,LISA,QL1,SPK audio;
+    class D,QL1,AMP,SPK audio;
 ```
 ---
 # Repository Structure
