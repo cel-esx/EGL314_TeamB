@@ -161,9 +161,9 @@
 ## MVP Version:
  1. [Capture Gesture.py](/MVP/Capture%20Gesture.py)
  2. [MVP Pictures](/MVP/MVP%20Pictures/)
- 3. [01_data_preparation.ipynb](/MVP/image-classifier/01_data_preparation.ipynb)
- 4. [02_ai_model_training.ipynb](/MVP/image-classifier/02_ai_model_training.ipynb)
- 5. [best_model.pth](/MVP/image-classifier/best_model.pth) (Once 3 & 4 scripts are run, this will be automatically added and updated)
+ 3. [01_data_preparation.ipynb](/MVP/image-classifier/Essential%20Folder/01_data_preparation.ipynb)
+ 4. [02_ai_model_training.ipynb](/MVP/image-classifier/Essential%20Folder/02_ai_model_training.ipynb)
+ 5. [best_model.pth](/MVP/image-classifier/Essential%20Folder/best_model.pth) (Once 3 & 4 scripts are run, this will be automatically added and updated)
  6. [Dataset Folder](<MVP/image-classifier/Essential Folder/Dataset>)
  7. [Heart.png](/MVP/Heart.png)
  8. [MVP GameCode.py](/MVP/MVP%20GameCode.py)
