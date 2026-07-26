@@ -2,7 +2,7 @@
 ## Table Of Contents
 1. **[Game Enhancement Details](#game-enhancement-details)**
    * What enhancements we have done in this version of the game
-2. **[Game Rules & Objective](#game-rules-&-objective)**
+2. **[Game Rules & Objective](#game-rules-objective)**
    * What are the rules players have to follow
 3. **[How To Play](#how-to-play)**
     * Instructions on how to play the game
