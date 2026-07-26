@@ -1,6 +1,6 @@
 # Image Classifier on Jupyter Notebook
 ## Purpose
-This section uses Jupyter Notebook to build and train the image classifier step-by-step. Since image models take time to load and need visual checking, the notebook allows us to view sample images directly inline, keep heavy datasets loaded in memory while tweaking settings, and inspect training results after every step.
+This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level. This section uses Jupyter Notebook to build and train the image classifier step-by-step. Since image models take time to load and need visual checking, the notebook allows us to view sample images directly inline, keep heavy datasets loaded in memory while tweaking settings, and inspect training results after every step.
 
 ## Software Setup
 We will be adding the notebook as an extension into your Visual Studio Code for easy use! 
