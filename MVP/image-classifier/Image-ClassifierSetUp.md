@@ -38,13 +38,13 @@ We will be adding the notebook as an extension into your Visual Studio Code for 
 Your Jupyter Notebook is good to go!
 
 ## Download of Image Classifier Folder
-1. Click on ['Essential Folder'](./Essential%20Folder) and download all the files found. (Dont forget to come back to this page!)
+1. Click on [Essential Folder](./Essential%20Folder) and download all the files found. (Dont forget to come back to this page!)
 
 2. Downloaded, collate the files into one Folder. Name it 'Essential Folder'. 
 
 3. Once done, open your VS Code, click top left, 'File' and select 'Open Folder' 
 
-4. Select the folder Essential Folder that you have created before. 
+4. Select the folder Essential Folder that you have created at top. 
 
 5. Click 'Select Kernel'. 
 
@@ -52,4 +52,14 @@ Your Jupyter Notebook is good to go!
 
 7. Select your virtual environment that is Recommended.
 
-8. Run all files. 
+8. **Open Data Preparation File**
+
+    a) Click on `01_data_preparation.ipynb` found in the folder.
+
+    b) Run each code using the Play icon 
+    <img src="./JupyterSetUpImages/play icon.png" width="400" height="400">
+
+    c) This would be the what you see on screen. <img src="./JupyterSetUpImages/part1a.jpg" width="400" height="400">
+
+
+
