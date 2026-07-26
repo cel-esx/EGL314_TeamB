@@ -35,7 +35,7 @@
      * Click Here: [Anaconda Setup](#anaconda-set-up)
   2. **Microsoft Visual Studio Code**
      * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
-     * You also need [Jupyter Notebook](#jupyter-notebook-installation-steps) within Visual Studio Code
+     * You also need [Jupyter Notebook](MVP/image-classifier/Image-ClassifierSetUp.md) within Visual Studio Code
      > Note: Jupyter Notebook is **Not Required For POC Game**
   3. **GrandMA3**
      * Click Here: [GrandMa3 Setup](MVP/GrandMa3/grandMA3setup.md)
