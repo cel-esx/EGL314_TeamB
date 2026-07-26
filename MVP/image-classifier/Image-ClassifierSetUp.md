@@ -57,14 +57,14 @@ Your Jupyter Notebook is good to go!
     a) Click on `01_data_preparation.ipynb` found in the folder.
 
     b) Run each code using the Play icon 
-    
-    <img src="./JupyterSetUpImages/play icon.png" width="400" height="400">
 
-    This would be the what you see on screen. 
-    
-    <img src="./JupyterSetUpImages/part1a.jpg" width="400" height="400">
-    
-    <img src="./JupyterSetUpImages/part1b.jpg" width="400" height="400">
+    <p><img src="./JupyterSetUpImages/play%20icon.png" width="400" height="400"></p>
+
+    This would be what you see on screen. 
+
+    <p><img src="./JupyterSetUpImages/part1a.jpg" width="400" height="400"></p>
+
+    <p><img src="./JupyterSetUpImages/part1b.jpg" width="400" height="400"></p>
 
     c) Your code is working if you see the last output being `(tensor([0.4363, 0.4328, 0.3291]), tensor([0.2129, 0.2075, 0.2037]))`
 
