@@ -225,3 +225,13 @@ def send_osc_signal(client, address, message=1):
 | **Hard Defeat (Game Over)** | Trigger hard game over track (Marker 28) | `/action/41268`<br>`/action/_b4dd8381edb3cf4a82f2f1d2a56622e0` |
 | **Full Game Victory** | Unmute all tracks and trigger victory sequence (Marker 30) | `/action/_7f4e8ad275963d4c8547d96d2538d0be`<br>`/action/41270` |
 | **Emergency Stop (`ESC` / `q`)** | Immediately halt all audio playback | `/action/1016` |
+
+### 3. Custom Command ID Used
+| Action ID / Command | Description |
+| :--- | :--- |
+| `_b4dd8381edb3cf4a82f2f1d2a56622e0` | Mute all music tracks |
+| `_b5b9b1aa3433a54f8efb7058fd9dc212` | Unmute Track 2 only (Level 1) |
+| `_8003a43cdba0624b948270f6b5224ee8` | Unmute Track 3 only (Level 2) |
+| `_fed26a77af3cb841b8ae1156e64de1ec` | Unmute Track 4 only (Level 3) |
+| `_82a10b90ef7428438ddfd101c8195d19` | Unmute Track 5 only (Bonus) |
+| `_7f4e8ad275963d4c8547d96d2538d0be` | Unmute all tracks |
