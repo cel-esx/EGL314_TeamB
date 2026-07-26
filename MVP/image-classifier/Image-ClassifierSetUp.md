@@ -56,7 +56,7 @@ Your Jupyter Notebook is good to go!
 
     a) Click on `01_data_preparation.ipynb` found in the folder.
 
-    b) Run each code using the Play icon 
+    b) Run each code using the Play icon for **each line**.
 
     <p><img src="./JupyterSetUpImages/play%20icon.png" width="400" height="400"></p>
 
@@ -74,7 +74,7 @@ Your Jupyter Notebook is good to go!
 
     a) Click on `02_ai_model_training.ipynb` found in the folder. 
 
-    b) Run each code using th Play icon
+    b) Run each code using th Play icon for **each line**. 
     
     <img src="./JupyterSetUpImages/play icon.png" width="400" height="400">
 
@@ -120,7 +120,7 @@ Your Jupyter Notebook is good to go!
 
     <img src="./JupyterSetUpImages/part2l.jpg" width="400" height="400">
 
-    You are ready to use the `.pth` that will be saved in the same folder as the rest of the files you've run! Have fun!
+    You are ready to use the `.pth` that will be saved in the same folder as the rest of the files you've run! Have fun! This will be use in the [MVP GameCode.py](<../MVP GameCode.py>)
 
 
 
