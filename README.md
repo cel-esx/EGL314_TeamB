@@ -20,13 +20,13 @@
 ## Purpose of this Project
 Our purpose is to transform trainees into the industry's most elite Phantom Hunters. To achieve official certification, trainees must successfully complete four specialised training stations:
 
-**Station 1| Site Inspection:** Assess environmental threats, identify entry points, and establish control zones
+**Station 1 | Site Inspection:** Assess environmental threats, while keeping clear of phantoms
 
-**Station 2 | Pack Recharge:** Manage power cells, maintain gear under pressure, and ensure continuous operation
+**Station 2 | Pack Recharge:** Rechange phantom blasters using the training centre's official enhancement engine
 
-**Station 3 | Phantom Sweep:** Systematically sweep complex areas to detect and track entity signatures
+**Station 3 | Phantom Sweep:** Begin tactical eradication drills to detect and destroy phantoms
 
-**Station 4 | Final Containment:** Apply ultimate capture protocols to safely trap and neutralize entities
+**Station 4 | Final Containment:** Eradicate remaining phantoms without any sort of incident
 
 Below is a detailed breakdown of how **Station 2 | Pack Recharge** plays out during the training
 
