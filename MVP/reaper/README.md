@@ -216,28 +216,12 @@ def send_osc_signal(client, address, message=1):
 ### 2. Primary Event Commands Summary
 
 | Game Event | Description | OSC Address / Action ID |
-| --- | --- | --- |
-| **System Initialization** | Exit loop, jump to lobby (Marker 21), and begin playback | `/action/40339`<br>
-
-<br>`/action/41261`<br>
-
-<br>`/action/40044` |
-| **Start Game** | Jump to countdown (Marker 22) and isolate Level 1 music | `/action/41262`<br>
-
-<br>`/action/_b5b9b1aa3433a54f8efb7058fd9dc212` |
-| **Stage Clear (Intermediate)** | Mute music tracks and play victory stinger (Marker 27) | `/action/_b4dd8381edb3cf4a82f2f1d2a56622e0`<br>
-
-<br>`/action/41267` |
-| **Bonus Level Transition** | Trigger transition marker (Marker 26) and prep Bonus Track | `/action/_b4dd8381edb3cf4a82f2f1d2a56622e0`<br>
-
-<br>`/action/41266` |
-| **Life Lost / Single Attempt Fail** | Mute music and trigger fail stinger (Marker 29) | `/action/41269`<br>
-
-<br>`/action/_b4dd8381edb3cf4a82f2f1d2a56622e0` |
-| **Hard Defeat (Game Over)** | Trigger hard game over track (Marker 28) | `/action/41268`<br>
-
-<br>`/action/_b4dd8381edb3cf4a82f2f1d2a56622e0` |
-| **Full Game Victory** | Unmute all tracks and trigger victory sequence (Marker 30) | `/action/_7f4e8ad275963d4c8547d96d2538d0be`<br>
-
-<br>`/action/41270` |
+| :--- | :--- | :--- |
+| **System Initialization** | Exit loop, jump to lobby (Marker 21), and begin playback | `/action/40339`<br>`/action/41261`<br>`/action/40044` |
+| **Start Game** | Jump to countdown (Marker 22) and isolate Level 1 music | `/action/41262`<br>`/action/_b5b9b1aa3433a54f8efb7058fd9dc212` |
+| **Stage Clear (Intermediate)** | Mute music tracks and play victory stinger (Marker 27) | `/action/_b4dd8381edb3cf4a82f2f1d2a56622e0`<br>`/action/41267` |
+| **Bonus Level Transition** | Trigger transition marker (Marker 26) and prep Bonus Track | `/action/_b4dd8381edb3cf4a82f2f1d2a56622e0`<br>`/action/41266` |
+| **Life Lost / Single Attempt Fail** | Mute music and trigger fail stinger (Marker 29) | `/action/41269`<br>`/action/_b4dd8381edb3cf4a82f2f1d2a56622e0` |
+| **Hard Defeat (Game Over)** | Trigger hard game over track (Marker 28) | `/action/41268`<br>`/action/_b4dd8381edb3cf4a82f2f1d2a56622e0` |
+| **Full Game Victory** | Unmute all tracks and trigger victory sequence (Marker 30) | `/action/_7f4e8ad275963d4c8547d96d2538d0be`<br>`/action/41270` |
 | **Emergency Stop (`ESC` / `q`)** | Immediately halt all audio playback | `/action/1016` |
