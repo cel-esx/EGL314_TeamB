@@ -46,7 +46,7 @@ This separation provides clear and immediate visual feedback: green represents a
 
 ### Shadow Game Area
 
-**Sequence 114 — For Shadow** lights the area where the team’s Shadow Game is played. This ensures the activity zone is visually defined for both players and observers.
+**Sequence 114 — For Shadow** lights the area where the team's Shadow Game is played. This ensures the activity zone is visually defined for both players and observers.
 
 ### Player Direction
 
@@ -62,6 +62,99 @@ This separation provides clear and immediate visual feedback: green represents a
 - A second mini panel operates as the **fill light**, reducing harsh shadows and improving facial visibility.
 - The specific fixture arrangement differs between stations to suit each station layout.
 
+---
+
+## OSC Setup
+
+### Requirements
+
+Install the Python OSC library before running the game application:
+
+REFER to [SETUP GUIDE](<../../Setup Guide.md>)
+
+
+### Python OSC Configuration (from `MVP GameCode.py`)
+
+The game application initialises two OSC clients at startup — one for GrandMA3 and one for REAPER:
+
+```python
+from pythonosc import udp_client
+
+GMA3_LAPTOP_IP = "192.168.254.252"   # IP address of the GrandMA3 console
+GMA3_PORT      = 8080                 # OSC listen port set in GrandMA3
+GMA3_ADDRESS   = "/gma3/cmd"         # OSC command address
+
+REAPER_LAPTOP_IP = "192.168.254.12"  # IP address of the REAPER computer
+REAPER_PORT      = 8000
+```
+
+Clients are created and messages are sent using these two helper functions:
+
+```python
+def create_osc_client(ip, port, system_name):
+    client = udp_client.SimpleUDPClient(ip, port)
+    return client
+
+def send_osc_signal(client, address, message):
+    client.send_message(address, message)
+
+gma3_client  = create_osc_client(GMA3_LAPTOP_IP,  GMA3_PORT,  "grandMA3")
+reaper_client = create_osc_client(REAPER_LAPTOP_IP, REAPER_PORT, "REAPER")
+```
+
+### OSC Command Reference
+
+All GrandMA3 commands are sent to `/gma3/cmd` as a string argument. Commands can be chained using ` ; ` (semicolon with spaces).
+
+#### Startup Commands
+Sent once when the script initialises:
+
+```python
+send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence *")
+send_osc_signal(gma3_client, GMA3_ADDRESS, "on timecode 2 ; on sequence 80 cue 2 ; on sequence 78 cue 2")
+```
+
+#### Predefined Command Strings
+
+| Variable | Command String | When Triggered |
+|---|---|---|
+| `MA3_MATCH_COMMAND` | `"on Sequence 25"` | On gesture match |
+| `MA3_PASS_LEVEL_CMD` | `"off sequence * ; on sequence 12"` | Player passes all stages in a level |
+| `MA3_GAMEOVER_CMD` | `"off Sequence * ; on sequence 10"` | Player runs out of lives |
+
+#### Game State OSC Triggers
+
+| Game Event | OSC Command Sent |
+|---|---|
+| **Script start** | `"off sequence *"` → `"on timecode 2 ; on sequence 80 cue 2 ; on sequence 78 cue 2"` |
+| **Game start (transition)** | `"off timecode *; off sequence * ; on sequence 17"` |
+| **Stage clear (per level)** | `"off sequence 22 , on sequence 12"` (after buffer) |
+| **Gesture match (each stage)** | `"on sequence 80 cue 2"` |
+| **Level complete → next level** | `MA3_PASS_LEVEL_CMD` = `"off sequence * ; on sequence 12"` |
+| **Advancing to Level 4** | `"on sequence 12 ; on sequence 26 ; on sequence 79 cue 2 ; on sequence 78 cue 3"` |
+| **Blank screen end (Level 4 unlock)** | `"On Sequence 26 ; On sequence 78 cue 3"` |
+| **Player LOSE (lives remaining)** | `MA3_GAMEOVER_CMD` = `"off Sequence * ; on sequence 10"` |
+| **Player LOSE → retry** | `"Off Sequence *; on sequence 10"` |
+| **GAMEOVER** | `MA3_GAMEOVER_CMD` = `"off Sequence * ; on sequence 10"` |
+| **Quit (Q / ESC key)** | `"off Timecode *; off sequence *"` |
+
+#### Per-Level Stage Lighting (`GAME_SHOW_MAP`)
+
+Each level and stage triggers a specific cue command sent via `send_osc_signal(gma3_client, GMA3_ADDRESS, cue_cmd)`:
+
+| Level | Stage | Cue Command |
+|---|---|---|
+| 1 | 1 | `"off timecode 2 ; on sequence 80 cue 2 ; on sequence 79 cue 2"` |
+| 1 | 2 | `"on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"` |
+| 2 | 1 | `"on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"` |
+| 2 | 2 | `"on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"` |
+| 3 | 1 | `"on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"` |
+| 3 | 2 | `"on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"` |
+| 4 | 1 | `"on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"` |
+| 4 | 2 | `"on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"` |
+
+---
+
 ## Operational Notes
 
 - Sequences 107–110 support the timecode-based environmental lighting section.
@@ -69,3 +162,5 @@ This separation provides clear and immediate visual feedback: green represents a
 - Sequences 131–133 support audience flow, player positioning, and station presentation requirements.
 - Sequences 111 and 112 are not included in the current MVP operational documentation.
 - Before operation, verify that the GrandMA3 OSC input settings, network address, and Python OSC destination settings are correctly configured.
+- GrandMA3 IP: `192.168.254.252` | Port: `8080`
+- REAPER IP: `192.168.254.12` | Port: `8000`

@@ -14,7 +14,7 @@
     * [Anaconda Setup](#anaconda-set-up)
     * [Visual Studio Code Setup](#microsoft-visual-studio-code)
     * [Jupyter Notebook](#jupyter-notebook-installation-steps)
-    * [GrandMa3 Setup](#grandma3)
+    * [GrandMa3 Setup](#software)
     * [MultiPlay Setup](#multiPlay)
     * [Reaper Setup](#reaper)
     * [L-ISA Setup](#l-isa)
@@ -38,7 +38,7 @@
      * You also need [Jupyter Notebook](#jupyter-notebook-installation-steps) within Visual Studio Code
      > Note: Jupyter Notebook is **Not Required For POC Game**
   3. **GrandMA3**
-     * Click Here: [GrandMa3 Setup](#grandma3)
+     * Click Here: [GrandMa3 Setup](MVP/GrandMa3/grandMA3setup.md)
   4. **MultiPlay**
      * Click Here: [MultiPlay Setup](POC/Multiplay/MultiPlay.md)
    5. **Reaper**
@@ -155,6 +155,8 @@
  2. [Capture Gesture.py](/POC/Capture%20Gesture.py)
  3. [new_gesture_definitions.csv](/POC/new_gesture_definitions.csv)
  4. [POC Game Code.py](/POC/POC%20Game%20Code.py)
+ 5. [GrandMa Show File](/POC/grandma3/TEAMB_Proj.show)
+ 6. [Multiplay Audio File](/POC/Multiplay/Images&MultiPlay/multiplay3_projectTeamB.mpp)
 
 ## MVP Version:
  1. [Capture Gesture.py](/MVP/Capture%20Gesture.py)
@@ -166,6 +168,8 @@
  7. [Heart.png](/MVP/Heart.png)
  8. [MVP GameCode.py](/MVP/MVP%20GameCode.py)
  9. [MVP_gesture_definitions.csv](/MVP/MVP_gesture_definitions.csv)
+ 10. [MVP Grandma3 show](MVP/GrandMa3) 
+ 
 
    
 
