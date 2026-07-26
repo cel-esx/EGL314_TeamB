@@ -46,7 +46,7 @@
    6. **L-ISA**
       * Click Here: [L-ISA Setup](MVP/L-ISA/README.md)
    7. **Jupyter Notebook**
-      * Click Here: [Jupyter Notebook Setup - AQILAH..PLS UPDATE]()
+      * Click Here: [Jupyter Notebook Setup](MVP/image-classifier/Image-ClassifierSetUp.md)
 
 
    ## Hardware Placement
