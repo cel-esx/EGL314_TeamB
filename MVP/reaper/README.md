@@ -15,31 +15,37 @@ This system leverages **OSC (Open Sound Control)** messages sent over UDP to dri
 ### 1. Installation
 
 * Download and install **[REAPER (v7.78)](https://www.reaper.fm/download.php)**.
-* 📹 **[Video Installation & Setup Guide](https://www.google.com/search?q=https://youtu.be/NPRVyNZkvuU%3Fsi%3DWripKjYeM94i0ri_)**
+* 📹 **[Video Installation & Setup Guide](https://youtu.be/ovhg19rF6fs?si=HqAWD1hZAZhdYLoX)**
 
 ### 2. OSC Control Surface Configuration
 
-1. Open REAPER and press `Ctrl + P` to open **Preferences**.
-2. In the left panel, navigate to **Control/OSC/web**.
-3. Click **Add** to create a new control surface configuration.
-4. Set **Control surface mode** to **OSC (Open Sound Control)**.
+1. Open REAPER and press `Ctrl + P` to open **Preferences**. <br>
+![Alt Text](Images/preferences.png)
+2. In the left panel, navigate to **Control/OSC/web**. <br>
+![Alt Text](Images/osc_web.png)
+3. Click **Add** to create a new control surface configuration. <br>
+![Alt Text](Images/add_osc.png)
+4. Set **Control surface mode** to **OSC (Open Sound Control)**. <br>
+![Alt Text](Images/osc_config1.png)
 5. Apply the following settings:
-* **Mode:** `Configure device IP+local port`
+* **Mode:** `Configure device IP+local port` <br>
+![Alt Text](Images/osc_config2.png)
 * **Local listen port:** `8000` *(This is the port REAPER listens on for incoming OSC messages)*.
 * **Device IP:** Set to broadcast IP `0.0.0.0`.
 * **Local IP:** Displays your machine's current local IP.
 * **Action Binding:** Check **"Allow binding messages to REAPER actions and FX learn"** so OSC messages can trigger custom actions and markers.
-
-
-6. Click **OK** to save and apply.
-
+6. Click **OK** to save and apply. <br>
+Here's the image on how each of the configuration looks like: <br>
+![Alt Text](Images/osc_config3.png)
 ---
 
 ### Finding Your Laptop's IP Address (Windows)
 
-1. Open **Command Prompt** (`cmd`).
-2. Type `ipconfig` and press **Enter**.
-3. Locate your active network adapter and note the **IPv4 Address**.
+1. Open **Command Prompt** (`cmd`). <br>
+![Alt Text](../../POC/Multiplay/Images&MultiPlay/ipconfig.png)
+2. Type `ipconfig` and press **Enter**. <br>
+3. Locate your active network adapter and note the **IPv4 Address**. <br>
+(../../POC/Multiplay/Images&MultiPlay/cmd.png)
 
 ---
 
@@ -167,7 +173,7 @@ graph TD
     A --> K[Press 'Stage Failed' Button]
     K --> L[Jump to Marker 29 <br> Failure Audio Stinger]
     L -->|Attempts <= 2| M[Retry Same Stage Marker after 3.5s Buffer]
-    L -->|Attempts > 2| N[Jump to Marker 28 'Game Over' <br> Reset to Marker 21 after 6.5s]
+    L -->|Attempts > 2| N[Jump to Marker 28 'Game Over' <br> Reset to Marker 21 <br> after 6.5s]
 
     classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
     classDef start fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
