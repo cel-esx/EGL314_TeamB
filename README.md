@@ -148,7 +148,7 @@ graph TD
 ***
 # References and Sources:
 * [Huats Club - OSC Starter Kit ](https://github.com/huats-club/oscstarterkit)
-* [AI Machine Learning Link - Pls add this]()
+* [AI Machine Learning](https://www.youtube.com/playlist?list=PL3Dh_99BJkCEhE7Ri8W6aijiEqm3ZoGRq)
 ***
 
 ### Done By Yours Truly:
