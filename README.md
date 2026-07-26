@@ -134,6 +134,10 @@ graph TD
 [MVP/reaper](MVP/reaper)| Images | Images used in the README.md file.|
 [MVP/reaper](MVP/reaper)| GAME_SIMULATION.py | Tinkter file for game simulation.|
 [MVP/reaper](MVP/reaper)| Project_Phantom_Reaper.rpp | Reaper file used for MVP project.|
+[MVP/GrandMa3](MVP/GrandMA3)| README.md | This is the GrandMa3 show documentation.|
+[MVP/GrandMa3](MVP/GrandMA3)| Project Phantom show | This is the GrandMa3 show.|
+
+
 
 > Note: To navigate to desired location, click on the links at **Folder Location** in the above table <br>
 
