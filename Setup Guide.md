@@ -14,7 +14,7 @@
     * [Anaconda Setup](#anaconda-set-up)
     * [Visual Studio Code Setup](#microsoft-visual-studio-code)
     * [Jupyter Notebook](#jupyter-notebook-installation-steps)
-    * [GrandMa3 Setup](MVP/GrandMa3/grandMA3setup.mddma3)
+    * [GrandMa3 Setup](#software)
     * [MultiPlay Setup](#multiPlay)
     * [Reaper Setup](#reaper)
     * [L-ISA Setup](#l-isa)
