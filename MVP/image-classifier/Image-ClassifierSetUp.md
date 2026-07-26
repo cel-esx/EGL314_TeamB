@@ -88,19 +88,16 @@ Your Jupyter Notebook is good to go!
 
     e) After running the third code, there should be this input to show your code is working and the AI is learning
 
-    <img src="./JupyterSetUpImages/part2c.jpg" width="400" height="400">
+<p><img src="./JupyterSetUpImages/part2c.jpg" width="400"></p>
 
-    This should be shown on your screen 
-    
-    <img src="./JupyterSetUpImages/part2d.jpg" width="400" height="400">
-    
-    <img src="./JupyterSetUpImages/part2e.jpg" width="400" height="400">
-    
-    <img src="./JupyterSetUpImages/part2f.jpg" width="400" height="400">
-    
-    <img src="./JupyterSetUpImages/part2g.jpg" width="400" height="400">
+This should be shown on your screen 
 
-    f)Feeding dataset to model outputs seen 
+<p><img src="./JupyterSetUpImages/part2d.jpg" width="400"></p>
+<p><img src="./JupyterSetUpImages/part2e.jpg" width="400"></p>
+<p><img src="./JupyterSetUpImages/part2f.jpg" width="400"></p>
+<p><img src="./JupyterSetUpImages/part2g.jpg" width="400"></p>
+
+f) Feeding dataset to model outputs seen
     
     <img src="./JupyterSetUpImages/part2h.jpg" width="400" height="400">
     
