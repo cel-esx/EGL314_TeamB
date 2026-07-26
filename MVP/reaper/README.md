@@ -1,122 +1,102 @@
-# OSC Reaper Guide
+# OSC REAPER Integration Guide
 
-## Purpose
+## Overview & Purpose
 
-Driven by OSC commands, the software enables simultaneous multi-track playback, utilizing markers along with mute and solo controls to govern active audio feeds.
+This system leverages **OSC (Open Sound Control)** messages sent over UDP to drive real-time, multi-track audio playback inside **REAPER**. By mapping game events to REAPER action IDs and markers, the software dynamically handles:
 
-## Configuration and Setup
+* Multi-track audio switching (level-specific music).
+* Mute/solo toggles for active audio feeds.
+* Marker jumps for stingers, stage transitions, victories, and game-over sound effects.
 
-1. Download [Reaper Version 7.78](https://www.reaper.fm/download.php).
-[![Here's the video/installation guide]](https://youtu.be/NPRVyNZkvuU?si=WripKjYeM94i0ri_)](https://youtu.be/NPRVyNZkvuU?si=WripKjYeM94i0ri_)
-2. Once downloaded, press Ctrl + P to go to **preferences**.
+---
+
+## REAPER Setup & Configuration
+
+### 1. Installation
+
+* Download and install **[REAPER (v7.78)](https://www.reaper.fm/download.php)**.
+* 📹 **[Video Installation & Setup Guide](https://youtu.be/ovhg19rF6fs?si=HqAWD1hZAZhdYLoX)**
+
+### 2. OSC Control Surface Configuration
+
+1. Open REAPER and press `Ctrl + P` to open **Preferences**. <br>
 ![Alt Text](Images/preferences.png)
-3. Once you're in preferances, go to OSC/Web/Control
+2. In the left panel, navigate to **Control/OSC/web**. <br>
 ![Alt Text](Images/osc_web.png)
-4. Click "Add", to add osc configuration.
+3. Click **Add** to create a new control surface configuration. <br>
 ![Alt Text](Images/add_osc.png)
-5. In Control Surface Setting, click the drop down button and select "OSC (Open Sound Control)"
+4. Set **Control surface mode** to **OSC (Open Sound Control)**. <br>
 ![Alt Text](Images/osc_config1.png)
-6. Under the OSC Control configurations:
-* Edit the device name. Under mode, select "configure devices IP+local port". 
+5. Apply the following settings:
+* **Mode:** `Configure device IP+local port` <br>
 ![Alt Text](Images/osc_config2.png)
-* Once mode is selected, edit local listen port to **8000**.
-> Listen port is for OSC to send which reaper software to control
-* Once done, make sure the device IP is in the Boardcast IP address "0.0.0.0", while Local IP is the same as your Laptop IP.
-* Check "Allow binding messages to REAPER actions and FX learn" for OSC to communicate commands to REAPER software.
-7. Once all the configurations are done, click "OK".
-Here's the image of how the step-by-step configuration looks like on the software.
+* **Local listen port:** `8000` *(This is the port REAPER listens on for incoming OSC messages)*.
+* **Device IP:** Set to broadcast IP `0.0.0.0`.
+* **Local IP:** Displays your machine's current local IP.
+* **Action Binding:** Check **"Allow binding messages to REAPER actions and FX learn"** so OSC messages can trigger custom actions and markers.
+6. Click **OK** to save and apply. <br>
+Here's the image on how each of the configuration looks like: <br>
 ![Alt Text](Images/osc_config3.png)
+---
 
-### Finding Your Laptop's IP Address
+### Finding Your Laptop's IP Address (Windows)
 
-1. Open the **Command Prompt** (cmd) on your Windows machine. <br>
-![Alt Text](Images&MultiPlay/ipconfig.png)
-2. Type `ipconfig` and press **Enter**. Your IPv4 address will be listed under your active network adapter.
-
-![Alt Text](Images&MultiPlay/cmd.png)
+1. Open **Command Prompt** (`cmd`). <br>
+![Alt Text](../../POC/Multiplay/Images&MultiPlay/ipconfig.png)
+2. Type `ipconfig` and press **Enter**. <br>
+3. Locate your active network adapter and note the **IPv4 Address**. <br>
+(../../POC/Multiplay/Images&MultiPlay/cmd.png)
 
 ---
 
-## Architecture Flowchart
+## Network Architecture
 
 ```mermaid
 graph LR
-A[POC Code] <-- Wifi <br> IP Address & PORT 8000 --> B[REAPER]
+    A[Python Game / POC Script] <-->|WiFi / UDP<br>IP Address & Port 8000| B[REAPER DAW]
 
 ```
 
-> ⚠️ **DISCLAIMER:** > Ensure that the IP address and Port configured inside your POC Python script perfectly match the settings applied in REAPER!
+> ⚠️ **IMPORTANT:** Ensure the IP address and port configured in your Python scripts match the REAPER OSC network settings exactly.
 
 ---
 
-## Dummy Game Simulation
+## Standalone Simulation (`GAME_SIMULATION.py`)
 
-Before implementing the production code, `GAME_SIMULATION.py` was built as a standalone simulation to ensure the Network/OSC communication pipeline functions properly.
+Before running production code, `GAME_SIMULATION.py` serves as a standalone GUI testing environment built with `tkinter` and `pythonosc` to verify OSC network commands and REAPER marker jumps.
+
+### Core Script Logic & State Management
+
+#### 1. Imports & Dependencies
 
 ```python
-GAME_SIMULATION.py
-```
-
-This is how the GAME_SIMULATION look like:
-![Alt Text](Images/GAME_SIMULATION1.png)
-
-### Script Logic Breakdown
-
-1. **GUI Engine:** Import `tkinter` to render the test control window.
-```python
+import threading
 import tkinter as tk
-```
-
-2. **Network Protocol:** "from pythonosc import udp_client" to import OSC commands to REAPER over standard UDP packets.
-```python
 from pythonosc import udp_client
-```
-
-3. **Execution Interface:** Running the script initializes a control panel pop-up window:
-
-4. Reaper will start playing at Marker 21.
-
-5. When the "Start" button is pressed, OSC commands Reaper to jump at 'Marker 22', playing the 'countdown' track before starting level 1 track (a custom command id was made to mute all the level music tracks except the current level track that the players are playing).
-![alt text](Images/REAPER_Layout1.png)
-![alt text](Images/image.png)
-
-6. If players managed to clear the stage within 30s, user can press the "stage_cleared" button to simulate stage_clear in the game. Once "stage_cleared" button is pressed, OSC commands Reaper to jump at 'Marker 27' with an audio track saying "Well played".
-If stage_cleared is pressed before the last stage of the level, OSC will command Reaper to jump to the next stage marker after Marker 27 is played.
-If stage_cleeared is pressed after the last stage of the level, OSC will command Reaper to jump back to 'stage 1' (Marker 23), mute the previous track, unmuting the next track.
-![alt text](Images/REAPER_Layout3.png)
-
-7. However, if players did not clear the stage after 30s, user can press the "stage_failed" button to simulate player failing the current level/stage they are in. Once "stage_failed" button is pressed, OSC commands Reaper to jump at 'Marker 29' with the thunder and laughing audio track.
-If the button is pressed less than 3 times, it will jump to the current stage that users failed to pass the stage.
-If the button is pressed more than 2 times, it will jump to 'Marker 28', playing the 'Gameover' Track for 5s, before jumping back to 'Marker 21'.
-
-```mermaid
-graph LR
- A[Start Button Pressed] --> B[GAME_SIMULATION.py sends command]
- B --> C[Reaper Goes To <br> A Specific Marker] --> D[Reaper plays the sound track(s)]
 
 ```
 
-> 📌 *Note: The core design maps Level numbers directly to the last digit of the command id (e.g., Level 1 = Cue 1, Level 2 = Cue 2).*
-
-
-#### REAPER LEVEL and STAGE Tracking
+#### 2. Level, Stage, and Action ID Mappings
 
 ```python
 current_level = 1
 stage_failed = 0
 stage_cleared = 0
+
+# Maps game levels to REAPER custom action IDs (unmutes level track & mutes others)
 LEVEL_MAP = {
-    1: "_b5b9b1aa3433a54f8efb7058fd9dc212",  # level 1 track unmuted only
-    2: "_8003a43cdba0624b948270f6b5224ee8",  # Level 2 track unmuted only
-    3: "_fed26a77af3cb841b8ae1156e64de1ec",  # level 3 track unmuted only
-    4: "_82a10b90ef7428438ddfd101c8195d19"   # bonus track unmuted only
+    1: "_b5b9b1aa3433a54f8efb7058fd9dc212",  # Unmute Level 1 track
+    2: "_8003a43cdba0624b948270f6b5224ee8",  # Unmute Level 2 track
+    3: "_fed26a77af3cb841b8ae1156e64de1ec",  # Unmute Level 3 track
+    4: "_82a10b90ef7428438ddfd101c8195d19"   # Unmute Bonus Level track
 }
 
+# Maximum required stages before advancing to the next level
 MAX_STAGES_PER_LEVEL = {
-    1: 2,  # Level 1 has 2 stages
-    2: 2,  # Level 2 has 2 stages
-    3: 2,  # Level 3 has 2 stages
-    4: 3   # Bonus Level 4 has 3 stages
+    1: 2,  # Level 1 -> 2 stages
+    2: 2,  # Level 2 -> 2 stages
+    3: 2,  # Level 3 -> 2 stages
+    4: 3   # Level 4 (Bonus) -> 3 stages
 }
 
 # REAPER Action IDs for stage markers
@@ -128,61 +108,99 @@ STAGE_MARKER_MAP = {
 
 ```
 
-#### Comprehensive Event Flow Layout
+#### 3. Initialization & Start Sequence
 
-```mermaid
-graph TD
- A[Level Track Is Playing] --> B[Stage Cleared Button]
- B --> C[MultiPlay plays Cue 13]
- C --> D[Level Track Continues to Play]
+```python
+# Jump to Marker 21 (Standby/Lobby track)
+send_message(PI_A_ADDR, REAPER_PORT, "/action/41261", 1.0)
 
- A --> E[Level Cleared Button]
- E --> F[MultiPlay stops current level track & plays Cue 14]
- F -->|POC sends command sequence| G[MultiPlay proceeds to play Next Level Track]
+# Start playback (REAPER Action 40044: Transport Play/Stop)
+send_message(PI_A_ADDR, REAPER_PORT, "/action/40044", 1.0)
 
- A --> H[Enhancement Failed Button]
- H --> I[MultiPlay plays Cue 12]
- I --> J[Level Track Continues to Play]
+# On 'Start' button press: Jump to Marker 22 (Countdown) & isolate Level 1 track
+send_message(PI_A_ADDR, REAPER_PORT, "/action/41262", 1)
+send_message(PI_A_ADDR, REAPER_PORT, "/action/_b5b9b1aa3433a54f8efb7058fd9dc212", 1)
 
- A --> K[Gameover Button]
- K --> L[MultiPlay stops current level track & plays Cue 15]
+```
 
-%% ==========================================
-%% COLOR STYLING SCRIPT
-%% ==========================================
- style A fill:#ECECFF,stroke:#9370DB,stroke-width:2px,color:#000
+#### 4. Event Handler Functions
 
- style B fill:#E1F5FE,stroke:#03A9F4,stroke-width:2px
- style C fill:#E1F5FE,stroke:#03A9F4,stroke-width:1px
- style D fill:#E1F5FE,stroke:#03A9F4,stroke-width:1px
+```python
+def jump_to_stage(level, stage_number):
+    """Jumps to a specific stage marker and unmutes the corresponding level track."""
+    marker_action = STAGE_MARKER_MAP.get(stage_number, "41263")
+    print(f"⌛ Buffer complete! Transitioning to Level {level}, Stage {stage_number}...")
+    
+    # Jump to stage marker in REAPER
+    send_message(PI_A_ADDR, REAPER_PORT, f"/action/{marker_action}", 1)
+    
+    # Apply level track state
+    if level in LEVEL_MAP:
+        send_message(PI_A_ADDR, REAPER_PORT, f"/action/{LEVEL_MAP[level]}", 1)
 
- style E fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px
- style F fill:#E8F5E9,stroke:#4CAF50,stroke-width:1px
- style G fill:#E8F5E9,stroke:#4CAF50,stroke-width:1px
+def retry_stage(level, stage_number):
+    """Retries the current stage following a failure attempt."""
+    marker_action = STAGE_MARKER_MAP.get(stage_number, "41263")
+    print(f"🔄 Retrying Level {level}, Stage {stage_number}...")
+    
+    send_message(PI_A_ADDR, REAPER_PORT, f"/action/{marker_action}", 1)
+    if level in LEVEL_MAP:
+        send_message(PI_A_ADDR, REAPER_PORT, f"/action/{LEVEL_MAP[level]}", 1)
 
- style H fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
- style I fill:#FFF3E0,stroke:#FF9800,stroke-width:1px
- style J fill:#FFF3E0,stroke:#FF9800,stroke-width:1px
-
- style K fill:#FFEBEE,stroke:#F44336,stroke-width:2px
- style L fill:#FFEBEE,stroke:#F44336,stroke-width:1px
+def back_to_start():
+    """Resets audio sequence back to the standby marker (Marker 21)."""
+    print("⌛ Buffer complete! Returning to lobby.")
+    send_message(PI_A_ADDR, REAPER_PORT, "/action/41261", 1)
 
 ```
 
 ---
 
-## Production POC Code Integration
+### Simulation Event Flowchart
 
-1. **Environment Configuration:** Network variables must match your target system's parameters:
-```python
-REAPER_LAPTOP_IP = "192.168.254.238" 
-REAPER_PORT      = 8000  
+```mermaid
+graph TD
+    A[Background Track Active] --> B[Press 'Start' Button]
+    B --> C[Jump to Marker 22 <br> Isolate Level 1 Track]
+
+    A --> E[Press 'Stage Cleared' Button]
+    E --> F[Jump to Marker 27 <br> 'Well Played' Stinger]
+    F -->|Stage < Max Stages| G[Jump to Next Stage Marker]
+    F -->|Stage >= Max Stages| H[Unmute Next Level Track & Jump to Stage 1]
+    F -->|Transitioning to Bonus Level| I[Mute All Tracks & Jump to Marker 26]
+    F -->|All Levels Complete| J[Unmute All Tracks & Jump to Marker 30]
+
+    A --> K[Press 'Stage Failed' Button]
+    K --> L[Jump to Marker 29 <br> Failure Audio Stinger]
+    L -->|Attempts <= 2| M[Retry Same Stage Marker after 3.5s Buffer]
+    L -->|Attempts > 2| N[Jump to Marker 28 'Game Over' <br> Reset to Marker 21 <br> after 6.5s]
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
+    classDef start fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
+    classDef success fill:#e8f5e9,stroke:#4caf50,stroke-width:2px;
+    classDef warning fill:#fff3e0,stroke:#ff9800,stroke-width:2px;
+    classDef danger fill:#ffebee,stroke:#f44336,stroke-width:2px;
+
+    class B,C start;
+    class E,F,G success;
+    class H,I,J warning;
+    class K,L,M,N danger;
 
 ```
 
-2. **Network Handshake & Output Pipeline:** Wrapper functions handle connection dropouts and signal tracking cleanly.
+---
+
+## Production Integration
+
+### 1. Client Setup & Utility Functions
+
 ```python
-def create_osc_client(ip, port, system_name): 
+from pythonosc import udp_client
+
+REAPER_LAPTOP_IP = "192.168.254.238" 
+REAPER_PORT = 8000  
+
+def create_osc_client(ip, port, system_name="REAPER"): 
     try: 
         client = udp_client.SimpleUDPClient(ip, port)
         print(f"[+] OSC ready -> {system_name} on {ip}:{port}")
@@ -191,58 +209,35 @@ def create_osc_client(ip, port, system_name):
         print(f"[!] Network Pipeline Failed for {system_name}: {e}")
         return None
 
-def send_osc_signal(client, address, message):
+def send_osc_signal(client, address, message=1):
     if client is None: 
         return
     try: 
-        client.send_message(address, message)
-    except Exception: 
-        pass 
+        client.send_message(address, float(message))
+    except Exception as e: 
+        print(f"[!] Failed to send OSC message {address}: {e}")
 
 ```
 
+### 2. Primary Event Commands Summary
 
-3. **Initialization:** When a player presses `
-```python
+| Game Event | Description | OSC Address / Action ID |
+| :--- | :--- | :--- |
+| **System Initialization** | Exit loop, jump to lobby (Marker 21), and begin playback | `/action/40339`<br>`/action/41261`<br>`/action/40044` |
+| **Start Game** | Jump to countdown (Marker 22) and isolate Level 1 music | `/action/41262`<br>`/action/_b5b9b1aa3433a54f8efb7058fd9dc212` |
+| **Stage Clear (Intermediate)** | Mute music tracks and play victory stinger (Marker 27) | `/action/_b4dd8381edb3cf4a82f2f1d2a56622e0`<br>`/action/41267` |
+| **Bonus Level Transition** | Trigger transition marker (Marker 26) and prep Bonus Track | `/action/_b4dd8381edb3cf4a82f2f1d2a56622e0`<br>`/action/41266` |
+| **Life Lost / Single Attempt Fail** | Mute music and trigger fail stinger (Marker 29) | `/action/41269`<br>`/action/_b4dd8381edb3cf4a82f2f1d2a56622e0` |
+| **Hard Defeat (Game Over)** | Trigger hard game over track (Marker 28) | `/action/41268`<br>`/action/_b4dd8381edb3cf4a82f2f1d2a56622e0` |
+| **Full Game Victory** | Unmute all tracks and trigger victory sequence (Marker 30) | `/action/_7f4e8ad275963d4c8547d96d2538d0be`<br>`/action/41270` |
+| **Emergency Stop (`ESC` / `q`)** | Immediately halt all audio playback | `/action/1016` |
 
-```
-
-
-4. **Life Loss Warning:** If a player loses a life, a failure warning layout is triggered dynamically via `Marker 29`. *(Lines)*
-```python
-send_osc_signal(reaper_client, "", 1)
-
-```
-
-
-5. **Defeat Handling:** Losing all 3 structural player lives switches focus entirely to the global defeat array via `Marker 28`. *(Lines)*
-```python
-send_osc_signal(reaper_client, "/action/41269", 1)
-
-```
-
-
-6. **Dynamic Multi-Level Sequencing:** As game logic increments, variables adjust smoothly to handle indexing. *(Line 573)*
-* Example: If `current_level = 1`, system targets `cue 1`. If stepped up to `2`, tracking references `cue 2`.
-
-
-```python
-current_level += 1
-current_cycle = 0
-game_status, status_display_time = "WIN", current_time
-send_osc_signal(multiplay_client, f"/cue/{current_level}/go", 1)
-send_osc_signal(multiplay_client, "/cue/14/go", 1)
-
-```
-
-
-7. **Hard System Interruption:** Pressing escape keys (`ESC` or `q`) kills active channels immediately upon termination. *(Line 625)*
-```python
-if key == ord('q') or key == 27: 
-     send_osc_signal(multiplay_client, f"/cue/{current_level}/stop", 1)
-     send_osc_signal(multiplay_client, "/cue/7/stop", 1)
-
-```
-
-
-> *Note: Cue 7 references a hidden bonus track asset. It is called out by name explicitly rather than utilizing standard incremental level variables.*
+### 3. Custom Command ID Used
+| Action ID / Command | Description |
+| :--- | :--- |
+| `_b4dd8381edb3cf4a82f2f1d2a56622e0` | Mute all music tracks |
+| `_b5b9b1aa3433a54f8efb7058fd9dc212` | Unmute Track 2 only (Level 1) |
+| `_8003a43cdba0624b948270f6b5224ee8` | Unmute Track 3 only (Level 2) |
+| `_fed26a77af3cb841b8ae1156e64de1ec` | Unmute Track 4 only (Level 3) |
+| `_82a10b90ef7428438ddfd101c8195d19` | Unmute Track 5 only (Bonus) |
+| `_7f4e8ad275963d4c8547d96d2538d0be` | Unmute all tracks |

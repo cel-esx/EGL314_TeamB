@@ -45,6 +45,8 @@
       * Click Here: [Reaper Setup](#reaper)
    6. **L-ISA**
       * Click Here: [L-ISA Setup](#l-isa)
+   7. **Jupyter Notebook**
+      * Click Here: [Jupyter Notebook Setup - AQILAH..PLS UPDATE]()
 
 
    ## Hardware Placement
@@ -164,25 +166,6 @@
  7. [Heart.png](/MVP/Heart.png)
  8. [MVP GameCode.py](/MVP/MVP%20GameCode.py)
  9. [MVP_gesture_definitions.csv](/MVP/MVP_gesture_definitions.csv)
-
-   ### Jupyter Notebook Installation Steps
-
-   [Aqliah Pls Update Here]
-
-   ### GrandMA3
-   Please click on this [link](/POC/grandma3/grandMA3setup.md) to learn how to setup GrandMA3 on your laptops
-
-
-
-   ### MultiPlay
-   Click here to go [Multiplay](/POC/Multiplay/MultiPlay.md) folder
-
-   ### Reaper
-   Click here to go [Reaper](/POC/Multiplay/MultiPlay.md) folder - Celeste pls update
-
-   ### L-ISA
-   Click here to go [L-ISA](/POC/Multiplay/MultiPlay.md) folder - Celeste pls update
-
 
    
 
