@@ -33,8 +33,7 @@
 ## Software
   1. **Anaconda**
      * Click Here: [Anaconda Setup](#anaconda-set-up)
-  2. **Microsoft Visual Studio Code**
-     * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
+  2. * Click Here: [Visual Studio Code Setup](#microsoft-visual-studio-code)
      * You also need [Jupyter Notebook](MVP/image-classifier/Image-ClassifierSetUp.md) within Visual Studio Code
      > Note: Jupyter Notebook is **Not Required For POC Game**
   3. **GrandMA3**
