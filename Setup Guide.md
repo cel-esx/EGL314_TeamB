@@ -168,7 +168,9 @@
  7. [Heart.png](/MVP/Heart.png)
  8. [MVP GameCode.py](/MVP/MVP%20GameCode.py)
  9. [MVP_gesture_definitions.csv](/MVP/MVP_gesture_definitions.csv)
- 10. [MVP Grandma3 show](MVP/GrandMa3) 
+ 10. [MVP Grandma3 Show File](/MVP/GrandMa3/Project%20Phantom.backup_2026.07.24_13.56.16UTC.showMVP/GrandMa3) 
+ 11. [L-ISA](/MVP/L-ISA/Project_Phantom_Lisa.lisa)
+ 12. [Reaper](/MVP/reaper/Project_Phantom_Reaper.rpp)
  
 
    
