@@ -124,7 +124,14 @@ graph TD
 |[MVP](/MVP/Station%20Pictures/)| Station Pictures| Pictures Of our Game Station |
 |[MVP](/MVP/image-classifier/)| image-classifier| AI Model training files for shadow detection game |
 |[MVP](/MVP/MVP%20README.md)| MVP README.md| File that contains all the instruction on how the MVP game is suppose to be played |
-|[MVP/image-classifier](/MVP/image-classifier/jupyter_notebook_setup.md)| Jupyter Notebook Setup.md|This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level
+|[MVP/image-classifier](/MVP/image-classifier/jupyter_notebook_setup.md)| Jupyter Notebook Setup.md|This is the setup guide for the Jupyter Notebook in order to get the AI to detect the shadows during the shadow level|
+[MVP/L-ISA](MVP/L-ISA)| README.md | This is the L-ISA set up and configuration tutorial file.|
+[MVP/L-ISA](MVP/L-ISA)| Images | Images used in the README.md file.|
+[MVP/L-ISA](MVP/L-ISA)| Project_Phantom_Lisa.lisa | L-ISA file used for MVP project.|
+[MVP/reaper](MVP/reaper)| README.md | This is the Reaper set up and configuration tutorial file.|
+[MVP/reaper](MVP/reaper)| Images | Images used in the README.md file.|
+[MVP/reaper](MVP/reaper)| GAME_SIMULATION.py | Tinkter file for game simulation.|
+[MVP/reaper](MVP/reaper)| Project_Phantom_Reaper.rpp | Reaper file used for MVP project.|
 
 > Note: To navigate to desired location, click on the links at **Folder Location** in the above table <br>
 

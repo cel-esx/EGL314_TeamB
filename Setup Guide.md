@@ -40,11 +40,11 @@
   3. **GrandMA3**
      * Click Here: [GrandMa3 Setup](#grandma3)
   4. **MultiPlay**
-     * Click Here: [MultiPlay Setup](#multiPlay)
+     * Click Here: [MultiPlay Setup](POC/Multiplay/MultiPlay.md)
    5. **Reaper**
-      * Click Here: [Reaper Setup](#reaper)
+      * Click Here: [Reaper Setup](MVP/reaper/README.md)
    6. **L-ISA**
-      * Click Here: [L-ISA Setup](#l-isa)
+      * Click Here: [L-ISA Setup](MVP/L-ISA/README.md)
    7. **Jupyter Notebook**
       * Click Here: [Jupyter Notebook Setup - AQILAH..PLS UPDATE]()
 

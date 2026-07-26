@@ -1,0 +1,2107 @@
+<REAPER_PROJECT 0.1 "7.69/win64" 1784741198 0
+  <NOTES 0 2
+  >
+  RIPPLE 0 0
+  GROUPOVERRIDE 0 0 0 0
+  AUTOXFADE 128
+  ENVATTACH 3
+  POOLEDENVATTACH 0
+  TCPUIFLAGS 0
+  MIXERUIFLAGS 11 48
+  ENVFADESZ10 40
+  PEAKGAIN 1
+  FEEDBACK 0
+  PANLAW 1
+  PROJOFFS 0 0 0
+  MAXPROJLEN 0 0
+  GRID 3199 8 1 8 1 0 0 0
+  TIMEMODE 1 5 -1 30 0 0 -1 0
+  VIDEO_CONFIG 0 0 65792
+  PANMODE 3
+  PANLAWFLAGS 3
+  CURSOR 928
+  ZOOM 4.76762403105518 4238 0
+  VZOOMEX 0 0
+  USE_REC_CFG 0
+  RECMODE 1
+  SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
+  LOOP 1
+  LOOPGRAN 0 4
+  RECORD_PATH "Media" ""
+  <RECORD_CFG
+    ZXZhdxgAAQ==
+  >
+  <APPLYFX_CFG
+  >
+  RENDER_FILE ""
+  RENDER_PATTERN ""
+  RENDER_FMT 0 2 0
+  RENDER_1X 0
+  RENDER_RANGE 1 0 0 0 1000
+  RENDER_RESAMPLE 3 0 1
+  RENDER_ADDTOPROJ 0
+  RENDER_STEMS 0
+  RENDER_DITHER 0
+  RENDER_TRIM 0.000001 0.000001 0 0
+  TIMELOCKMODE 1
+  TEMPOENVLOCKMODE 1
+  ITEMMIX 1
+  DEFPITCHMODE 589824 0
+  TAKELANE 1
+  SAMPLERATE 44100 0 0
+  <RENDER_CFG
+    ZXZhdxgAAQ==
+  >
+  LOCK 1
+  <METRONOME 6 2
+    VOL 0.25 0.125
+    BEATLEN 4
+    FREQ 1760 880 1
+    SAMPLES "" "" "" ""
+    SPLIGNORE 0 0
+    SPLDEF 2 660 "" 0 ""
+    SPLDEF 3 440 "" 0 ""
+    PATTERN 0 169
+    PATTERNSTR ABBB
+    MULT 1
+  >
+  GLOBAL_AUTO -1
+  TEMPO 120 4 4 0
+  PLAYRATE 1 0 0.25 4
+  SELECTION 1228.5 1235
+  SELECTION2 1228.5 1235
+  MASTERAUTOMODE 0
+  MASTERTRACKHEIGHT 0 0
+  MASTERPEAKCOL 16576
+  MASTERMUTESOLO 0
+  MASTERTRACKVIEW 0 0.6667 0.5 0.5 0 0 0 0 0 0 0 0 0 0 1
+  MASTERHWOUT 0 0 1 0 0 0 0 -1
+  MASTER_NCH 2 2
+  MASTER_VOLUME 1 0 -1 -1 1
+  MASTER_PANMODE 3
+  MASTER_PANLAWFLAGS 3
+  MASTER_FX 1
+  MASTER_SEL 0
+  <MASTERPLAYSPEEDENV
+    EGUID {C3904662-1E06-48C0-AE7C-12EF4CD02BF6}
+    ACT 0 -1
+    VIS 0 1 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 0 -1 -1
+  >
+  <TEMPOENVEX
+    EGUID {213C6D74-9F27-46C2-982C-1CAFD2F22B6C}
+    ACT 0 -1
+    VIS 1 0 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 1 -1 -1
+  >
+  RULERHEIGHT 86 86
+  RULERLANE 1 4 "" 0 -1
+  RULERLANE 2 8 "" 0 -1
+  MARKER 1 8 "" 0 0 1 R {E3E69C67-895A-4BDB-BCA3-71A12EC3B361} 0 2
+  MARKER 1 8 "" 1 0 1 R {2B2F7FA0-FB9C-411D-BE6B-4694BB2E2ED7} 0 1
+  MARKER 1 12 "" 1
+  MARKER 2 13 "" 0 0 1 R {C94D1AF6-C01A-4CC8-A985-5AAAFA2B5F4B} 0 2
+  MARKER 3 16 "" 0 0 1 R {FD6E0D49-1287-4A36-9559-63098A5BAA08} 0 2
+  MARKER 21 928 "Team B" 0 0 1 R {90C1A938-42CB-48D5-B857-1DF35618ABF4} 0 2
+  MARKER 22 1070 start 0 0 1 R {CB9E198C-6265-4FBF-BC69-1A3C36F7255B} 0 2
+  MARKER 23 1077 "stage 1" 0 0 1 R {A76E94AD-2472-4F36-A982-E56F3C1651F0} 0 1
+  MARKER 24 1108 "stage 2" 0 0 1 R {F619765B-1D5E-4F9E-97ED-5EAF5E1CA6D6} 0 2
+  MARKER 25 1138 "stage 3" 0 0 1 R {FBAB7214-8A0E-49F7-8B68-A75E71B741A1} 0 2
+  MARKER 26 1220 "transit to bonus" 0 0 1 R {73F8719F-0794-43D0-86B4-537CB01C82B7} 0 2
+  MARKER 27 1258 "Stage passed" 0 0 1 R {27D26F70-4187-4E53-AD3E-9C520A965AB7} 0 1
+  MARKER 28 1261.5 Gameover 0 0 1 R {8E9AB41F-6D53-40C4-B176-16BB8F5C149A} 0 1
+  MARKER 29 1268 "stage failed" 0 0 1 R {8669DB71-99FF-4B4E-B311-F4BB1601D5E9} 0 2
+  MARKER 30 1278 "full upgrade" 8 0 1 R {A8BBF771-BA9F-4204-8636-72C825A3F39B} 0 2
+  <PROJBAY
+  >
+  <TRACK {D91D5CD7-B979-475B-BE45-E1388C89E60C}
+    NAME timecode_generator
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.17341828064739 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {D91D5CD7-B979-475B-BE45-E1388C89E60C}
+    PERF 0
+    MIDIOUT 32
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 1104
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {DE692867-BDC1-4716-BBE4-FDFAC02D4CAC}
+      IID 2855
+      NAME "Timecode Generator"
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {2EDD2FCE-4237-4D51-B843-3D78B0A61214}
+      <SOURCE LTC
+        STARTTIME 0
+        FRAMERATE 30 0
+        SEND 2
+        USERDATA 0 0 0 0
+      >
+    >
+    <ITEM
+      POSITION 1104
+      SNAPOFFS 0
+      LENGTH 3680
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {BA60C760-B550-450D-94B0-0F253C54E899}
+      IID 2855
+      NAME "Timecode Generator"
+      VOLPAN 1 0 1 -1
+      SOFFS 1104
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {16A1082C-13CF-4A17-96CB-12C81118842F}
+      <SOURCE LTC
+        STARTTIME 0
+        FRAMERATE 30 0
+        SEND 0
+        USERDATA 0 0 0 0
+      >
+    >
+  >
+  <TRACK {4161D135-FB27-4501-8697-0CDABDF985FC}
+    NAME level1_bg_tracks
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.85934527109182 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {4161D135-FB27-4501-8697-0CDABDF985FC}
+    PERF 0
+    MIDIOUT 32
+    MAINSEND 0 0
+    HWOUT 1024 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 1077
+      SNAPOFFS 0
+      LENGTH 27
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7907D83E-9D0A-43C3-B2E0-DF42F10F40F5}
+      IID 1436
+      NAME level3_bgmusic.mp3
+      VOLPAN 0.75 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {3C2DA2C0-5DB7-4FDC-9EA9-41DF0BE4679E}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level3_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level3_bgmusic.mp3
+      >
+    >
+    <ITEM
+      POSITION 1104
+      SNAPOFFS 0
+      LENGTH 9
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F3871B0F-B5E5-4CA3-957D-C669869EC8E0}
+      IID 1436
+      NAME level3_bgmusic.mp3
+      VOLPAN 0.75 0 1 -1
+      SOFFS 27
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {91762C98-35C3-4594-8859-7D247FB148FA}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level3_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level3_bgmusic.mp3
+      >
+    >
+    <ITEM
+      POSITION 1113
+      SNAPOFFS 0
+      LENGTH 28
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {2684EDAD-59CB-4C84-8A63-536EE229DA06}
+      IID 1436
+      NAME level3_bgmusic.mp3
+      VOLPAN 0.350365 0 1 -1
+      SOFFS 36
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {47E64050-4519-4200-9628-EF7F60D5C75F}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level3_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level3_bgmusic.mp3
+      >
+    >
+    <ITEM
+      POSITION 1141
+      SNAPOFFS 0
+      LENGTH 129.05697916666668
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {D3815318-3059-4FB0-9519-CB63C05CD6CD}
+      IID 1436
+      NAME level3_bgmusic.mp3
+      VOLPAN 0.75 0 1 -1
+      SOFFS 64
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {0DB08467-A8DC-4605-A45C-064DCFA6E98C}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level3_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level3_bgmusic.mp3
+      >
+    >
+  >
+  <TRACK {6B93724E-E9C3-4305-A4EE-4F9C558D02A4}
+    NAME level2_bg_tracks
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {6B93724E-E9C3-4305-A4EE-4F9C558D02A4}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 1077
+      SNAPOFFS 0
+      LENGTH 186.74497916666678
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {3674B50E-5DA7-4839-9CD8-AA3FC2874156}
+      IID 1435
+      NAME level4_bgmusic.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {93F35A1B-1956-4110-BF82-D148E39A4D0D}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level4_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level4_bgmusic.mp3
+      >
+    >
+  >
+  <TRACK {6A20DDD5-6B5F-4E66-B281-133E37181716}
+    NAME level3_bg_tracks
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {6A20DDD5-6B5F-4E66-B281-133E37181716}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 1077
+      SNAPOFFS 0
+      LENGTH 188.70497916666704
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {FC708C05-CBA5-4F39-845B-0F41BF5D8761}
+      IID 1095
+      NAME level5_bgmusic.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 11
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {54BC0F42-F2CC-40F9-901F-12E11FB9AF6E}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level5_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level5_bgmusic.mp3
+      >
+    >
+  >
+  <TRACK {1E453D47-C012-42BA-8963-0451FD54698E}
+    NAME BonusLevel_bg_tracks
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {1E453D47-C012-42BA-8963-0451FD54698E}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 1077
+      SNAPOFFS 0
+      LENGTH 135.16097916666672
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {AF12EF2B-64B0-43C9-9B0B-5B7FB25A9024}
+      IID 61
+      NAME bonus_bg-imported.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 5
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4D94AC37-1A33-4E24-AAA8-54DC709D7A62}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\bonus_bg-imported.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\bonus_bg-imported.mp3
+      >
+    >
+  >
+  <TRACK {DC2E0697-27A3-4914-A9C7-C9864BE8EEEE}
+    NAME well_played!
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 2.13238671326417 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {DC2E0697-27A3-4914-A9C7-C9864BE8EEEE}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1024 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 1220
+      SNAPOFFS 0
+      LENGTH 8.5680989
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9BB550DA-C9D2-4285-B1A5-534AA0DB537F}
+      IID 2920
+      NAME videoplayback.mp4
+      VOLPAN 0.181818 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {8EF753F1-C620-4A46-94F3-4EE770896AD9}
+      <SOURCE VIDEO
+        FILE "Media\videoplayback.mp4"
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Downloads\videoplayback.mp4
+      >
+    >
+    <ITEM
+      POSITION 1228
+      SNAPOFFS 0
+      LENGTH 7.1361978
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E4805E4D-DA01-4DD9-BAA4-8FA6386C0C08}
+      IID 2920
+      NAME videoplayback.mp4
+      VOLPAN 0.181818 0 1 -1
+      SOFFS 1.4319011
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {0291A668-6B2B-4067-A10E-81C1A68839E3}
+      <SOURCE VIDEO
+        FILE "Media\videoplayback.mp4"
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Downloads\videoplayback.mp4
+      >
+    >
+    <ITEM
+      POSITION 1235
+      SNAPOFFS 0
+      LENGTH 9.43297916666667
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9D0C10B9-F155-429C-9EDD-AC92F8DB419C}
+      IID 2922
+      NAME transit_bonus.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {90D0F000-DC24-4109-9BEA-E9DACE7120B7}
+      <SOURCE MP3
+        FILE "Media\transit_bonus.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Downloads\transit_bonus.mp3
+      >
+    >
+    <ITEM
+      POSITION 1258
+      SNAPOFFS 0
+      LENGTH 1.42897916666652
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {A16CCF0C-BF57-457A-A752-2ADED8FF1C5C}
+      IID 1791
+      NAME "WELL PLAYED.mp3"
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {43144424-A807-4779-B131-973A8D3929EA}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\WELL PLAYED.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\WELL PLAYED.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1278
+      SNAPOFFS 0
+      LENGTH 5.66497916666663
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C8386631-EC17-48E0-954D-962CD81CB5EB}
+      IID 2917
+      NAME p_17591473_305.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {8C24488F-A341-4982-9519-0EFC881862E3}
+      <SOURCE MP3
+        FILE "Media\p_17591473_305.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Downloads\p_17591473_305.mp3
+      >
+    >
+  >
+  <TRACK {4B3C5764-70B9-4E25-8891-7954787FD9E1}
+    NAME incorrect_gestures
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.53324299042191 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {4B3C5764-70B9-4E25-8891-7954787FD9E1}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1026 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 1268.5
+      SNAPOFFS 0
+      LENGTH 2.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {061737D4-6EBE-463D-8D73-0B7670228871}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.163636 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {F51DF97D-432E-46CA-94F4-1FAC05C63862}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+  >
+  <TRACK {9D8E893F-0AE7-4875-8074-D519B44B373B}
+    NAME laughing
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.14536596045865 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {9D8E893F-0AE7-4875-8074-D519B44B373B}
+    PERF 0
+    MIDIOUT 32
+    MAINSEND 0 0
+    HWOUT 1026 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 1268
+      SNAPOFFS 0
+      LENGTH 3
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {ECF6947B-5345-4A6D-8252-C1635AD53009}
+      IID 1100
+      NAME laughing_start-imported.mp3
+      VOLPAN 1.030303 0 1 -1
+      SOFFS 3
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {277F2B68-CADB-473E-8105-8DC099ADF502}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\laughing_start-imported.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\laughing_start-imported.mp3
+      >
+    >
+  >
+  <TRACK {206D9B17-BCFE-41FE-B374-C24D7E64F53B}
+    NAME scream
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.97316746328629 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {206D9B17-BCFE-41FE-B374-C24D7E64F53B}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1026 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 1261.5
+      SNAPOFFS 0
+      LENGTH 5.0409791666666
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C1C802A8-3D98-4713-BEB7-DDDA62609957}
+      IID 1096
+      NAME pre-gameover.mp3
+      VOLPAN 1.309091 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A3E0C4C0-7DA5-4329-ADD2-F2D340E79987}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\pre-gameover.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\pre-gameover.mp3
+      >
+    >
+  >
+  <TRACK {FCA16D30-93F6-4ECD-B229-A495D429B863}
+    NAME gameover_audio
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.85934527109182 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {FCA16D30-93F6-4ECD-B229-A495D429B863}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1024 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 1263
+      SNAPOFFS 0
+      LENGTH 3
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E66CC326-49F2-4E99-848B-D8AE54A1E907}
+      IID 13
+      NAME gameover.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.5
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {8A766FE2-166B-485E-8C9D-E1907EBC4947}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\gameover.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\gameover.mp3
+      >
+    >
+  >
+  <TRACK {262E8416-78D2-40E0-9DBC-B2B1DFD96773}
+    NAME "failing_countdown timer"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 2.18441731762383 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {262E8416-78D2-40E0-9DBC-B2B1DFD96773}
+    PERF 0
+    MIDIOUT 32
+    MAINSEND 0 0
+    HWOUT 1024 0 1 0 0 0 0 -1:U -1
+    <FXCHAIN
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+    >
+    <ITEM
+      POSITION 1102
+      SNAPOFFS 0
+      LENGTH 6.34497916666669
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {556609B6-1253-4379-9705-FB7D02D80652}
+      IID 62
+      NAME "failing_countdown timer.mp3"
+      VOLPAN 1.709091 0 1 -1
+      SOFFS 10
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {F8B42A96-F67D-4A73-BBD2-3A02B08EEACE}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\failing_countdown timer.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\failing_countdown timer.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1132
+      SNAPOFFS 0
+      LENGTH 6.34497916666669
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {74A1EC90-C805-42B7-85CC-75AE3710F220}
+      IID 62
+      NAME "failing_countdown timer.mp3"
+      VOLPAN 1.709091 0 1 -1
+      SOFFS 10
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {195958E7-F7D7-45C8-8717-02FB4C4D4424}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\failing_countdown timer.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\failing_countdown timer.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1166
+      SNAPOFFS 0
+      LENGTH 6.34497916666669
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4BB21CE7-2F80-4BCD-9958-59CED70F8BFA}
+      IID 62
+      NAME "failing_countdown timer.mp3"
+      VOLPAN 1.709091 0 1 -1
+      SOFFS 10
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {1378A020-5B33-445D-A777-43932718CD4F}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\failing_countdown timer.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\failing_countdown timer.mp3"
+      >
+    >
+  >
+  <TRACK {749408B7-7884-4507-A36A-DCA582C59DD0}
+    NAME Opening_countdown
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.48763943758377 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {749408B7-7884-4507-A36A-DCA582C59DD0}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1024 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 1070
+      SNAPOFFS 0
+      LENGTH 7.00897916666668
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {DB57974B-D38D-4395-9CCF-F113035683D1}
+      IID 1790
+      NAME "malcolm countdown.mp3"
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {8EB020A2-E194-4AE5-8804-8EC89723A215}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\malcolm countdown.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\malcolm countdown.mp3"
+      >
+    >
+  >
+  <TRACK {FB1DCFF1-A30A-4D49-B354-22680535443C}
+    NAME Intro
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1.43593878013434 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 4
+    FX 1
+    TRACKID {FB1DCFF1-A30A-4D49-B354-22680535443C}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1024 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 928
+      SNAPOFFS 0
+      LENGTH 83
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {691E1E94-FA36-455C-8294-00941ADE3B2E}
+      IID 1434
+      NAME level2_bgmusic.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 1
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6C63A035-8808-4C7A-B6F0-2B8B4119CB43}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level2_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level2_bgmusic.mp3
+      >
+    >
+    <ITEM
+      POSITION 1011
+      SNAPOFFS 0
+      LENGTH 55
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {439A49C3-CC4F-48CB-9F2E-5E95772DBE8A}
+      IID 1434
+      NAME level2_bgmusic.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 84
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {DCC8B0DE-15A6-49E8-AB9A-7B2F18E15F59}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level2_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level2_bgmusic.mp3
+      >
+    >
+    <ITEM
+      POSITION 1066
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5BD9CC00-657B-4BBD-8870-E87623A705BB}
+      IID 1434
+      NAME level2_bgmusic.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 83
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {92B4DCB5-1C03-451E-A3E0-0C9009248DF1}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\level2_bgmusic.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\level2_bgmusic.mp3
+      >
+    >
+  >
+  <TRACK {77D6B7EE-9AAB-4E58-BD82-F77A90E8FE4A}
+    NAME "Thunder   Sound effect"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.29322214811631 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {77D6B7EE-9AAB-4E58-BD82-F77A90E8FE4A}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1026 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 930
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {B45012F8-E0F9-4431-83DF-99C6EEC0E426}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.272727 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A0F675C7-1EFC-42B9-A15B-E4D47DD9E0F9}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 937
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {594E0737-D1E1-489B-AC80-8B4CCA2ECD88}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {11345DD7-9025-45A0-950F-A8EC315EB260}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 945
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {51C645EC-A457-4CBA-AE07-BFECF6053A02}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B2BA3338-8B18-4780-AD8B-01D4E484F5E4}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 951
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1AC3BDC6-78DE-4FEE-9B8B-BDF512110C49}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.49697 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CD5ACBA5-FBAA-4FFF-A4DF-9BB1744256B2}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 960
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {47CB86D2-9A41-4C97-A3C1-6C72B6F7F83E}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {788BFB11-0BC1-414A-A5FE-1575C23382DD}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 967
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CC7CB028-6B0C-4ABF-9F76-CEAB26C1F918}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B1F76650-E382-4AF2-9215-065EF853865D}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 976
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9D1721CA-106C-4805-A168-9CE998985E91}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {9B9054BC-1325-4432-84C6-5E06219E65E5}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 985
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {BB8A9954-BF47-4D33-8F1E-05B250E3C817}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6F0EBA26-8003-4E02-992A-B4EDE26B667F}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 992
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CD9CED0E-E45E-4E0C-8587-73C2AA13CB4A}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FA7B208B-776E-4038-884E-73666EB94D93}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1000
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {0A1BBFCE-8CDB-47BF-9C7D-9AD3EC63DCBA}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {51E5F877-1598-4D50-9D2A-1087506A516B}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1006
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {2AEF731D-FC90-483F-A66C-E7A52DD1B1DF}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.49697 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {63C25980-85F1-4906-BB3F-F58B4BCBD3C3}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1015
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {0C489EEC-2905-4D11-92A3-01214D852CAD}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {9394ECC5-1151-4C7E-8128-4AB9207F0745}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1022
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {FEE76AB6-3957-4178-B324-6BE1B04CFAB3}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {1A5818D4-F954-4151-902B-0160754020E5}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1031
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C1A758FF-60CC-41EB-9B68-0AD883537F1E}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C63D8DF2-C8BB-40A4-89B7-47D0EAEA5134}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1040
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C2C06343-4A23-4DBF-B49C-4C2FB53B369E}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C917C820-D736-49CE-A57E-E64D031C36D9}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1047
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F680481B-E714-40CB-8E2B-23DD916D5B95}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {86D54972-2FC9-4963-981F-D93A2E058554}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1055
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7EDFA144-486B-48D2-B85E-53062F3E41D3}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.418182 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A30657B1-9FA5-4E17-BF3F-D6FA523B6757}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+    <ITEM
+      POSITION 1061
+      SNAPOFFS 0
+      LENGTH 7.01242630385491
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {674966F5-DEEC-490C-BC27-A2CE99F9D648}
+      IID 2304
+      NAME "Thunder   Sound effect.mp3"
+      VOLPAN 1.49697 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FF240A5D-7DC6-4BDC-87EA-5088081427C3}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Thunder   Sound effect.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Thunder   Sound effect.mp3"
+      >
+    >
+  >
+  <TRACK {99B11FFF-31DF-44BC-9FA5-1E0B74118C87}
+    NAME Rain_Sound_On_Window_with_Thunder_SoundsㅣHeavy_Rain_for_Sleep,_Study
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 0.22181548715871 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {99B11FFF-31DF-44BC-9FA5-1E0B74118C87}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 1024 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 928
+      SNAPOFFS 0
+      LENGTH 176
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {14F3EAD0-28D2-4F77-B763-B34512814D95}
+      IID 2333
+      NAME Rain_Sound_On_Window_with_Thunder_SoundsㅣHeavy_Rain_for_Sleep,_Study.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {DE922886-134D-4BBD-AC1A-1B4EFDCCD1ED}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Rain_Sound_On_Window_with_Thunder_SoundsㅣHeavy_Rain_for_Sleep,_Study.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Rain_Sound_On_Window_with_Thunder_SoundsㅣHeavy_Rain_for_Sleep,_Study.mp3
+      >
+    >
+    <ITEM
+      POSITION 1104
+      SNAPOFFS 0
+      LENGTH 166
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {47CD5C06-F8D7-47BE-BDF8-9118775D4A3C}
+      IID 2333
+      NAME Rain_Sound_On_Window_with_Thunder_SoundsㅣHeavy_Rain_for_Sleep,_Study.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 176
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {75E23CDE-30A7-4A77-9908-AD3375E5B664}
+      <SOURCE MP3
+        FILE "Media\TeamB_Assets\Rain_Sound_On_Window_with_Thunder_SoundsㅣHeavy_Rain_for_Sleep,_Study.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME C:\Users\MTS-Student\Desktop\EGL314_AY2627_Sem1_Reaper_file\Media\TeamB_Assets\Rain_Sound_On_Window_with_Thunder_SoundsㅣHeavy_Rain_for_Sleep,_Study.mp3
+      >
+    >
+  >
+  <TRACK {C9440BB0-1A1D-43D6-925F-18733690CAAA}
+    NAME "Team A Game BGM"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {C9440BB0-1A1D-43D6-925F-18733690CAAA}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 8 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 93.33795833333333
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {AA6D4DE6-BEB8-4A29-92F2-83AE22FF5F41}
+      IID 2901
+      NAME game-bgm-errie.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EB5B55A2-24EF-40B5-91B4-B7AA557D5A9D}
+      <SOURCE MP3
+        FILE "Media\game-bgm-errie.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\game-bgm-errie.mp3"
+      >
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 93.33795833333333
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C16C1925-C36B-4954-9054-4CF788B7A9F8}
+      IID 2907
+      NAME game-bgm-errie.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {59459193-D38E-40DD-8E9F-D27C229449CC}
+      <SOURCE MP3
+        FILE "Media\game-bgm-errie.mp3" 1
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\game-bgm-errie.mp3"
+      >
+    >
+  >
+  <TRACK {06A00C66-08BB-4707-B1C0-15560A1D082E}
+    NAME "Level Lost"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 2.71844105565468 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {06A00C66-08BB-4707-B1C0-15560A1D082E}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 10 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 13
+      SNAPOFFS 0
+      LENGTH 2.01072916666667
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F79ECC7A-E42D-44B9-9F5B-269F2F474496}
+      IID 2906
+      NAME game-over.wav
+      VOLPAN 1 0 1.53392 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5339B55B-81EE-41F3-99B6-33B594066B3F}
+      <SOURCE WAVE
+        FILE "Media\game-over.wav"
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\game-over.wav"
+      >
+    >
+  >
+  <TRACK {4FBA6335-760D-4840-9911-F50EE6732D20}
+    NAME "Level Won"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 2.48527390787306 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {4FBA6335-760D-4840-9911-F50EE6732D20}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 12 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 16
+      SNAPOFFS 0
+      LENGTH 1.29004166666667
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9384F19E-2862-4999-ABD9-47AD1EB08EED}
+      IID 2908
+      NAME zone-expanded-stinger.wav
+      VOLPAN 2.511886 0 3.31492 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {2199140E-E9B4-45AE-B12B-E00E11D19377}
+      <SOURCE WAVE
+        FILE "Media\zone-expanded-stinger.wav"
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\zone-expanded-stinger.wav"
+      >
+    >
+  >
+  <TRACK {CA39787A-3E01-4B76-A23C-9B36DCC76D76}
+    NAME "Zone A"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {CA39787A-3E01-4B76-A23C-9B36DCC76D76}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 14 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 8
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.04783473467558 0 1 0 0 0
+      FADEOUT 1 0.06700366927414 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {2982E29B-7C73-49E8-897E-EAEE4FB0833E}
+      IID 2902
+      NAME zone-expanding.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 10.792
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {59703218-8650-4DF5-AFB2-9035445FADCF}
+      <SOURCE WAVE
+        FILE "Media\zone-expanding.wav"
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\zone-expanding.wav"
+      >
+    >
+  >
+  <TRACK {ADD196F2-6452-4857-B522-9B419F6E43B4}
+    NAME "Zone B"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {ADD196F2-6452-4857-B522-9B419F6E43B4}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 16 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 8
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.04783473467558 0 1 0 0 0
+      FADEOUT 1 0.06700366927414 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {B7952954-087C-4134-90C9-0D0AC7295AB3}
+      IID 2903
+      NAME zone-expanding.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 2.904
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {ACC72A5A-6403-4A77-B91E-5F75A24C5F85}
+      <SOURCE WAVE
+        FILE "Media\zone-expanding.wav"
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\zone-expanding.wav"
+      >
+    >
+  >
+  <TRACK {2FF01B52-C549-4226-BD5D-E53AF7B6BD90}
+    NAME "Zone C"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {2FF01B52-C549-4226-BD5D-E53AF7B6BD90}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 18 0 1 0 0 0 0 -1:U -1
+    <PANENV2
+      EGUID {4138C1AD-C70E-4DAC-BA58-B2382D4F6006}
+      ACT 0 -1
+      VIS 0 1 1
+      LANEHEIGHT 0 0
+      ARM 1
+      DEFSHAPE 0 -1 -1
+      PT 0 0 0
+    >
+    <ITEM
+      POSITION 8
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.04783473467558 0 1 0 0 0
+      FADEOUT 1 0.06700366927414 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {64ECD93C-6E8A-4BE7-B17F-BC461163DB39}
+      IID 2904
+      NAME zone-expanding.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 22.408
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C7C64673-7225-4A70-9661-56AE322C4561}
+      <SOURCE WAVE
+        FILE "Media\zone-expanding.wav"
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\zone-expanding.wav"
+      >
+    >
+  >
+  <TRACK {FE7E1C4C-A51B-4BB3-B9F4-1872F991E18A}
+    NAME "Zone D"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {FE7E1C4C-A51B-4BB3-B9F4-1872F991E18A}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 0 0
+    HWOUT 20 0 1 0 0 0 0 -1:U -1
+    <ITEM
+      POSITION 8
+      SNAPOFFS 0
+      LENGTH 4
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.04783473467558 0 1 0 0 0
+      FADEOUT 1 0.06700366927414 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {40A8F1AD-1BEA-47EA-953C-6B71FC45E221}
+      IID 2905
+      NAME zone-expanding.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 10
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {9CF52ECF-5FED-4901-8C84-9897ADB1F1BE}
+      <SOURCE WAVE
+        FILE "Media\zone-expanding.wav"
+      >
+      <EXT
+        ORIGINAL_FILENAME "C:\Users\MTS-Student\Desktop\2026 PROJECT PHANTOM\Media\TeamA_Assets\zone-expanding.wav"
+      >
+    >
+  >
+  <TRACK {1A6AF160-0412-4EE7-BD43-D70C61E8E760}
+    NAME ""
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    LANEREC -1 -1 -1 0
+    SEL 0
+    REC 0 0 1 0 0 0 0 0
+    VU 64
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {1A6AF160-0412-4EE7-BD43-D70C61E8E760}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <EXTENSIONS
+    <S&M_LIVE_CONFIG 1 1 3 105 {00000000-0000-0000-0000-000000000000} 500 50 "" -1 -1 -1 -1
+      1 stage_cleared {00000000-0000-0000-0000-000000000000} "" "" "" "" ""
+      2 level_cleared {DC2E0697-27A3-4914-A9C7-C9864BE8EEEE} "" "" "" "" ""
+      3 incorrect_gestures {4B3C5764-70B9-4E25-8891-7954787FD9E1} "" "" "" "" ""
+      4 gameover_fail {FCA16D30-93F6-4ECD-B229-A495D429B863} "" "" "" "" ""
+    >
+  >
+>
