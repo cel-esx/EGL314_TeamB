@@ -155,6 +155,8 @@
  2. [Capture Gesture.py](/POC/Capture%20Gesture.py)
  3. [new_gesture_definitions.csv](/POC/new_gesture_definitions.csv)
  4. [POC Game Code.py](/POC/POC%20Game%20Code.py)
+ 5. [GrandMa File](/POC/grandma3/TEAMB_Proj.show)
+ 6. [Multiplay Audio File](/POC/Multiplay/Images&MultiPlay/multiplay3_projectTeamB.mpp)
 
 ## MVP Version:
  1. [Capture Gesture.py](/MVP/Capture%20Gesture.py)
