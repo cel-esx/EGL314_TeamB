@@ -31,13 +31,13 @@ TRANSITION_INTERVAL = 1.5
 BLANK_SCREEN_DURATION = 28.0  # Duration (in seconds) for the blank screen after Level 3
 
 # Pre-load and scale slideshow images to full screen (1280x720) to avoid in-loop resizing
-PIC1 = cv2.resize(cv2.imread("MVP Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("MVP Pictures/Pack Recharge Start Page 2.jpg") else None
-PIC2 = cv2.imread("MVP Pictures/3 2.jpg") 
-PIC3 = cv2.imread("MVP Pictures/2 2.jpg") 
-PIC4 = cv2.imread("MVP Pictures/1 2.jpg") 
-PIC5 = cv2.imread("MVP Pictures/Begin 2.jpg")
-PIC6 = cv2.resize(cv2.imread("MVP Pictures/Level 4.jpg"), (1280, 720)) if os.path.exists("MVP Pictures/Level 4.jpg") else None
-PIC7 = cv2.imread("MVP Pictures/Are You Ready.jpg") 
+PIC1 = cv2.resize(cv2.imread("Final Assessment/Final Assessment/MVP Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("Final Assessment/Final Assessment/MVP Pictures/Pack Recharge Start Page 2.jpg") else None
+PIC2 = cv2.imread("Final Assessment/Final Assessment/MVP Pictures/3 2.jpg") 
+PIC3 = cv2.imread("Final Assessment/Final Assessment/MVP Pictures/2 2.jpg") 
+PIC4 = cv2.imread("Final Assessment/Final Assessment/MVP Pictures/1 2.jpg") 
+PIC5 = cv2.imread("Final Assessment/Final Assessment/MVP Pictures/Begin 2.jpg")
+PIC6 = cv2.resize(cv2.imread("Final Assessment/Final Assessment/MVP Pictures/Level 4.jpg"), (1280, 720)) if os.path.exists("Final Assessment/Final Assessment/MVP Pictures/Level 4.jpg") else None
+PIC7 = cv2.imread("Final Assessment/Final Assessment/MVP Pictures/Are You Ready.jpg") 
 
 TRANSITION_SLIDES = [PIC7, PIC2, PIC3, PIC4, PIC5]
 TRANSITION_SLIDES = [cv2.resize(img, (1280, 720)) for img in TRANSITION_SLIDES if img is not None]
@@ -337,7 +337,7 @@ gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
 reaper_client = create_osc_client(REAPER_LAPTOP_IP, REAPER_PORT, "REAPER")
 
 HEART_SIZE = 60 
-heart_img = cv2.imread("MVP Pictures/Heart.png", cv2.IMREAD_UNCHANGED)
+heart_img = cv2.imread("Final Assessment/MVP Pictures/Heart.png", cv2.IMREAD_UNCHANGED)
 if heart_img is not None:
     heart_img = cv2.resize(heart_img, (HEART_SIZE, HEART_SIZE), interpolation=cv2.INTER_LINEAR)
     if heart_img.ndim == 3 and heart_img.shape[2] == 4:
