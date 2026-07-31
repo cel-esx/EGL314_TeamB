@@ -389,7 +389,7 @@ def get_new_targets(lvl=1):
     return [(g1, "Left"), (g2, "Right"), (g3, "Left"), (g4, "Right")]
 
 target_keys = get_new_targets(lvl=1)
-cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)  
+cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)  
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1) 
@@ -409,11 +409,26 @@ default_bg_path = "MVP Pictures/level_bg.mp4"
 bg_video = cv2.VideoCapture(default_bg_path)
 last_loaded_video_path = default_bg_path
 
+# ── EXTENDED DISPLAY CONFIGURATION ───────────────────────────────────────────
 window_name = "Gesture Recognition"
-cv2.namedWindow("Gesture Recognition", cv2.WINDOW_NORMAL)
-cv2.moveWindow(window_name, 2560, 0)
-cv2.resizeWindow(window_name, 1920, 1080)
-cv2.setWindowProperty("Gesture Recognition", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
+# Create normal window first so OS handles window geometry properly
+cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+
+# Change this OFFSET value based on where your monitor is:
+# Use 1920 (or your main screen's width) if Monitor is on the RIGHT
+# Use -1920 (negative value) if Monitor is on the LEFT
+MONITOR_X_OFFSET = 1920  
+
+# Move window to extended monitor before toggling fullscreen
+cv2.moveWindow(window_name, MONITOR_X_OFFSET, 0)
+
+# Brief pause to give the OS window manager time to relocate the window
+cv2.waitKey(100)
+
+# Enable borderless fullscreen on the target monitor
+cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+# ─────────────────────────────────────────────────────────────────────────────
 
 MATCH_MIN_THRESHOLD = 0.15    
 MATCH_THRESHOLD     = 0.48 
@@ -1163,7 +1178,7 @@ while True:
     elif key == ord('1') or key == ord('s'):
         if current_level == 3:
             cap.release()
-            cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -1183,7 +1198,7 @@ while True:
     elif key == ord('2') or key == ord('r'):
         if current_level == 3:
             cap.release()
-            cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
