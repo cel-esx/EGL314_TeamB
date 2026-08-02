@@ -31,13 +31,13 @@ TRANSITION_INTERVAL = 1.5
 BLANK_SCREEN_DURATION = 28.0  # Duration (in seconds) for the blank screen after Level 3
 
 # Pre-load and scale slideshow images to full screen (1280x720) to avoid in-loop resizing
-PIC1 = cv2.resize(cv2.imread("MVP Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("MVP Pictures/Pack Recharge Start Page 2.jpg") else None
-PIC2 = cv2.imread("MVP Pictures/3 2.jpg") 
-PIC3 = cv2.imread("MVP Pictures/2 2.jpg") 
-PIC4 = cv2.imread("MVP Pictures/1 2.jpg") 
-PIC5 = cv2.imread("MVP Pictures/Begin 2.jpg")
-PIC6 = cv2.resize(cv2.imread("MVP Pictures/Level 4.jpg"), (1280, 720)) if os.path.exists("MVP Pictures/Level 4.jpg") else None
-PIC7 = cv2.imread("MVP Pictures/Are You Ready.jpg") 
+PIC1 = cv2.resize(cv2.imread("MVP/MVP Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("MVP/MVP Pictures/Pack Recharge Start Page 2.jpg") else None
+PIC2 = cv2.imread("MVP/MVP Pictures/3 2.jpg") 
+PIC3 = cv2.imread("MVP/MVP Pictures/2 2.jpg") 
+PIC4 = cv2.imread("MVP/MVP Pictures/1 2.jpg") 
+PIC5 = cv2.imread("MVP/MVP Pictures/Begin 2.jpg")
+PIC6 = cv2.resize(cv2.imread("MVP/MVP Pictures/Level 4.png"), (1280, 720)) if os.path.exists("MVP/MVP Pictures/Level 4.png") else None
+PIC7 = cv2.imread("MVP/MVP Pictures/Are You Ready.jpg") 
 
 TRANSITION_SLIDES = [PIC7, PIC2, PIC3, PIC4, PIC5]
 TRANSITION_SLIDES = [cv2.resize(img, (1280, 720)) for img in TRANSITION_SLIDES if img is not None]
@@ -406,10 +406,10 @@ if not cap.isOpened(): exit()
 
 # Removed video entries for Level 3
 VIDEO_STAGE_MAP = {
-    (4, 0): "MVP Pictures/level_bg.mp4",  
-    (4, 1): "MVP Pictures/Bird.mp4",  
-    (4, 2): "MVP Pictures/Wolf.mp4",      
-    (4, 3): "MVP Pictures/Spider.mp4"       
+    (4, 0): "MVP/MVP Pictures/level_bg.mp4",  
+    (4, 1): "MVP/MVP Pictures/Bird.mp4",  
+    (4, 2): "MVP/MVP Pictures/Wolf.mp4",      
+    (4, 3): "MVP/MVP Pictures/Spider.mp4"       
 }
 
 default_bg_path = "MVP Pictures/level_bg.mp4"
