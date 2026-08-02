@@ -20,7 +20,7 @@ def _run_mediapipe(frame_rgb):
     with _mp_lock:
         _mp_result = result
 
-CSV_FILE = "new_gesture_definitions.csv"
+CSV_FILE = "POC/new_gesture_definitions.csv"
 
 # ── OSC CONFIGURATION ─────────────────────────────────────────────────────────
 GMA3_LAPTOP_IP   = "192.168.254.252s" # "192.168.254.18" 
@@ -125,7 +125,7 @@ def load_gesture_definitions(csv_file):
 
 PRELOADED_IMAGES = {} 
 def cache_target_images(templates_keys, box_size):
-    folder = "Hand_images_clear"
+    folder = "POC/Hand_Images"
     if not os.path.exists(folder): return
     for g_name in set([k[0] for k in templates_keys]):
         for ext in [".png", ".jpg", ".jpeg"]:
@@ -232,7 +232,7 @@ multiplay_client = create_osc_client(MULTIPLAY_LAPTOP_IP, MULTIPLAY_PORT, "Multi
 
 # ── LOAD HEART IMAGE ──────────────────────────────────────────────────
 HEART_SIZE = 60 
-heart_img = cv2.imread("Heart.png", cv2.IMREAD_UNCHANGED)
+heart_img = cv2.imread("POC/Hand_Images/Heart.png", cv2.IMREAD_UNCHANGED)
 if heart_img is not None:
     heart_img = cv2.resize(heart_img, (HEART_SIZE, HEART_SIZE), interpolation=cv2.INTER_AREA)
     if heart_img.ndim == 3 and heart_img.shape[2] == 4:

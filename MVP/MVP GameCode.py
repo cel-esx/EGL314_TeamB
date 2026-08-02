@@ -24,7 +24,7 @@ def _run_mediapipe_async(frame_rgb):
         _mp_result = result
         _mp_is_processing = False
 
-CSV_FILE = "MVP_gesture_definitions.csv"
+CSV_FILE = "MVP/MVP_gesture_definitions.csv"
 
 # ── PICTURE SLIDESHOW CONFIGURATION ───────────────────────────────────────────
 TRANSITION_INTERVAL = 1.5  
@@ -201,7 +201,7 @@ def load_gesture_definitions(csv_file):
 
 PRELOADED_IMAGES = {} 
 def cache_target_images(templates_keys, box_size):
-    folder = "MVP Pictures"
+    folder = "MVP/MVP Pictures"
     if not os.path.exists(folder): return
     all_names = set([k[0] for k in templates_keys if isinstance(k, tuple)]) | set([k for k in templates_keys if isinstance(k, str)])
     for g_name in all_names:
@@ -323,7 +323,7 @@ gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
 reaper_client = create_osc_client(REAPER_LAPTOP_IP, REAPER_PORT, "REAPER")
 
 HEART_SIZE = 60 
-heart_img = cv2.imread("MVP Pictures/Heart.png", cv2.IMREAD_UNCHANGED)
+heart_img = cv2.imread("MVP/MVP Pictures/Heart.png", cv2.IMREAD_UNCHANGED)
 if heart_img is not None:
     heart_img = cv2.resize(heart_img, (HEART_SIZE, HEART_SIZE), interpolation=cv2.INTER_LINEAR)
     if heart_img.ndim == 3 and heart_img.shape[2] == 4:
@@ -1059,34 +1059,34 @@ while True:
         send_osc_signal(reaper_client, "/action/1016", 1)
         break
         
-    # elif key == ord('s') or key == ord('1'):
-    #     if game_status == "START_SCREEN": start_game_sequence()
+    elif key == ord('s') or key == ord('1'):
+        if game_status == "START_SCREEN": start_game_sequence()
 
-    # elif key == ord('r') or key == ord('2'):
-    #     if game_status == "START_SCREEN":
-    #         player_lives = 3
-    #         current_level, current_cycle = 2, 0
-    #         level4_unlocked = False
-    #         target_keys = get_new_targets(lvl=2)
-    #         matched_targets = [False] * len(target_keys)
-    #         round_duration = BASE_DURATION
-    #         jump_to_stage(2,1)
-    #         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
-    #         round_start_time, game_status = time.time(), "PLAYING"
-    #         last_active_cue_cmd = None
+    elif key == ord('r') or key == ord('2'):
+        if game_status == "START_SCREEN":
+            player_lives = 3
+            current_level, current_cycle = 2, 0
+            level4_unlocked = False
+            target_keys = get_new_targets(lvl=2)
+            matched_targets = [False] * len(target_keys)
+            round_duration = BASE_DURATION
+            jump_to_stage(2,1)
+            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
+            round_start_time, game_status = time.time(), "PLAYING"
+            last_active_cue_cmd = None
 
-    # elif key == ord('t') or key == ord('3'):
-    #     if game_status == "START_SCREEN":
-    #         player_lives = 3
-    #         current_level, current_cycle = 3, 0
-    #         level4_unlocked = False
-    #         target_keys = get_new_targets(lvl=3)
-    #         matched_targets = [False] * len(target_keys)
-    #         round_duration = BASE_DURATION
-    #         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
-    #         jump_to_stage(3,1)
-    #         round_start_time, game_status = time.time(), "PLAYING"
-    #         last_active_cue_cmd = None
+    elif key == ord('t') or key == ord('3'):
+        if game_status == "START_SCREEN":
+            player_lives = 3
+            current_level, current_cycle = 3, 0
+            level4_unlocked = False
+            target_keys = get_new_targets(lvl=3)
+            matched_targets = [False] * len(target_keys)
+            round_duration = BASE_DURATION
+            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
+            jump_to_stage(3,1)
+            round_start_time, game_status = time.time(), "PLAYING"
+            last_active_cue_cmd = None
 
     elif key == ord('y') or key == ord('4'): 
         if current_level != 4:
