@@ -28,7 +28,6 @@ CSV_FILE = "Final Assessment/MVP_gesture_definitions.csv"
 
 # ── PICTURE SLIDESHOW CONFIGURATION ───────────────────────────────────────────
 TRANSITION_INTERVAL = 1.5  
-BLANK_SCREEN_DURATION = 28.0  # Duration (in seconds) for blank screen if needed
 
 # Pre-load and scale slideshow images to full screen (1280x720)
 PIC1 = cv2.resize(cv2.imread("Final Assessment/MVP Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("Final Assessment/MVP Pictures/Pack Recharge Start Page 2.jpg") else None
@@ -502,7 +501,7 @@ while True:
             v_ret, v_frame = bg_video.read()
 
     # ── ASYNCHRONOUS MEDIAPIPE PROCESSING ──
-    if game_status in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL"] or (game_status not in ["TRANSITION_SCENE", "BLANK_SCREEN", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR", "TUTORIAL_CLEAR", "SHADOW_START_PAGE"] and current_level != 3): 
+    if game_status in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL"] or (game_status not in ["TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR", "TUTORIAL_CLEAR", "SHADOW_START_PAGE"] and current_level != 3): 
         if not _mp_is_processing:
             _mp_is_processing = True
             small_rgb = cv2.resize(raw_camera_feed, (320, 180), interpolation=cv2.INTER_LINEAR) 
@@ -703,18 +702,6 @@ while True:
             game_status = "PLAYING"
             round_start_time = time.time()
 
-    elif game_status == "BLANK_SCREEN":
-        frame[:] = 0  
-        if current_time - status_display_time > BLANK_SCREEN_DURATION:
-            send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
-            target_keys = get_new_targets(lvl=current_level)
-            send_osc_signal(reaper_client, "/action/_82a10b90ef7428438ddfd101c8195d19", 1)
-            send_osc_signal(reaper_client, "/action/41263", 1)
-            matched_targets = [False] * len(target_keys)
-            round_duration = BASE_DURATION
-            round_start_time, game_status = time.time(), "PLAYING"
-            last_active_cue_cmd = None
-
     elif game_status == "PLAYING":
         if current_level == 3 and not level3_unlocked:
             time_left = round_duration
@@ -867,7 +854,7 @@ while True:
             cv2.line(frame, (marker, bar_y), (marker, bar_y + bar_h), (0, 255, 255), 1)
         draw_sleek_text(frame, f"SYSTEM SYNC: {int(hold_ratio * 100)}%", (bar_x, bar_y - 8), font_scale=0.45, thickness=1, color=(0, 255, 255))
 
-    if game_status not in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL", "TUTORIAL_CLEAR", "TRANSITION_SCENE", "BLANK_SCREEN", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR"]:
+    if game_status not in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL", "TUTORIAL_CLEAR", "TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR"]:
         if current_level == 3:
             current_box_size = 300
         elif current_level == 2:
