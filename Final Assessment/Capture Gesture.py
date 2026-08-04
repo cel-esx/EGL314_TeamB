@@ -57,7 +57,7 @@ LANDMARK_NAMES = [
     "PINKY_MCP", "PINKY_PIP", "PINKY_DIP", "PINKY_TIP",
 ]
 
-CSV_FILE = "MVP/MVP_gesture_definitions.csv"
+CSV_FILE = "Final Assessment/Final_gesture_definitions.csv"
 CSV_HEADERS = ["gesture_name", "hand", "capture_id", "timestamp",
                "landmark_id", "landmark_name", "x", "y", "z"]
 

@@ -24,7 +24,7 @@ def _run_mediapipe_async(frame_rgb):
         _mp_result = result
         _mp_is_processing = False
 
-CSV_FILE = "Final Assessment/Final_gesture_definitions.csv"
+CSV_FILE = "Final Assessment/MVP_gesture_definitions.csv"
 
 # ── PICTURE SLIDESHOW CONFIGURATION ───────────────────────────────────────────
 TRANSITION_INTERVAL = 1.5  
@@ -143,8 +143,8 @@ MANUAL_LEVEL_3_TARGETS = {
 }
 
 MANUAL_LEVEL_1_GESTURES = {
-    0: ("left_3", "right_2", "left_oath", "right_4"), 
-    1: ("left_4", "right_2", "left_3", "right_3")  
+    1: ("left_3", "right_2", "left_oath", "right_oath"), 
+    0: ("left_oath", "right_2", "left_3", "right_3")  
 }
 
 mp_hands = mp.solutions.hands 
@@ -196,11 +196,6 @@ def cache_target_images(templates_keys, box_size):
     folder = "Final Assessment/MVP Pictures"
     if not os.path.exists(folder): return
     all_names = set([k[0] for k in templates_keys if isinstance(k, tuple)]) | set([k for k in templates_keys if isinstance(k, str)])
-    
-    # Explicitly include hand-specific display names
-    all_names.add("level2_stage2_2_left")
-    all_names.add("level2_stage2_2_right")
-
     for g_name in all_names:
         for ext in [".png", ".jpg", ".jpeg"]:
             img_path = os.path.join(folder, f"{g_name}{ext}")
@@ -454,7 +449,7 @@ status_display_time = 0.0
 last_active_cue_cmd = None
 level3_unlocked = False  
 
-tutorial_targets_stage1 = [("level2_stage2_2", "Left"), ("game_start_right", "Right"), ("palm", "Left"), ("level2_stage2_1", "Right")]
+tutorial_targets_stage1 = [("level2_stage2_2", "Left"), ("level2_stage2_2", "Right"), ("level2_stage2_1", "Left"), ("level2_stage2_1", "Right")]
 tutorial_targets_stage2 = [("left_3", "Left"), ("right_2", "Right"), ("palm", "Left"), ("right_3", "Right")]
 
 def start_game_sequence():
@@ -607,12 +602,8 @@ while True:
             p_lbl = f"P1 {h_label.upper()}" if i < 2 else f"P2 {h_label.upper()}"
             draw_sleek_text(frame, p_lbl, (bx + 10, by - 10), font_scale=0.45, thickness=1, color=box_color)
             
-            # Look for explicit left/right image keys first if available
-            img_key_hand_specific = f"{g_name}_{h_label.lower()}"
-            img_key_to_use = img_key_hand_specific if img_key_hand_specific in PRELOADED_IMAGES else g_name
-
-            if img_key_to_use in PRELOADED_IMAGES:
-                overlay_preloaded_picture(frame, PRELOADED_IMAGES[img_key_to_use], bx, by, b_size)
+            if g_name in PRELOADED_IMAGES:
+                overlay_preloaded_picture(frame, PRELOADED_IMAGES[g_name], bx, by, b_size)
             
             if matched_targets[i]:
                 draw_sleek_text(frame, "MATCHED", (bx + 20, by + b_size - 15), font_scale=0.5, thickness=2, color=(0, 255, 0))
@@ -962,12 +953,8 @@ while True:
             else:
                 draw_sleek_text(frame, f"TARGET {i+1}", (x_min + 5, y_min - 10), font_scale=0.5, thickness=1, color=color)
 
-            # Look for explicit left/right image keys first if available
-            img_key_hand_specific = f"{gesture_name}_{hand_label.lower()}"
-            img_key_to_use = img_key_hand_specific if img_key_hand_specific in PRELOADED_IMAGES else gesture_name
-
-            if img_key_to_use in PRELOADED_IMAGES:
-                overlay_preloaded_picture(frame, PRELOADED_IMAGES[img_key_to_use], x_min, y_min, active_box_size)
+            if gesture_name in PRELOADED_IMAGES:
+                overlay_preloaded_picture(frame, PRELOADED_IMAGES[gesture_name], x_min, y_min, active_box_size)
             
             if matched_targets[i]:
                 cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2, cv2.LINE_AA)
