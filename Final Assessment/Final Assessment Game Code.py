@@ -123,7 +123,14 @@ except Exception as e:
     print(f"[!] Failed to load Level 3 model: {e}")
     model = None
 
-ai_classes = ["Background", "Bird", "Palm", "Spider", "Wolf"]
+ai_classes = [ 
+ "Background", 
+  "Bird", 
+  "Moose",
+  "Palm",
+  "Spider",
+  "Swan",
+  "Wolf"]
 mean = [0.4363, 0.4328, 0.3291]
 std = [0.2129, 0.2075, 0.2037]
 CONFIDENCE_THRESHOLD = 0.75
@@ -138,8 +145,8 @@ MANUAL_LEVEL_3_TARGETS = {
     0: "bird",    
     1: "wolf",    
     2: "spider",
-    3: "bird",
-    4: "wolf"
+    3: "swan",
+    4: "moose"
 }
 
 MANUAL_LEVEL_1_GESTURES = {
