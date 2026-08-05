@@ -429,7 +429,7 @@ level3_unlocked = False
 tutorial_targets_stage2 = [("level2_stage2_2", "Left"), ("game_start_right", "Right"), ("palm", "Left"), ("level2_stage2_1", "Right")]
 tutorial_targets_stage1 = [("left_3", "Left"), ("right_2", "Right"), ("right_4", "Left"), ("right_3", "Right")]
 
-shadow_tutorial_targets_stage1 = [("palm", "AICameraClass")]
+shadow_tutorial_targets_stage1 = [("bird", "AICameraClass")]
 shadow_tutorial_targets_stage2 = [("bird", "AICameraClass")]
 
 def start_game_sequence():
