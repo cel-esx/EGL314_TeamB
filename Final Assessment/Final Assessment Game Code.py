@@ -307,8 +307,7 @@ else:
     HEART_DATA = None
 
 print("Script started! Initializing system, reaper, and grandMA3 connection...")
-send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence *") 
-send_osc_signal(gma3_client, GMA3_ADDRESS, "on timecode 2 ; on sequence 80 cue 2 ; on sequence 78 cue 2")
+send_osc_signal(gma3_client, GMA3_ADDRESS, "on macro 3 ;")
 send_osc_signal(reaper_client, "/action/1068", 1) #go out of the loop
 send_osc_signal(reaper_client, "/action/40339", 1) #unmute all tracks
 send_osc_signal(reaper_client, "/action/40162", 1) #jump to marker 2 (game_start)
@@ -427,7 +426,7 @@ def start_game_sequence():
     last_active_cue_cmd = None
     target_keys = get_new_targets(lvl=1)
     matched_targets = [False] * len(target_keys)
-    send_osc_signal(gma3_client, GMA3_ADDRESS, "off timecode *; off sequence * ; on sequence 17 ")
+    send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 4;")
     transition_start_time = time.time()
     game_status = "TRANSITION_SCENE"
 
@@ -1192,7 +1191,6 @@ while True:
         target_keys = get_new_targets(lvl=3)
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off timecode 2;")
         send_osc_signal(reaper_client, "/action/41251", 1) 
         send_osc_signal(reaper_client, "/track/15/unmute", 1) 
         round_start_time, game_status = time.time(), "SHADOW_START_PAGE"
@@ -1213,7 +1211,6 @@ while True:
         target_keys = get_new_targets(lvl=3)
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off timecode 2;")
         send_osc_signal(reaper_client, "/action/41251", 1) 
         send_osc_signal(reaper_client, "/track/15/unmute", 1) 
         round_start_time, game_status = time.time(), "PLAYING"
