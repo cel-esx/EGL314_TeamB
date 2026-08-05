@@ -58,7 +58,7 @@ STAGE_CLEAR_CUE_CMD = "on sequence 120 cue 2;"
 MAX_STAGES_PER_LEVEL = {
     1: 1,  
     2: 1,  
-    3: 5   
+    3: 6   
 }
 
 def back_to_start():
@@ -100,7 +100,8 @@ MANUAL_LEVEL_3_TARGETS = {
     1: "wolf",    
     2: "spider",
     3: "swan",
-    4: "moose"
+    4: "moose",
+    5: "swan"
 }
 
 MANUAL_LEVEL_1_GESTURES = {
@@ -299,7 +300,7 @@ def send_osc_once(client, address, message):
 box_size = 150
      
 templates = load_gesture_definitions(CSV_FILE)
-all_keys = list(templates.keys()) + ["palm"] 
+all_keys = list(templates.keys()) + ["palm", "bird", "wolf", "spider", "swan", "moose"] 
 cache_target_images(all_keys, box_size) 
 
 gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
@@ -379,7 +380,8 @@ VIDEO_STAGE_MAP = {
     (3, 2): "Final Assessment/MVP Pictures/Wolf.mp4",      
     (3, 3): "Final Assessment/MVP Pictures/Spider.mp4",       
     (3, 4): "Final Assessment/MVP Pictures/Bird.mp4",       
-    (3, 5): "Final Assessment/MVP Pictures/Wolf.mp4"       
+    (3, 5): "Final Assessment/MVP Pictures/Wolf.mp4",
+    (3, 6): "Final Assessment/MVP Pictures/Bird.mp4"
 }
 
 default_bg_path = "MVP Pictures/level_bg.mp4"
@@ -426,6 +428,9 @@ level3_unlocked = False
 
 tutorial_targets_stage2 = [("level2_stage2_2", "Left"), ("game_start_right", "Right"), ("palm", "Left"), ("level2_stage2_1", "Right")]
 tutorial_targets_stage1 = [("left_3", "Left"), ("right_2", "Right"), ("right_4", "Left"), ("right_3", "Right")]
+
+shadow_tutorial_targets_stage1 = [("palm", "AICameraClass")]
+shadow_tutorial_targets_stage2 = [("bird", "AICameraClass")]
 
 def start_game_sequence():
     global game_status, round_start_time, transition_start_time, current_level, current_cycle, player_lives, target_keys, matched_targets, round_duration, last_active_cue_cmd, level3_unlocked
@@ -480,7 +485,7 @@ while True:
             v_ret, v_frame = bg_video.read()
 
     # ── ASYNCHRONOUS MEDIAPIPE PROCESSING ──
-    if game_status in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL"] or (game_status not in ["TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR", "TUTORIAL_CLEAR", "SHADOW_START_PAGE"] and current_level != 3): 
+    if game_status in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2"] or (game_status not in ["TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR", "TUTORIAL_CLEAR", "SHADOW_START_PAGE", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2"] and current_level != 3): 
         if not _mp_is_processing:
             _mp_is_processing = True
             small_rgb = cv2.resize(raw_camera_feed, (320, 180), interpolation=cv2.INTER_LINEAR) 
@@ -556,65 +561,130 @@ while True:
             if match_hold_start_time is not None: match_hold_start_time = None
             send_osc_signal(reaper_client, "/action/41251", 1) #team B start
 
-    elif game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2"]:
-        active_tut_targets = tutorial_targets_stage1 if game_status == "TUTORIAL_STAGE_1" else tutorial_targets_stage2
+    elif game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2"]:
+        if game_status == "TUTORIAL_STAGE_1":
+            active_tut_targets = tutorial_targets_stage1
+        elif game_status == "TUTORIAL_STAGE_2":
+            active_tut_targets = tutorial_targets_stage2
+        elif game_status == "SHADOW_TUTORIAL_STAGE_1":
+            active_tut_targets = shadow_tutorial_targets_stage1
+        else:
+            active_tut_targets = shadow_tutorial_targets_stage2
+
         frame = raw_camera_feed.copy()
             
-        draw_dotted_rectangle(frame, (100, 320), (550, 700), (0, 255, 255), thickness=2, gap=12)
-        draw_dotted_rectangle(frame, (730, 320), (1180, 700), (0, 255, 255), thickness=2, gap=12)
-        
-        draw_sleek_text(frame, "PLAYER 1 ZONE", (220, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
-        draw_sleek_text(frame, "PLAYER 2 ZONE", (850, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
+        if "SHADOW" in game_status:
+            draw_dotted_rectangle(frame, (100, 220), (750, 600), (0, 255, 255), thickness=2, gap=12)
+            draw_sleek_text(frame, "PLAYERS ZONE", (220, 200), font_scale=0.55, thickness=1, color=(0, 255, 255))
+        else:
+            draw_dotted_rectangle(frame, (100, 320), (550, 700), (0, 255, 255), thickness=2, gap=12)
+            draw_dotted_rectangle(frame, (730, 320), (1180, 700), (0, 255, 255), thickness=2, gap=12)
+            draw_sleek_text(frame, "PLAYER 1 ZONE", (220, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
+            draw_sleek_text(frame, "PLAYER 2 ZONE", (850, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
 
         tut_box_x, tut_box_y, tut_box_w, tut_box_h = 420, 30, 440, 150
         cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (20, 20, 20), -1, cv2.LINE_AA)
         cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (0, 255, 255), 2, cv2.LINE_AA)
         
-        stage_num_str = "1/2: SAME GESTURES" if game_status == "TUTORIAL_STAGE_1" else "2/2: DIFFERENT GESTURES"
-        draw_sleek_text(frame, f"TUTORIAL {stage_num_str}", (tut_box_x + 60, tut_box_y + 30), font_scale=0.6, thickness=2, color=(0, 255, 255))
+        if "SHADOW" in game_status:
+            stage_num_str = "1/2: PALM SHADOW" if game_status == "SHADOW_TUTORIAL_STAGE_1" else "2/2: ANIMAL SHADOWS"
+            title_prefix = "SHADOW TUTORIAL "
+        else:
+            stage_num_str = "1/2: SAME GESTURES" if game_status == "TUTORIAL_STAGE_1" else "2/2: DIFFERENT GESTURES"
+            title_prefix = "TUTORIAL "
+
+        draw_sleek_text(frame, f"{title_prefix}{stage_num_str}", (tut_box_x + 30, tut_box_y + 30), font_scale=0.55, thickness=2, color=(0, 255, 255))
         draw_sleek_text(frame, "HOW TO PLAY:", (tut_box_x + 20, tut_box_y + 60), font_scale=0.5, thickness=2, color=(255, 255, 255))
         draw_sleek_text(frame, "1) Match the gestures on screen within the dotted box.", (tut_box_x + 20, tut_box_y + 90), font_scale=0.38, thickness=1, color=(200, 200, 200))
         draw_sleek_text(frame, "2) Hold the gesture steady until the bar below fills up.", (tut_box_x + 20, tut_box_y + 120), font_scale=0.38, thickness=1, color=(200, 200, 200))
 
-        positions = [(20, 50), (210, 50), (890, 50), (1080, 50)]
-        for i, (g_name, h_label) in enumerate(active_tut_targets):
-            bx, by = positions[i]
-            b_size = 180
-            box_color = (0, 255, 0) if matched_targets[i] else (0, 255, 255)
+        if "SHADOW" in game_status:
+            matched_targets = [False] * len(active_tut_targets)
+            target_gname = active_tut_targets[0][0]
             
-            cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, 2, cv2.LINE_AA)
-            p_lbl = f"P1 {h_label.upper()}" if i < 2 else f"P2 {h_label.upper()}"
-            draw_sleek_text(frame, p_lbl, (bx + 10, by - 10), font_scale=0.45, thickness=1, color=box_color)
+            b_size = 300
+            bx, by = (w // 2) + 480 - (b_size // 2), margin_y
             
-            img_key_hand_specific = f"{g_name}_{h_label.lower()}"
-            img_key_to_use = img_key_hand_specific if img_key_hand_specific in PRELOADED_IMAGES else g_name
+            if model is not None:
+                rgb_frame = cv2.cvtColor(raw_camera_feed, cv2.COLOR_BGR2RGB)
+                pil_img = Image.fromarray(rgb_frame)
+                processed_tensor = image_transforms(pil_img).float().unsqueeze(0).to(device)
+                
+                with torch.no_grad():
+                    output = model(processed_tensor)
+                    probabilities = torch.nn.functional.softmax(output, dim=1)
+                    confidence, predicted = torch.max(probabilities, 1)
+                    
+                    confidence_score = confidence.item()
+                    predicted_name = ai_classes[predicted.item()]
+                    
+                if predicted_name.lower() == "background":
+                    ai_status_str = f"Not Detected [Room Baseline: {confidence_score * 100:.1f}%]"
+                    ai_text_color = (0, 0, 255)
+                else:
+                    if confidence_score >= CONFIDENCE_THRESHOLD:
+                        ai_status_str = f"{predicted_name.upper()} DETECTED ({confidence_score * 100:.1f}%)"
+                        ai_text_color = (0, 255, 0)
+                    else:
+                        ai_status_str = f"Analyzing... ({predicted_name}: {confidence_score * 100:.1f}%)"
+                        ai_text_color = (0, 255, 255)
+                
+                draw_sleek_text(frame, f"AI Status: {ai_status_str}", (30, h - 50), font_scale=0.6, thickness=2, color=ai_text_color)
+                
+                if predicted_name.lower().strip() == target_gname.lower().strip() and confidence_score >= CONFIDENCE_THRESHOLD:
+                    matched_targets[0] = True
 
-            if img_key_to_use in PRELOADED_IMAGES:
-                overlay_preloaded_picture(frame, PRELOADED_IMAGES[img_key_to_use], bx, by, b_size)
-            
-            if matched_targets[i]:
-                draw_sleek_text(frame, "MATCHED", (bx + 20, by + b_size - 15), font_scale=0.5, thickness=2, color=(0, 255, 0))
+            box_color = (0, 255, 0) if matched_targets[0] else (0, 255, 255)
+            draw_dotted_rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, thickness=2, gap=12)
+            draw_sleek_text(frame, f"AI TARGET: {target_gname.upper()}", (bx - 20, by - 10), font_scale=0.5, thickness=1, color=box_color)
 
-        matched_targets = [False] * 4
-        if result and result.multi_hand_landmarks and result.multi_handedness:
-            detected_hands = []
-            for idx, (hand_landmarks, bandwidth) in enumerate(zip(result.multi_hand_landmarks, result.multi_handedness)):
-                if idx >= 4: break
-                detected_label = bandwidth.classification[0].label
-                draw_cyber_hand(frame, hand_landmarks, (0, 255, 255))
-                lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
-                detected_hands.append((lm_array, detected_label))
+            if target_gname in PRELOADED_IMAGES:
+                overlay_preloaded_picture(frame, PRELOADED_IMAGES[target_gname], bx, by, b_size)
+                
+            if matched_targets[0]:
+                cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), (0, 255, 0), 2, cv2.LINE_AA)
+                draw_sleek_text(frame, "MATCHED", (bx + 5, by + 20), font_scale=0.45, thickness=1, color=(0, 255, 0))
 
-            assigned_targets = set()
-            for lm_array, detected_label in detected_hands:
-                for i, (g_name, h_label) in enumerate(active_tut_targets):
-                    if i in assigned_targets: continue
-                    if h_label.lower().strip() == detected_label.lower().strip():
-                        matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
-                        if matched_gest == g_name:
-                            matched_targets[i] = True
-                            assigned_targets.add(i)
-                            break
+        else:
+            positions = [(20, 50), (210, 50), (890, 50), (1080, 50)]
+            for i, (g_name, h_label) in enumerate(active_tut_targets):
+                bx, by = positions[i]
+                b_size = 180
+                box_color = (0, 255, 0) if matched_targets[i] else (0, 255, 255)
+                
+                cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, 2, cv2.LINE_AA)
+                p_lbl = f"P1 {h_label.upper()}" if i < 2 else f"P2 {h_label.upper()}"
+                draw_sleek_text(frame, p_lbl, (bx + 10, by - 10), font_scale=0.45, thickness=1, color=box_color)
+                
+                img_key_hand_specific = f"{g_name}_{h_label.lower()}"
+                img_key_to_use = img_key_hand_specific if img_key_hand_specific in PRELOADED_IMAGES else g_name
+
+                if img_key_to_use in PRELOADED_IMAGES:
+                    overlay_preloaded_picture(frame, PRELOADED_IMAGES[img_key_to_use], bx, by, b_size)
+                
+                if matched_targets[i]:
+                    draw_sleek_text(frame, "MATCHED", (bx + 20, by + b_size - 15), font_scale=0.5, thickness=2, color=(0, 255, 0))
+
+            matched_targets = [False] * 4
+            if result and result.multi_hand_landmarks and result.multi_handedness:
+                detected_hands = []
+                for idx, (hand_landmarks, bandwidth) in enumerate(zip(result.multi_hand_landmarks, result.multi_handedness)):
+                    if idx >= 4: break
+                    detected_label = bandwidth.classification[0].label
+                    draw_cyber_hand(frame, hand_landmarks, (0, 255, 255))
+                    lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
+                    detected_hands.append((lm_array, detected_label))
+
+                assigned_targets = set()
+                for lm_array, detected_label in detected_hands:
+                    for i, (g_name, h_label) in enumerate(active_tut_targets):
+                        if i in assigned_targets: continue
+                        if h_label.lower().strip() == detected_label.lower().strip():
+                            matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
+                            if matched_gest == g_name:
+                                matched_targets[i] = True
+                                assigned_targets.add(i)
+                                break
 
         if all(matched_targets):
             if match_hold_start_time is None:
@@ -630,55 +700,15 @@ while True:
                 elif game_status == "TUTORIAL_STAGE_2":
                     game_status, status_display_time = "TUTORIAL_CLEAR", current_time
                     send_osc_signal(reaper_client, "/action/41255", 1) #good job
-        else:
-            match_hold_start_time = None
-
-    elif game_status == "SHADOW_TUTORIAL":
-        frame = raw_camera_feed.copy()
-        
-        tut_box_x, tut_box_y, tut_box_w, tut_box_h = 340, 40, 600, 160
-        cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (20, 20, 20), -1, cv2.LINE_AA)
-        cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (255, 0, 255), 2, cv2.LINE_AA)
-        
-        draw_sleek_text(frame, "SHADOW TUTORIAL: PALM SHADOW", (tut_box_x + 80, tut_box_y + 35), font_scale=0.65, thickness=2, color=(255, 0, 255))
-        draw_sleek_text(frame, "HOW TO PLAY:", (tut_box_x + 20, tut_box_y + 70), font_scale=0.5, thickness=2, color=(255, 255, 255))
-        draw_sleek_text(frame, "1) Cast a clear PALM shadow using the light source.", (tut_box_x + 20, tut_box_y + 100), font_scale=0.42, thickness=1, color=(200, 200, 200))
-        draw_sleek_text(frame, "2) Hold the palm shadow steady to proceed to Level 3.", (tut_box_x + 20, tut_box_y + 130), font_scale=0.42, thickness=1, color=(200, 200, 200))
-
-        bx, by, b_size = (w // 2) - 100, 240, 200
-        box_color = (0, 255, 0) if matched_targets[0] else (255, 0, 255)
-        cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, 2, cv2.LINE_AA)
-        draw_sleek_text(frame, "PALM SHADOW", (bx + 35, by - 12), font_scale=0.5, thickness=1, color=box_color)
-
-        if "palm" in PRELOADED_IMAGES:
-            overlay_preloaded_picture(frame, PRELOADED_IMAGES["palm"], bx, by, b_size)
-
-        if matched_targets[0]:
-            draw_sleek_text(frame, "MATCHED", (bx + 50, by + b_size - 15), font_scale=0.5, thickness=2, color=(0, 255, 0))
-
-        matched_targets = [False] * 4
-        if result and result.multi_hand_landmarks and result.multi_handedness:
-            for idx, (hand_landmarks, bandwidth) in enumerate(zip(result.multi_hand_landmarks, result.multi_handedness)):
-                if idx >= 4: break
-                detected_label = bandwidth.classification[0].label
-                draw_cyber_hand(frame, hand_landmarks, (255, 0, 255))
-                lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
-                matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
-                if matched_gest and "palm" in matched_gest.lower():
-                    matched_targets[0] = True
-                    break
-
-        if matched_targets[0]:
-            if match_hold_start_time is None:
-                match_hold_start_time = current_time
-                send_osc_signal(reaper_client, "/action/41253", 1) #loading
-                send_osc_signal(reaper_client, "/track/15/mute", 0) #unmute time ticking
-            elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
-                match_hold_start_time = None
-                send_osc_signal(reaper_client, "/action/41251", 1) #team B start
-                send_osc_signal(reaper_client, "/track/15/mute", 1) #mute time ticking
-                game_status = "SHADOW_START_PAGE"
-                matched_targets = [False] * 4
+                elif game_status == "SHADOW_TUTORIAL_STAGE_1":
+                    game_status = "SHADOW_TUTORIAL_STAGE_2"
+                    send_osc_signal(reaper_client, "/action/41255", 1)
+                    matched_targets = [False] * 1
+                elif game_status == "SHADOW_TUTORIAL_STAGE_2":
+                    send_osc_signal(reaper_client, "/action/41251", 1)
+                    send_osc_signal(reaper_client, "/track/15/mute", 1)
+                    game_status = "SHADOW_START_PAGE"
+                    matched_targets = [False] * 4
         else:
             match_hold_start_time = None
 
@@ -750,22 +780,14 @@ while True:
                 last_active_cue_cmd = None
 
             elif game_status == "WIN":
-                if current_level == 3:
-                    game_status = "SHADOW_TUTORIAL"
-                    matched_targets = [False] * 4
-                    send_osc_signal(reaper_client, "/action/41251", 1) #team B start
-                    send_osc_signal(reaper_client, "/track/15/mute", 1) #mute time-ticking
-                    match_hold_start_time = None
-                    send_osc_signal(gma3_client,GMA3_ADDRESS,"on sequence 26; off sequence 14")
-                else:
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120 cue 2")
-                    target_keys = get_new_targets(lvl=current_level)
-                    send_osc_signal(reaper_client, "/action/41251", 1) 
-                    send_osc_signal(reaper_client, "/track/15/mute", 0) 
-                    matched_targets = [False] * len(target_keys)
-                    round_duration = BASE_DURATION
-                    round_start_time, game_status = time.time(), "PLAYING" 
-                    last_active_cue_cmd = None
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120 cue 2")
+                target_keys = get_new_targets(lvl=current_level)
+                send_osc_signal(reaper_client, "/action/41251", 1) 
+                send_osc_signal(reaper_client, "/track/15/mute", 0) 
+                matched_targets = [False] * len(target_keys)
+                round_duration = BASE_DURATION
+                round_start_time, game_status = time.time(), "PLAYING" 
+                last_active_cue_cmd = None
         
             elif game_status == "LOSE":
                 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 120")
@@ -846,7 +868,7 @@ while True:
     if match_hold_start_time is not None:
         elapsed_hold = current_time - match_hold_start_time
         hold_ratio = min(1.0, elapsed_hold / HOLD_REQUIRED_DURATION)
-        bar_x, bar_y, bar_w, bar_h = 480, 640 if game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL"] else 520, 320, 20
+        bar_x, bar_y, bar_w, bar_h = 480, 640 if game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2"] else 520, 320, 20
         fill_w = int(bar_w * hold_ratio)
         
         overlay = frame.copy()
@@ -859,7 +881,7 @@ while True:
             cv2.line(frame, (marker, bar_y), (marker, bar_y + bar_h), (0, 255, 255), 1)
         draw_sleek_text(frame, f"SYSTEM SYNC: {int(hold_ratio * 100)}%", (bar_x, bar_y - 8), font_scale=0.45, thickness=1, color=(0, 255, 255))
 
-    if game_status not in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL", "TUTORIAL_CLEAR", "TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR"]:
+    if game_status not in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2", "TUTORIAL_CLEAR", "TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR"]:
         if current_level == 3:
             current_box_size = 300
         elif current_level == 2:
@@ -1135,8 +1157,11 @@ while True:
                             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
                             target_keys = get_new_targets(lvl=3) # Refreshes level 3 targets starting from index 0
-                            game_status = "SHADOW_START_PAGE"    # Correctly directs to shadow start page with reset state
-                            # send_osc_signal(reaper_client, "/action/41251", 1)                           
+                            game_status = "SHADOW_TUTORIAL_STAGE_1"      # Directs to shadow tutorial stage 1 after Level 2
+                            send_osc_signal(reaper_client, "/action/41251", 1) 
+                            send_osc_signal(reaper_client, "/track/15/mute", 1) 
+                            match_hold_start_time = None
+                            send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 26; off sequence 14")
                         else:
                             game_status, status_display_time = "WIN", current_time
         elif not (current_level == 3 and not level3_unlocked):
@@ -1148,8 +1173,8 @@ while True:
         elif game_status == "WIN":
             draw_sleek_text(frame, f"LEVEL {current_level - 1} CLEAR", (w // 2 - 160, h // 2), font_scale=1.1, thickness=2, color=(0, 255, 0))
         elif game_status == "LOSE":
-            draw_sleek_text(frame, "WEAPON UPGRADE FAILED", (w // 2 - 240, h // 2), font_scale=1.0, thickness=2, color=(0, 0, 255))
-            draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} LIVE(S) LEFT", (w // 2 - 400, h // 2+30), font_scale=1.0, thickness=2, color=(0, 0, 255))
+            draw_sleek_text(frame, "WEAPON UPGRADE FAILED", (w // 2 - 240, h // 2), font_scale=1.0, thickness=1.0, color=(0, 0, 255))
+            draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} LIVE(S) LEFT", (w // 2 - 400, h // 2+30), font_scale=1.0, thickness=1.0, color=(0, 0, 255))
         elif game_status == "GAMEOVER":
             draw_sleek_text(frame, "GAMEOVER", (w // 2 - 130, h // 2), font_scale=1.2, thickness=2, color=(0, 0, 255))
             draw_sleek_text(frame, "YOU HAVE FAILED TO UPGRADE THE WEAPON", (w // 2 - 500, h // 2+50), font_scale=1.2, thickness=2, color=(0, 0, 255))
@@ -1226,6 +1251,26 @@ while True:
         send_osc_signal(reaper_client, "/action/41251", 1) 
         send_osc_signal(reaper_client, "/track/15/unmute", 1) 
         round_start_time, game_status = time.time(), "SHADOW_START_PAGE"
+        last_active_cue_cmd = None
+        match_hold_start_time = None
+
+    elif key == ord('4'):
+        if current_level != 3:
+            cap.release()
+            cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+            cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+            cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+            cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+
+        player_lives = 3
+        current_level, current_cycle = 3, 0
+        level3_unlocked = False  
+        target_keys = get_new_targets(lvl=3)
+        matched_targets = [False] * len(target_keys)
+        round_duration = BASE_DURATION
+        send_osc_signal(reaper_client, "/action/41251", 1) 
+        send_osc_signal(reaper_client, "/track/15/unmute", 1) 
+        round_start_time, game_status = time.time(), "SHADOW_TUTORIAL_STAGE_1"
         last_active_cue_cmd = None
         match_hold_start_time = None
 
