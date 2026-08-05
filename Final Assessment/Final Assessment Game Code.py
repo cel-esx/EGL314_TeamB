@@ -345,9 +345,9 @@ else:
 print("Script started! Initializing system, reaper, and grandMA3 connection...")
 send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence *") 
 send_osc_signal(gma3_client, GMA3_ADDRESS, "on timecode 2 ; on sequence 80 cue 2 ; on sequence 78 cue 2")
-send_osc_signal(reaper_client, "/action/1068", 1)
-send_osc_signal(reaper_client, "/action/40339", 1)
-send_osc_signal(reaper_client, "/action/41261", 1)
+send_osc_signal(reaper_client, "/action/1068", 1) #go out of the loop
+send_osc_signal(reaper_client, "/action/40339", 1) #unmute all tracks
+send_osc_signal(reaper_client, "/action/41262", 1) #jump to marker 2 (game_start)
 
 EXCLUDED_GESTURES = ["game_start"]
 
@@ -464,8 +464,6 @@ def start_game_sequence():
     last_active_cue_cmd = None
     target_keys = get_new_targets(lvl=1)
     matched_targets = [False] * len(target_keys)
-    send_osc_signal(reaper_client, "/action/41262", 1)
-    send_osc_signal(reaper_client, "/action/_b5b9b1aa3433a54f8efb7058fd9dc212", 1)
     send_osc_signal(gma3_client, GMA3_ADDRESS, "off timecode *; off sequence * ; on sequence 17 ")
     transition_start_time = time.time()
     game_status = "TRANSITION_SCENE"
