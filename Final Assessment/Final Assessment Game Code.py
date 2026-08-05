@@ -47,7 +47,8 @@ GMA3_LAPTOP_IP   = "192.168.254.252s"
 GMA3_PORT        = 8080           
 GMA3_ADDRESS     = "/gma3/cmd"      
 
-REAPER_LAPTOP_IP = "192.168.254.150" 
+
+REAPER_LAPTOP_IP = "192.168.254.150"
 REAPER_PORT      = 8000      
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -121,7 +122,7 @@ MANUAL_LEVEL_3_TARGETS = {
 }
 
 MANUAL_LEVEL_1_GESTURES = {
-    0: ("left_3", "right_2", "left_oath", "right_4"), 
+    0: ("left_3", "right_2", "game_start_right", "right_4"), 
     1: ("left_4", "right_2", "left_3", "right_3")  
 }
 
