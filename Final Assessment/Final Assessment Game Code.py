@@ -373,7 +373,7 @@ def get_new_targets(lvl=1):
     return [(g1, "Left"), (g2, "Right"), (g3, "Left"), (g4, "Right")]
 
 target_keys = get_new_targets(lvl=1)
-cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)  
+cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)  
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1) 
@@ -711,19 +711,20 @@ while True:
         STAGE_CLEAR_BUFFER_SECONDS = 3.0 
         WELL_PLAYED = 20.0
         if game_status == "GAMEOVER":
-            send_osc_signal(reaper_client, "/action/40163", 1) 
+            # send_osc_signal(reaper_client, "/action/40163", 1) 
             display_timeout = GAMEOVER_BUFFER_SECONDS
         elif game_status == "GAME_CLEAR":
+            
             display_timeout = WELL_PLAYED
         elif game_status == "LOSE":
-            send_osc_signal(reaper_client, "/action/41252", 1) 
+            # send_osc_signal(reaper_client, "/action/41252", 1) 
             display_timeout = LOSE_DISPLAY_SECONDS 
         elif game_status == "STAGE_CLEAR":
-            send_osc_signal(reaper_client, "/action/41254", 1) 
+            # send_osc_signal(reaper_client, "/action/41254", 1) 
             display_timeout = STAGE_CLEAR_BUFFER_SECONDS
         else:
             display_timeout = BUFFER_SECONDS
- 
+
         if current_time - status_display_time > display_timeout:  
             if game_status == "STAGE_CLEAR":
                 send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 22 , on sequence 12")
@@ -731,6 +732,7 @@ while True:
                 matched_targets = [False] * len(target_keys)
                 round_duration = BASE_DURATION
                 round_start_time, game_status = time.time(), "PLAYING" 
+                # 2. Only return to Marker 11 AFTER the 3-second display time finishes
                 send_osc_signal(reaper_client, "/action/41251", 1) 
                 last_active_cue_cmd = None
 
@@ -756,6 +758,7 @@ while True:
                 round_duration = BASE_DURATION
                 round_start_time, game_status = time.time(), "PLAYING"
                 send_osc_signal(reaper_client, "/action/41252", 1) 
+                time.sleep(0.5)
                 send_osc_signal(reaper_client, "/action/41251", 1) 
                 last_active_cue_cmd = None
          
@@ -1088,20 +1091,21 @@ while True:
                 match_hold_start_time = None
                 
                 current_stage = current_cycle + 1
+                current_cycle += 1
+                max_cycles_needed = MAX_STAGES_PER_LEVEL.get(current_level, 1)
+
+                # Handle grandMA3 cues
                 if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
-                    send_osc_signal(reaper_client, "/action/41251", 1) 
                     cfg = GAME_SHOW_MAP[current_level][current_stage]
                     last_active_cue_cmd = cfg["cue_cmd"]
                     send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
-                
-                current_cycle += 1
-                max_cycles_needed = MAX_STAGES_PER_LEVEL.get(current_level, 1)
-                
+
+                # Send REAPER OSC marker based on game state
                 if current_cycle < max_cycles_needed:
                     game_status, status_display_time = "STAGE_CLEAR", current_time
-                    send_osc_signal(reaper_client, "/action/41254", 1)                             
-
+                    send_osc_signal(reaper_client, "/action/41254", 1)
                 else:
+                    send_osc_signal(reaper_client, "/action/41251", 1)
                     send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
                     send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_PASS_LEVEL_CMD)
                     
