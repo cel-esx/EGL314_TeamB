@@ -7,14 +7,23 @@ Instructions:
 To Add Gestures:
 Press G to type the intended gesture name
 Press Enter to save the name
+    Gesture Names used (Take as example): 
+    Left-hand gestures: `left_2`, `left_3`, `left_4`, `left_oath`, `game_start_left`
+    Right-hand gestures: `right_2`, `right_3`, `right_4`, `right_oath`, `game_start_right`
+    Stage & Level gestures: `stage2_level1`, `level2_stage1`, `level2_stage2_1`, `level2_stage2_2`
+    General gesture:** `palm`
 Postition your hand according to your intended gesture
 Use your mouse and right click on the screen to save the gesture
 
 To Delete Gestures:
 Press D to bring the delete prompt
 Type the gesture you want to delete
+    Gesture Names used (Take as example): 
+    Left-hand gestures: `left_2`, `left_3`, `left_4`, `left_oath`, `game_start_left`
+    Right-hand gestures: `right_2`, `right_3`, `right_4`, `right_oath`, `game_start_right`
+    Stage & Level gestures: `stage2_level1`, `level2_stage1`, `level2_stage2_1`, `level2_stage2_2`
+    General gesture:** `palm`
 Press Enter to delete the gesture
-
 
 Press "Esc" key if in case you wanted to press "G" but instead you pressed "D".. Use "Esc" key to go out of it
 
@@ -32,6 +41,7 @@ Quick Look through
    ESC         = cancel operational modes safely
    RIGHT CLICK = capture current landmarks
    Q           = quit
+
 """
 import cv2
 import mediapipe as mp
@@ -193,7 +203,7 @@ cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
 cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 cv2.setMouseCallback(WINDOW_NAME, mouse_callback)
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
 if not cap.isOpened():
     print("Webcam not detected")
     exit()
