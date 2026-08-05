@@ -48,7 +48,7 @@ GMA3_PORT        = 8080
 GMA3_ADDRESS     = "/gma3/cmd"      
 
 
-REAPER_LAPTOP_IP = "192.168.254.12"
+REAPER_LAPTOP_IP = "192.168.254.12s"
 REAPER_PORT      = 8000      
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -64,6 +64,7 @@ MAX_STAGES_PER_LEVEL = {
 def back_to_start():
     print(f"⌛ Buffer complete! Back to start")
     send_osc_signal(reaper_client, "/action/40162", 1)
+    send_osc_signal(reaper_client, "/track/5/mute", 1)
 
 # ── LEVEL 3 PYTORCH MODEL INITIALIZATION ──────────────────────────────────────
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -108,7 +109,7 @@ MANUAL_LEVEL_1_GESTURES = {
 }
 
 mp_hands = mp.solutions.hands 
-hands = mp_hands.Hands(max_num_hands=4, model_complexity=1, min_detection_confidence=0.50, min_tracking_confidence=0.50) 
+hands = mp_hands.Hands(max_num_hands=4, model_complexity=0, min_detection_confidence=0.50, min_tracking_confidence=0.50) 
 
 def create_osc_client(ip, port, system_name): 
     try: 
@@ -282,6 +283,18 @@ def draw_dotted_rectangle(frame, pt1, pt2, color, thickness=2, gap=15):
         cv2.line(frame, (x1, y), (x1, min(y + gap, y2)), color, thickness, cv2.LINE_AA)
         cv2.line(frame, (x2, y), (x2, min(y + gap, y2)), color, thickness, cv2.LINE_AA)
 
+# Add a state tracker variable
+last_sent_reaper_cmd = None
+
+def send_osc_once(client, address, message):
+    global last_sent_reaper_cmd
+    cmd_key = f"{address}:{message}"
+    if last_sent_reaper_cmd != cmd_key:
+        send_osc_signal(client, address, message)
+        last_sent_reaper_cmd = cmd_key
+
+# Use send_osc_once instead of send_osc_signal inside your main loop for continuous states
+
 # ── INITIALIZATION ────────────────────────────────────────────────────────────
 box_size = 150
      
@@ -307,13 +320,10 @@ else:
     HEART_DATA = None
 
 print("Script started! Initializing system, reaper, and grandMA3 connection...")
-send_osc_signal(gma3_client, GMA3_ADDRESS, "on macro 3 ;")
-# send_osc_signal(reaper_client, "/action/1068", 1) #go out of the loop
-send_osc_signal(reaper_client, "/action/40339", 1) # Unmute all tracks
-time.sleep(0.05) # Allow REAPER time to process global unmute
-
+send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 4;sequence 114 cue 2 ;")
+send_osc_signal(reaper_client, "/action/40339", 1) #unmute all tracks
 send_osc_signal(reaper_client, "/action/40162", 1) # Jump to marker 2
-send_osc_signal(reaper_client, "/action/40044", 1) # Play
+#send_osc_signal(reaper_client, "/action/40044", 1) # Play
 send_osc_signal(reaper_client, "/track/5/mute", 1) # Mute track 5
 
 EXCLUDED_GESTURES = ["game_start"]
@@ -323,7 +333,7 @@ right_gestures = [k for k in all_keys if isinstance(k, tuple) and k[1] == "right
 joint_gestures = list(set([k[0] for k in all_keys if isinstance(k, tuple) and not k[0].startswith("left_") and not k[0].startswith("right_") and k[0] not in EXCLUDED_GESTURES])) or list(set([k[0] for k in all_keys if isinstance(k, tuple) and k[0] not in EXCLUDED_GESTURES]))
 
 MANUAL_LEVEL_2_GESTURES = {
-    0: ("stage2_level1", "stage2_level1", "level2_stage1", "level2_stage1"), 
+    0: ("stage2_level1", "stage2_level1", "palm", "palm"), 
     1: ("level2_stage2_1", "level2_stage2_1", "level2_stage2_2", "level2_stage2_2")  
 }
 
@@ -428,14 +438,14 @@ def start_game_sequence():
     last_active_cue_cmd = None
     target_keys = get_new_targets(lvl=1)
     matched_targets = [False] * len(target_keys)
-    send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 4;")
+    send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 5;")
     transition_start_time = time.time()
     game_status = "TRANSITION_SCENE"
 
     send_osc_signal(reaper_client, "/action/40162", 1) #game start
     send_osc_signal(reaper_client, "/track/5/mute", 0) #unmute
     round_start_time = time.time()
-    
+
     game_status = "PLAYING"
 
 while True:
@@ -536,13 +546,15 @@ while True:
             if match_hold_start_time is None: 
                 match_hold_start_time = current_time
                 send_osc_signal(reaper_client, "/action/41253", 1) #loading
+                send_osc_signal(reaper_client, "/track/15/mute", 1) #time-ticking mute
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
                 game_status = "TUTORIAL_STAGE_1"
-                send_osc_signal(reaper_client, "/action/41251", 1)
+                send_osc_signal(reaper_client, "/action/41255", 1)
                 matched_targets = [False] * 4
         else:
             if match_hold_start_time is not None: match_hold_start_time = None
+            send_osc_signal(reaper_client, "/action/41251", 1) #team B start
 
     elif game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2"]:
         active_tut_targets = tutorial_targets_stage1 if game_status == "TUTORIAL_STAGE_1" else tutorial_targets_stage2
@@ -607,6 +619,8 @@ while True:
         if all(matched_targets):
             if match_hold_start_time is None:
                 match_hold_start_time = current_time
+                send_osc_signal(reaper_client, "/action/41253", 1) #loading
+                send_osc_signal(reaper_client, "/track/15/mute", 1) #time-ticking mute
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
                 if game_status == "TUTORIAL_STAGE_1":
@@ -658,10 +672,11 @@ while True:
             if match_hold_start_time is None:
                 match_hold_start_time = current_time
                 send_osc_signal(reaper_client, "/action/41253", 1) #loading
+                send_osc_signal(reaper_client, "/track/15/mute", 0) #unmute time ticking
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
-                send_osc_signal(reaper_client, "/action/41251, 1") #team B start
-                send_osc_signal(reaper_client, "/track/15/mute, 1") #mute time ticking
+                send_osc_signal(reaper_client, "/action/41251", 1) #team B start
+                send_osc_signal(reaper_client, "/track/15/mute", 1) #mute time ticking
                 game_status = "SHADOW_START_PAGE"
                 matched_targets = [False] * 4
         else:
@@ -685,6 +700,7 @@ while True:
     elif game_status == "PLAYING":
         if current_level == 3 and not level3_unlocked:
             time_left = round_duration
+            send_osc_signal(reaper_client, "/action/41253", 1) #loading
         else:
             time_left = max(0.0, round_duration - (current_time - round_start_time))
             if time_left <= 0:
@@ -693,7 +709,7 @@ while True:
                 
                 if player_lives <= 0:
                     game_status, status_display_time = "GAMEOVER", current_time 
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, "off seqeunce *; go macro 3;") 
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "off seqeunce *; go macro 4; on seq 114 cue 2") 
                     send_osc_signal(reaper_client, "/action/40163", 1) 
                 else:
                     game_status, status_display_time = "LOSE", current_time
@@ -757,14 +773,12 @@ while True:
                 matched_targets = [False] * len(target_keys)
                 round_duration = BASE_DURATION
                 round_start_time, game_status = time.time(), "PLAYING"
-                send_osc_signal(reaper_client, "/action/41252", 1) 
-                time.sleep(0.5)
                 send_osc_signal(reaper_client, "/action/41251", 1) 
                 last_active_cue_cmd = None
          
             elif game_status == "GAMEOVER":
                 cap.release()
-                cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW) 
+                cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW) 
                 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
                 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -772,7 +786,7 @@ while True:
                 current_level, current_cycle, game_status = 1, 0, "TUTORIAL_STAGE_1"
                 level3_unlocked = False
                 threading.Timer(GAMEOVER_BUFFER_SECONDS, back_to_start, args=[]).start()
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 3; go macro 4; on seq 114 cue 2") 
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 4; go macro 5; on seq 114 cue 2") 
                 back_to_start()
                 last_active_cue_cmd = None
               
@@ -787,7 +801,7 @@ while True:
                 level3_unlocked = False
                 target_keys, matched_targets = get_new_targets(lvl=1), [False] * 4
                 round_duration = BASE_DURATION
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 3; go macro 4;")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 4; go macro 5;")
                 send_osc_signal(reaper_client, "/action/41251", 1) 
                 last_active_cue_cmd = None
 
@@ -797,7 +811,7 @@ while True:
 
     if game_status == "PLAYING" and not (current_level == 3 and not level3_unlocked):
         time_left = max(0.0, round_duration - (current_time - round_start_time))
-    
+
         max_stages = MAX_STAGES_PER_LEVEL.get(current_level, 1)
         title = f"LEVEL {current_level} STAGE {current_cycle + 1}/{max_stages}"
         draw_sleek_text(frame, title, (530, 45), font_scale=0.55, thickness=1, color=(255, 255, 255))
@@ -1093,7 +1107,7 @@ while True:
                 current_stage = current_cycle + 1
                 current_cycle += 1
                 max_cycles_needed = MAX_STAGES_PER_LEVEL.get(current_level, 1)
-
+                send_osc_signal(reaper_client, "/action/41254", 1)
                 # Handle grandMA3 cues — fires on every stage clear
                 last_active_cue_cmd = STAGE_CLEAR_CUE_CMD
                 send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
@@ -1103,11 +1117,13 @@ while True:
                     game_status, status_display_time = "STAGE_CLEAR", current_time
                     send_osc_signal(reaper_client, "/action/41254", 1)
                 else:
-                    send_osc_signal(reaper_client, "/action/41251", 1)
+                    # send_osc_signal(reaper_client, "/action/41251", 1)
                     
                     if current_level == 3:
                         game_status, status_display_time = "GAME_CLEAR", current_time
-                        send_osc_signal(reaper_client, "/action/40164", 1)                          
+                        send_osc_signal(reaper_client, "/action/40164", 1)
+                        time.sleep(0.5)                       
+                        send_osc_signal(reaper_client, "/action/40160", 1) #ai serais voice 
                     else:
                         current_level += 1
                         current_cycle = 0
@@ -1118,14 +1134,13 @@ while True:
                             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
                             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-
-                            send_osc_signal(reaper_client, "/action/41251", 1)                           
+                            target_keys = get_new_targets(lvl=3) # Refreshes level 3 targets starting from index 0
+                            game_status = "SHADOW_START_PAGE"    # Correctly directs to shadow start page with reset state
+                            # send_osc_signal(reaper_client, "/action/41251", 1)                           
                         else:
-                            send_osc_signal(reaper_client, "/action/41251", 1)                             
-
-                        game_status, status_display_time = "WIN", current_time
+                            game_status, status_display_time = "WIN", current_time
         elif not (current_level == 3 and not level3_unlocked):
-            match_hold_start_time = None
+                match_hold_start_time = None  
 
     if game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "STAGE_CLEAR"]:
         if game_status == "STAGE_CLEAR":
@@ -1146,8 +1161,8 @@ while True:
     
     if key == ord('q') or key == 27: 
         back_to_start()
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
-        send_osc_signal(reaper_client, "/action/40044", 1) 
+        # send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
+        # send_osc_signal(reaper_client, "/action/40044", 1) 
         break
         
     elif key == ord('1') or key == ord('s'):
