@@ -1112,11 +1112,14 @@ while True:
         if all(matched_targets) and not (current_level == 3 and not level3_unlocked):
             if match_hold_start_time is None:
                 match_hold_start_time = current_time
+                send_osc_signal(reaper_client, "/action/41253", 1) #loading
+
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
                 
                 current_stage = current_cycle + 1
                 if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
+                    send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
                     cfg = GAME_SHOW_MAP[current_level][current_stage]
                     last_active_cue_cmd = cfg["cue_cmd"]
                     send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
@@ -1134,7 +1137,7 @@ while True:
                     
                     if current_level == 3:
                         game_status, status_display_time = "GAME_CLEAR", current_time
-                        send_osc_signal(reaper_client, "/action/41254", 1) #recharge                         
+                        send_osc_signal(reaper_client, "/action/40164", 1) #game_passed                         
                     else:
                         current_level += 1
                         current_cycle = 0
