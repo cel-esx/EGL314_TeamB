@@ -52,27 +52,8 @@ REAPER_LAPTOP_IP = "192.168.254.12"
 REAPER_PORT      = 8000      
 # ──────────────────────────────────────────────────────────────────────────────
 
-MA3_MATCH_COMMAND  = "on Sequence 25 "
-MA3_PASS_LEVEL_CMD = "off sequence * ; on sequence 12 "
-MA3_GAMEOVER_CMD   = "off Sequence * ; on sequence 10 "
  
-GAME_SHOW_MAP = {
-    1: { 
-        1: {"fixture": 1, "cue_cmd": "off timecode 2 ; on sequence 80 cue 2 ; on sequence 79 cue 2 "}, 
-        2: {"fixture": 2, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2" },
-    },
-    2: { 
-        1: {"fixture": 3, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"},
-        2: {"fixture": 4, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ;  on sequence 79 cue 2"},
-    },
-    3: { 
-        1: {"fixture": 7, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        2: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        3: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        4: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        5: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"}
-    }
-}
+STAGE_CLEAR_CUE_CMD = "on sequence 120 cue 2;" 
 
 MAX_STAGES_PER_LEVEL = {
     1: 1,  
@@ -709,11 +690,11 @@ while True:
                 
                 if player_lives <= 0:
                     game_status, status_display_time = "GAMEOVER", current_time 
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_GAMEOVER_CMD) 
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "off seqeunce *; go macro 3;") 
                     send_osc_signal(reaper_client, "/action/40163", 1) 
                 else:
                     game_status, status_display_time = "LOSE", current_time
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_GAMEOVER_CMD) 
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120") 
                     send_osc_signal(reaper_client, "/action/41252", 1) 
 
     elif game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "STAGE_CLEAR"]:
@@ -740,7 +721,7 @@ while True:
 
         if current_time - status_display_time > display_timeout:  
             if game_status == "STAGE_CLEAR":
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 22 , on sequence 12")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120 cue 2")
                 target_keys = get_new_targets(lvl=current_level)
                 matched_targets = [False] * len(target_keys)
                 round_duration = BASE_DURATION
@@ -756,8 +737,9 @@ while True:
                     send_osc_signal(reaper_client, "/action/41251", 1) #team B start
                     send_osc_signal(reaper_client, "/track/15/mute", 1) #mute time-ticking
                     match_hold_start_time = None
+                    send_osc_signal(gma3_client,GMA3_ADDRESS,"on sequence 26; off sequence 14")
                 else:
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120 cue 2")
                     target_keys = get_new_targets(lvl=current_level)
                     send_osc_signal(reaper_client, "/action/41251", 1) 
                     send_osc_signal(reaper_client, "/track/15/mute", 0) 
@@ -767,7 +749,7 @@ while True:
                     last_active_cue_cmd = None
         
             elif game_status == "LOSE":
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 120")
                 target_keys = get_new_targets(lvl=current_level)
                 matched_targets = [False] * len(target_keys)
                 round_duration = BASE_DURATION
@@ -787,7 +769,7 @@ while True:
                 current_level, current_cycle, game_status = 1, 0, "TUTORIAL_STAGE_1"
                 level3_unlocked = False
                 threading.Timer(GAMEOVER_BUFFER_SECONDS, back_to_start, args=[]).start()
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3") 
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 3; go macro 4; on seq 114 cue 2") 
                 back_to_start()
                 last_active_cue_cmd = None
               
@@ -802,7 +784,7 @@ while True:
                 level3_unlocked = False
                 target_keys, matched_targets = get_new_targets(lvl=1), [False] * 4
                 round_duration = BASE_DURATION
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 3; go macro 4;")
                 send_osc_signal(reaper_client, "/action/41251", 1) 
                 last_active_cue_cmd = None
 
@@ -1109,11 +1091,9 @@ while True:
                 current_cycle += 1
                 max_cycles_needed = MAX_STAGES_PER_LEVEL.get(current_level, 1)
 
-                # Handle grandMA3 cues
-                if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
-                    cfg = GAME_SHOW_MAP[current_level][current_stage]
-                    last_active_cue_cmd = cfg["cue_cmd"]
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
+                # Handle grandMA3 cues — fires on every stage clear
+                last_active_cue_cmd = STAGE_CLEAR_CUE_CMD
+                send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
 
                 # Send REAPER OSC marker based on game state
                 if current_cycle < max_cycles_needed:
@@ -1121,7 +1101,6 @@ while True:
                     send_osc_signal(reaper_client, "/action/41254", 1)
                 else:
                     send_osc_signal(reaper_client, "/action/41251", 1)
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
                     send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_PASS_LEVEL_CMD)
                     
                     if current_level == 3:
@@ -1165,8 +1144,7 @@ while True:
     
     if key == ord('q') or key == 27: 
         back_to_start()
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "ClearAll") 
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
+        send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
         send_osc_signal(reaper_client, "/action/40044", 1) 
         break
         
