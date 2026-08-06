@@ -374,7 +374,7 @@ def get_new_targets(lvl=1):
     return [(g1, "Left"), (g2, "Right"), (g3, "Left"), (g4, "Right")]
 
 target_keys = get_new_targets(lvl=1)
-cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)  
+cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)  
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1) 
@@ -762,7 +762,7 @@ while True:
          
             elif game_status == "GAMEOVER":
                 cap.release()
-                cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW) 
+                cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW) 
                 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
                 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -1155,7 +1155,7 @@ while True:
     elif key == ord('1') or key == ord('s'):
         if current_level == 3:
             cap.release()
-            cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -1176,7 +1176,7 @@ while True:
     elif key == ord('2') or key == ord('r'):
         if current_level == 3:
             cap.release()
-            cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
