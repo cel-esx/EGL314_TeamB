@@ -397,15 +397,9 @@ def get_new_targets(lvl=1):
     return [(g1, "Left"), (g2, "Right"), (g3, "Left"), (g4, "Right")]
 
 target_keys = get_new_targets(lvl=1)
-<<<<<<< HEAD
-<<<<<<< HEAD
 cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)  
-=======
 cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)  
->>>>>>> f64a6f5eb0f5ae80534dfce42ef4f9648031293d
-=======
 cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)  
->>>>>>> 50853f8938d5c4115a6d9c1dec76e8b086efd56f
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1) 
