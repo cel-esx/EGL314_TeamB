@@ -47,37 +47,13 @@ GMA3_LAPTOP_IP   = "192.168.254.252s"
 GMA3_PORT        = 8080           
 GMA3_ADDRESS     = "/gma3/cmd"      
 
-REAPER_LAPTOP_IP = "192.168.254.238" 
+
+REAPER_LAPTOP_IP = "192.168.254.12s"
 REAPER_PORT      = 8000      
 # ──────────────────────────────────────────────────────────────────────────────
 
-MA3_MATCH_COMMAND  = "on Sequence 25 "
-MA3_PASS_LEVEL_CMD = "off sequence * ; on sequence 12 "
-MA3_GAMEOVER_CMD   = "off Sequence * ; on sequence 10 "
  
-GAME_SHOW_MAP = {
-    1: { 
-        1: {"fixture": 1, "cue_cmd": "off timecode 2 ; on sequence 80 cue 2 ; on sequence 79 cue 2 "}, 
-        2: {"fixture": 2, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2" },
-    },
-    2: { 
-        1: {"fixture": 3, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ; on sequence 79 cue 2"},
-        2: {"fixture": 4, "cue_cmd": " on sequence 80 cue 2 ; on sequence 22 ;  on sequence 79 cue 2"},
-    },
-    3: { 
-        1: {"fixture": 7, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        2: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        3: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        4: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"},
-        5: {"fixture": 8, "cue_cmd": " on sequence 26 ; on sequence 22 ; on sequence 78 cue 3 ; on sequence 79 cue 2"}
-    }
-}
-
-# LEVEL_MAP = {
-#     1: "_b5b9b1aa3433a54f8efb7058fd9dc212",  
-#     2: "_8003a43cdba0624b948270f6b5224ee8",  
-#     3: "_82a10b90ef7428438ddfd101c8195d19"   
-# }
+STAGE_CLEAR_CUE_CMD = "on sequence 120 cue 2;" 
 
 MAX_STAGES_PER_LEVEL = {
     1: 1,  
@@ -85,32 +61,10 @@ MAX_STAGES_PER_LEVEL = {
     3: 5   
 }
 
-# STAGE_MARKER_MAP = {
-#     1: "41263",  
-#     2: "41264",  
-#     3: "41265"   
-# }
-
-# def jump_to_stage(level, stage_number):
-#     """Jumps to the specific stage marker for the given level and sets track mutes."""
-#     marker_action = STAGE_MARKER_MAP.get(stage_number, "41263")
-#     print(f"⌛ Transitioning to Level {level}, Stage {stage_number} (Marker Action: {marker_action})...")
-#     send_osc_signal(reaper_client, f"/action/{marker_action}", 1)
-#     if level in LEVEL_MAP:
-#         action_id = LEVEL_MAP[level]
-#         send_osc_signal(reaper_client, f"/action/{action_id}", 1)
-
-# def retry_stage(level, stage_number):
-#     marker_action = STAGE_MARKER_MAP.get(stage_number, "41263")
-#     print(f"🔄 Retrying Level {level}, Stage {stage_number} (Marker Action: {marker_action})...")
-#     send_osc_signal(reaper_client, f"/action/{marker_action}", 1)
-#     if level in LEVEL_MAP:
-#         action_id = LEVEL_MAP[level]
-#         send_osc_signal(reaper_client, f"/action/{action_id}", 1)
-
 def back_to_start():
     print(f"⌛ Buffer complete! Back to start")
     send_osc_signal(reaper_client, "/action/40162", 1)
+    send_osc_signal(reaper_client, "/track/5/mute", 1)
 
 # ── LEVEL 3 PYTORCH MODEL INITIALIZATION ──────────────────────────────────────
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -123,7 +77,14 @@ except Exception as e:
     print(f"[!] Failed to load Level 3 model: {e}")
     model = None
 
-ai_classes = ["Background", "Bird", "Palm", "Spider", "Wolf"]
+ai_classes = [ 
+ "Background", 
+  "Bird", 
+  "Moose",
+  "Palm",
+  "Spider",
+  "Swan",
+  "Wolf"]
 mean = [0.4363, 0.4328, 0.3291]
 std = [0.2129, 0.2075, 0.2037]
 CONFIDENCE_THRESHOLD = 0.75
@@ -138,17 +99,17 @@ MANUAL_LEVEL_3_TARGETS = {
     0: "bird",    
     1: "wolf",    
     2: "spider",
-    3: "bird",
-    4: "wolf"
+    3: "swan",
+    4: "moose"
 }
 
 MANUAL_LEVEL_1_GESTURES = {
-    0: ("left_3", "right_2", "left_oath", "right_4"), 
+    0: ("left_3", "right_2", "game_start_left", "right_4"), 
     1: ("left_4", "right_2", "left_3", "right_3")  
 }
 
 mp_hands = mp.solutions.hands 
-hands = mp_hands.Hands(max_num_hands=4, model_complexity=1, min_detection_confidence=0.50, min_tracking_confidence=0.50) 
+hands = mp_hands.Hands(max_num_hands=4, model_complexity=0, min_detection_confidence=0.50, min_tracking_confidence=0.50) 
 
 def create_osc_client(ip, port, system_name): 
     try: 
@@ -247,6 +208,7 @@ def match_gesture(landmarks_21_raw, hand_label, templates, threshold=0.65):
 def draw_sleek_text(frame, text, pos, font_scale=0.6, thickness=1, color=(255, 255, 255)):
     font = cv2.FONT_HERSHEY_SIMPLEX
     x, y = pos
+    thickness = int(thickness)
     cv2.putText(frame, text, (x + 1, y + 1), font, font_scale, (10, 10, 10), thickness + 1, cv2.LINE_AA)
     cv2.putText(frame, text, (x, y), font, font_scale, color, thickness, cv2.LINE_AA)
 
@@ -322,11 +284,23 @@ def draw_dotted_rectangle(frame, pt1, pt2, color, thickness=2, gap=15):
         cv2.line(frame, (x1, y), (x1, min(y + gap, y2)), color, thickness, cv2.LINE_AA)
         cv2.line(frame, (x2, y), (x2, min(y + gap, y2)), color, thickness, cv2.LINE_AA)
 
+# Add a state tracker variable
+last_sent_reaper_cmd = None
+
+def send_osc_once(client, address, message):
+    global last_sent_reaper_cmd
+    cmd_key = f"{address}:{message}"
+    if last_sent_reaper_cmd != cmd_key:
+        send_osc_signal(client, address, message)
+        last_sent_reaper_cmd = cmd_key
+
+# Use send_osc_once instead of send_osc_signal inside your main loop for continuous states
+
 # ── INITIALIZATION ────────────────────────────────────────────────────────────
 box_size = 150
      
 templates = load_gesture_definitions(CSV_FILE)
-all_keys = list(templates.keys()) + ["palm"] 
+all_keys = list(templates.keys()) + ["palmm","palm", "bird", "wolf", "spider", "swan", "moose"] 
 cache_target_images(all_keys, box_size) 
 
 gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
@@ -347,15 +321,10 @@ else:
     HEART_DATA = None
 
 print("Script started! Initializing system, reaper, and grandMA3 connection...")
-send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence *") 
-send_osc_signal(gma3_client, GMA3_ADDRESS, "on timecode 2 ; on sequence 80 cue 2 ; on sequence 78 cue 2")
-send_osc_signal(reaper_client, "/action/1068", 1) #go out of the loop
+send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 4;sequence 114 cue 2 ;")
 send_osc_signal(reaper_client, "/action/40339", 1) #unmute all tracks
-send_osc_signal(reaper_client, "/action/40162", 1) #jump to marker 2 (game_start)
-send_osc_signal(reaper_client, "/action/40044", 1) #play game_start
-send_osc_signal(reaper_client, "/track/5/mute", 1) #mute game_start track1
-
-#add lighting sequence (transition to the next game station)
+send_osc_signal(reaper_client, "/action/40166", 1) # Jump to marker 6 (introduction of the game)
+#send_osc_signal(reaper_client, "/action/40044", 1) # Play
 
 EXCLUDED_GESTURES = ["game_start"]
 
@@ -364,7 +333,7 @@ right_gestures = [k for k in all_keys if isinstance(k, tuple) and k[1] == "right
 joint_gestures = list(set([k[0] for k in all_keys if isinstance(k, tuple) and not k[0].startswith("left_") and not k[0].startswith("right_") and k[0] not in EXCLUDED_GESTURES])) or list(set([k[0] for k in all_keys if isinstance(k, tuple) and k[0] not in EXCLUDED_GESTURES]))
 
 MANUAL_LEVEL_2_GESTURES = {
-    0: ("stage2_level1", "stage2_level1", "level2_stage1", "level2_stage1"), 
+    0: ("stage2_level1", "stage2_level1", "palm", "palm"), 
     1: ("level2_stage2_1", "level2_stage2_1", "level2_stage2_2", "level2_stage2_2")  
 }
 
@@ -397,9 +366,7 @@ def get_new_targets(lvl=1):
     return [(g1, "Left"), (g2, "Right"), (g3, "Left"), (g4, "Right")]
 
 target_keys = get_new_targets(lvl=1)
-cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)  
 cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)  
-cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)  
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1) 
@@ -411,8 +378,11 @@ VIDEO_STAGE_MAP = {
     (3, 1): "Final Assessment/MVP Pictures/Bird.mp4",  
     (3, 2): "Final Assessment/MVP Pictures/Wolf.mp4",      
     (3, 3): "Final Assessment/MVP Pictures/Spider.mp4",       
-    (3, 4): "Final Assessment/MVP Pictures/Bird.mp4",       
-    (3, 5): "Final Assessment/MVP Pictures/Wolf.mp4"       
+    (3, 4): "Final Assessment/MVP Pictures/Swan.mp4",       
+    (3, 5): "Final Assessment/MVP Pictures/Moose.mp4",
+
+    ("SHADOW_TUTORIAL_STAGE_1", 0): "Final Assessment/MVP Pictures/Wolf.mp4",
+    ("SHADOW_TUTORIAL_STAGE_2", 0): "Final Assessment/MVP Pictures/Spider.mp4"
 }
 
 default_bg_path = "MVP Pictures/level_bg.mp4"
@@ -425,9 +395,6 @@ window_name = "Gesture Recognition"
 # Create normal window first so OS handles window geometry properly
 cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
 
-# Change this OFFSET value based on where your monitor is:
-# Use 1920 (or your main screen's width) if Monitor is on the RIGHT
-# Use -1920 (negative value) if Monitor is on the LEFT
 MONITOR_X_OFFSET = 1920  
 
 # Move window to extended monitor before toggling fullscreen
@@ -460,8 +427,11 @@ status_display_time = 0.0
 last_active_cue_cmd = None
 level3_unlocked = False  
 
-tutorial_targets_stage1 = [("level2_stage2_2", "Left"), ("game_start_right", "Right"), ("palm", "Left"), ("level2_stage2_1", "Right")]
-tutorial_targets_stage2 = [("left_3", "Left"), ("right_2", "Right"), ("palm", "Left"), ("right_3", "Right")]
+tutorial_targets_stage2 = [("level2_stage2_2", "Left"), ("game_start_right", "Right"), ("left_3", "Left"), ("level2_stage2_1", "Right")]
+tutorial_targets_stage1 = [("left_3", "Left"), ("right_2", "Right"), ("left_4", "Left"), ("right_3", "Right")]
+
+shadow_tutorial_targets_stage1 = [("wolf", "AICameraClass")]
+shadow_tutorial_targets_stage2 = [("spider", "AICameraClass")]
 
 def start_game_sequence():
     global game_status, round_start_time, transition_start_time, current_level, current_cycle, player_lives, target_keys, matched_targets, round_duration, last_active_cue_cmd, level3_unlocked
@@ -474,10 +444,15 @@ def start_game_sequence():
     last_active_cue_cmd = None
     target_keys = get_new_targets(lvl=1)
     matched_targets = [False] * len(target_keys)
-    send_osc_signal(gma3_client, GMA3_ADDRESS, "off timecode *; off sequence * ; on sequence 17 ")
+    send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 5;")
     transition_start_time = time.time()
     game_status = "TRANSITION_SCENE"
-    #consider adding your lighting sequence when start game
+
+    send_osc_signal(reaper_client, "/action/40162", 1) #game start
+    send_osc_signal(reaper_client, "/track/5/mute", 0) #unmute
+    round_start_time = time.time()
+
+    game_status = "PLAYING"
 
 while True:
     ret, frame = cap.read() 
@@ -487,7 +462,9 @@ while True:
     h, w, _ = frame.shape
     
     # ── DYNAMIC STAGE VIDEO LOADING ENGINE ──
-    if current_level == 3 and not level3_unlocked:
+    if game_status in ["SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2"]:
+        target_video_path = VIDEO_STAGE_MAP.get((game_status, 0), default_bg_path)
+    elif current_level == 3 and not level3_unlocked:
         target_video_path = VIDEO_STAGE_MAP.get((3, 0), default_bg_path)
     else:
         stage_idx = current_cycle + 1 if current_level == 3 else current_cycle
@@ -511,7 +488,7 @@ while True:
             v_ret, v_frame = bg_video.read()
 
     # ── ASYNCHRONOUS MEDIAPIPE PROCESSING ──
-    if game_status in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL"] or (game_status not in ["TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR", "TUTORIAL_CLEAR", "SHADOW_START_PAGE"] and current_level != 3): 
+    if game_status in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2"] or (game_status not in ["TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR", "STAGE_CLEAR_TUT1", "STAGE_CLEAR_TUT2", "SHADOW_START_PAGE", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2"] and current_level != 3): 
         if not _mp_is_processing:
             _mp_is_processing = True
             small_rgb = cv2.resize(raw_camera_feed, (320, 180), interpolation=cv2.INTER_LINEAR) 
@@ -574,139 +551,179 @@ while True:
                 start_gesture_detected = True
 
         if start_gesture_detected:
-            if match_hold_start_time is None: match_hold_start_time = current_time
+            if match_hold_start_time is None: 
+                match_hold_start_time = current_time
+                send_osc_signal(reaper_client, "/action/41253", 1) #loading
+                send_osc_signal(reaper_client, "/track/15/mute", 1) #time-ticking mute
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
                 game_status = "TUTORIAL_STAGE_1"
+                send_osc_signal(reaper_client, "/action/41255", 1)
                 matched_targets = [False] * 4
         else:
             if match_hold_start_time is not None: match_hold_start_time = None
+            send_osc_signal(reaper_client, "/action/41253", 1) #loading
+            send_osc_signal(reaper_client, "/track/16/mute", 1) #mute the loading -- left the time ticking
 
-    elif game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2"]:
-        active_tut_targets = tutorial_targets_stage1 if game_status == "TUTORIAL_STAGE_1" else tutorial_targets_stage2
+    elif game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2"]:
+        if game_status == "TUTORIAL_STAGE_1":
+            active_tut_targets = tutorial_targets_stage1
+        elif game_status == "TUTORIAL_STAGE_2":
+            active_tut_targets = tutorial_targets_stage2
+        elif game_status == "SHADOW_TUTORIAL_STAGE_1":
+            active_tut_targets = shadow_tutorial_targets_stage1
+        else:
+            active_tut_targets = shadow_tutorial_targets_stage2
+
+        if len(matched_targets) != len(active_tut_targets):
+            matched_targets = [False] * len(active_tut_targets)
+
         frame = raw_camera_feed.copy()
             
-        draw_dotted_rectangle(frame, (100, 320), (550, 700), (0, 255, 255), thickness=2, gap=12)
-        draw_dotted_rectangle(frame, (730, 320), (1180, 700), (0, 255, 255), thickness=2, gap=12)
-        
-        draw_sleek_text(frame, "PLAYER 1 ZONE", (220, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
-        draw_sleek_text(frame, "PLAYER 2 ZONE", (850, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
+        if "SHADOW" in game_status:
+            draw_dotted_rectangle(frame, (100, 220), (750, 600), (0, 255, 255), thickness=2, gap=12)
+            draw_sleek_text(frame, "PLAYERS ZONE", (220, 200), font_scale=0.55, thickness=1, color=(0, 255, 255))
+        else:
+            draw_dotted_rectangle(frame, (100, 320), (550, 700), (0, 255, 255), thickness=2, gap=12)
+            draw_dotted_rectangle(frame, (730, 320), (1180, 700), (0, 255, 255), thickness=2, gap=12)
+            draw_sleek_text(frame, "PLAYER 1 ZONE", (220, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
+            draw_sleek_text(frame, "PLAYER 2 ZONE", (850, 300), font_scale=0.55, thickness=1, color=(0, 255, 255))
 
         tut_box_x, tut_box_y, tut_box_w, tut_box_h = 420, 30, 440, 150
         cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (20, 20, 20), -1, cv2.LINE_AA)
         cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (0, 255, 255), 2, cv2.LINE_AA)
         
-        stage_num_str = "1/2: SAME GESTURES" if game_status == "TUTORIAL_STAGE_1" else "2/2: DIFFERENT GESTURES"
-        draw_sleek_text(frame, f"TUTORIAL {stage_num_str}", (tut_box_x + 60, tut_box_y + 30), font_scale=0.6, thickness=2, color=(0, 255, 255))
+        if "SHADOW" in game_status:
+            stage_num_str = "1/2: PALM SHADOW" if game_status == "SHADOW_TUTORIAL_STAGE_1" else "2/2: ANIMAL SHADOWS"
+            title_prefix = "SHADOW TUTORIAL "
+        else:
+            stage_num_str = "1/2: SAME GESTURES" if game_status == "TUTORIAL_STAGE_1" else "2/2: DIFFERENT GESTURES"
+            title_prefix = "TUTORIAL "
+
+        draw_sleek_text(frame, f"{title_prefix}{stage_num_str}", (tut_box_x + 30, tut_box_y + 30), font_scale=0.55, thickness=2, color=(0, 255, 255))
         draw_sleek_text(frame, "HOW TO PLAY:", (tut_box_x + 20, tut_box_y + 60), font_scale=0.5, thickness=2, color=(255, 255, 255))
         draw_sleek_text(frame, "1) Match the gestures on screen within the dotted box.", (tut_box_x + 20, tut_box_y + 90), font_scale=0.38, thickness=1, color=(200, 200, 200))
         draw_sleek_text(frame, "2) Hold the gesture steady until the bar below fills up.", (tut_box_x + 20, tut_box_y + 120), font_scale=0.38, thickness=1, color=(200, 200, 200))
 
-        positions = [(20, 50), (210, 50), (890, 50), (1080, 50)]
-        for i, (g_name, h_label) in enumerate(active_tut_targets):
-            bx, by = positions[i]
-            b_size = 180
-            box_color = (0, 255, 0) if matched_targets[i] else (0, 255, 255)
+        if "SHADOW" in game_status:
+            matched_targets = [False] * len(active_tut_targets)
+            target_gname = active_tut_targets[0][0]
             
-            cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, 2, cv2.LINE_AA)
-            p_lbl = f"P1 {h_label.upper()}" if i < 2 else f"P2 {h_label.upper()}"
-            draw_sleek_text(frame, p_lbl, (bx + 10, by - 10), font_scale=0.45, thickness=1, color=box_color)
+            b_size = 300
+            margin_y = 50
+            bx, by = (w // 2) + 480 - (b_size // 2), margin_y
             
-            # Look for explicit left/right image keys first if available
-            img_key_hand_specific = f"{g_name}_{h_label.lower()}"
-            img_key_to_use = img_key_hand_specific if img_key_hand_specific in PRELOADED_IMAGES else g_name
+            if model is not None:
+                rgb_frame = cv2.cvtColor(raw_camera_feed, cv2.COLOR_BGR2RGB)
+                pil_img = Image.fromarray(rgb_frame)
+                processed_tensor = image_transforms(pil_img).float().unsqueeze(0).to(device)
+                
+                with torch.no_grad():
+                    output = model(processed_tensor)
+                    probabilities = torch.nn.functional.softmax(output, dim=1)
+                    confidence, predicted = torch.max(probabilities, 1)
+                    
+                    confidence_score = confidence.item()
+                    predicted_name = ai_classes[predicted.item()]
+                    
+                if predicted_name.lower() == "background":
+                    ai_status_str = f"Not Detected [Room Baseline: {confidence_score * 100:.1f}%]"
+                    ai_text_color = (0, 0, 255)
+                else:
+                    if confidence_score >= CONFIDENCE_THRESHOLD:
+                        ai_status_str = f"{predicted_name.upper()} DETECTED ({confidence_score * 100:.1f}%)"
+                        ai_text_color = (0, 255, 0)
+                    else:
+                        ai_status_str = f"Analyzing... ({predicted_name}: {confidence_score * 100:.1f}%)"
+                        ai_text_color = (0, 255, 255)
+                
+                draw_sleek_text(frame, f"AI Status: {ai_status_str}", (30, h - 50), font_scale=0.6, thickness=2, color=ai_text_color)
+                
+                if predicted_name.lower().strip() == target_gname.lower().strip() and confidence_score >= CONFIDENCE_THRESHOLD:
+                    matched_targets[0] = True
 
-            if img_key_to_use in PRELOADED_IMAGES:
-                overlay_preloaded_picture(frame, PRELOADED_IMAGES[img_key_to_use], bx, by, b_size)
-            
-            if matched_targets[i]:
-                draw_sleek_text(frame, "MATCHED", (bx + 20, by + b_size - 15), font_scale=0.5, thickness=2, color=(0, 255, 0))
+            box_color = (0, 255, 0) if matched_targets[0] else (0, 255, 255)
+            draw_dotted_rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, thickness=2, gap=12)
+            draw_sleek_text(frame, f"AI TARGET: {target_gname.upper()}", (bx - 20, by - 10), font_scale=0.5, thickness=1, color=box_color)
 
-        matched_targets = [False] * 4
-        if result and result.multi_hand_landmarks and result.multi_handedness:
-            detected_hands = []
-            for idx, (hand_landmarks, bandwidth) in enumerate(zip(result.multi_hand_landmarks, result.multi_handedness)):
-                if idx >= 4: break
-                detected_label = bandwidth.classification[0].label
-                draw_cyber_hand(frame, hand_landmarks, (0, 255, 255))
-                lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
-                detected_hands.append((lm_array, detected_label))
+            if v_frame is not None:
+                v_resized = cv2.resize(v_frame, (b_size, b_size), interpolation=cv2.INTER_LINEAR)
+                frame[by:by + b_size, bx:bx + b_size] = v_resized
+            elif target_gname in PRELOADED_IMAGES:
+                overlay_preloaded_picture(frame, PRELOADED_IMAGES[target_gname], bx, by, b_size)
+                
+            if matched_targets[0]:
+                cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), (0, 255, 0), 2, cv2.LINE_AA)
+                draw_sleek_text(frame, "MATCHED", (bx + 5, by + 20), font_scale=0.45, thickness=1, color=(0, 255, 0))
 
-            assigned_targets = set()
-            for lm_array, detected_label in detected_hands:
-                for i, (g_name, h_label) in enumerate(active_tut_targets):
-                    if i in assigned_targets: continue
-                    if h_label.lower().strip() == detected_label.lower().strip():
-                        matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
-                        if matched_gest == g_name:
-                            matched_targets[i] = True
-                            assigned_targets.add(i)
-                            break
+        else:
+            positions = [(20, 50), (210, 50), (890, 50), (1080, 50)]
+            for i, (g_name, h_label) in enumerate(active_tut_targets):
+                bx, by = positions[i]
+                b_size = 180
+                box_color = (0, 255, 0) if matched_targets[i] else (0, 255, 255)
+                
+                cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, 2, cv2.LINE_AA)
+                p_lbl = f"P1 {h_label.upper()}" if i < 2 else f"P2 {h_label.upper()}"
+                draw_sleek_text(frame, p_lbl, (bx + 10, by - 10), font_scale=0.45, thickness=1, color=box_color)
+                
+                img_key_hand_specific = f"{g_name}_{h_label.lower()}"
+                img_key_to_use = img_key_hand_specific if img_key_hand_specific in PRELOADED_IMAGES else g_name
+
+                if img_key_to_use in PRELOADED_IMAGES:
+                    overlay_preloaded_picture(frame, PRELOADED_IMAGES[img_key_to_use], bx, by, b_size)
+                
+                if matched_targets[i]:
+                    draw_sleek_text(frame, "MATCHED", (bx + 20, by + b_size - 15), font_scale=0.5, thickness=2, color=(0, 255, 0))
+
+            matched_targets = [False] * 4
+            if result and result.multi_hand_landmarks and result.multi_handedness:
+                detected_hands = []
+                for idx, (hand_landmarks, bandwidth) in enumerate(zip(result.multi_hand_landmarks, result.multi_handedness)):
+                    if idx >= 4: break
+                    detected_label = bandwidth.classification[0].label
+                    draw_cyber_hand(frame, hand_landmarks, (0, 255, 255))
+                    lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
+                    detected_hands.append((lm_array, detected_label))
+
+                assigned_targets = set()
+                for lm_array, detected_label in detected_hands:
+                    for i, (g_name, h_label) in enumerate(active_tut_targets):
+                        if i in assigned_targets: continue
+                        if h_label.lower().strip() == detected_label.lower().strip():
+                            matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
+                            if matched_gest == g_name:
+                                matched_targets[i] = True
+                                assigned_targets.add(i)
+                                break
 
         if all(matched_targets):
             if match_hold_start_time is None:
                 match_hold_start_time = current_time
+                send_osc_signal(reaper_client, "/track/16/mute", 0) #mute the loading -- left the time ticking
+                send_osc_signal(reaper_client, "/action/41253", 1) #loading
+                send_osc_signal(reaper_client, "/track/15/mute", 1) #time-ticking mute
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
                 if game_status == "TUTORIAL_STAGE_1":
                     game_status = "TUTORIAL_STAGE_2"
+                    send_osc_signal(reaper_client, "/action/41255", 1) #good job
                     matched_targets = [False] * 4
                 elif game_status == "TUTORIAL_STAGE_2":
-                    game_status, status_display_time = "TUTORIAL_CLEAR", current_time
+                    game_status, status_display_time = "STAGE_CLEAR_TUT1", current_time
+                    send_osc_signal(reaper_client, "/action/41255", 1) #good job
+                elif game_status == "SHADOW_TUTORIAL_STAGE_1":
+                    game_status = "SHADOW_TUTORIAL_STAGE_2"
+                    send_osc_signal(reaper_client, "/action/41255", 1)
+                    matched_targets = [False] * 1
+                elif game_status == "SHADOW_TUTORIAL_STAGE_2":
+                    game_status, status_display_time = "STAGE_CLEAR_TUT2", current_time
+                    send_osc_signal(reaper_client, "/action/41255", 1)
+                    matched_targets = [False] * 4
         else:
             match_hold_start_time = None
-
-    elif game_status == "SHADOW_TUTORIAL":
-        frame = raw_camera_feed.copy()
-        
-        tut_box_x, tut_box_y, tut_box_w, tut_box_h = 340, 40, 600, 160
-        cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (20, 20, 20), -1, cv2.LINE_AA)
-        cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (255, 0, 255), 2, cv2.LINE_AA)
-        
-        draw_sleek_text(frame, "SHADOW TUTORIAL: PALM SHADOW", (tut_box_x + 80, tut_box_y + 35), font_scale=0.65, thickness=2, color=(255, 0, 255))
-        draw_sleek_text(frame, "HOW TO PLAY:", (tut_box_x + 20, tut_box_y + 70), font_scale=0.5, thickness=2, color=(255, 255, 255))
-        draw_sleek_text(frame, "1) Cast a clear PALM shadow using the light source.", (tut_box_x + 20, tut_box_y + 100), font_scale=0.42, thickness=1, color=(200, 200, 200))
-        draw_sleek_text(frame, "2) Hold the palm shadow steady to proceed to Level 3.", (tut_box_x + 20, tut_box_y + 130), font_scale=0.42, thickness=1, color=(200, 200, 200))
-
-        bx, by, b_size = (w // 2) - 100, 240, 200
-        box_color = (0, 255, 0) if matched_targets[0] else (255, 0, 255)
-        cv2.rectangle(frame, (bx, by), (bx + b_size, by + b_size), box_color, 2, cv2.LINE_AA)
-        draw_sleek_text(frame, "PALM SHADOW", (bx + 35, by - 12), font_scale=0.5, thickness=1, color=box_color)
-
-        if "palm" in PRELOADED_IMAGES:
-            overlay_preloaded_picture(frame, PRELOADED_IMAGES["palm"], bx, by, b_size)
-
-        if matched_targets[0]:
-            draw_sleek_text(frame, "MATCHED", (bx + 50, by + b_size - 15), font_scale=0.5, thickness=2, color=(0, 255, 0))
-
-        matched_targets = [False] * 4
-        if result and result.multi_hand_landmarks and result.multi_handedness:
-            for idx, (hand_landmarks, bandwidth) in enumerate(zip(result.multi_hand_landmarks, result.multi_handedness)):
-                if idx >= 4: break
-                detected_label = bandwidth.classification[0].label
-                draw_cyber_hand(frame, hand_landmarks, (255, 0, 255))
-                lm_array = np.array([[lm.x, lm.y, lm.z] for lm in hand_landmarks.landmark])
-                matched_gest, _ = match_gesture(lm_array, detected_label, templates, threshold=MATCH_THRESHOLD)
-                if matched_gest and "palm" in matched_gest.lower():
-                    matched_targets[0] = True
-                    break
-
-        if matched_targets[0]:
-            if match_hold_start_time is None:
-                match_hold_start_time = current_time
-            elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
-                match_hold_start_time = None
-                game_status = "SHADOW_START_PAGE"
-                matched_targets = [False] * 4
-        else:
-            match_hold_start_time = None
-
-    elif game_status == "TUTORIAL_CLEAR":
-        frame[:] = (10, 10, 10)
-        draw_sleek_text(frame, "TUTORIAL COMPLETED!", (w // 2 - 260, h // 2 - 20), font_scale=1.2, thickness=2, color=(0, 255, 0))
-        draw_sleek_text(frame, "GET READY FOR THE GAME...", (w // 2 - 220, h // 2 + 30), font_scale=0.8, thickness=2, color=(0, 255, 255))
-        if current_time - status_display_time > 2.0:
-            start_game_sequence()
+            send_osc_signal(reaper_client, "/action/41253", 1) #loading
+            send_osc_signal(reaper_client, "/track/16/mute", 1) #mute the loading -- left the time ticking
 
     elif game_status == "TRANSITION_SCENE":
         elapsed_transition = current_time - transition_start_time
@@ -719,6 +736,7 @@ while True:
     elif game_status == "PLAYING":
         if current_level == 3 and not level3_unlocked:
             time_left = round_duration
+            send_osc_signal(reaper_client, "/action/41253", 1) #loading
         else:
             time_left = max(0.0, round_duration - (current_time - round_start_time))
             if time_left <= 0:
@@ -727,86 +745,93 @@ while True:
                 
                 if player_lives <= 0:
                     game_status, status_display_time = "GAMEOVER", current_time 
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_GAMEOVER_CMD) #sequence
-                    send_osc_signal(reaper_client, "/action/40163", 1) #gameover marker
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "go sequence 120 cue 1; on seq 114 cue 2") 
+                    send_osc_signal(reaper_client, "/action/40163", 1) 
                 else:
                     game_status, status_display_time = "LOSE", current_time
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_GAMEOVER_CMD) #sequence
-                    send_osc_signal(reaper_client, "/action/41252", 1) #fail stage
+                    send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120 cue 1") 
+                    send_osc_signal(reaper_client, "/action/41252", 1) 
 
-    elif game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "STAGE_CLEAR"]:
+    elif game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "STAGE_CLEAR", "STAGE_CLEAR_TUT1", "STAGE_CLEAR_TUT2"]:
         time_left = 0
         GAMEOVER_BUFFER_SECONDS = 2.5
         BUFFER_SECONDS = 1.5
         LOSE_DISPLAY_SECONDS = 3.5  
         STAGE_CLEAR_BUFFER_SECONDS = 3.0 
-        WELL_PLAYED = 1
+        WELL_PLAYED = 20.0
         if game_status == "GAMEOVER":
-            send_osc_signal(reaper_client, "/action/40163", 1) #gameover
+            # send_osc_signal(reaper_client, "/action/40163", 1) 
             display_timeout = GAMEOVER_BUFFER_SECONDS
         elif game_status == "GAME_CLEAR":
+            
             display_timeout = WELL_PLAYED
         elif game_status == "LOSE":
-            send_osc_signal(reaper_client, "/action/41252", 1) #fail stage
+            # send_osc_signal(reaper_client, "/action/41252", 1) 
             display_timeout = LOSE_DISPLAY_SECONDS 
-        elif game_status == "STAGE_CLEAR":
-            send_osc_signal(reaper_client, "/action/41254", 1) #recharged stage
+        elif game_status in ["STAGE_CLEAR", "STAGE_CLEAR_TUT1", "STAGE_CLEAR_TUT2"]:
+            # send_osc_signal(reaper_client, "/action/41254", 1) 
             display_timeout = STAGE_CLEAR_BUFFER_SECONDS
         else:
             display_timeout = BUFFER_SECONDS
- 
+
         if current_time - status_display_time > display_timeout:  
             if game_status == "STAGE_CLEAR":
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 22 , on sequence 12")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120 cue 2")
                 target_keys = get_new_targets(lvl=current_level)
                 matched_targets = [False] * len(target_keys)
                 round_duration = BASE_DURATION
                 round_start_time, game_status = time.time(), "PLAYING" 
-                send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
+                # 2. Only return to Marker 11 AFTER the 3-second display time finishes
+                send_osc_signal(reaper_client, "/action/41251", 1) 
+                last_active_cue_cmd = None
+
+            elif game_status == "STAGE_CLEAR_TUT1":
+                start_game_sequence()
+
+            elif game_status == "STAGE_CLEAR_TUT2":
+                send_osc_signal(reaper_client, "/action/41251", 1)
+                send_osc_signal(reaper_client, "/track/15/mute", 1)
+                game_status = "SHADOW_START_PAGE"
+                matched_targets = [False] * 4
                 last_active_cue_cmd = None
 
             elif game_status == "WIN":
-                if current_level == 3:
-                    game_status = "SHADOW_TUTORIAL"
-                    matched_targets = [False] * 4
-                    match_hold_start_time = None
-                else:
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
-                    target_keys = get_new_targets(lvl=current_level)
-                    send_osc_signal(reaper_client, "/action/41251", 1) #team B start
-                    send_osc_signal(reaper_client, "/track/15/mute", 1) #mute time-ticking
-                    matched_targets = [False] * len(target_keys)
-                    round_duration = BASE_DURATION
-                    round_start_time, game_status = time.time(), "PLAYING" 
-                    last_active_cue_cmd = None
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 120 cue 2")
+                target_keys = get_new_targets(lvl=current_level)
+                send_osc_signal(reaper_client, "/action/41251", 1) 
+                send_osc_signal(reaper_client, "/track/15/mute", 0) 
+                matched_targets = [False] * len(target_keys)
+                round_duration = BASE_DURATION
+                round_start_time, game_status = time.time(), "PLAYING" 
+                last_active_cue_cmd = None
         
             elif game_status == "LOSE":
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2")
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 120")
                 target_keys = get_new_targets(lvl=current_level)
                 matched_targets = [False] * len(target_keys)
                 round_duration = BASE_DURATION
                 round_start_time, game_status = time.time(), "PLAYING"
-                send_osc_signal(reaper_client, "/action/41252", 1) #fail stage
-                send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
+                send_osc_signal(reaper_client, "/action/41251", 1) 
                 last_active_cue_cmd = None
          
             elif game_status == "GAMEOVER":
                 cap.release()
-                cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW) 
+                cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW) 
                 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
                 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
                 current_level, current_cycle, game_status = 1, 0, "TUTORIAL_STAGE_1"
                 level3_unlocked = False
+                target_keys, matched_targets = get_new_targets(lvl=1), [False] * 4
                 threading.Timer(GAMEOVER_BUFFER_SECONDS, back_to_start, args=[]).start()
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3") #back to the 1st sequence
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "go macro 10; go macro 11;") 
                 back_to_start()
                 last_active_cue_cmd = None
               
             elif game_status == "GAME_CLEAR":
                 cap.release()
-                cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+                cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
                 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
                 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                 cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -815,8 +840,8 @@ while True:
                 level3_unlocked = False
                 target_keys, matched_targets = get_new_targets(lvl=1), [False] * 4
                 round_duration = BASE_DURATION
-                send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 2; Off Sequence 3")
-                send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
+                send_osc_signal(gma3_client, GMA3_ADDRESS, "go seq 120 cue ; go macro 5;")
+                send_osc_signal(reaper_client, "/action/41251", 1) 
                 last_active_cue_cmd = None
 
     # ── RENDER OVERLAYS ───────────────────────────────────────────────────────
@@ -825,7 +850,7 @@ while True:
 
     if game_status == "PLAYING" and not (current_level == 3 and not level3_unlocked):
         time_left = max(0.0, round_duration - (current_time - round_start_time))
-    
+
         max_stages = MAX_STAGES_PER_LEVEL.get(current_level, 1)
         title = f"LEVEL {current_level} STAGE {current_cycle + 1}/{max_stages}"
         draw_sleek_text(frame, title, (530, 45), font_scale=0.55, thickness=1, color=(255, 255, 255))
@@ -860,7 +885,7 @@ while True:
     if match_hold_start_time is not None:
         elapsed_hold = current_time - match_hold_start_time
         hold_ratio = min(1.0, elapsed_hold / HOLD_REQUIRED_DURATION)
-        bar_x, bar_y, bar_w, bar_h = 480, 640 if game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL"] else 520, 320, 20
+        bar_x, bar_y, bar_w, bar_h = 480, 640 if game_status in ["TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2"] else 520, 320, 20
         fill_w = int(bar_w * hold_ratio)
         
         overlay = frame.copy()
@@ -873,7 +898,7 @@ while True:
             cv2.line(frame, (marker, bar_y), (marker, bar_y + bar_h), (0, 255, 255), 1)
         draw_sleek_text(frame, f"SYSTEM SYNC: {int(hold_ratio * 100)}%", (bar_x, bar_y - 8), font_scale=0.45, thickness=1, color=(0, 255, 255))
 
-    if game_status not in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL", "TUTORIAL_CLEAR", "TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR"]:
+    if game_status not in ["START_SCREEN", "TUTORIAL_STAGE_1", "TUTORIAL_STAGE_2", "SHADOW_TUTORIAL_STAGE_1", "SHADOW_TUTORIAL_STAGE_2", "STAGE_CLEAR_TUT1", "STAGE_CLEAR_TUT2", "TRANSITION_SCENE", "GAME_CLEAR", "WIN", "LOSE", "GAMEOVER", "STAGE_CLEAR"]:
         if current_level == 3:
             current_box_size = 300
         elif current_level == 2:
@@ -972,7 +997,6 @@ while True:
             else:
                 draw_sleek_text(frame, f"TARGET {i+1}", (x_min + 5, y_min - 10), font_scale=0.5, thickness=1, color=color)
 
-            # Look for explicit left/right image keys first if available
             img_key_hand_specific = f"{gesture_name}_{hand_label.lower()}"
             img_key_to_use = img_key_hand_specific if img_key_hand_specific in PRELOADED_IMAGES else gesture_name
 
@@ -1033,8 +1057,8 @@ while True:
                     draw_sleek_text(frame, "LEVEL 3 - START PAGE", (x_min - 15, y_min - 50), font_scale=0.8, thickness=2, color=(255, 255, 0))
                     draw_sleek_text(frame, "DO THIS GESTURE TO START", (x_min - 35, y_min - 20), font_scale=0.65, thickness=2, color=(0, 255, 255))
 
-                    if "palm" in PRELOADED_IMAGES:
-                        overlay_preloaded_picture(frame, PRELOADED_IMAGES["palm"], x_min, y_min, current_box_size)
+                    if "palmm" in PRELOADED_IMAGES:
+                        overlay_preloaded_picture(frame, PRELOADED_IMAGES["palmm"], x_min, y_min, current_box_size)
                     else:
                         draw_sleek_text(frame, "SHOW PALM GESTURE", (x_min + 30, center_y), font_scale=0.6, thickness=2, color=(0, 255, 255))
 
@@ -1043,18 +1067,18 @@ while True:
                 if predicted_name.lower().strip() == "palm" and confidence_score >= CONFIDENCE_THRESHOLD:
                     if match_hold_start_time is None:
                         match_hold_start_time = current_time
-                        send_osc_signal(reaper_client, "/action/41253", 1) #loading
+                        send_osc_signal(reaper_client, "/action/41253", 1) 
                     elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                         match_hold_start_time = None
                         level3_unlocked = True  
                         round_start_time = current_time  
                         game_status = "PLAYING"
-                        send_osc_signal(reaper_client, "/action/41254", 1) #recharge                        
+                        send_osc_signal(reaper_client, "/action/41254", 1)                         
                 else:
                     if match_hold_start_time is not None:
                         match_hold_start_time = None
-                        send_osc_signal(reaper_client, "/action/41251", 1) #team B start
-                        send_osc_signal(reaper_client, "/track/15/mute", 1) #mute time-ticking   
+                        send_osc_signal(reaper_client, "/action/41251", 1) 
+                        send_osc_signal(reaper_client, "/track/15/mute", 0)    
             else:
                 draw_sleek_text(frame, f"AI Status: {ai_status_str}", (30, h - 50), font_scale=0.6, thickness=2, color=ai_text_color)
                 req_target = target_keys[0][0].lower().strip()
@@ -1114,34 +1138,31 @@ while True:
         if all(matched_targets) and not (current_level == 3 and not level3_unlocked):
             if match_hold_start_time is None:
                 match_hold_start_time = current_time
-                send_osc_signal(reaper_client, "/action/41253", 1) #loading
+                send_osc_signal(reaper_client, "/action/41253", 1) 
 
             elif current_time - match_hold_start_time >= HOLD_REQUIRED_DURATION:
                 match_hold_start_time = None
                 
                 current_stage = current_cycle + 1
-                if current_level in GAME_SHOW_MAP and current_stage in GAME_SHOW_MAP[current_level]:
-                    send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
-                    cfg = GAME_SHOW_MAP[current_level][current_stage]
-                    last_active_cue_cmd = cfg["cue_cmd"]
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
-                
                 current_cycle += 1
                 max_cycles_needed = MAX_STAGES_PER_LEVEL.get(current_level, 1)
-                
+                send_osc_signal(reaper_client, "/action/41254", 1)
+                # Handle grandMA3 cues — fires on every stage clear
+                last_active_cue_cmd = STAGE_CLEAR_CUE_CMD
+                send_osc_signal(gma3_client, GMA3_ADDRESS, last_active_cue_cmd)
+
+                # Send REAPER OSC marker based on game state
                 if current_cycle < max_cycles_needed:
                     game_status, status_display_time = "STAGE_CLEAR", current_time
-                    send_osc_signal(reaper_client, "/action/41254", 1) #recharge                            
-
+                    send_osc_signal(reaper_client, "/action/41254", 1)
                 else:
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 3")
-                    send_osc_signal(gma3_client, GMA3_ADDRESS, MA3_PASS_LEVEL_CMD)
+                    # send_osc_signal(reaper_client, "/action/41251", 1)
                     
                     if current_level == 3:
                         game_status, status_display_time = "GAME_CLEAR", current_time
-                        send_osc_signal(reaper_client, "/action/40164", 1) #game_passed 
-                        STAGE_CLEAR_BUFFER_SECONDS
-                        send_osc_signal(reaper_client, "/action/40165", 1) #transition from team B to team E                         
+                        send_osc_signal(reaper_client, "/action/40164", 1) #test it
+                        # Schedule the second signal to fire 0.5s later without freezing the loop
+                        threading.Timer(0.5, send_osc_signal, args=[reaper_client, "/action/40160", 1]).start()
                     else:
                         current_level += 1
                         current_cycle = 0
@@ -1152,44 +1173,48 @@ while True:
                             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
                             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
                             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-
-                            send_osc_signal(reaper_client, "/action/41251", 1) #team B + time-ticking                          
+                            target_keys = get_new_targets(lvl=3) # Refreshes level 3 targets starting from index 0
+                            game_status = "SHADOW_TUTORIAL_STAGE_1"      # Directs to shadow tutorial stage 1 after Level 2
+                            send_osc_signal(reaper_client, "/action/41251", 1) 
+                            send_osc_signal(reaper_client, "/track/15/mute", 1) 
+                            match_hold_start_time = None
+                            send_osc_signal(gma3_client, GMA3_ADDRESS, "on sequence 26; off sequence 14")
                         else:
-                            send_osc_signal(reaper_client, "/action/41251", 1) #team B + time-ticking                            
-
-                        game_status, status_display_time = "WIN", current_time
+                            game_status, status_display_time = "WIN", current_time
         elif not (current_level == 3 and not level3_unlocked):
-            match_hold_start_time = None
+                match_hold_start_time = None  
 
-    if game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "STAGE_CLEAR"]:
+    if game_status in ["WIN", "LOSE", "GAME_CLEAR", "GAMEOVER", "STAGE_CLEAR", "STAGE_CLEAR_TUT1", "STAGE_CLEAR_TUT2"]:
         if game_status == "STAGE_CLEAR":
             draw_sleek_text(frame, "WELL PLAYED!", (w // 2 - 140, h // 2), font_scale=1.2, thickness=2, color=(0, 255, 0))
+        elif game_status == "STAGE_CLEAR_TUT1":
+            draw_sleek_text(frame, "TUTORIAL 1 COMPLETED!", (w // 2 - 240, h // 2), font_scale=1.2, thickness=2, color=(0, 255, 0))
+        elif game_status == "STAGE_CLEAR_TUT2":
+            draw_sleek_text(frame, "SHADOW TUTORIAL COMPLETED!", (w // 2 - 300, h // 2), font_scale=1.2, thickness=2, color=(0, 255, 0))
         elif game_status == "WIN":
             draw_sleek_text(frame, f"LEVEL {current_level - 1} CLEAR", (w // 2 - 160, h // 2), font_scale=1.1, thickness=2, color=(0, 255, 0))
         elif game_status == "LOSE":
-            draw_sleek_text(frame, "WEAPON UPGRADE FAILED", (w // 2 - 240, h // 2), font_scale=1.0, thickness=2, color=(0, 0, 255))
-            draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} LIVE(S) LEFT", (w // 2 - 400, h // 2+30), font_scale=1.0, thickness=2, color=(0, 0, 255))
+            draw_sleek_text(frame, "WEAPON UPGRADE FAILED", (w // 2 - 240, h // 2), font_scale=1.0, thickness=1, color=(0, 0, 255))
+            draw_sleek_text(frame, f"DON'T WORRY... YOU STILL HAVE {player_lives} LIVE(S) LEFT", (w // 2 - 400, h // 2+30), font_scale=1.0, thickness=1, color=(0, 0, 255))
         elif game_status == "GAMEOVER":
             draw_sleek_text(frame, "GAMEOVER", (w // 2 - 130, h // 2), font_scale=1.2, thickness=2, color=(0, 0, 255))
             draw_sleek_text(frame, "YOU HAVE FAILED TO UPGRADE THE WEAPON", (w // 2 - 500, h // 2+50), font_scale=1.2, thickness=2, color=(0, 0, 255))
         elif game_status == "GAME_CLEAR":
-            draw_sleek_text(frame, "WEAPON UPGRADE SUCCESSFULLY!", (w // 2 - 380, h // 2 - 20), font_scale=1.0, thickness=2, color=(0, 255, 0))
-            draw_sleek_text(frame, "RETURNING TO MAIN SCREEN...", (w // 2 - 240, h // 2 + 30), font_scale=0.8, thickness=2, color=(0, 255, 255))
+            frame[:] = 0
 
     cv2.imshow("Gesture Recognition", frame)
     key = cv2.waitKey(1) & 0xFF
     
     if key == ord('q') or key == 27: 
         back_to_start()
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "ClearAll") 
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
-        send_osc_signal(reaper_client, "/action/40044", 1) #stop reaper
+        # send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
+        # send_osc_signal(reaper_client, "/action/40044", 1) 
         break
         
     elif key == ord('1') or key == ord('s'):
         if current_level == 3:
             cap.release()
-            cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
@@ -1200,8 +1225,8 @@ while True:
         target_keys = get_new_targets(lvl=1)
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
-        send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
-        send_osc_signal(reaper_client, "/track/15/unmute", 1) #unmute time-ticking
+        send_osc_signal(reaper_client, "/action/41251", 1) 
+        send_osc_signal(reaper_client, "/track/15/unmute", 1) 
         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
         round_start_time, game_status = time.time(), "PLAYING"
         last_active_cue_cmd = None
@@ -1210,12 +1235,12 @@ while True:
     elif key == ord('2') or key == ord('r'):
         if current_level == 3:
             cap.release()
-            cap = cv2.VideoCapture(2 + cv2.CAP_DSHOW)
+            cap = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-            send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
-            send_osc_signal(reaper_client, "/track/15/unmute", 1) #unmute time-ticking
+            send_osc_signal(reaper_client, "/action/41251", 1) 
+            send_osc_signal(reaper_client, "/track/15/unmute", 1) 
 
         player_lives = 3
         current_level, current_cycle = 2, 0
@@ -1223,8 +1248,8 @@ while True:
         target_keys = get_new_targets(lvl=2)
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
-        send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
-        send_osc_signal(reaper_client, "/track/15/unmute", 1) #unmute time-ticking
+        send_osc_signal(reaper_client, "/action/41251", 1) 
+        send_osc_signal(reaper_client, "/track/15/unmute", 1) 
         send_osc_signal(gma3_client, GMA3_ADDRESS, "Off Sequence 1; Off Sequence 2; Off Sequence 3")
         round_start_time, game_status = time.time(), "PLAYING"
         last_active_cue_cmd = None
@@ -1244,10 +1269,29 @@ while True:
         target_keys = get_new_targets(lvl=3)
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off timecode 2;")
-        send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
-        send_osc_signal(reaper_client, "/track/15/unmute", 1) #unmute time-ticking
+        send_osc_signal(reaper_client, "/action/41251", 1) 
+        send_osc_signal(reaper_client, "/track/15/unmute", 1) 
         round_start_time, game_status = time.time(), "SHADOW_START_PAGE"
+        last_active_cue_cmd = None
+        match_hold_start_time = None
+
+    elif key == ord('4'):
+        if current_level != 3:
+            cap.release()
+            cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+            cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+            cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+            cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+
+        player_lives = 3
+        current_level, current_cycle = 3, 0
+        level3_unlocked = False  
+        target_keys = get_new_targets(lvl=3)
+        matched_targets = [False] * len(target_keys)
+        round_duration = BASE_DURATION
+        send_osc_signal(reaper_client, "/action/41251", 1) 
+        send_osc_signal(reaper_client, "/track/15/unmute", 1) 
+        round_start_time, game_status = time.time(), "SHADOW_TUTORIAL_STAGE_1"
         last_active_cue_cmd = None
         match_hold_start_time = None
 
@@ -1265,9 +1309,8 @@ while True:
         target_keys = get_new_targets(lvl=3)
         matched_targets = [False] * len(target_keys)
         round_duration = BASE_DURATION
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "Off timecode 2;")
-        send_osc_signal(reaper_client, "/action/41251", 1) #team B start + time-ticking
-        send_osc_signal(reaper_client, "/track/15/unmute", 1) #unmute time-ticking
+        send_osc_signal(reaper_client, "/action/41251", 1) 
+        send_osc_signal(reaper_client, "/track/15/unmute", 1) 
         round_start_time, game_status = time.time(), "PLAYING"
         last_active_cue_cmd = None
         match_hold_start_time = None

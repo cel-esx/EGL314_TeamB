@@ -58,7 +58,7 @@ STAGE_CLEAR_CUE_CMD = "on sequence 120 cue 2;"
 MAX_STAGES_PER_LEVEL = {
     1: 1,  
     2: 1,  
-    3: 5   
+    3: 3   
 }
 
 def back_to_start():
@@ -378,11 +378,11 @@ VIDEO_STAGE_MAP = {
     (3, 1): "Final Assessment/MVP Pictures/Bird.mp4",  
     (3, 2): "Final Assessment/MVP Pictures/Wolf.mp4",      
     (3, 3): "Final Assessment/MVP Pictures/Spider.mp4",       
-    (3, 4): "Final Assessment/MVP Pictures/Bird.mp4",       
-    (3, 5): "Final Assessment/MVP Pictures/Wolf.mp4",
+    (3, 4): "Final Assessment/MVP Pictures/Swan.mp4",       
+    (3, 5): "Final Assessment/MVP Pictures/Moose.mp4",
 
-    ("SHADOW_TUTORIAL_STAGE_1", 0): "Final Assessment/MVP Pictures/Bird.mp4",
-    ("SHADOW_TUTORIAL_STAGE_2", 0): "Final Assessment/MVP Pictures/Bird.mp4"
+    ("SHADOW_TUTORIAL_STAGE_1", 0): "Final Assessment/MVP Pictures/Spider.mp4",
+    ("SHADOW_TUTORIAL_STAGE_2", 0): "Final Assessment/MVP Pictures/Spider.mp4"
 }
 
 default_bg_path = "MVP Pictures/level_bg.mp4"
@@ -430,8 +430,8 @@ level3_unlocked = False
 tutorial_targets_stage2 = [("level2_stage2_2", "Left"), ("game_start_right", "Right"), ("left_3", "Left"), ("level2_stage2_1", "Right")]
 tutorial_targets_stage1 = [("left_3", "Left"), ("right_2", "Right"), ("left_4", "Left"), ("right_3", "Right")]
 
-shadow_tutorial_targets_stage1 = [("bird", "AICameraClass")]
-shadow_tutorial_targets_stage2 = [("bird", "AICameraClass")]
+shadow_tutorial_targets_stage1 = [("spider", "AICameraClass")]
+shadow_tutorial_targets_stage2 = [("spider", "AICameraClass")]
 
 def start_game_sequence():
     global game_status, round_start_time, transition_start_time, current_level, current_cycle, player_lives, target_keys, matched_targets, round_duration, last_active_cue_cmd, level3_unlocked
@@ -594,7 +594,7 @@ while True:
         cv2.rectangle(frame, (tut_box_x, tut_box_y), (tut_box_x + tut_box_w, tut_box_y + tut_box_h), (0, 255, 255), 2, cv2.LINE_AA)
         
         if "SHADOW" in game_status:
-            stage_num_str = "1/2: PALM SHADOW" if game_status == "SHADOW_TUTORIAL_STAGE_1" else "2/2: ANIMAL SHADOWS"
+            stage_num_str = "1/1: ANIMAL SHADOWS"
             title_prefix = "SHADOW TUTORIAL "
         else:
             stage_num_str = "1/2: SAME GESTURES" if game_status == "TUTORIAL_STAGE_1" else "2/2: DIFFERENT GESTURES"
@@ -713,9 +713,9 @@ while True:
                     game_status, status_display_time = "STAGE_CLEAR_TUT1", current_time
                     send_osc_signal(reaper_client, "/action/41255", 1) #good job
                 elif game_status == "SHADOW_TUTORIAL_STAGE_1":
-                    game_status = "SHADOW_TUTORIAL_STAGE_2"
+                    game_status, status_display_time = "STAGE_CLEAR_TUT2", current_time
                     send_osc_signal(reaper_client, "/action/41255", 1)
-                    matched_targets = [False] * 1
+                    matched_targets = [False] * 4
                 elif game_status == "SHADOW_TUTORIAL_STAGE_2":
                     game_status, status_display_time = "STAGE_CLEAR_TUT2", current_time
                     send_osc_signal(reaper_client, "/action/41255", 1)
