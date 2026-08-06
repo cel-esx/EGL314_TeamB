@@ -377,7 +377,7 @@ VIDEO_STAGE_MAP = {
     (3, 0): "Final Assessment/MVP Pictures/level_bg.mp4",  
     (3, 1): "Final Assessment/MVP Pictures/Bird.mp4",  
     (3, 2): "Final Assessment/MVP Pictures/Wolf.mp4",      
-    (3, 3): "Final Assessment/MVP Pictures/Spider.mp4",       
+    (3, 3): "Final Assessment/MVP Pictures/Spider.mp4",
     (3, 4): "Final Assessment/MVP Pictures/Swan.mp4",       
     (3, 5): "Final Assessment/MVP Pictures/Moose.mp4",
 
