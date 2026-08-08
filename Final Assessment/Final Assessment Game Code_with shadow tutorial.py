@@ -455,8 +455,9 @@ def start_game_sequence():
 
 while True:
     ret, frame = cap.read() 
-    if not ret: continue  
-    frame = cv2.flip(frame, 1) 
+    if not ret: continue
+    if current_level == 3:  
+        frame = cv2.flip(frame, 1) 
     raw_camera_feed = frame.copy()
     h, w, _ = frame.shape
     
@@ -1174,11 +1175,11 @@ while True:
                         current_cycle = 0
                         
                         if current_level == 3:
-                            cap.release()
-                            cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
-                            cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-                            cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-                            cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                            # cap.release()
+                            # cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+                            # cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+                            # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+                            # cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
                             target_keys = get_new_targets(lvl=3) # Refreshes level 3 targets starting from index 0
                             game_status, status_display_time = "TRANSITION_TO_SHADOW_TUTORIAL", current_time # Transition text before shadow tutorial
                             # send_osc_signal(reaper_client, "/action/41251", 1) 
