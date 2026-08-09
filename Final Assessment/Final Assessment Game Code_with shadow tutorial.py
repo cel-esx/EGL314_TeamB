@@ -1217,7 +1217,7 @@ while True:
     
     if key == ord('q') or key == 27: 
         back_to_start()
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
+        # send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
         # send_osc_signal(reaper_client, "/action/40044", 1) 
         break
         
