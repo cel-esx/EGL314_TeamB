@@ -54,14 +54,14 @@ Click **OK** when finished.
 ![alt text](Images/L_ISA_Controller_Config3.png)
 
 2. Double-click any source to select which audio channel it will receive sound from, then click **Save**. <br>
-![alt text](Images/L_ISA_Controller_config4.png)
+![alt text](Images/L_ISA_Controller_Config4.png)
 
 3. Go to **Sources** $\rightarrow$ **Control**. Under the **Control** column, check the boxes for the parameters you want to control with Snapshots. <br>
-![alt text](Images/L_ISA_Controller_config8.png)
+![alt text](Images/L_ISA_Controller_Config8.png)
 > 💡 *Note: Snapshots are saved "pictures" of where your sounds are placed in the room.*
 
 4. Go to **MIDI** settings in L-ISA, turn MIDI on, and choose the loopMIDI port name you created earlier. <br>
-![alt text](Images/L_ISA_Controller_config9.png)
+![alt text](Images/L_ISA_Controller_Config9.png)
 
 > ⚠️ **IMPORTANT:** The port name in REAPER and L-ISA must match **exactly**, including uppercase and lowercase letters (for example, `L-ISA MIDI` is not the same as `l-isa midi`).
 
