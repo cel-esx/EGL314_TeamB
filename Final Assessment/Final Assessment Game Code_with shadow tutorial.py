@@ -43,12 +43,12 @@ TRANSITION_SLIDES = [cv2.resize(img, (1280, 720)) for img in TRANSITION_SLIDES i
 # ──────────────────────────────────────────────────────────────────────────────
 
 # ── OSC CONFIGURATION ─────────────────────────────────────────────────────────
-GMA3_LAPTOP_IP   = "192.168.254.252s"
+GMA3_LAPTOP_IP   = "192.168.254.252"
 GMA3_PORT        = 8080           
 GMA3_ADDRESS     = "/gma3/cmd"      
 
 
-REAPER_LAPTOP_IP = "192.168.254.12s"
+REAPER_LAPTOP_IP = "192.168.254.12"
 REAPER_PORT      = 8000
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -456,8 +456,8 @@ def start_game_sequence():
 while True:
     ret, frame = cap.read() 
     if not ret: continue
-    if current_level == 3:  
-        frame = cv2.flip(frame, 1) 
+    #if current_level == 3:  
+    frame = cv2.flip(frame, 1) 
     raw_camera_feed = frame.copy()
     h, w, _ = frame.shape
     
