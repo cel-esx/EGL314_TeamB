@@ -43,12 +43,12 @@ TRANSITION_SLIDES = [cv2.resize(img, (1280, 720)) for img in TRANSITION_SLIDES i
 # ──────────────────────────────────────────────────────────────────────────────
 
 # ── OSC CONFIGURATION ─────────────────────────────────────────────────────────
-GMA3_LAPTOP_IP   = "192.168.254.252s"
+GMA3_LAPTOP_IP   = "192.168.254.252"
 GMA3_PORT        = 8080           
 GMA3_ADDRESS     = "/gma3/cmd"      
 
 
-REAPER_LAPTOP_IP = "192.168.254.12s"
+REAPER_LAPTOP_IP = "192.168.254.12"
 REAPER_PORT      = 8000
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -1216,7 +1216,7 @@ while True:
     
     if key == ord('q') or key == 27: 
         back_to_start()
-        send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
+        # send_osc_signal(gma3_client, GMA3_ADDRESS, "off sequence * ") 
         # send_osc_signal(reaper_client, "/action/40044", 1) 
         break
         
@@ -1322,3 +1322,7 @@ while True:
         round_start_time, game_status = time.time(), "PLAYING"
         last_active_cue_cmd = None
         match_hold_start_time = None
+
+
+
+
