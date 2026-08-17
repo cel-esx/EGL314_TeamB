@@ -37,7 +37,7 @@ Below is a detailed breakdown of how **Station 2 | Pack Recharge** plays out dur
 
 This is the Pack Recharge Station where players will recharge their guns 
 
-![Pic of guns on the table](<MVP/Station Pictures/IMG_2944.JPG>)
+![Pic of guns on the table](<MVP/Station Pictures/IMG_2944.JPG?v=1>)
 
 In this station, players are suppose to recharge the guns which would be found in player's backpack. They have to place them on the table to charge it up!
 
