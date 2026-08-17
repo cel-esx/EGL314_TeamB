@@ -160,8 +160,8 @@
 ## MVP Version:
  1. [Capture Gesture.py](/MVP/Capture%20Gesture.py)
  2. [MVP Pictures](/MVP/MVP%20Pictures/)
- 3. [01_data_preparation.ipynb](/MVP/image-classifier/Essential%20Folder/01_data_preparation.ipynb)
- 4. [02_ai_model_training.ipynb](/MVP/image-classifier/Essential%20Folder/02_ai_model_training.ipynb)
+ 3. [01_data_preparation.ipynb](/MVP/image-classifier/Essential%20Folder/01_data_preparation.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
+ 4. [02_ai_model_training.ipynb](/MVP/image-classifier/Essential%20Folder/02_ai_model_training.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
  5. [best_model.pth](/MVP/image-classifier/Essential%20Folder/best_model.pth) (Once 3 & 4 scripts are run, this will be automatically added and updated)
  6. [Dataset Folder](<MVP/image-classifier/Essential Folder/Dataset>)
  7. [Heart.png](/MVP/Heart.png)
@@ -171,6 +171,14 @@
  11. [L-ISA](/MVP/L-ISA/Project_Phantom_Lisa.lisa)
  12. [Reaper](/MVP/reaper/Project_Phantom_Reaper.rpp)
  
+
+ ## Final Version:
+ 1. [Capture Gesture.py](/Final%20Assessment/Capture%20Gesture.py)
+ 2. [MVP Pictures](/Final%20Assessment/MVP%20Pictures/)
+ 3. [best_model.pth](/Final%20Assessment/best_model.pth)
+ 4. [Final_Gesture_Definations.csv](/Final%20Assessment/Final_gesture_definitions.csv)
+ 5. [Final Assessment Game Code.py](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)
+ 6. [Heart.png](/Final%20Assessment/Heart.png)
 
    
 

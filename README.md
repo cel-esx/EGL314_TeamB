@@ -136,6 +136,14 @@ graph TD
 [MVP/reaper](MVP/reaper)| Project_Phantom_Reaper.rpp | Reaper file used for MVP project.|
 [MVP/GrandMa3](MVP/GrandMA3)| README.md | This is the GrandMa3 show documentation.|
 [MVP/GrandMa3](MVP/GrandMA3)| Project Phantom show | This is the GrandMa3 show.|
+[Final Assessment](/Final%20Assessment/best_model.pth)| best_model.pth|Trained Machine Learning Model| During the shadow gesture part, the machine will use the information from here to detect
+[Final Assessment](/Final%20Assessment/Capture%20Gesture.py)| Capture Gesture.py| Contains python code for saving / deleting gesture
+[Final Assessment](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)| Final Assessment Game Code.py| Contains the entire game code
+[Final Assessment](/Final%20Assessment/Final_gesture_definitions.csv)|Final_gesture_definitions.csv| Stores all captured gestures in a format that is understood by the game
+[Final Assessment](/Final%20Assessment/Heart.png)| Heart.png| Contains a image of a heart used in the game
+[Final Assessment/MVP Pictures](/Final%20Assessment/MVP%20Pictures/)| Images| These are the pictures that are used for the game's UI|
+
+
 
 
 
@@ -145,6 +153,7 @@ graph TD
 # Versions
 * [Proof Of Concept (POC)](/POC/) - This folder contains the inital version of the game
 * [Minimum Viable Product (MVP)](/MVP/) - This folder contains a enhanced version of the POC gameplay
+* [Final Version](/Final%20Assessment/) - This folder contains the final version of the game
 ***
 # References and Sources:
 * [Huats Club - OSC Starter Kit ](https://github.com/huats-club/oscstarterkit)
