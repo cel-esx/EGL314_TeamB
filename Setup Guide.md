@@ -28,6 +28,11 @@
  4) **Speakers** (Optional)
  5) **Webcam Tripod Stand**
  6) **External Monitor**
+ 7) **TV**
+ 8) **HDMI Cable x3**
+ 9) **HDMI Distribution Amplifier**
+ 10) **Presentation Switcher** (Optional: If you only have 1 laptop connected to the TV, a presentation switcher is not needed)
+ 11) **USB Hub** (Only if your laptop does not have any more usb ports)
 
 
 ## Software
@@ -49,9 +54,31 @@
 
 
    ## Hardware Placement
+   ### This is the recommended position to place your hardware for the Final Game game
+   You will need all the above [hardware equipment](#hardware)
+
+   This is the ideal hardware placement / setup for this game
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3188.JPG>)
+   This is the ideal hardware placement / setup for this game
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
+     There should be a webcam facing a wall.There should be a stationary light source (spotlight) from a distance to the wall. There should be a monitor that is tiled so that players are able to see whether the game is detecting the shadow on the wall
+
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
+   There should be one more webcam placed on top of the TV so that player can do the hand gesture and not require the camera from the laptop
+   
+   ### This is the recommended position to place your hardware for the MVP game
+   You will require the following:
+   1) **Desktop / Laptop** (Windows)
+   2) **External USB Webcam x2**
+   3) **Lighting Equipment** (Minimally, you need a spotlight to do the shadow OR a stationary light source)
+   4) **Speakers** (Optional)
+   5) **Webcam Tripod Stand**
+   6) **External Monitor**
+
    ![alt text](<MVP/Station Pictures/IMG_2927.JPG>)
 
-   This is the ideal setup to play this game. 
+   This is the ideal setup to play this game
+   
    
    
   ![alt text](<MVP/Station Pictures/IMG_2934.JPG>) 
@@ -59,7 +86,7 @@
 
    ![alt text](<MVP/Station Pictures/IMG_2935.JPG>) 
 
-   There should be the laptop facing the player when they are doing the hand gesture game. The area should be lit up so that the cameras cna better capture the hand gestures
+   There should be the laptop facing the player when they are doing the hand gesture game. The area should be lit up so that the cameras can better capture the hand gestures
 
    
   ## Dependencies

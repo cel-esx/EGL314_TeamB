@@ -20,39 +20,44 @@
 ## Purpose of this Project
 Our purpose is to transform trainees into the industry's most elite Phantom Hunters. To achieve official certification, trainees must successfully complete four specialised training stations:
 
-**Station 1 | Site Inspection:** Assess environmental threats, while keeping clear of phantoms
+**Station 1 | Energy Restoration:** Restore the energy while keeping clear of phantoms
 
-**Station 2 | Pack Recharge:** Rechange phantom blasters using the training centre's official enhancement engine
+**Station 2 | Phantom Blaster Charging:** Rechange phantom blasters using the training centre's official charging engine
 
 **Station 3 | Phantom Sweep:** Begin tactical eradication drills to detect and destroy phantoms
 
-**Station 4 | Final Containment:** Eradicate remaining phantoms without any sort of incident
+**Station 4 | Weak Spot Detection & Final Showdown:** Answer correctly to the Boss Phantom's questions 
 
-Below is a detailed breakdown of how **Station 2 | Pack Recharge** plays out during the training
+Below is a detailed breakdown of how **Station 2 | Phantom Blaster Charging** plays out during the training
 
  ****
- ## Station 2 - Pack Recharge
+ ## Station 2 - Phantom Blaster Charging
 
-![Station Area](<MVP/Station Pictures/IMG_2927.JPG>)
+![Station Area](<Final Assessment/Final Station Pics/IMG_3188.JPG>)
 
 This is the Pack Recharge Station where players will recharge their guns 
 
-![Pic of guns on the table](<MVP/Station Pictures/IMG_2944.PNG>)
+![PICS OF GUNS IN THE MIDDLE OF THE ROOM](<>)
 
-In this station, players are suppose to recharge the guns which would be found in player's backpack. They have to place them on the table to charge it up!
 
-![alt text](<MVP/Station Pictures/Flow Of Game.png>)
+In this station, players are suppose to recharge the guns that are at the charging zone
+
+![alt text](<Flow of game (1-2).png>)
 Players are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. 
 
-![alt text](<MVP/Station Pictures/IMG_2964.jpg>)
-In level 4, Players would have to stand in the checkpoint that is behind a webcam attached to a tripod
+![Yellow swirl in behind the tripod](<ded.png>)
 
-![alt text](<MVP/Station Pictures/IMG_2968.jpg>)
+In level 3, Players would have to stand in the yellow swirl that is behind a webcam attached to a tripod
+
+![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
 Player's task do a shadow gesture together with the other player in order to finish the game
 
 
 ![alt text](<MVP/Station Pictures/IMG_2972-1.jpg>)
 Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
+
+
+Please refer to [Final Gameplay Tutorial](/Final%20Assessment/Final%20Gameplay%20Tutorial.md)
 
 ---
 ## How to Set up
@@ -61,7 +66,7 @@ Please refer to [Setup Guide](/Setup%20Guide.md) to see what do you need to have
 ***
 
 ## System Architecture
-```mermaid
+``` mermaid
 graph TD
     %% Style Definitions
     classDef inputs fill:#f9f9f9,stroke:#333,stroke-width:2px;
@@ -70,13 +75,18 @@ graph TD
     classDef audio fill:#d4edda,stroke:#333,stroke-width:2px;
     classDef hardware fill:#fff3cd,stroke:#333,stroke-width:2px;
 
-    %% Visual & Input Hardware
-    CAM1[Laptop Webcam] -->|Video Feed| B
-    CAM2[External Webcam] -->|Video Feed| B
-    B -->|HDMI| MON[External Monitor]
+    %% Visual Inputs
+    CAM1[External Webcam #1] -->|USB| B
+    CAM2[External Webcam #2] -->|USB| B
 
     %% Main Controller
     B[Laptop 1:<br>Running Main Py]
+
+    %% Video Routing Pipeline
+    B -->|HDMI| DA[HDMI Distribution Amplifier]
+    DA -->|HDMI Out 1| MON[External Monitor]
+    DA -->|HDMI Out 2| SW[Presentation Switcher]
+    SW -->|HDMI| TV[TV Display]
 
     %% Lighting Pipeline (Laptop 2)
     B -->|Send OSC Command<br>via Wi-Fi| C[Laptop 2:<br>Running grandMA]
@@ -93,10 +103,10 @@ graph TD
     %% Assign Styles
     class CAM1,CAM2 inputs;
     class B master;
-    class MON hardware;
+    class MON,DA,SW,TV hardware;
     class C,E,F,G lighting;
     class D,QL1,AMP,SPK audio;
-```
+  ```
 ---
 # Repository Structure
 | Folder Location | File Name | Technical Roles & Functions |
