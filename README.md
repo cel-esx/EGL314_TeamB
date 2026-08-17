@@ -37,21 +37,21 @@ Below is a detailed breakdown of how **Station 2 | Pack Recharge** plays out dur
 
 This is the Pack Recharge Station where players will recharge their guns 
 
-![Pic of guns on the table](<MVP/Station Pictures/IMG_2944.JPG>)
+![Pic of guns on the table](/MVP/Station%20Pictures/IMG_2944.JPG)
 
 In this station, players are suppose to recharge the guns which would be found in player's backpack. They have to place them on the table to charge it up!
 
-![alt text](<MVP/Station Pictures/Flow Of Game.png>)
+![alt text](/MVP/Station%20Pictures/Flow%20Of%20Game.png)
 Players are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. 
 
 ![alt text](/MVP/Station%20Pictures/IMG_2964.JPG)
 In level 4, Players would have to stand in the checkpoint that is behind a webcam attached to a tripod
 
-![alt text](<MVP/Station Pictures/IMG_2968.JPG>)
+![alt text](/MVP/Station%20Pictures/IMG_2968.JPG)
 Player's task do a shadow gesture together with the other player in order to finish the game
 
 
-![alt text](<MVP/Station Pictures/IMG_2972-1.JPG>)
+![alt text](/MVP/Station%20Pictures/IMG_2972-1.JPG)
 Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
 
 ---
