@@ -23,7 +23,7 @@
 
 ## Hardware 
  1) **Desktop / Laptop** (Windows)
- 2) **External USB Webcam**
+ 2) **External USB Webcam x2**
  3) **Lighting Equipment** (Minimally, you need a spotlight to do the shadow OR a stationary light source)
  4) **Speakers** (Optional)
  5) **Webcam Tripod Stand**
@@ -174,7 +174,7 @@
 
  ## Final Version:
  1. [Capture Gesture.py](/Final%20Assessment/Capture%20Gesture.py)
- 2. [MVP Pictures](/Final%20Assessment/MVP%20Pictures/)
+ 2. [Final Pictures](/Final%20Assessment/Final%20Pictures/)
  3. [best_model.pth](/Final%20Assessment/best_model.pth)
  4. [Final_Gesture_Definations.csv](/Final%20Assessment/Final_gesture_definitions.csv)
  5. [Final Assessment Game Code.py](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)
