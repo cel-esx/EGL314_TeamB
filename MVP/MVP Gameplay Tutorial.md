@@ -52,7 +52,7 @@ https://github.com/user-attachments/assets/41f4fff9-a1b6-485d-8980-b0af1e12570a
 * **Charge the Bar:** Once you match the target gestures, hold the positions steady. A ```Charging progress bar``` will appear—maintain the pose for 2 seconds to complete the stage
 
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
-[Show lighting cues]
+
 
 * **Team Bonding Challenge:** Upon passing level 3, player need to repoisiton themselves to where the spotlight is showing
 ![alt text](<Station Pictures/IMG_2965.JPG>)

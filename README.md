@@ -57,7 +57,7 @@ Player's task do a shadow gesture together with the other player in order to fin
 Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
 
 
-Please refer to [Final Gameplay Tutorial](/Final%20Assessment/Final%20Gameplay%20Tutorial.md)
+Please refer to [Final Gameplay Tutorial](/Final%20Assessment/Final%20Gameplay%20Tutorial.md) to know how to play the finalised game
 
 ---
 ## How to Set up
