@@ -33,28 +33,30 @@ Below is a detailed breakdown of how **Station 2 | Phantom Blaster Charging** pl
  ****
  ## Station 2 - Phantom Blaster Charging
 
-![Station Area](<Final Assessment/Final Station Pics/IMG_3188.JPG>)
+![Station Area](<Final Assessment/Final Station Pics/IMG_3199.JPG>)
 
-This is the Pack Recharge Station where players will recharge their guns 
+This is the Pack Recharge Station where trainees will recharge their guns 
 
-![PICS OF GUNS IN THE MIDDLE OF THE ROOM](<>)
+![PICS OF GUNS IN THE MIDDLE OF THE ROOM](<Final Assessment/Final Station Pics/IMG_3201.JPG>)
 
 
-In this station, players are suppose to recharge the guns that are at the charging zone
 
-![alt text](<Flow of game (1-2).png>)
-Players are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. 
+In this station, trainees are suppose to recharge the guns that are at the charging zone
 
-![Yellow swirl in behind the tripod](<ded.png>)
+![alt text](<Final Assessment/Final Station Pics/Flow of game (1-2).png>)
 
-In level 3, Players would have to stand in the yellow swirl that is behind a webcam attached to a tripod
+Trainees are suppose to mimic the hand gestures shown on the laptop. But there will be a twist. As the round goes on, they will slowly come to realise that they have to work together in order to clear the level. 
+
+![Yellow swirl in behind the tripod](<Final Assessment/Final Station Pics/IMG_3205.JPG>)
+
+In level 3, Trainees would have to stand in the yellow swirl that is behind a webcam attached to a tripod
 
 ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
-Player's task do a shadow gesture together with the other player in order to finish the game
+Trainees's task do a shadow gesture together with the other trainee in order to finish the game
 
 
 ![alt text](<MVP/Station Pictures/IMG_2972-1.jpg>)
-Once the game is finished, the player's guns will be fully recharged and they will be automatically directed to the next station
+Once the game is finished, the phantom blasters will be fully recharged and they will be automatically directed to the next station
 
 
 Please refer to [Final Gameplay Tutorial](/Final%20Assessment/Final%20Gameplay%20Tutorial.md) to know how to play the finalised game

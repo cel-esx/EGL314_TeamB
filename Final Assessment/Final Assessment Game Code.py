@@ -30,13 +30,13 @@ CSV_FILE = "Final Assessment/Final_gesture_definitions.csv"
 TRANSITION_INTERVAL = 1.5  
 
 # Pre-load and scale slideshow images to full screen (1280x720)
-PIC1 = cv2.resize(cv2.imread("Final Assessment/MVP Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("Final Assessment/MVP Pictures/Pack Recharge Start Page 2.jpg") else None
-PIC2 = cv2.imread("Final Assessment/MVP Pictures/3 2.jpg") 
-PIC3 = cv2.imread("Final Assessment/MVP Pictures/2 2.jpg") 
-PIC4 = cv2.imread("Final Assessment/MVP Pictures/1 2.jpg") 
-PIC5 = cv2.imread("Final Assessment/MVP Pictures/Begin 2.jpg")
-PIC6 = cv2.resize(cv2.imread("Final Assessment/MVP Pictures/Level 4.jpg"), (1280, 720)) if os.path.exists("Final Assessment/MVP Pictures/Level 4.jpg") else None
-PIC7 = cv2.imread("Final Assessment/MVP Pictures/Are You Ready.jpg") 
+PIC1 = cv2.resize(cv2.imread("Final Assessment/Final Pictures/Pack Recharge Start Page 2.jpg"), (1280, 720)) if os.path.exists("Final Assessment/Final Pictures/Pack Recharge Start Page 2.jpg") else None
+PIC2 = cv2.imread("Final Assessment/Final Pictures/3 2.jpg") 
+PIC3 = cv2.imread("Final Assessment/Final Pictures/2 2.jpg") 
+PIC4 = cv2.imread("Final Assessment/Final Pictures/1 2.jpg") 
+PIC5 = cv2.imread("Final Assessment/Final Pictures/Begin 2.jpg")
+PIC6 = cv2.resize(cv2.imread("Final Assessment/Final Pictures/Level 4.jpg"), (1280, 720)) if os.path.exists("Final Assessment/Final Pictures/Level 4.jpg") else None
+PIC7 = cv2.imread("Final Assessment/Final Pictures/Are You Ready.jpg") 
 
 TRANSITION_SLIDES = [PIC7, PIC2, PIC3, PIC4, PIC5]
 TRANSITION_SLIDES = [cv2.resize(img, (1280, 720)) for img in TRANSITION_SLIDES if img is not None]
@@ -153,7 +153,7 @@ def load_gesture_definitions(csv_file):
 
 PRELOADED_IMAGES = {} 
 def cache_target_images(templates_keys, box_size):
-    folder = "Final Assessment/MVP Pictures"
+    folder = "Final Assessment/Final Pictures"
     if not os.path.exists(folder): return
     all_names = set([k[0] for k in templates_keys if isinstance(k, tuple)]) | set([k for k in templates_keys if isinstance(k, str)])
     
@@ -307,7 +307,7 @@ gma3_client   = create_osc_client(GMA3_LAPTOP_IP, GMA3_PORT, "grandMA3")
 reaper_client = create_osc_client(REAPER_LAPTOP_IP, REAPER_PORT, "REAPER")
 
 HEART_SIZE = 60 
-heart_img = cv2.imread("Final Assessment/MVP Pictures/Heart.png", cv2.IMREAD_UNCHANGED)
+heart_img = cv2.imread("Final Assessment/Final Pictures/Heart.png", cv2.IMREAD_UNCHANGED)
 if heart_img is not None:
     heart_img = cv2.resize(heart_img, (HEART_SIZE, HEART_SIZE), interpolation=cv2.INTER_LINEAR)
     if heart_img.ndim == 3 and heart_img.shape[2] == 4:
@@ -374,18 +374,18 @@ cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 if not cap.isOpened(): exit()  
 
 VIDEO_STAGE_MAP = {
-    (3, 0): "Final Assessment/MVP Pictures/level_bg.mp4",  
-    (3, 1): "Final Assessment/MVP Pictures/Bird.mp4",  
-    (3, 2): "Final Assessment/MVP Pictures/Swan.mp4",      
-    (3, 3): "Final Assessment/MVP Pictures/Moose.mp4",
-    (3, 4): "Final Assessment/MVP Pictures/Wolf.mp4",       
-    (3, 5): "Final Assessment/MVP Pictures/Spider.mp4",
+    (3, 0): "Final Assessment/Final Pictures/level_bg.mp4",  
+    (3, 1): "Final Assessment/Final Pictures/Bird.mp4",  
+    (3, 2): "Final Assessment/Final Pictures/Swan.mp4",      
+    (3, 3): "Final Assessment/Final Pictures/Moose.mp4",
+    (3, 4): "Final Assessment/Final Pictures/Wolf.mp4",       
+    (3, 5): "Final Assessment/Final Pictures/Spider.mp4",
 
-    ("SHADOW_TUTORIAL_STAGE_1", 0): "Final Assessment/MVP Pictures/Spider.mp4",
-    ("SHADOW_TUTORIAL_STAGE_2", 0): "Final Assessment/MVP Pictures/Spider.mp4"
+    ("SHADOW_TUTORIAL_STAGE_1", 0): "Final Assessment/Final Pictures/Spider.mp4",
+    ("SHADOW_TUTORIAL_STAGE_2", 0): "Final Assessment/Final Pictures/Spider.mp4"
 }
 
-default_bg_path = "MVP Pictures/level_bg.mp4"
+default_bg_path = "Final Pictures/level_bg.mp4"
 bg_video = cv2.VideoCapture(default_bg_path)
 last_loaded_video_path = default_bg_path
 
