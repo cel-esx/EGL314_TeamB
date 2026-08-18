@@ -56,6 +56,6 @@ Track 17 (fail.mp3): `Output 41 / Output 42`
 ![alt text](L-ISA_Images/Timecode_setup.png)
 
 ## L-ISA Snapshot
-![alt text](L-ISA_Video/Ambient_Snapshot.mp4)
+[alt text](L-ISA_Video/Ambient_Snapshot.mp4)
 
-![alt text](L-ISA_Video/Clock-Ticking_Snapshot.mp4)
+[alt text](L-ISA_Video/Clock-Ticking_Snapshot.mp4)
