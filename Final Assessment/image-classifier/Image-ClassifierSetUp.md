@@ -122,7 +122,9 @@ Your Jupyter Notebook is good to go!
 
     You are ready to use the `.pth` that will be saved in the same folder as the rest of the files you've run! Have fun! This will be use in the [MVP GameCode.py](<../MVP GameCode.py>)
 
-    Changes made for the files: Dataset has been updated. More Shadows were added, creating a variety to be used for game. 
+    Changes made for the files: 
+    Dataset has been updated. More Shadows were added, creating a variety to be used for game. More variety will allow the machine to learn from different angles or shapes of hands that did the shadows. 
+
 
 
 
