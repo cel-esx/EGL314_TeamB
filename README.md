@@ -160,8 +160,16 @@ graph TD
 [Final Assessment/Final Station Pics](/Final%20Assessment/Final%20Station%20Pics/)| Images| Contains the images of the station for the final version of the game
 [Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/grandMA3_game_flow.md)| Final Gma3 Flow | Contains the points of the different sequences that were used during the game 
 [Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| Final Gma3 Show | Contains the show file used for the final 
-[Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| images | Contains the show file used for the final 
-
+[Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| images | Contains the show file used for the final
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/README.md)| README.md | Contains updated descriptions of Reaper and L-ISA used in this station
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Reaper.rpp)| Project_Phantom_Reaper.rpp | Final Assessment of Reaper file
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Lisa.lisa)| Project_Phantom_Lisa.lisa | Final Assessment of L-ISA file
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/)| Audio | Contains Audio file used in this station
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Common%20BGM/)| Audio | Contains Audio file used for Ambient sound
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Siera/)| Audio | Contains AI voice transitions
+[Final Assessment/Final Game Tracks/L-ISA_GIF](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_GIF/)| L-ISA Snapshots | Contains L-ISA Snapshots used in this station
+[Final Assessment/Final Game Tracks/L-ISA_Images](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_Images/)| Images | Contains images of L-ISA set up and MIDI timecode
+[Final Assessment/Final Game Tracks/Reaper_Images](/Final%20Assessment/Final%20Game%20Tracks/Reaper_Images/)| Images | Contains images of Reaper's MIDI outputs
 
 
 
