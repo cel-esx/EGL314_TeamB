@@ -24,7 +24,7 @@ This refined version streamlines the gameplay progression to maintain high playe
 
 ``` Shadow Gesture Tutorial ```
 
-![alt text](<Pic 2.png>)
+![alt text](<Final Station Pics/Pic 2.png>)
 
 * **Escalating Challenge:** As trainees progress, the number of distinct target gestures required reduces from **4 down to 2**, requiring players to consistently repeat and master the precise gesture target.
 * **Cooperative Final Stage:** The final level transitions trainees to a new environment designed to work together. Trainees must join their hands to form a single shadow, working cooperatively as a team to complete the game.
@@ -71,8 +71,20 @@ The **main objective** of the game is to successfully complete all 3 levels to c
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
 
 
-![Position 2](<Final Station Pics/3.jpg>)
+<video src="https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7" controls width="100%">
+  Your browser does not support the video tag.
+</video>
+https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7
+
+
+
 * **Team Bonding Challenge:** Upon passing level 2, trainees need to repoisiton themselves to where the yellow swirls is showing
+
+
+
+https://github.com/user-attachments/assets/e829ceae-eb84-4954-83a8-013a713ace88
+
+
 
 ![alt text](<Final Station Pics/IMG.jpg>)
 Each trainees need to use only 1 hand and they have to work together in order to complete the tutorial that will lead you to the next part of the charging sequence
