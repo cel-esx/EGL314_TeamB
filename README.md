@@ -148,9 +148,12 @@ graph TD
 [MVP/GrandMa3](MVP/GrandMA3)| README.md | This is the GrandMa3 show documentation.|
 [MVP/GrandMa3](MVP/GrandMA3)| Project Phantom show | This is the GrandMa3 show.|
 [Final Assessment](/Final%20Assessment/best_model.pth)| best_model.pth|Trained Machine Learning Model| During the shadow gesture part, the machine will use the information from here to detect
-[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/)| Essential Folder| Contains contains Jupyter Notebook Files used for Machine Learning Training
-[Final Assessment/Image-Classifie](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/AI%20Training%20Jupyter%20Notebook_Part1.ipynb)| Notebook_Part1.ipynb| This file creates image normalization statistics for Machine Learning Training
-[Final Assessment/Image-Classifie](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/Data%20Preperation_Part2.ipynb)| DataPreparation_Part2.ipynb| This file uses Machine Learning to classify images
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Image-ClassifierSetUp.md)| Image-ClassifierSetUp.md| This shows how to set up Jupyter Notebook and how to use the files in Image Classifier Folder
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/)| Essential Folder| Contains contains Jupyter Notebook Files used for Machine Learning Training and Images used for the learning
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/Dataset/)| Dataset | This folder contains the images used for Machine Learning to learn the shadows
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/AI%20Training%20Jupyter%20Notebook_Part1.ipynb)| Notebook_Part1.ipynb| This file creates image normalization statistics for Machine Learning Training
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/Data%20Preparation_Part2.ipynb)| DataPreparation_Part2.ipynb| This file uses Machine Learning to classify images
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/JupyterSetUpImages/)| JupyterSetUpImages| Images used in Image-ClassifierSetUp.md
 [Final Assessment](/Final%20Assessment/Capture%20Gesture.py)| Capture Gesture.py| Contains python code for saving / deleting gesture
 [Final Assessment](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)| Final Assessment Game Code.py| Contains the entire game code
 [Final Assessment](/Final%20Assessment/Final_gesture_definitions.csv)|Final_gesture_definitions.csv| Stores all captured gestures in a format that is understood by the game
