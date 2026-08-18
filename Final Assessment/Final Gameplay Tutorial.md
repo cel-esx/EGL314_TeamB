@@ -2,7 +2,7 @@
 ## Table Of Contents
 1. **[Game Enhancement Details](#game-enhancement-details)**
    * What enhancements we have done in this final version of the game
-2. **[Game Rules & Objective](#game-rules-objective)**
+2. **[Game Rules & Objective](#game-rules)**
    * What are the rules players have to follow
 3. **[How To Play](#how-to-play)**
     * Instructions on how to play the game
@@ -31,7 +31,7 @@ This refined version streamlines the gameplay progression to maintain high playe
 
 > **Note:** Trainees only use one hand each to do the shadow gestures
 
-
+<a id="game-rules"></a>
 # Game Rules & Objective
 
 The **main objective** of the game is to successfully complete all 3 levels to charge the phantom blaster before running out of lives and time

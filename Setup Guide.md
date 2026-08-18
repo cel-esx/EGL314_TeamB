@@ -58,13 +58,16 @@
    You will need all the above [hardware equipment](#hardware)
 
    This is the ideal hardware placement / setup for this game
+
    ![alt text](<Final Assessment/Final Station Pics/IMG_3188.JPG>)
    This is the ideal hardware placement / setup for this game
    ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
      There should be a webcam facing a wall.There should be a stationary light source (spotlight) from a distance to the wall. There should be a monitor that is tiled so that players are able to see whether the game is detecting the shadow on the wall
 
-   ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3209.JPG>)
+
    There should be one more webcam placed on top of the TV so that player can do the hand gesture and not require the camera from the laptop
+   > Kindly **ignore** the other webcam as it used for the next station
    
    ### This is the recommended position to place your hardware for the MVP game
    You will require the following:
