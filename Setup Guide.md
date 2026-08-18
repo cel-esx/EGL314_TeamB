@@ -55,16 +55,19 @@
 
    ## Hardware Placement
    ### This is the recommended position to place your hardware for the Final Game game
-   You will need all the above [hardware equipment](#hardware)
+   You will need all the above [Hardware Equipment](#hardware)
 
    This is the ideal hardware placement / setup for this game
+
    ![alt text](<Final Assessment/Final Station Pics/IMG_3188.JPG>)
    This is the ideal hardware placement / setup for this game
    ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
      There should be a webcam facing a wall.There should be a stationary light source (spotlight) from a distance to the wall. There should be a monitor that is tiled so that players are able to see whether the game is detecting the shadow on the wall
 
-   ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3209.JPG>)
+
    There should be one more webcam placed on top of the TV so that player can do the hand gesture and not require the camera from the laptop
+   > Kindly **ignore** the other webcam as it used for the next station
    
    ### This is the recommended position to place your hardware for the MVP game
    You will require the following:
@@ -87,6 +90,8 @@
    ![alt text](<MVP/Station Pictures/IMG_2935.JPG>) 
 
    There should be the laptop facing the player when they are doing the hand gesture game. The area should be lit up so that the cameras can better capture the hand gestures
+
+   > Note: There is no **Recommended Setup For POC** as the game function with just a laptop and nothing else more. So no need to stress about it
 
    
   ## Dependencies
@@ -206,6 +211,13 @@
  4. [Final_Gesture_Definations.csv](/Final%20Assessment/Final_gesture_definitions.csv)
  5. [Final Assessment Game Code.py](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)
  6. [Heart.png](/Final%20Assessment/Heart.png)
+ 7. [Dataset Folder](/Final%20Assessment/image-classifier/Essential%20Folder/Dataset/)
+ 8. [01_data_preparation.ipynb](/Final%20Assessment/image-classifier/Essential%20Folder/AI%20Training%20Jupyter%20Notebook_Part1.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
+ 9. [02_ai_model_training.ipynb](/Final%20Assessment/image-classifier/Essential%20Folder/Data%20Preperation_Part2.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
+ 10. [Final GrandMa3 Show File] (NOT DONE YET)
+ 11. [Final Reaper](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Reaper.rpp) (Make sure you have Reaper installed in your PC /Laptop. Refer to [Reaper Installation Guide](/MVP/reaper/README.md))
+ 12. [Final L-ISA](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Lisa.lisa) (Make sure you have L-ISA installed in your PC /Laptop. Refer to [L-ISA Installation Guide](/MVP/L-ISA/README.md)) 
+
 
    
 

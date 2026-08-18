@@ -2,7 +2,7 @@
 ## Table Of Contents
 1. **[Game Enhancement Details](#game-enhancement-details)**
    * What enhancements we have done in this final version of the game
-2. **[Game Rules & Objective](#game-rules-objective)**
+2. **[Game Rules & Objective](#game-rules)**
    * What are the rules players have to follow
 3. **[How To Play](#how-to-play)**
     * Instructions on how to play the game
@@ -31,7 +31,7 @@ This refined version streamlines the gameplay progression to maintain high playe
 
 > **Note:** Trainees only use one hand each to do the shadow gestures
 
-
+<a id="game-rules"></a>
 # Game Rules & Objective
 
 The **main objective** of the game is to successfully complete all 3 levels to charge the phantom blaster before running out of lives and time
@@ -71,27 +71,29 @@ The **main objective** of the game is to successfully complete all 3 levels to c
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
 
 
-
-https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7
-
+<video src="https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7" controls width="100%">
+  Your browser does not support the video tag.
+</video>
 
 
 * **Team Bonding Challenge:** Upon passing level 2, trainees need to repoisiton themselves to where the yellow swirls is showing
 
 
+<video src="https://github.com/user-attachments/assets/e829ceae-eb84-4954-83a8-013a713ace88" controls width="100%">
+  Your browser does not support the video tag.
+</video>
 
-https://github.com/user-attachments/assets/e829ceae-eb84-4954-83a8-013a713ace88
 
-
+Each trainees need to use only 1 hand and they have to work together in order to complete the tutorial that will lead you to the next part of the charging sequence
 
 ![alt text](<Final Station Pics/IMG.jpg>)
-Each trainees need to use only 1 hand and they have to work together in order to complete the tutorial that will lead you to the next part of the charging sequence
 
 ## Penalties
 * **Running Out of Time:** Each stage has a countdown timer. Failing to hold the required gestures before the timer hits zero results in a failed charge and loss of a life
 
 * **Losing Lives:** You begin with 3 lives. A time-out costs you a life, triggers a failure lighting state and sound effect, and triggers a rollback penalty. Losing all lives will result in starting over the whole game
 
+![alt text](Final_GMA3/images/lightsdail.jpg)
 
 ## Ready To Play?
- If you have understood on how to play this game, head over to [Setup Guide](Setup Guide.md) to start prepping your laptop or PC and start your experience
+ If you have understood on how to play this game, head over to [Setup Guide](/Setup%20Guide.md) to start prepping your laptop or PC and start your experience

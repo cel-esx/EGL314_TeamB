@@ -35,7 +35,7 @@ Below is a detailed breakdown of how **Station 2 | Phantom Blaster Charging** pl
 
 ![Station Area](<Final Assessment/Final Station Pics/IMG_3199.JPG>)
 
-This is the Pack Recharge Station where trainees will recharge their guns 
+This is the Phantom Blaster Charging Station where trainees will recharge their guns that are known as Phantom Blasters 
 
 ![PICS OF GUNS IN THE MIDDLE OF THE ROOM](<Final Assessment/Final Station Pics/IMG_3201.JPG>)
 
@@ -51,12 +51,11 @@ Trainees are suppose to mimic the hand gestures shown on the laptop. But there w
 
 In level 3, Trainees would have to stand in the yellow swirl that is behind a webcam attached to a tripod
 
-![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
-Trainees's task do a shadow gesture together with the other trainee in order to finish the game
+![alt text](<Final Assessment/Final Station Pics/IMG_3189.JPG>)
+
+Trainees's task do a shadow gesture together with the other trainee in order to finish the game. Once the game is finished, the phantom blasters will be fully recharged and they will be automatically directed to the next station
 
 
-![alt text](<MVP/Station Pictures/IMG_2972-1.jpg>)
-Once the game is finished, the phantom blasters will be fully recharged and they will be automatically directed to the next station
 
 
 Please refer to [Final Gameplay Tutorial](/Final%20Assessment/Final%20Gameplay%20Tutorial.md) to know how to play the finalised game
@@ -153,16 +152,9 @@ graph TD
 [Final Assessment](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)| Final Assessment Game Code.py| Contains the entire game code
 [Final Assessment](/Final%20Assessment/Final_gesture_definitions.csv)|Final_gesture_definitions.csv| Stores all captured gestures in a format that is understood by the game
 [Final Assessment](/Final%20Assessment/Heart.png)| Heart.png| Contains a image of a heart used in the game
-[Final Assessment/MVP Pictures](/Final%20Assessment/MVP%20Pictures/)| Images| These are the pictures that are used for the game's UI|
-[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/)| README.md | This file contains the tracks, and the midi routing that were used for this station.
-[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Reaper.rpp)| Project_Phathom_Reaper.rpp | Reaper file used for Final Assessment
-[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Lisa.lisa)| Project_Phantom_Lisa.lisa | L-ISA file used for Final Assessment
-[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/)| Gameplay tracks| These tracks are used when the game is playing
-[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Common%20BGM/)|Common BGM| Tracks were used throughout the entire station
-[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Siera/)|Siera| Voiceover for Transition Sequence
-[Final Assessment/Final Game Tracks/L-ISA_GIF](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_GIF/)|L-ISA Snapshots| GIF file of L-ISA Snapshots used in the Final Assessment
-[Final Assessment/Final Game Tracks/L-ISA_Images](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_Images/)|Images| Images used in the README.md
-[Final Assessment/Final Game Tracks/Reaper_Images](/Final%20Assessment/Final%20Game%20Tracks/Reaper_Images/)|Images| Images used in the README.md
+[Final Assessment](/Final%20Assessment/Final%20Gameplay%20Tutorial.md)| Final Gameplay Tutorial.md| Tutorial on how to play the final version of the game
+[Final Assessment/Final Pictures](/Final%20Assessment/Final%20Pictures/)| Images| These are the pictures that are used for the game's UI|
+[Final Assessment/Final Station Pics](/Final%20Assessment/Final%20Station%20Pics/)| Images| Contains the images of the station for the final version of the game
 
 
 
