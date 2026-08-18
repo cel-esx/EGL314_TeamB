@@ -214,7 +214,7 @@
  7. [Dataset Folder](/Final%20Assessment/image-classifier/Essential%20Folder/Dataset/)
  8. [01_data_preparation.ipynb](/Final%20Assessment/image-classifier/Essential%20Folder/AI%20Training%20Jupyter%20Notebook_Part1.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
  9. [02_ai_model_training.ipynb](/Final%20Assessment/image-classifier/Essential%20Folder/Data%20Preperation_Part2.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
- 10. [Final GrandMa3 Show File] (NOT DONE YET)
+ 10. [Final GrandMa3 Show File](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)(Make sure you have GrandMA3 installed in your PC /Laptop. Refer to [GrandMA3 Installation Guide](/MVP/GrandMa3/grandMA3setup.md)) 
  11. [Final Reaper](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Reaper.rpp) (Make sure you have Reaper installed in your PC /Laptop. Refer to [Reaper Installation Guide](/MVP/reaper/README.md))
  12. [Final L-ISA](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Lisa.lisa) (Make sure you have L-ISA installed in your PC /Laptop. Refer to [L-ISA Installation Guide](/MVP/L-ISA/README.md)) 
 
