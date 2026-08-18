@@ -23,8 +23,10 @@ This refined version streamlines the gameplay progression to maintain high playe
 ![alt text](<Final Station Pics/Pic.png>)
 
 ``` Shadow Gesture Tutorial ```
+
 ![alt text](<Pic 2.png>)
-* **Escalating Challenge:** As trainees progress, the number of distinct target gestures required reduces from **4 down to 1**, requiring players to consistently repeat and master the precise gesture target.
+
+* **Escalating Challenge:** As trainees progress, the number of distinct target gestures required reduces from **4 down to 2**, requiring players to consistently repeat and master the precise gesture target.
 * **Cooperative Final Stage:** The final level transitions trainees to a new environment designed to work together. Trainees must join their hands to form a single shadow, working cooperatively as a team to complete the game.
 
 > **Note:** Trainees only use one hand each to do the shadow gestures
@@ -34,14 +36,15 @@ This refined version streamlines the gameplay progression to maintain high playe
 
 The **main objective** of the game is to successfully complete all 3 levels to charge the phantom blaster before running out of lives and time
 
-![alt text](IMG_3188.JPG)
+![alt text](<Final Station Pics/IMG_3199.JPG>)
 * **Beat the Clock:** Every stage is bound by a strict countdown timer. If the timer hits zero before you match the required gestures / shadows, you fail the stage and will have to restart
 
 ![alt text](<Final Station Pics/Pic 4.png>)
 
 * **Progressive Co-Op:** As you advance through the game, you realise that eventually both players must follow the same target gestures shown on the screen
 
-![alt text](<Flow of game (1-2).png>)
+![alt text](<Final Station Pics/Flow of game (1-2).png>)
+
 * **The 3-Life Rule:** You begin your journey with 3 lives. If you fail a stage, you lose a life and are sent back to the start of the stage. Losing all lives results in Game Over
 
 ![alt text](<Final Station Pics/Screenshot 2026-08-18 012343.png>)
@@ -52,19 +55,21 @@ The **main objective** of the game is to successfully complete all 3 levels to c
 
 ---
 # How To Play?
-![Position](<Station Pictures/IMG_2962.JPG>)
-* **Position:** Stand at the yellow swirls in front of the TV, ensuring both trainees's left and right hands are fully visible in the frame
+
+![Position 1](<Final Station Pics/IMG_3198.JPG>)
+* **Position:** Stand at the yellow swirls in front of the TV first. Then you have to ensure both of the trainees's left and right hands are fully visible in the frame
 
 ![alt text](<Final Station Pics/IMG 3.jpg>)
-* **Start the Game:** Both trainees are required to complete the hand gesture tutorial to begin the charging sequence
+* **Start the Game:** Both trainees are required to complete the hand gesture tutorial that will begin the charging sequence
 
 ![alt text](<Final Station Pics/IMG 2.jpg>)
 * **Replicate the Runes:** Look at the active gesture boxes displayed on the screen. Physically mirror the exact left and right hand gestures using your own hands for levels 1-2
 
-![Charging](<Final Station Pics/3.jpg>)
 * **Charge the Bar:** Once you match the target gestures, hold the positions steady. A ```Charging progress bar``` will appear—maintain the pose for 2 seconds to complete the stage
+![Charging](<Final Station Pics/Charging.jpeg>)
 
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
+
 
 ![Position 2](<Final Station Pics/3.jpg>)
 * **Team Bonding Challenge:** Upon passing level 2, trainees need to repoisiton themselves to where the yellow swirls is showing
