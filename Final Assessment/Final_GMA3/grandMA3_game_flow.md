@@ -2,12 +2,12 @@
 
 This document follows the actual game flow from Station A through Team B gameplay, documenting all grandMA3 macros and sequences with space for screenshots.
 
+The following sequences can be found in `Project Phantom.show` 
+
 ---
-
 ## Flow Overview
-
 ```
-Station A (Initial State)
+Station A (end State)
         ↓
 Team B Start → Macro 10
         ↓
@@ -203,8 +203,7 @@ go macro 9;
 
 ### Macro 12 — Game Over
 
-**Purpose:** Triggers game over state, resets system, or shows end screen
-
+**Purpose:** Triggers game over state, resets system tutorial 1.
 **Screenshot:**
 
 ![Macro 12 Game Over](images/lights%20start.jpg)
