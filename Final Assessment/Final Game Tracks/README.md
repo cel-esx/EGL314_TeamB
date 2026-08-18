@@ -28,24 +28,24 @@ These tracks will be playing in the entire gameplay.
 1. [game_end.mp3](Audio%20Tracks/Common%20BGM/game_end.mp3)
 
 ## Ambient Sound MIDI Routing/Track Organisation In Reaper
-[!alt text](Images/Common%20Track%20Routing.png)
+[!alt text](Images/Common%20Track%20Routing.png) <br>
 From the image above, these are the tracks used throughout the entire station.
 
 ## MIDI Routing
-Track 2 (proj_phantom_bgm.mp3): `Output 1 / Output 2`
-Track 3 (White_noise.wav): `Output 3 / Output 4`
-Track 4 (Electric_spark.mp3): `Output 5 / Output 6`, and `Output 7 / Output 8`
-Track 5 (game_end.mp3): `Output 9 / Output 10`, and `Output 11 / Output 12`
+Track 2 (proj_phantom_bgm.mp3): `Output 1 / Output 2` <br>
+Track 3 (White_noise.wav): `Output 3 / Output 4` <br>
+Track 4 (Electric_spark.mp3): `Output 5 / Output 6`, and `Output 7 / Output 8` <br>
+Track 5 (game_end.mp3): `Output 9 / Output 10`, and `Output 11 / Output 12` <br>
 Track 6 (Siera): `Output 13 / Output 14`, and `Output 15 / Output 16`
 
 ## Gameplay MIDI Routing/Track Organisation In Reaper
-![alt text](Reaper_Images/Gameplay.png)
+![alt text](Reaper_Images/Gameplay.png) <br>
 From the image above, these are the tracks used during the Gameplay.
 
 ## MIDI Routing
-Track 15 (clock-ticking.mp3): `Output 40`
-Track 16 (loading_effect.mp3, recharge.mp3): `Output 43 / Output 44`
-Track 17 (fail.mp3): `Output 41 / Output 42`
+Track 15 (clock-ticking.mp3): `Output 40` <br>
+Track 16 (loading_effect.mp3, recharge.mp3): `Output 43 / Output 44` <br>
+Track 17 (fail.mp3): `Output 41 / Output 42` 
 
 ## L-ISA Source Set up
 ![alt text](L-ISA_Images/Sources_setup.png)
