@@ -84,14 +84,16 @@ The **main objective** of the game is to successfully complete all 3 levels to c
 </video>
 
 
-![alt text](<Final Station Pics/IMG.jpg>)
 Each trainees need to use only 1 hand and they have to work together in order to complete the tutorial that will lead you to the next part of the charging sequence
+
+![alt text](<Final Station Pics/IMG.jpg>)
 
 ## Penalties
 * **Running Out of Time:** Each stage has a countdown timer. Failing to hold the required gestures before the timer hits zero results in a failed charge and loss of a life
 
 * **Losing Lives:** You begin with 3 lives. A time-out costs you a life, triggers a failure lighting state and sound effect, and triggers a rollback penalty. Losing all lives will result in starting over the whole game
 
+![alt text](Final_GMA3/images/lightsdail.jpg)
 
 ## Ready To Play?
- If you have understood on how to play this game, head over to [Setup Guide](Setup Guide.md) to start prepping your laptop or PC and start your experience
+ If you have understood on how to play this game, head over to [Setup Guide](/Setup%20Guide.md) to start prepping your laptop or PC and start your experience
