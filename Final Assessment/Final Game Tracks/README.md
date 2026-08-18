@@ -54,6 +54,22 @@
 
 ---
 
+### Markers (Reaper)
+| Marker ID | Marker Name | Command ID | Event Description |
+| :--- | :--- | :--- | :--- |
+| Marker 11 | Team B - Start time ticking | 41251 | [`Clock-Ticking.mp3`](Audio%20Tracks/clock-ticking.mp3) plays during hand and shadow sequence gameplay |
+| Marker 12 | Team B - Failing | 41252 | failed stage during hand and shadow sequence gameplay, [`fail.mp3`](Audio%20Tracks/fail.mp3) plays |
+| Marker 13 | Team B - Loading | 41253 | when the progress bar starts to load, [`loading_effect.mp3`](Audio%20Tracks/loading_effect.mp3) plays |
+| Marker 14 | Team B - Recharge | 41254 | [`recharge.mp3`](Audio%20Tracks/recharge.mp3) plays when each stage are cleared during gameplay |
+| Marker 15 | Team B - Good job | 41255 | when each tutorial stage is cleared, first 3s of [`station 2_gesture-tutorial.wav`](Audio%20Tracks/Siera/station%202_gesture-tutorial.wav) is played |
+| Marker 10 | Team B - Transition Team E | 40160 | players completed the game, Siera track -- [`Siera-Station-2-Complete.mp3`](Audio%20Tracks/Siera/Siera-Station-2-Complete.mp3) starts playing |
+| Marker 1 | Hand gesture Tutorial | 40161 | when game is initialising, [`station 2_gesture-tutorial.wav`](Audio%20Tracks/Siera/station%202_gesture-tutorial.wav) is played |
+| Marker 7 | Hand gesture sequence | 40167 | transiting from hand gesture tutorial to hand gesture sequence, [`station 2_gesture-start.wav`](Audio%20Tracks/Siera/station%202_gesture-start.wav) plays |
+| Marker 28 | shadow tutorial | 41268 | transiting from hand gesture sequence to shadow tutorial, [`station 2_shadow-tutorial.wav`](Audio%20Tracks/Siera/station%202_shadow-tutorial.wav) plays |
+| Marker 30 | shadow seq | 41270 | transiting from hand gesture sequence to shadow tutorial, [`station 2_shadow-start.wav`](Audio%20Tracks/Siera/station%202_shadow-start.wav) plays |
+
+---
+
 ## L-ISA Configuration
 
 ### Source & Timecode Setup
@@ -70,10 +86,16 @@
     <i><u>Midi Timecode:</u></i>
 </p>
 <p>
-  <img src="L-ISA_Images/Timecode_setup.png" width="100%" alt="Timecode Setup" />
+  <i> MIDI set up during gameplay/tutorial: </i>
+  <img src="L-ISA_Images/Timecode_setup.png" width="70%" alt="Timecode Setup" /> <br>
+  
+</p>
+<p>
+  <i> MIDI set up for transitions: </i>
+  <img src="L-ISA_Images/Timecode_setup2.png" width="70%" alt="Timecode Setup" />
 </p>
 
-### Timecode Markers (Team B)
+### Timecode Snapshots (L-ISA)
 | Timecode | Marker ID | Team / Event Description |
 | :--- | :--- | :--- |
 | `00:34:24:00` | Marker 11 | Team B - Start time ticking |
@@ -82,19 +104,44 @@
 | `00:43:56:00` | Marker 14 | Team B - Recharge |
 | `00:46:00:00` | Marker 15 | Team B - Good job |
 | `00:47:44:00` | Marker 10 | Team B - Transition Team E |
+| `01:21:00:00` | Marker 1 | Hand gesture Tutorial |
+| `01:24:00:00` | Marker 7 | Hand gesture sequence |
+| `01:27:00:00` | Marker 28 | Shadow gesture Tutorial |
+| `01:31:00:00` | Marker 30 | Shadow gesture sequence |
 
 ### Snapshots & Spatialization
 <p>
-<u><i>Ambient:</i></u>
+<u><i>Ambient/Siera's Voice Transition:</i></u>
 </p>
 <p>
-  <img src="L-ISA_GIF/Ambient_Snapshot.gif" width="100%" alt="Ambient Snapshot" />
+  <img src="L-ISA_GIF/Ambient_Snapshot.gif" width="80%" alt="Ambient Snapshot" />
 </p>
 <p>
 <u><i>Clock-Ticking:</i></u>
 </p>
 <p>
-  <img src="L-ISA_GIF/Clock-Ticking_Snapshot.gif" width="100%" alt="Clock Ticking Snapshot" />
+  <img src="L-ISA_GIF/Clock-Ticking_Snapshot.gif" width="80%" alt="Clock Ticking Snapshot" />
+</p>
+
+<p>
+<u><i>Fail:</i></u>
+</p>
+<p>
+  <img src="L-ISA_GIF/Fail_Snapshot.gif" width="80%" alt="Clock Ticking Snapshot" />
+</p>
+
+<p>
+<u><i>Loading:</i></u>
+</p>
+<p>
+  <img src="L-ISA_GIF/Loading_Snapshot.gif" width="80%" alt="Clock Ticking Snapshot" />
+</p>
+
+<p>
+<u><i>Recharge/Good Job:</i></u>
+</p>
+<p>
+  <img src="L-ISA_GIF/Clock-Ticking_Snapshot.gif" width="80%" alt="Clock Ticking Snapshot" />
 </p>
 
 ---

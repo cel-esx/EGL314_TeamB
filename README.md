@@ -161,6 +161,11 @@ graph TD
 [Final Assessment](/Final%20Assessment/Final%20Gameplay%20Tutorial.md)| Final Gameplay Tutorial.md| Tutorial on how to play the final version of the game
 [Final Assessment/Final Pictures](/Final%20Assessment/Final%20Pictures/)| Images| These are the pictures that are used for the game's UI|
 [Final Assessment/Final Station Pics](/Final%20Assessment/Final%20Station%20Pics/)| Images| Contains the images of the station for the final version of the game
+[Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/grandMA3_game_flow.md)| Final Gma3 Flow | Contains the points of the different sequences that were used during the game 
+[Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| Final Gma3 Show | Contains the show file used for the final 
+[Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| images | Contains the show file used for the final 
+
+
 
 
 
