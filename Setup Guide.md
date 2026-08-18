@@ -23,11 +23,16 @@
 
 ## Hardware 
  1) **Desktop / Laptop** (Windows)
- 2) **External USB Webcam**
+ 2) **External USB Webcam x2**
  3) **Lighting Equipment** (Minimally, you need a spotlight to do the shadow OR a stationary light source)
  4) **Speakers** (Optional)
  5) **Webcam Tripod Stand**
  6) **External Monitor**
+ 7) **TV**
+ 8) **HDMI Cable x3**
+ 9) **HDMI Distribution Amplifier**
+ 10) **Presentation Switcher** (Optional: If you only have 1 laptop connected to the TV, a presentation switcher is not needed)
+ 11) **USB Hub** (Only if your laptop does not have any more usb ports)
 
 
 ## Software
@@ -49,9 +54,31 @@
 
 
    ## Hardware Placement
+   ### This is the recommended position to place your hardware for the Final Game game
+   You will need all the above [hardware equipment](#hardware)
+
+   This is the ideal hardware placement / setup for this game
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3188.JPG>)
+   This is the ideal hardware placement / setup for this game
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
+     There should be a webcam facing a wall.There should be a stationary light source (spotlight) from a distance to the wall. There should be a monitor that is tiled so that players are able to see whether the game is detecting the shadow on the wall
+
+   ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
+   There should be one more webcam placed on top of the TV so that player can do the hand gesture and not require the camera from the laptop
+   
+   ### This is the recommended position to place your hardware for the MVP game
+   You will require the following:
+   1) **Desktop / Laptop** (Windows)
+   2) **External USB Webcam x2**
+   3) **Lighting Equipment** (Minimally, you need a spotlight to do the shadow OR a stationary light source)
+   4) **Speakers** (Optional)
+   5) **Webcam Tripod Stand**
+   6) **External Monitor**
+
    ![alt text](<MVP/Station Pictures/IMG_2927.JPG>)
 
-   This is the ideal setup to play this game. 
+   This is the ideal setup to play this game
+   
    
    
   ![alt text](<MVP/Station Pictures/IMG_2934.JPG>) 
@@ -59,7 +86,7 @@
 
    ![alt text](<MVP/Station Pictures/IMG_2935.JPG>) 
 
-   There should be the laptop facing the player when they are doing the hand gesture game. The area should be lit up so that the cameras cna better capture the hand gestures
+   There should be the laptop facing the player when they are doing the hand gesture game. The area should be lit up so that the cameras can better capture the hand gestures
 
    
   ## Dependencies
@@ -160,8 +187,8 @@
 ## MVP Version:
  1. [Capture Gesture.py](/MVP/Capture%20Gesture.py)
  2. [MVP Pictures](/MVP/MVP%20Pictures/)
- 3. [01_data_preparation.ipynb](/MVP/image-classifier/Essential%20Folder/01_data_preparation.ipynb)
- 4. [02_ai_model_training.ipynb](/MVP/image-classifier/Essential%20Folder/02_ai_model_training.ipynb)
+ 3. [01_data_preparation.ipynb](/MVP/image-classifier/Essential%20Folder/01_data_preparation.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
+ 4. [02_ai_model_training.ipynb](/MVP/image-classifier/Essential%20Folder/02_ai_model_training.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
  5. [best_model.pth](/MVP/image-classifier/Essential%20Folder/best_model.pth) (Once 3 & 4 scripts are run, this will be automatically added and updated)
  6. [Dataset Folder](<MVP/image-classifier/Essential Folder/Dataset>)
  7. [Heart.png](/MVP/Heart.png)
@@ -171,6 +198,14 @@
  11. [L-ISA](/MVP/L-ISA/Project_Phantom_Lisa.lisa)
  12. [Reaper](/MVP/reaper/Project_Phantom_Reaper.rpp)
  
+
+ ## Final Version:
+ 1. [Capture Gesture.py](/Final%20Assessment/Capture%20Gesture.py)
+ 2. [Final Pictures](/Final%20Assessment/Final%20Pictures/)
+ 3. [best_model.pth](/Final%20Assessment/best_model.pth)
+ 4. [Final_Gesture_Definations.csv](/Final%20Assessment/Final_gesture_definitions.csv)
+ 5. [Final Assessment Game Code.py](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)
+ 6. [Heart.png](/Final%20Assessment/Heart.png)
 
    
 
