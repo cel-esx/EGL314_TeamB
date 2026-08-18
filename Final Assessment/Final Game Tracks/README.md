@@ -86,12 +86,12 @@
     <i><u>Midi Timecode:</u></i>
 </p>
 <p>
-  <i> MIDI set up during gameplay/tutorial: </i>
+  <i> MIDI set up during gameplay/tutorial: </i> <br>
   <img src="L-ISA_Images/Timecode_setup.png" width="70%" alt="Timecode Setup" /> <br>
   
 </p>
 <p>
-  <i> MIDI set up for transitions: </i>
+  <i> MIDI set up for transitions: </i> <br>
   <img src="L-ISA_Images/Timecode_setup2.png" width="70%" alt="Timecode Setup" />
 </p>
 
