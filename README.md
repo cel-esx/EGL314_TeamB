@@ -53,12 +53,9 @@ In level 3, Trainees would have to stand in the yellow swirl that is behind a we
 
 ![alt text](<Final Assessment/Final Station Pics/IMG_3189.JPG>)
 
-Trainees's task do a shadow gesture together with the other trainee in order to finish the game
+Trainees's task do a shadow gesture together with the other trainee in order to finish the game. Once the game is finished, the phantom blasters will be fully recharged and they will be automatically directed to the next station
 
 
-![alt text](<MVP/Station Pictures/IMG_2972-1.jpg>)
-
-Once the game is finished, the phantom blasters will be fully recharged and they will be automatically directed to the next station
 
 
 Please refer to [Final Gameplay Tutorial](/Final%20Assessment/Final%20Gameplay%20Tutorial.md) to know how to play the finalised game
