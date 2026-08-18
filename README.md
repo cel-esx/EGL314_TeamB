@@ -148,9 +148,12 @@ graph TD
 [MVP/GrandMa3](MVP/GrandMA3)| README.md | This is the GrandMa3 show documentation.|
 [MVP/GrandMa3](MVP/GrandMA3)| Project Phantom show | This is the GrandMa3 show.|
 [Final Assessment](/Final%20Assessment/best_model.pth)| best_model.pth|Trained Machine Learning Model| During the shadow gesture part, the machine will use the information from here to detect
-[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/)| Essential Folder| Contains contains Jupyter Notebook Files used for Machine Learning Training
-[Final Assessment/Image-Classifie](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/AI%20Training%20Jupyter%20Notebook_Part1.ipynb)| Notebook_Part1.ipynb| This file creates image normalization statistics for Machine Learning Training
-[Final Assessment/Image-Classifie](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/Data%20Preperation_Part2.ipynb)| DataPreparation_Part2.ipynb| This file uses Machine Learning to classify images
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Image-ClassifierSetUp.md)| Image-ClassifierSetUp.md| This shows how to set up Jupyter Notebook and how to use the files in Image Classifier Folder
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/)| Essential Folder| Contains contains Jupyter Notebook Files used for Machine Learning Training and Images used for the learning
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/Dataset/)| Dataset | This folder contains the images used for Machine Learning to learn the shadows
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/AI%20Training%20Jupyter%20Notebook_Part1.ipynb)| Notebook_Part1.ipynb| This file creates image normalization statistics for Machine Learning Training
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/Essential%20Folder/Data%20Preparation_Part2.ipynb)| DataPreparation_Part2.ipynb| This file uses Machine Learning to classify images
+[Final Assessment/Image-Classifier](/Final%20Assessment/Final%20image-classifier/JupyterSetUpImages/)| JupyterSetUpImages| Images used in Image-ClassifierSetUp.md
 [Final Assessment](/Final%20Assessment/Capture%20Gesture.py)| Capture Gesture.py| Contains python code for saving / deleting gesture
 [Final Assessment](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)| Final Assessment Game Code.py| Contains the entire game code
 [Final Assessment](/Final%20Assessment/Final_gesture_definitions.csv)|Final_gesture_definitions.csv| Stores all captured gestures in a format that is understood by the game
@@ -160,8 +163,16 @@ graph TD
 [Final Assessment/Final Station Pics](/Final%20Assessment/Final%20Station%20Pics/)| Images| Contains the images of the station for the final version of the game
 [Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/grandMA3_game_flow.md)| Final Gma3 Flow | Contains the points of the different sequences that were used during the game 
 [Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| Final Gma3 Show | Contains the show file used for the final 
-[Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| images | Contains the show file used for the final 
-
+[Final Assessment/Final_GMA3](/Final%20Assessment/Final_GMA3/Project%20Phantom.show)| images | Contains the show file used for the final
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/README.md)| README.md | Contains updated descriptions of Reaper and L-ISA used in this station
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Reaper.rpp)| Project_Phantom_Reaper.rpp | Final Assessment of Reaper file
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Lisa.lisa)| Project_Phantom_Lisa.lisa | Final Assessment of L-ISA file
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/)| Audio | Contains Audio file used in this station
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Common%20BGM/)| Audio | Contains Audio file used for Ambient sound
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Siera/)| Audio | Contains AI voice transitions
+[Final Assessment/Final Game Tracks/L-ISA_GIF](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_GIF/)| L-ISA Snapshots | Contains L-ISA Snapshots used in this station
+[Final Assessment/Final Game Tracks/L-ISA_Images](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_Images/)| Images | Contains images of L-ISA set up and MIDI timecode
+[Final Assessment/Final Game Tracks/Reaper_Images](/Final%20Assessment/Final%20Game%20Tracks/Reaper_Images/)| Images | Contains images of Reaper's MIDI outputs
 
 
 
