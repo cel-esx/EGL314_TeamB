@@ -28,7 +28,7 @@ These tracks will be playing in the entire gameplay.
 1. [game_end.mp3](Audio%20Tracks/Common%20BGM/game_end.mp3)
 
 ## Ambient Sound MIDI Routing/Track Organisation In Reaper
-![alt text](Images/Common%20Track%20Routing.png) <br>
+![alt text](Reaper_Images/Common%20Track%20Routing.png) <br>
 From the image above, these are the tracks used throughout the entire station.
 
 ## MIDI Routing
