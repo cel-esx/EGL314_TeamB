@@ -91,6 +91,8 @@
 
    There should be the laptop facing the player when they are doing the hand gesture game. The area should be lit up so that the cameras can better capture the hand gestures
 
+   > Note: There is no **Recommended Setup For POC** as the game function with just a laptop and nothing else more. So no need to stress about it
+
    
   ## Dependencies
   #### This code have been tested using **Python 3.10 or higher**   
@@ -209,6 +211,13 @@
  4. [Final_Gesture_Definations.csv](/Final%20Assessment/Final_gesture_definitions.csv)
  5. [Final Assessment Game Code.py](/Final%20Assessment/Final%20Assessment%20Game%20Code.py)
  6. [Heart.png](/Final%20Assessment/Heart.png)
+ 7. [Dataset Folder](/Final%20Assessment/image-classifier/Essential%20Folder/Dataset/)
+ 8. [01_data_preparation.ipynb](/Final%20Assessment/image-classifier/Essential%20Folder/AI%20Training%20Jupyter%20Notebook_Part1.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
+ 9. [02_ai_model_training.ipynb](/Final%20Assessment/image-classifier/Essential%20Folder/Data%20Preperation_Part2.ipynb) (Only if you added new pictures and into the folder and want to update classifier)
+ 10. [Final GrandMa3 Show File] (NOT DONE YET)
+ 11. [Final Reaper](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Reaper.rpp)
+ 12. [Final L-ISA](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Lisa.lisa)
+
 
    
 
