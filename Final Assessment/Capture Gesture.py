@@ -288,6 +288,22 @@ while True:
     elif delete_mode:
         draw_input_box(frame, typing_buffer, w, is_delete_mode=True)
 
+    # ── EXTENDED DISPLAY CONFIGURATION ───────────────────────────────────────────
+    window_name = "Hand Tracking Recording Frame"
+
+    # Create normal window first so OS handles window geometry properly
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+
+    MONITOR_X_OFFSET = 1920  
+
+    # Move window to extended monitor before toggling fullscreen
+    cv2.moveWindow(window_name, MONITOR_X_OFFSET, 0)
+
+    # Brief pause to give the OS window manager time to relocate the window
+    cv2.waitKey(100)
+
+    # Enable borderless fullscreen on the target monitor
+    cv2.setWindowProperty(window_name, cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     # ── Core Capture Processing Engine (Triggered via Mouse Click) ──────────
     if right_click_triggered and not (typing_mode or delete_mode):
         right_click_triggered = False # Immediately reset the trap trigger flag
