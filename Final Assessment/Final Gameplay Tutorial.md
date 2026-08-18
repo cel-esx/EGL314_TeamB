@@ -74,16 +74,14 @@ The **main objective** of the game is to successfully complete all 3 levels to c
 <video src="https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7" controls width="100%">
   Your browser does not support the video tag.
 </video>
-https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7
-
 
 
 * **Team Bonding Challenge:** Upon passing level 2, trainees need to repoisiton themselves to where the yellow swirls is showing
 
 
-
-https://github.com/user-attachments/assets/e829ceae-eb84-4954-83a8-013a713ace88
-
+<video src="https://github.com/user-attachments/assets/e829ceae-eb84-4954-83a8-013a713ace88" controls width="100%">
+  Your browser does not support the video tag.
+</video>
 
 
 ![alt text](<Final Station Pics/IMG.jpg>)
