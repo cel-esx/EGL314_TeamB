@@ -55,7 +55,7 @@
 
    ## Hardware Placement
    ### This is the recommended position to place your hardware for the Final Game game
-   You will need all the above [hardware equipment](#hardware)
+   You will need all the above [Hardware Equipment](#hardware)
 
    This is the ideal hardware placement / setup for this game
 
