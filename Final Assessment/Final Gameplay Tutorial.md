@@ -71,7 +71,9 @@ The **main objective** of the game is to successfully complete all 3 levels to c
 * **Watch the Magic:** As you successfully progress or trigger game states, watch and listen as the script instantly changes your real-world room environment via theater tech integrations (grandMA3 lighting and Reaper + L-ISA audio)
 
 
-
+<video src="https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7" controls width="100%">
+  Your browser does not support the video tag.
+</video>
 https://github.com/user-attachments/assets/341eb515-8c1c-461a-9483-7ba172f473c7
 
 
