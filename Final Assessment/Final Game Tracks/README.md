@@ -59,11 +59,14 @@
 #### Source & Timecode Setup
 <p align="center">
   <img src="L-ISA_Images/Sources_setup.png" width="45%" alt="Sources Setup 1" />
-  <img src="L-ISA_Images/Sources_setup2.png" width="45%" alt="Sources Setup 2" />
 </p>
-
+<p align="center">
+    <img src="L-ISA_Images/Sources_setup2.png" width="45%" alt="Sources Setup 2" />
+</p>
 <p align="center">
   <img src="L-ISA_Images/Gameplay_Sources_Setup.png" width="45%" alt="Gameplay Sources Setup" />
+</p>
+<p align="center">
   <img src="L-ISA_Images/Timecode_setup.png" width="45%" alt="Timecode Setup" />
 </p>
 
