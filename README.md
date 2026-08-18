@@ -52,6 +52,7 @@ Trainees are suppose to mimic the hand gestures shown on the laptop. But there w
 In level 3, Trainees would have to stand in the yellow swirl that is behind a webcam attached to a tripod
 
 ![alt text](<Final Assessment/Final Station Pics/IMG_3190.JPG>)
+
 Trainees's task do a shadow gesture together with the other trainee in order to finish the game
 
 
