@@ -39,7 +39,7 @@ Track 5 (game_end.mp3): `Output 9 / Output 10`, and `Output 11 / Output 12`
 Track 6 (Siera): `Output 13 / Output 14`, and `Output 15 / Output 16`
 
 ## Gameplay MIDI Routing/Track Organisation In Reaper
-![alt text](Images/Gameplay.png)
+![alt text](Reaper_Images/Gameplay.png)
 From the image above, these are the tracks used during the Gameplay.
 
 ## MIDI Routing
@@ -56,6 +56,6 @@ Track 17 (fail.mp3): `Output 41 / Output 42`
 ![alt text](L-ISA_Images/Timecode_setup.png)
 
 ## L-ISA Snapshot
-[alt text](L-ISA_Video/Ambient_Snapshot.mp4)
+![alt text](L-ISA_Video/Ambient_Snapshot.mp4)
 
-[alt text](L-ISA_Video/Clock-Ticking_Snapshot.mp4)
+![alt text](L-ISA_Video/Clock-Ticking_Snapshot.mp4)
