@@ -154,7 +154,15 @@ graph TD
 [Final Assessment](/Final%20Assessment/Final_gesture_definitions.csv)|Final_gesture_definitions.csv| Stores all captured gestures in a format that is understood by the game
 [Final Assessment](/Final%20Assessment/Heart.png)| Heart.png| Contains a image of a heart used in the game
 [Final Assessment/MVP Pictures](/Final%20Assessment/MVP%20Pictures/)| Images| These are the pictures that are used for the game's UI|
-
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/)| README.md | This file contains the tracks, and the midi routing that were used for this station.
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Reaper.rpp)| Project_Phathom_Reaper.rpp | Reaper file used for Final Assessment
+[Final Assessment/Final Game Tracks](/Final%20Assessment/Final%20Game%20Tracks/Project_Phantom_Lisa.lisa)| Project_Phantom_Lisa.lisa | L-ISA file used for Final Assessment
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/)| Gameplay tracks| These tracks are used when the game is playing
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Common%20BGM/)|Common BGM| Tracks were used throughout the entire station
+[Final Assessment/Final Game Tracks/Audio Tracks](/Final%20Assessment/Final%20Game%20Tracks/Audio%20Tracks/Siera/)|Siera| Voiceover for Transition Sequence
+[Final Assessment/Final Game Tracks/L-ISA_GIF](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_GIF/)|L-ISA Snapshots| GIF file of L-ISA Snapshots used in the Final Assessment
+[Final Assessment/Final Game Tracks/L-ISA_Images](/Final%20Assessment/Final%20Game%20Tracks/L-ISA_Images/)|Images| Images used in the README.md
+[Final Assessment/Final Game Tracks/Reaper_Images](/Final%20Assessment/Final%20Game%20Tracks/Reaper_Images/)|Images| Images used in the README.md
 
 
 
